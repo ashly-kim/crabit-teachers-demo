@@ -1,1 +1,0 @@
-import{j as e}from"./index-D7fyNYJE.js";function s(){return e.jsxs("div",{className:"container mx-auto p-6",children:[e.jsx("h1",{className:"mb-6 font-bold text-3xl",children:"소개"}),e.jsx("div",{className:"mt-8 rounded-lg bg-muted p-8",children:e.jsx("p",{className:"text-center text-muted-foreground",children:"Teacher Web 애플리케이션 소개 페이지입니다."})})]})}export{s as component};

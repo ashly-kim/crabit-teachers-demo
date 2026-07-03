@@ -1,0 +1,1 @@
+import{j as e,_ as n,m as r}from"./index-BwcWBiQZ.js";const m=({children:t,verticalAlign:s="center"})=>{const a=s==="center";return e.jsx(n,{as:"main",className:`flex min-h-screen w-full justify-center px-4 ${a?"items-center pt-10":"pt-36"}`,children:e.jsx(r,{gap:48,align:"center",className:"w-full max-w-[470px]",children:t})})};export{m as A};
