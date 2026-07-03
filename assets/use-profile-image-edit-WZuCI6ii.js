@@ -1,0 +1,1 @@
+import{a as e}from"./zod-Dzie-__l.js";import{u as r}from"./index.esm-DllbkRSE.js";import{as as m,au as a}from"./index-BoCbj2ac.js";const s=m({profileImage:a().optional()}),l=(o={})=>({form:r({resolver:e(s),mode:"onTouched",values:{profileImage:o.profileImageUrl||""}})});export{l as u};

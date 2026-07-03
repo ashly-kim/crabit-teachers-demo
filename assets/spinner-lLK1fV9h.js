@@ -1,0 +1,1 @@
+import{j as a}from"./index-BoCbj2ac.js";import{L as r,ad as t}from"./workspace-navbar-Qtq3-tWQ.js";function o({size:s="md",className:e}){const i={sm:"size-4",md:"size-5",lg:"size-6"}[s];return a.jsx(r,{className:t("animate-spin text-zinc-400",i,e)})}export{o as S};

@@ -1,0 +1,1 @@
+import{j as r}from"./index-BoCbj2ac.js";const s="/crabit-teachers-demo/assets/logo-CfeCYLDM.webp",i=({width:o=80,height:t=53})=>r.jsx("img",{width:o,height:t,src:s,alt:"Crabit",fetchPriority:"high"});export{i as L};

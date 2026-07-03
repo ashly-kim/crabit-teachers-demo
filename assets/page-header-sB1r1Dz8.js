@@ -1,1 +1,0 @@
-import{j as o,m as a,v as s,d as n}from"./index-BwcWBiQZ.js";function i({title:r,subtitle:e}){return o.jsxs(a,{gap:4,children:[o.jsx(s,{fontSize:"t2",as:"h1",colorShade:800,children:r}),e&&o.jsx(n,{fontSize:"b3",color:"zinc",colorShade:500,children:e})]})}export{i as P};
