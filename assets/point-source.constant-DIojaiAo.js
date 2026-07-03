@@ -1,0 +1,1 @@
+const E={MISSION:"미션",STAMP:"스탬프",MANUAL:"수동",REJECTION:"회수",SETTLEMENT:"정산"},e={MISSION:"informative",STAMP:"purple",MANUAL:"neutral",REJECTION:"negative",SETTLEMENT:"warning"},S=T=>E[T]??T,l=T=>e[T]??"neutral",a="ALL",N=[{value:a,label:"전체 출처"},{value:"STAMP",label:"스탬프"},{value:"MANUAL",label:"수동"},{value:"SETTLEMENT",label:"정산"}];export{N as P,a,l as b,S as g};

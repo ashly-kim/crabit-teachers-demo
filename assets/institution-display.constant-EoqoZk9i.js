@@ -1,0 +1,1 @@
+const _={OWNER:"원장",ADMIN:"관리자"},e={UNDER_30:"30명 미만",SCALE_30_100:"30명 이상 - 100명 미만",SCALE_100_200:"100명 이상 - 200명 미만",SCALE_200_300:"200명 이상 - 300명 미만",SCALE_300_500:"300명 이상 - 500명 미만",OVER_500:"500명 이상"},o=t=>_[t]??t,s=t=>`총 ${t} 명`,L=t=>t?e[t]:"-",i=(t,n)=>t.length===0?n:t.join(", ");export{o as a,L as b,s as g,i as t};
