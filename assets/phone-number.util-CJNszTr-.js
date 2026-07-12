@@ -1,0 +1,1 @@
+import{b1 as r,U as e}from"./index-Di0FkLh7.js";const a={...r,validate(t){return e.PATTERNS.PHONE_NUMBER.test(t)},validateVerificationCode(t){return e.PATTERNS.VERIFICATION_CODE.test(t)}};export{a as P};

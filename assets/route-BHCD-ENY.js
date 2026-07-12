@@ -1,1 +1,0 @@
-import{j as o,m as t,F as r,O as m}from"./index-zI08bEX4.js";import{F as s}from"./footer-LF3-hADm.js";import"./logo-DSjnqgqm.js";import"./index-BThHPy4D.js";import"./index-CnYr0RvB.js";function p(){return o.jsxs(t,{direction:"column",minH:"100dvh",children:[o.jsx(r,{grow:1,w:"full",children:o.jsx(m,{})}),o.jsx(s,{})]})}export{p as component};
