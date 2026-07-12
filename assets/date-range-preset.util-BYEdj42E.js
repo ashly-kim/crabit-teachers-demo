@@ -1,1 +1,0 @@
-import{aP as e,cF as n}from"./index-BoCbj2ac.js";function r(t){if(t.amount===0)return{startDate:void 0,endDate:void 0};const a=new Date;return{startDate:e(n(a,t.amount,t.unit)),endDate:e(a)}}export{r as c};

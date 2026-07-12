@@ -1,1 +1,0 @@
-import{bv as s,q as e,u as n,aQ as t}from"./index-BoCbj2ac.js";const c=r=>({id:r.id,name:r.name,color:r.color,cardCount:r.cardCount,isNoGroup:r.id===null}),i=r=>{const o=s();return e({queryKey:t.groupList(r.institutionId),queryFn:async()=>n(await o.getCardGroups(r)),select:u=>u.map(a=>c(a))})};export{i as u};

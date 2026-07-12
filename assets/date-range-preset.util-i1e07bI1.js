@@ -1,0 +1,1 @@
+import{aU as e,cL as n}from"./index-zI08bEX4.js";function r(t){if(t.amount===0)return{startDate:void 0,endDate:void 0};const a=new Date;return{startDate:e(n(a,t.amount,t.unit)),endDate:e(a)}}export{r as c};

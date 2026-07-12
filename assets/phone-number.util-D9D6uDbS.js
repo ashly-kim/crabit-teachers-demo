@@ -1,1 +1,0 @@
-import{aY as r,P as e}from"./index-BoCbj2ac.js";const N={...r,validate(t){return e.PATTERNS.PHONE_NUMBER.test(t)},validateVerificationCode(t){return e.PATTERNS.VERIFICATION_CODE.test(t)}};export{N as P};
