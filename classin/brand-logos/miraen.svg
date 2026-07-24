@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100" fill="none">
+  <g>
+    <!-- 미래엔 (blue) -->
+    <text x="20" y="68" font-family="-apple-system, sans-serif" font-size="44" font-weight="900" fill="#1d4ed8" letter-spacing="-1.5">미래엔</text>
+    <!-- 수학 (orange yellow) -->
+    <text x="134" y="68" font-family="-apple-system, sans-serif" font-size="44" font-weight="900" fill="#f59e0b" letter-spacing="-1.5">수학</text>
+  </g>
+</svg>
