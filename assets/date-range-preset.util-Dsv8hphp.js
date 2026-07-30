@@ -1,0 +1,1 @@
+import{aX as e,cO as n}from"./index-DvfDy0zB.js";function r(t){if(t.amount===0)return{startDate:void 0,endDate:void 0};const a=new Date;return{startDate:e(n(a,t.amount,t.unit)),endDate:e(a)}}export{r as c};

@@ -1,0 +1,1 @@
+const t={all:["message"],students:(l,s)=>[...t.all,"students",l,s],lists:l=>[...t.all,"list",l],list:(l,s)=>[...t.lists(l),s],defaultImages:l=>[...t.all,"default-images",l],detail:(l,s)=>[...t.all,"detail",l,s]};export{t as M};

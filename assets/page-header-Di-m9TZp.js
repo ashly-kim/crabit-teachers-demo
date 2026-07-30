@@ -1,0 +1,1 @@
+import{j as o,n as a,w as n,d as s}from"./index-DvfDy0zB.js";function i({title:r,subtitle:e}){return o.jsxs(a,{gap:4,children:[o.jsx(n,{fontSize:"t2",as:"h1",colorShade:800,children:r}),e&&o.jsx(s,{fontSize:"b3",color:"zinc",colorShade:500,children:e})]})}export{i as P};

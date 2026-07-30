@@ -1,0 +1,1 @@
+import{m as i,u as r}from"./index-DvfDy0zB.js";const s=t=>i({mutationFn:async n=>r(await t.startIdentityVerification({input:n})),retry:0}),e={convertBirthdayToYYYYMMDD:(t,n)=>`${["1","2","5","6"].includes(n)?"19":"20"}${t}`};export{e as R,s};
