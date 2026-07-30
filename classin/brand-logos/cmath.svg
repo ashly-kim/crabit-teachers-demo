@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100" fill="none">
+  <g>
+    <!-- 사고력수학 (small top) -->
+    <text x="120" y="22" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a" letter-spacing="0.4">사고력수학</text>
+    <!-- Cmath (red overlay text) -->
+    <text x="120" y="44" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="18" font-weight="800" fill="#dc2626" letter-spacing="-0.5">Cmath</text>
+    <!-- 시매쓰 (big) — 시 red, 매 dark, 쓰 dark -->
+    <text x="36" y="84" font-family="-apple-system, sans-serif" font-size="42" font-weight="900" fill="#dc2626" letter-spacing="-2">시</text>
+    <text x="76" y="84" font-family="-apple-system, sans-serif" font-size="42" font-weight="900" fill="#475569" letter-spacing="-2">매</text>
+    <text x="124" y="84" font-family="-apple-system, sans-serif" font-size="42" font-weight="900" fill="#475569" letter-spacing="-2">쓰</text>
+  </g>
+</svg>

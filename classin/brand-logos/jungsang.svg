@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" fill="none">
+  <!-- JLS playful colored letters -->
+  <g>
+    <!-- J (red) -->
+    <text x="14" y="68" font-family="-apple-system, sans-serif" font-size="58" font-weight="900" fill="#dc2626" letter-spacing="-2">J</text>
+    <circle cx="42" cy="36" r="3.5" fill="#fbbf24"/>
+    <circle cx="34" cy="32" r="2.5" fill="#fbbf24"/>
+    <!-- L (yellow dot accent) -->
+    <text x="56" y="68" font-family="-apple-system, sans-serif" font-size="58" font-weight="900" fill="#0c4a6e" letter-spacing="-2">L</text>
+    <!-- S (blue) -->
+    <text x="96" y="68" font-family="-apple-system, sans-serif" font-size="58" font-weight="900" fill="#0ea5e9" letter-spacing="-2">S</text>
+    <circle cx="138" cy="36" r="3" fill="#fbbf24"/>
+    <circle cx="148" cy="40" r="2.5" fill="#fbbf24"/>
+    <!-- 정상어학원 wordmark -->
+    <text x="168" y="62" font-family="-apple-system, sans-serif" font-size="26" font-weight="800" fill="#0f172a" letter-spacing="-1">정상어학원</text>
+  </g>
+</svg>
