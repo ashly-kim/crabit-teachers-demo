@@ -2403,7 +2403,7 @@
   /* --- 마무리 --- */
   /* ===== 흐름 다이어그램 (학습 데이터 유입 → 크래빗 → 보상 유출) ===== */
   .cfd-sec{background:#F7F8F6;padding:104px 56px 108px;}
-  .cfd-inner{max-width:1080px;margin:0 auto;}
+  .cfd-inner{max-width:1140px;margin:0 auto;}
   .cfd-head{text-align:center;max-width:660px;margin:0 auto 56px;}
   .cfd-eyebrow{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.14em;color:#2E8B22;
     background:#EAF4E5;border-radius:999px;padding:6px 14px;margin-bottom:20px;}
@@ -2413,11 +2413,11 @@
   .cfd-sub{font-size:17.5px;color:rgba(22,25,42,.6);line-height:1.78;text-wrap:balance;}
 
   /* 좌: 유입 · 중앙: 크래빗 오브 · 우: 유출 (곡선 와이어는 JS로 그린다) */
-  .cfd-map{position:relative;display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr) minmax(0,250px);
+  .cfd-map{position:relative;display:grid;grid-template-columns:minmax(0,238px) minmax(0,1fr) minmax(0,238px);
     gap:0;align-items:center;justify-content:space-between;}
   .cfd-wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible;}
-  .cfd-wire{fill:none;stroke:#CDD7CF;stroke-width:1.1;opacity:.9;}
-  .cfd-pulse{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:5 95;opacity:0;}
+  .cfd-wire{fill:none;stroke:#CDD7CF;stroke-width:1.2;opacity:.9;}
+  .cfd-pulse{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:9 91;opacity:0;}
   .cfd-sec.play .cfd-pulse{opacity:1;animation:cfdFlow 3.4s linear infinite;}
   .cfd-pulse.g{stroke:#43B02A;}
   .cfd-pulse.p{stroke:#FB75BB;}
@@ -2425,15 +2425,12 @@
 
   .cfd-col{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;}
   .cfd-coltag{font-size:12.5px;font-weight:600;letter-spacing:.1em;color:rgba(22,25,42,.42);margin-bottom:6px;}
-  .cfd-col.out .cfd-coltag{text-align:right;}
-  .cfd-chip{display:flex;align-items:center;gap:9px;background:#fff;border-radius:13px;padding:11px 14px;
+  .cfd-col.cfd-dst .cfd-coltag{text-align:right;}
+  .cfd-chip{display:flex;align-items:center;background:#fff;border-radius:13px;padding:13px 17px;
     box-shadow:0 1px 2px rgba(22,25,42,.05);opacity:0;transform:translateX(-14px);}
-  .cfd-col.out .cfd-chip{flex-direction:row-reverse;text-align:right;transform:translateX(14px);}
+  .cfd-col.cfd-dst .cfd-chip{text-align:right;transform:translateX(14px);}
   .cfd-sec.play .cfd-chip{animation:cfdIn .55s cubic-bezier(.22,1,.36,1) forwards;}
   @keyframes cfdIn{to{opacity:1;transform:none;}}
-  .cfd-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
-  .cfd-col.in .cfd-dot{background:#43B02A;}
-  .cfd-col.out .cfd-dot{background:#FB75BB;}
   .cfd-chip b{font-size:15px;font-weight:600;color:#16192A;display:block;line-height:1.4;}
   .cfd-chip span{font-size:12.5px;color:rgba(22,25,42,.52);display:block;margin-top:2px;line-height:1.45;}
 
@@ -2466,8 +2463,6 @@
   .cfd-orb-t{font-size:17px;font-weight:700;letter-spacing:-.02em;}
   .cfd-hub-cap{font-size:14.5px;color:rgba(22,25,42,.58);line-height:1.7;text-align:center;margin-top:18px;}
 
-  .cfd-notes{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:38px;}
-  .cfd-notes span{font-size:14.5px;font-weight:600;color:#16192A;background:#fff;border-radius:999px;padding:11px 19px;}
 
   .cfd-foot{margin-top:44px;text-align:center;font-size:16.5px;color:rgba(22,25,42,.62);line-height:1.8;text-wrap:balance;}
   .cfd-foot b{color:#16192A;font-weight:600;}
@@ -2528,9 +2523,9 @@
     .cfd-head{margin-bottom:34px;}
     .cfd-map{grid-template-columns:minmax(0,1fr);gap:26px;}
     .cfd-wires,.cfd-tag{display:none;}
-    .cfd-col.out .cfd-coltag{text-align:left;}
-    .cfd-col.out .cfd-chip{flex-direction:row;text-align:left;}
-    .cfd-col.out .cfd-chip,.cfd-chip{transform:translateY(12px);}
+    .cfd-col.cfd-dst .cfd-coltag{text-align:left;}
+    .cfd-col.cfd-dst .cfd-chip{text-align:left;}
+    .cfd-col.cfd-dst .cfd-chip,.cfd-chip{transform:translateY(12px);}
     .cfd-orb{width:150px;height:150px;}
     .cfd-orb-halo{width:230px;height:230px;}
     .cin-swap,.cin-only{grid-template-columns:minmax(0,1fr);}
@@ -3088,13 +3083,13 @@
       <div class="cfd-map" id="cfd-map">
         <svg class="cfd-wires" id="cfd-wires" aria-hidden="true"></svg>
 
-        <div class="cfd-col in cin-rv">
+        <div class="cfd-col cfd-src cin-rv">
           <div class="cfd-coltag">클래스인에서 들어옵니다</div>
-          <div class="cfd-chip" style="animation-delay:.05s"><span class="cfd-dot"></span><div><b>출결</b><span>지각·조퇴까지 회차별로</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.13s"><span class="cfd-dot"></span><div><b>수업 참여</b><span>손들기, 발표, 토론 횟수</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.21s"><span class="cfd-dot"></span><div><b>과제 제출</b><span>제출 여부와 채점 결과</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.29s"><span class="cfd-dot"></span><div><b>녹화 완주율</b><span>몇 분까지 봤는지 초 단위로</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.37s"><span class="cfd-dot"></span><div><b>시험 성적</b><span>회차별 평균과 추이</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.05s"><div><b>출결</b><span>지각·조퇴까지 회차별로</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.13s"><div><b>수업 참여</b><span>손들기, 발표, 토론 횟수</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.21s"><div><b>과제 제출</b><span>제출 여부와 채점 결과</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.29s"><div><b>녹화 완주율</b><span>몇 분까지 봤는지 초 단위로</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.37s"><div><b>시험 성적</b><span>회차별 평균과 추이</span></div></div>
         </div>
 
         <div class="cfd-hub cin-rv">
@@ -3108,23 +3103,17 @@
           <div class="cfd-hub-cap">기준에 맞는지 판정하고<br>예치금에서 자동으로 빼갑니다</div>
         </div>
 
-        <div class="cfd-col out cin-rv">
+        <div class="cfd-col cfd-dst cin-rv">
           <div class="cfd-coltag">학생에게 나갑니다</div>
-          <div class="cfd-chip" style="animation-delay:.05s"><span class="cfd-dot"></span><div><b>장학 포인트 적립</b><span>왜 받았는지 사유와 함께</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.13s"><span class="cfd-dot"></span><div><b>스탬프와 미션</b><span>모으는 재미가 붙습니다</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.21s"><span class="cfd-dot"></span><div><b>장학카드로 사용</b><span>모은 만큼 직접 씁니다</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.29s"><span class="cfd-dot"></span><div><b>다음 주 학습 동기</b><span>노력한 만큼 돌아오는 경험</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.37s"><span class="cfd-dot"></span><div><b>학원 소속감</b><span>우리 학원에서만 받는 보상</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.05s"><div><b>장학 포인트 적립</b><span>왜 받았는지 사유와 함께</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.13s"><div><b>스탬프와 미션</b><span>모으는 재미가 붙습니다</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.21s"><div><b>장학카드로 사용</b><span>모은 만큼 직접 씁니다</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.29s"><div><b>다음 주 학습 동기</b><span>노력한 만큼 돌아오는 경험</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.37s"><div><b>학원 소속감</b><span>우리 학원에서만 받는 보상</span></div></div>
         </div>
 
         <span class="cfd-tag g">자동 수집</span>
         <span class="cfd-tag p">자동 지급</span>
-      </div>
-
-      <div class="cfd-notes cin-rv">
-        <span>원장님이 정해두신 기준으로 판정</span>
-        <span>승인 절차 없이 즉시 지급</span>
-        <span>지급 사유까지 함께 기록</span>
       </div>
 
       <p class="cfd-foot cin-rv">원장님이 해두실 일은 두 가지입니다. <b>기준을 정하는 것</b>, 그리고 <b>예치금을 채워두는 것</b>.</p>
@@ -10793,11 +10782,11 @@
       out += `<path class="cfd-pulse ${cls}" pathLength="100" d="${d}" style="animation-delay:${delay}s"/>`;
     };
 
-    map.querySelectorAll('.cfd-col.in .cfd-chip').forEach((el, i) => {
+    map.querySelectorAll('.cfd-src .cfd-chip').forEach((el, i) => {
       const r = el.getBoundingClientRect();
       wire(r.right - m.left, r.top + r.height / 2 - m.top, hubL, hubY, 'g', i * 0.42);
     });
-    map.querySelectorAll('.cfd-col.out .cfd-chip').forEach((el, i) => {
+    map.querySelectorAll('.cfd-dst .cfd-chip').forEach((el, i) => {
       const r = el.getBoundingClientRect();
       wire(hubR, hubY, r.left - m.left, r.top + r.height / 2 - m.top, 'p', 0.8 + i * 0.42);
     });
@@ -10809,6 +10798,10 @@
     clearTimeout(_cfdRedraw);
     _cfdRedraw = setTimeout(cfdDrawWires, 140);
   });
+  // 리빌 트랜지션(translateY)이 끝난 뒤 좌표가 바뀌므로 다시 그린다
+  function cfdDrawWiresSoon() {
+    [0, 120, 400, 800].forEach(t => setTimeout(cfdDrawWires, t));
+  }
 
   function cinInitIntro() {
     const page = document.getElementById('page-classin-intro');
@@ -10819,7 +10812,7 @@
       items.forEach(el => el.classList.add('in'));
       const cfd0 = document.getElementById('cfd-sec');
       if (cfd0) cfd0.classList.add('play');
-      cfdDrawWires();
+      cfdDrawWiresSoon();
       cinInitMocks();
       return;
     }
@@ -10835,7 +10828,7 @@
     }, { root: document.getElementById('main-content'), rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
     items.forEach(el => _cinObserver.observe(el));
 
-    cfdDrawWires();
+    cfdDrawWiresSoon();
 
     // 흐름 다이어그램은 화면에 들어올 때 칩이 순차로 나타난다
     const cfd = document.getElementById('cfd-sec');
@@ -10843,7 +10836,7 @@
       cfd.classList.remove('play');
       const cfdOb = new IntersectionObserver((ens) => {
         ens.forEach(en => {
-          if (en.isIntersecting) { cfd.classList.add('play'); cfdOb.disconnect(); }
+          if (en.isIntersecting) { cfd.classList.add('play'); cfdDrawWiresSoon(); cfdOb.disconnect(); }
         });
       }, { root: document.getElementById('main-content'), rootMargin: '0px 0px -18% 0px', threshold: 0.12 });
       cfdOb.observe(cfd);
