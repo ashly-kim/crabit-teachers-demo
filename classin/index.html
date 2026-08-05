@@ -2214,6 +2214,11 @@
   }
 
   /* 결제 모달 */
+  .cpay-trial{display:flex;flex-direction:column;gap:8px;background:#F2F9EF;border:1px solid #CDE9C3;
+    border-radius:13px;padding:15px 17px;margin-bottom:18px;font-size:13px;color:rgba(22,25,42,.7);line-height:1.65;}
+  .cpay-trial b{color:#2E8B22;font-weight:700;}
+  .cpay-trial-tag{align-self:flex-start;font-size:11.5px;font-weight:700;color:#fff;background:#2E8B22;
+    border-radius:7px;padding:4px 10px;}
   .cpay-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F0F0F2;font-size:14.5px;}
   .cpay-row:last-of-type{border-bottom:none;}
   .cpay-row .k{color:rgba(22,25,42,.6);}
@@ -2472,6 +2477,8 @@
           <option value="STARTER">스타터</option>
           <option value="GROWTH_TRIAL">그로우 체험</option>
           <option value="GROWTH">그로우</option>
+          <option value="CRABIT_IN_TRIAL">크래빗-in 체험</option>
+          <option value="CRABIT_IN">크래빗-in</option>
         </select>
         <div class="apihint-toggle">
           <span>API 힌트 표시<br>어떤 API를 부르는지 보기</span>
@@ -2927,14 +2934,20 @@
       <div style="font-size:13.5px;color:rgba(22,25,42,.55);margin-top:6px;">결제가 완료되면 바로 연동이 시작돼요.</div>
     </div>
 
+    <div class="cpay-trial">
+      <span class="cpay-trial-tag">1주일 무료 체험</span>
+      <span>먼저 7일 동안 모든 기능을 써보시고 결정하세요.<br>체험 기간 안에 해지하시면 <b>한 푼도 청구되지 않습니다.</b></span>
+    </div>
+
     <div class="cpay-row"><span class="k">요금제</span><span class="v">크래빗-in 결합 요금제</span></div>
-    <div class="cpay-row"><span class="k">결제 주기</span><span class="v">매월 자동결제</span></div>
+    <div class="cpay-row"><span class="k">체험 기간</span><span class="v" style="color:#2E8B22;">오늘부터 7일간 무료</span></div>
+    <div class="cpay-row"><span class="k">이후 결제</span><span class="v">체험 종료 다음 날부터 매월 99,000원</span></div>
     <div class="cpay-row"><span class="k">학원</span><span class="v">크래빗 영어학원</span></div>
     <div class="cpay-row"><span class="k">클래스인 계정</span><span class="v" style="color:#2E8B22;">연동 기간 무상 제공</span></div>
 
     <div class="cpay-total">
-      <span class="k">이번 달 결제 금액</span>
-      <span class="v">99,000원</span>
+      <span class="k">지금 결제되는 금액</span>
+      <span class="v">0원</span>
     </div>
 
     <div style="font-size:12.5px;font-weight:600;color:rgba(22,25,42,.55);margin:18px 0 0;">결제 수단</div>
@@ -2949,9 +2962,9 @@
 
     <div style="display:flex;gap:10px;margin-top:24px;">
       <button class="btn-submit" style="flex:1;background:#fff;border:1.5px solid #e4e3e6;color:#444;box-shadow:none;" onclick="document.getElementById('classinPayModal').classList.remove('show')">나중에 하기</button>
-      <button class="btn-submit dark" id="cpay-submit-btn" style="flex:1.4;background:#FB75BB;" onclick="submitClassinPay()">99,000원 결제하기</button>
+      <button class="btn-submit dark" id="cpay-submit-btn" style="flex:1.4;background:#FB75BB;" onclick="submitClassinPay()">1주일 무료로 시작하기</button>
     </div>
-    <p style="font-size:11.5px;color:rgba(22,25,42,.45);text-align:center;margin-top:14px;line-height:1.6;">데모 화면이라 실제로 결제되지 않습니다.</p>
+    <p style="font-size:11.5px;color:rgba(22,25,42,.45);text-align:center;margin-top:14px;line-height:1.6;">체험 기간 중 언제든 해지하실 수 있고, 해지하시면 청구되지 않습니다.<br>데모 화면이라 실제로 결제되지 않습니다.</p>
   </div>
 </div>
 
@@ -9825,6 +9838,7 @@
      데모 시작 시엔 미연동 상태. 소개 페이지에서 결제하면 메뉴 3개와 대시보드 위젯이 열린다.
      새로고침하면 다시 미연동으로 돌아가서 시연을 반복할 수 있다. */
   let _classinLinked = false;
+  let _cinTrialLeft = 0;   // 크래빗-in 체험 남은 일수 (0이면 체험 아님)
 
   function applyClassinLinkState() {
     const locked = document.getElementById('classin-menu-locked');
@@ -9832,7 +9846,15 @@
     const dot = document.getElementById('ci-menu-dot');
     const dash = document.getElementById('dash-classin-block');
     const badge = document.getElementById('sb-classin-badge');
-    if (badge) badge.style.display = _classinLinked ? '' : 'none';
+    if (badge) {
+      badge.style.display = _classinLinked ? '' : 'none';
+      const inner = badge.querySelector('.ci-badge');
+      if (inner) {
+        inner.innerHTML = (_subPlan === 'CRABIT_IN_TRIAL')
+          ? '<span class="ci-dot"></span>크래빗-in 체험 · ' + _cinTrialLeft + '일 남음'
+          : '<span class="ci-dot"></span>클래스인 LMS 연동됨';
+      }
+    }
     if (locked) locked.style.display = _classinLinked ? 'none' : '';
     if (unlocked) unlocked.style.display = _classinLinked ? '' : 'none';
     if (dot) dot.style.display = _classinLinked ? '' : 'none';
@@ -9850,11 +9872,11 @@
     setTimeout(() => {
       const m = document.getElementById('classinPayModal');
       if (m) m.classList.remove('show');
-      if (btn) { btn.disabled = false; btn.style.opacity = ''; btn.textContent = '99,000원 결제하기'; }
-      _classinLinked = true;
-      applyClassinLinkState();
+      if (btn) { btn.disabled = false; btn.style.opacity = ''; btn.textContent = '1주일 무료로 시작하기'; }
+      _cinTrialLeft = CIN_TRIAL_DAYS;
+      setSubPlan('CRABIT_IN_TRIAL');
       showPage('dashboard');
-      showToast('크래빗-in 연동이 시작됐어요. 왼쪽 메뉴에 3개가 추가됐습니다.', 'success');
+      showToast('크래빗-in 무료 체험이 시작됐어요. 7일 동안 모든 기능을 쓰실 수 있습니다.', 'success');
     }, 900);
   }
 
@@ -10068,12 +10090,21 @@
   }
 
   // ── 유료 구독 (스타터 / 그로우) ──
-  // 데모용 플랜 상태: 'STARTER' | 'GROWTH_TRIAL' | 'GROWTH'
+  // 데모용 플랜 상태: 'STARTER' | 'GROWTH_TRIAL' | 'GROWTH' | 'CRABIT_IN_TRIAL' | 'CRABIT_IN'
+  // 크래빗-in은 그로우를 포함하는 상위 플랜이라 isGrowth()도 참이 된다.
   let _subPlan = 'STARTER';
   let _subBilling = 'monthly'; // 'monthly' | 'yearly'
-  const PLAN_LABEL = { STARTER: '스타터', GROWTH_TRIAL: '그로우 체험', GROWTH: '그로우' };
+  const PLAN_LABEL = {
+    STARTER: '스타터', GROWTH_TRIAL: '그로우 체험', GROWTH: '그로우',
+    CRABIT_IN_TRIAL: '크래빗-in 체험', CRABIT_IN: '크래빗-in'
+  };
+  const CRABIT_IN_PLANS = ['CRABIT_IN_TRIAL', 'CRABIT_IN'];
+  const CIN_TRIAL_DAYS = 7;
 
-  function isGrowth() { return _subPlan === 'GROWTH' || _subPlan === 'GROWTH_TRIAL'; }
+  function isGrowth() {
+    return _subPlan === 'GROWTH' || _subPlan === 'GROWTH_TRIAL' || CRABIT_IN_PLANS.includes(_subPlan);
+  }
+  function isCrabitIn() { return CRABIT_IN_PLANS.includes(_subPlan); }
 
   function setSubPlan(plan) {
     _subPlan = plan;
@@ -10083,6 +10114,17 @@
     // 현재 공지 페이지가 보이고 있다면 잠금 재적용
     if (document.getElementById('page-notices') && document.getElementById('page-notices').style.display === 'block') {
       applyPageGrowthLock('notices');
+    }
+    // 크래빗-in 여부에 따라 클래스인 연동 메뉴·대시보드 위젯을 맞춘다
+    _classinLinked = isCrabitIn();
+    if (_subPlan === 'CRABIT_IN_TRIAL') _cinTrialLeft = CIN_TRIAL_DAYS;
+    applyClassinLinkState();
+    // 연동이 꺼졌는데 클래스인 기능 화면에 있으면 소개 화면으로 되돌린다
+    if (!_classinLinked) {
+      const openIds = ['page-classin-activity', 'page-classin-recordings', 'page-classin-rewards'];
+      if (openIds.some(id => { const el = document.getElementById(id); return el && el.style.display === 'block'; })) {
+        showPage('classin-intro');
+      }
     }
     // 사이드바 select 동기화
     const sel = document.getElementById('demo-plan-select');
