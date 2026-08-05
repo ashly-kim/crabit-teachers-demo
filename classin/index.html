@@ -2412,47 +2412,62 @@
   .cfd-h2 b{font-weight:700;color:#FB75BB;}
   .cfd-sub{font-size:15.5px;color:rgba(22,25,42,.58);line-height:1.8;text-wrap:balance;}
 
-  .cfd-grid{display:grid;grid-template-columns:minmax(0,1fr) 76px minmax(0,.92fr) 76px minmax(0,1fr);
-    gap:0;align-items:center;}
-  .cfd-col{display:flex;flex-direction:column;gap:9px;}
-  .cfd-coltag{font-size:11.5px;font-weight:600;letter-spacing:.1em;color:rgba(22,25,42,.42);margin-bottom:5px;}
-  .cfd-chip{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:14px 16px;
-    opacity:0;transform:translateX(-14px);}
-  .cfd-col.out .cfd-chip{transform:translateX(14px);}
+  /* 좌: 유입 · 중앙: 크래빗 오브 · 우: 유출 (곡선 와이어는 JS로 그린다) */
+  .cfd-map{position:relative;display:grid;grid-template-columns:minmax(0,236px) minmax(0,1fr) minmax(0,236px);
+    gap:0;align-items:center;justify-content:space-between;}
+  .cfd-wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible;}
+  .cfd-wire{fill:none;stroke:#CDD7CF;stroke-width:1.1;opacity:.9;}
+  .cfd-pulse{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:5 95;opacity:0;}
+  .cfd-sec.play .cfd-pulse{opacity:1;animation:cfdFlow 3.4s linear infinite;}
+  .cfd-pulse.g{stroke:#43B02A;}
+  .cfd-pulse.p{stroke:#FB75BB;}
+  @keyframes cfdFlow{from{stroke-dashoffset:100;}to{stroke-dashoffset:0;}}
+
+  .cfd-col{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;}
+  .cfd-coltag{font-size:11px;font-weight:600;letter-spacing:.11em;color:rgba(22,25,42,.4);margin-bottom:4px;}
+  .cfd-col.out .cfd-coltag{text-align:right;}
+  .cfd-chip{display:flex;align-items:center;gap:9px;background:#fff;border-radius:13px;padding:11px 14px;
+    box-shadow:0 1px 2px rgba(22,25,42,.05);opacity:0;transform:translateX(-14px);}
+  .cfd-col.out .cfd-chip{flex-direction:row-reverse;text-align:right;transform:translateX(14px);}
   .cfd-sec.play .cfd-chip{animation:cfdIn .55s cubic-bezier(.22,1,.36,1) forwards;}
   @keyframes cfdIn{to{opacity:1;transform:none;}}
-  .cfd-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+  .cfd-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
   .cfd-col.in .cfd-dot{background:#43B02A;}
   .cfd-col.out .cfd-dot{background:#FB75BB;}
-  .cfd-chip b{font-size:14.5px;font-weight:600;color:#16192A;display:block;}
-  .cfd-chip span{font-size:12px;color:rgba(22,25,42,.5);display:block;margin-top:2px;line-height:1.5;}
+  .cfd-chip b{font-size:13.5px;font-weight:600;color:#16192A;display:block;line-height:1.4;}
+  .cfd-chip span{font-size:11.5px;color:rgba(22,25,42,.5);display:block;margin-top:1px;line-height:1.45;}
 
-  .cfd-rail{position:relative;height:80px;}
-  .cfd-rail::before{content:'';position:absolute;left:0;right:0;top:50%;height:2px;
-    background:repeating-linear-gradient(90deg,#CBD5CC 0 5px,transparent 5px 11px);}
-  .cfd-rail i{position:absolute;top:50%;width:7px;height:7px;border-radius:50%;margin-top:-3.5px;
-    animation:cfdRun 2.4s linear infinite;}
-  .cfd-rail.g i{background:#43B02A;}
-  .cfd-rail.p i{background:#FB75BB;}
-  .cfd-rail i:nth-child(2){animation-delay:.8s;}
-  .cfd-rail i:nth-child(3){animation-delay:1.6s;}
-  @keyframes cfdRun{0%{left:-4px;opacity:0;}12%{opacity:1;}82%{opacity:1;}100%{left:calc(100% - 3px);opacity:0;}}
-  @keyframes cfdRunV{0%{top:-4px;opacity:0;}12%{opacity:1;}82%{opacity:1;}100%{top:calc(100% - 3px);opacity:0;}}
+  /* 경로 위 태그 */
+  .cfd-tag{position:absolute;z-index:1;top:50%;transform:translate(-50%,-50%);
+    font-size:10.5px;font-weight:600;letter-spacing:.06em;border-radius:999px;padding:4px 10px;white-space:nowrap;}
+  .cfd-tag.g{left:29%;color:#2E8B22;background:#EAF4E5;}
+  .cfd-tag.p{left:71%;color:#c44f8f;background:#FDEDF4;}
 
-  .cfd-core{background:#16192A;border-radius:26px;padding:32px 26px;text-align:center;color:#fff;position:relative;overflow:hidden;}
-  .cfd-core::before{content:'';position:absolute;inset:0;pointer-events:none;
-    background:radial-gradient(92% 52% at 50% -6%,rgba(67,176,42,.44),transparent 66%),
-               radial-gradient(92% 52% at 50% 106%,rgba(251,117,187,.4),transparent 66%);
+  /* 중앙 오브 */
+  .cfd-hub{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .cfd-orb{position:relative;width:186px;height:186px;border-radius:50%;background:#16192A;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;overflow:hidden;}
+  .cfd-orb::before{content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(circle at 50% 50%,rgba(120,220,90,.5),rgba(67,176,42,.3) 34%,transparent 68%),
+               radial-gradient(circle at 50% 108%,rgba(251,117,187,.42),transparent 52%);
     animation:cfdPulse 5.5s ease-in-out infinite;}
-  .cfd-core > *{position:relative;z-index:1;}
-  @keyframes cfdPulse{0%,100%{opacity:.7;}50%{opacity:1;}}
-  .cfd-core-mark{width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.11);
-    display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
-  .cfd-core-t{font-size:19px;font-weight:700;letter-spacing:-.02em;}
-  .cfd-core-s{font-size:12.5px;color:rgba(255,255,255,.6);line-height:1.7;margin-top:8px;}
-  .cfd-core-list{display:flex;flex-direction:column;gap:6px;margin-top:18px;}
-  .cfd-core-list span{font-size:12.5px;font-weight:600;color:#fff;background:rgba(255,255,255,.1);
-    border-radius:9px;padding:8px 10px;line-height:1.4;}
+  .cfd-orb::after{content:'';position:absolute;inset:11px;border-radius:50%;
+    border:1px dashed rgba(255,255,255,.18);animation:cfdSpin 26s linear infinite;}
+  .cfd-orb > *{position:relative;z-index:1;}
+  @keyframes cfdPulse{0%,100%{opacity:.72;}50%{opacity:1;}}
+  @keyframes cfdSpin{to{transform:rotate(360deg);}}
+  .cfd-orb-halo{position:absolute;left:50%;top:50%;width:330px;height:330px;transform:translate(-50%,-50%);
+    border-radius:50%;pointer-events:none;z-index:0;
+    background:radial-gradient(circle,rgba(67,176,42,.22),rgba(67,176,42,.07) 46%,transparent 66%);
+    animation:cfdHalo 5.5s ease-in-out infinite;}
+  @keyframes cfdHalo{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12);}}
+  .cfd-orb-mark{width:42px;height:42px;border-radius:14px;background:rgba(10,14,24,.42);
+    display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+  .cfd-orb-t{font-size:17px;font-weight:700;letter-spacing:-.02em;}
+  .cfd-hub-cap{font-size:12.5px;color:rgba(22,25,42,.55);line-height:1.7;text-align:center;margin-top:18px;}
+
+  .cfd-notes{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:38px;}
+  .cfd-notes span{font-size:12.5px;font-weight:600;color:#16192A;background:#fff;border-radius:999px;padding:9px 16px;}
 
   .cfd-foot{margin-top:44px;text-align:center;font-size:14.5px;color:rgba(22,25,42,.6);line-height:1.8;text-wrap:balance;}
   .cfd-foot b{color:#16192A;font-weight:600;}
@@ -2492,12 +2507,12 @@
 
   .cin-split{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:52px;align-items:center;margin-top:30px;}
   .cin-gains{display:flex;flex-direction:column;gap:12px;}
-  .cin-gain{display:flex;gap:14px;background:#fff;border-radius:18px;padding:20px 22px;}
-  .cin-gain-i{width:38px;height:38px;border-radius:12px;background:#EAF4E5;color:#2E8B22;flex-shrink:0;
+  .cin-gain{display:flex;gap:16px;background:#F7F8F6;border-radius:18px;padding:24px 26px;}
+  .cin-gain-i{width:44px;height:44px;border-radius:13px;background:#EAF4E5;color:#2E8B22;flex-shrink:0;
     display:flex;align-items:center;justify-content:center;}
   .cin-gain-i.p{background:#FDEDF4;color:#c44f8f;}
-  .cin-gain b{display:block;font-size:15.5px;font-weight:600;color:#16192A;margin-bottom:4px;}
-  .cin-gain span{font-size:13.5px;color:rgba(22,25,42,.58);line-height:1.7;}
+  .cin-gain b{display:block;font-size:18px;font-weight:600;color:#16192A;margin-bottom:6px;letter-spacing:-.01em;}
+  .cin-gain span{font-size:15.5px;color:rgba(22,25,42,.62);line-height:1.72;}
 
   .cin-outro{background:#070910;color:#fff;padding:96px 56px;text-align:center;}
   .cin-outro h2{color:#fff;font-size:clamp(24px,3.4vw,36px);font-weight:700;letter-spacing:-.03em;line-height:1.34;margin:0 0 14px;text-wrap:balance;}
@@ -2513,12 +2528,13 @@
     .cin-outro{padding:64px 20px;}
     .cfd-sec{padding:64px 20px 68px;}
     .cfd-head{margin-bottom:34px;}
-    .cfd-grid{grid-template-columns:minmax(0,1fr);}
-    .cfd-rail{height:44px;}
-    .cfd-rail::before{left:50%;right:auto;top:0;bottom:0;width:2px;height:100%;margin-left:-1px;
-      background:repeating-linear-gradient(180deg,#CBD5CC 0 5px,transparent 5px 11px);}
-    .cfd-rail i{left:50%;top:auto;margin-top:0;margin-left:-3.5px;animation:cfdRunV 2.4s linear infinite;}
+    .cfd-map{grid-template-columns:minmax(0,1fr);gap:26px;}
+    .cfd-wires,.cfd-tag{display:none;}
+    .cfd-col.out .cfd-coltag{text-align:left;}
+    .cfd-col.out .cfd-chip{flex-direction:row;text-align:left;}
     .cfd-col.out .cfd-chip,.cfd-chip{transform:translateY(12px);}
+    .cfd-orb{width:150px;height:150px;}
+    .cfd-orb-halo{width:230px;height:230px;}
     .cin-swap,.cin-only{grid-template-columns:minmax(0,1fr);}
     .cin-split{grid-template-columns:minmax(0,1fr);gap:24px;}
     .cin-illrow{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
@@ -2529,7 +2545,8 @@
     .cin-rv{opacity:1;transform:none;transition:none;}
     .cfd-chip{opacity:1;transform:none;}
     .cfd-sec.play .cfd-chip{animation:none;}
-    .cfd-rail i,.cfd-core::before,.cin-ill img{animation:none;}
+    .cfd-pulse{opacity:1;}
+    .cfd-sec.play .cfd-pulse,.cfd-orb::before,.cfd-orb::after,.cfd-orb-halo,.cin-ill img{animation:none;}
     .cin-hero-cta:hover{transform:none;}
   }
 
@@ -3069,41 +3086,46 @@
         <p class="cfd-sub">수업에서 쌓인 기록이 그대로 보상의 기준이 됩니다. 원장님이 중간에서 판단하고 옮겨 적을 일이 없습니다.</p>
       </div>
 
-      <div class="cfd-grid">
+      <div class="cfd-map" id="cfd-map">
+        <svg class="cfd-wires" id="cfd-wires" aria-hidden="true"></svg>
+
         <div class="cfd-col in cin-rv">
           <div class="cfd-coltag">클래스인에서 들어옵니다</div>
           <div class="cfd-chip" style="animation-delay:.05s"><span class="cfd-dot"></span><div><b>출결</b><span>지각·조퇴까지 회차별로</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.15s"><span class="cfd-dot"></span><div><b>수업 참여</b><span>손들기, 발표, 토론 횟수</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.25s"><span class="cfd-dot"></span><div><b>과제 제출</b><span>제출 여부와 채점 결과</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.35s"><span class="cfd-dot"></span><div><b>녹화 완주율</b><span>몇 분까지 봤는지 초 단위로</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.45s"><span class="cfd-dot"></span><div><b>시험 성적</b><span>회차별 평균과 추이</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.13s"><span class="cfd-dot"></span><div><b>수업 참여</b><span>손들기, 발표, 토론 횟수</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.21s"><span class="cfd-dot"></span><div><b>과제 제출</b><span>제출 여부와 채점 결과</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.29s"><span class="cfd-dot"></span><div><b>녹화 완주율</b><span>몇 분까지 봤는지 초 단위로</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.37s"><span class="cfd-dot"></span><div><b>시험 성적</b><span>회차별 평균과 추이</span></div></div>
         </div>
 
-        <div class="cfd-rail g" aria-hidden="true"><i></i><i></i><i></i></div>
-
-        <div class="cfd-core cin-rv">
-          <div class="cfd-core-mark">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M4.9 6.3 7.7 9.1"/><path d="M19.1 6.3 16.3 9.1"/><rect x="4" y="9" width="16" height="12" rx="4"/><circle cx="9" cy="14.5" r="1.1" fill="#fff"/><circle cx="15" cy="14.5" r="1.1" fill="#fff"/></svg>
+        <div class="cfd-hub cin-rv">
+          <div class="cfd-orb-halo" aria-hidden="true"></div>
+          <div class="cfd-orb">
+            <div class="cfd-orb-mark">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M4.9 6.3 7.7 9.1"/><path d="M19.1 6.3 16.3 9.1"/><rect x="4" y="9" width="16" height="12" rx="4"/><circle cx="9" cy="14.5" r="1.1" fill="#fff"/><circle cx="15" cy="14.5" r="1.1" fill="#fff"/></svg>
+            </div>
+            <div class="cfd-orb-t">크래빗</div>
           </div>
-          <div class="cfd-core-t">크래빗</div>
-          <div class="cfd-core-s">기준에 맞는지 판정하고<br>예치금에서 자동으로 빼갑니다</div>
-          <div class="cfd-core-list">
-            <span>원장님이 정해두신 기준으로 판정</span>
-            <span>승인 절차 없이 즉시 지급</span>
-            <span>지급 사유까지 함께 기록</span>
-          </div>
+          <div class="cfd-hub-cap">기준에 맞는지 판정하고<br>예치금에서 자동으로 빼갑니다</div>
         </div>
-
-        <div class="cfd-rail p" aria-hidden="true"><i></i><i></i><i></i></div>
 
         <div class="cfd-col out cin-rv">
           <div class="cfd-coltag">학생에게 나갑니다</div>
           <div class="cfd-chip" style="animation-delay:.05s"><span class="cfd-dot"></span><div><b>장학 포인트 적립</b><span>왜 받았는지 사유와 함께</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.15s"><span class="cfd-dot"></span><div><b>스탬프와 미션</b><span>모으는 재미가 붙습니다</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.25s"><span class="cfd-dot"></span><div><b>장학카드로 사용</b><span>모은 만큼 직접 씁니다</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.35s"><span class="cfd-dot"></span><div><b>다음 주 학습 동기</b><span>노력한 만큼 돌아오는 경험</span></div></div>
-          <div class="cfd-chip" style="animation-delay:.45s"><span class="cfd-dot"></span><div><b>학원 소속감</b><span>우리 학원에서만 받는 보상</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.13s"><span class="cfd-dot"></span><div><b>스탬프와 미션</b><span>모으는 재미가 붙습니다</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.21s"><span class="cfd-dot"></span><div><b>장학카드로 사용</b><span>모은 만큼 직접 씁니다</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.29s"><span class="cfd-dot"></span><div><b>다음 주 학습 동기</b><span>노력한 만큼 돌아오는 경험</span></div></div>
+          <div class="cfd-chip" style="animation-delay:.37s"><span class="cfd-dot"></span><div><b>학원 소속감</b><span>우리 학원에서만 받는 보상</span></div></div>
         </div>
+
+        <span class="cfd-tag g">자동 수집</span>
+        <span class="cfd-tag p">자동 지급</span>
+      </div>
+
+      <div class="cfd-notes cin-rv">
+        <span>원장님이 정해두신 기준으로 판정</span>
+        <span>승인 절차 없이 즉시 지급</span>
+        <span>지급 사유까지 함께 기록</span>
       </div>
 
       <p class="cfd-foot cin-rv">원장님이 해두실 일은 두 가지입니다. <b>기준을 정하는 것</b>, 그리고 <b>예치금을 채워두는 것</b>.</p>
@@ -3167,7 +3189,7 @@
   </section>
 
   <!-- 학생에게 남는 것 -->
-  <section class="cin-sec alt">
+  <section class="cin-sec">
     <div class="cin-sec-inner cin-rv">
       <div class="cin-label">아이들에게 남는 것</div>
       <h2 class="cin-h2">스스로 번 보상을,<br>스스로 씁니다</h2>
@@ -3178,19 +3200,19 @@
         <div class="cin-gains">
           <div class="cin-gain">
             <div class="cin-gain-i">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-7h6v7"/></svg>
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-7h6v7"/></svg>
             </div>
             <div><b>학원에 대한 소속감</b><span>다른 데서는 못 받는 우리 학원 보상입니다. 아이가 학원을 자기 편으로 느끼기 시작합니다.</span></div>
           </div>
           <div class="cin-gain">
             <div class="cin-gain-i p">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="12" cy="12" r="9"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="12" cy="12" r="9"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
             </div>
             <div><b>노력이 보이는 만족감</b><span>왜 받았는지 사유가 같이 뜹니다. 열심히 한 게 눈에 보이니 다음 주에도 이어집니다.</span></div>
           </div>
           <div class="cin-gain">
             <div class="cin-gain-i">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2.5"/><path d="M2.5 10.5h19"/><path d="M6.5 15h3"/></svg>
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2.5"/><path d="M2.5 10.5h19"/><path d="M6.5 15h3"/></svg>
             </div>
             <div><b>경제 개념이 자랍니다</b><span>모을지 쓸지 아이가 직접 정합니다. 벌고, 모으고, 쓰는 과정을 학원 안에서 먼저 익힙니다.</span></div>
           </div>
@@ -3226,7 +3248,7 @@
   <section class="cin-sec alt">
     <div class="cin-sec-inner cin-rv">
       <div class="cin-label">크래빗 클래스</div>
-      <h2 class="cin-h2">따로 계약하시는 것보다<br>저렴하게, 보상까지 자동으로</h2>
+      <h2 class="cin-h2">따로 계약하시는 것보다 저렴하게,<br>번거로운 보상 운영까지 자동으로</h2>
       <p class="cin-desc">클래스인을 직접 계약하시면 수업 관리까지만 됩니다. 크래빗을 통해 쓰시면 같은 기능에 보상 자동화가 붙고, 관리 화면도 티처스 하나로 줄어듭니다.</p>
 
       <div class="cin-cmp">
@@ -3297,8 +3319,7 @@
     <div class="cin-block-inner">
       <div class="cin-rv">
         <div class="cin-ico i1" aria-hidden="true"></div>
-        <div class="cin-lead">지금은 반을 두 번 만드십니다</div>
-        <h3 class="cin-h3">티처스에서 반을 만들면<br>클래스인 수업이 따라 생깁니다</h3>
+        <h3 class="cin-h3">티처스에서 수업을<br>쉽게 생성합니다</h3>
         <p class="cin-bdesc">저장하는 순간 클래스인에 같은 수업이 회차별로 생기고 학생까지 배정됩니다.</p>
         <div class="cin-subs">
           <div class="cin-sub"><b>회차 일괄 생성</b><span>12주 과정이면 12개가 시간표대로 한 번에.</span></div>
@@ -3326,9 +3347,8 @@
     <div class="cin-block-inner">
       <div class="cin-rv">
         <div class="cin-ico i2" aria-hidden="true"></div>
-        <div class="cin-lead">지금은 매주 링크를 뿌리십니다</div>
-        <h3 class="cin-h3">학생 앱에 입장 버튼이<br>알아서 생깁니다</h3>
-        <p class="cin-bdesc">단톡방에 링크를 뿌리거나 못 봤다는 전화를 받으실 일이 없어집니다.</p>
+        <h3 class="cin-h3">학생은 학생 앱에서 입장 버튼을 눌러<br>클래스인 수업과 크래빗을 연동합니다</h3>
+        <p class="cin-bdesc">앱 목록에서 오늘 수업을 누르면 그대로 교실까지 이어집니다.</p>
         <div class="cin-subs">
           <div class="cin-sub"><b>해당 교실로 바로</b><span>목록에서 누르면 그 수업으로 곧장 들어갑니다.</span></div>
           <div class="cin-sub"><b>비밀번호는 첫 1회만</b><span>이후로는 버튼 한 번으로 들어갑니다.</span></div>
@@ -3353,8 +3373,7 @@
     <div class="cin-block-inner">
       <div class="cin-rv">
         <div class="cin-ico i3" aria-hidden="true"></div>
-        <div class="cin-lead">지금은 강사 말로만 아십니다</div>
-        <h3 class="cin-h3">수업 중 행동이<br>학생별 숫자로 쌓입니다</h3>
+        <h3 class="cin-h3">수업 중 학생의 행동 데이터가<br>대시보드에 쌓입니다</h3>
         <p class="cin-bdesc">상담 전날 급하게 정리하지 않아도 보여드릴 자료가 이미 만들어져 있습니다.</p>
         <div class="cin-subs">
           <div class="cin-sub"><b>학생별 한 표에</b><span>출석률, 완수율, 성적, 손들기, 숙제를 한눈에.</span></div>
@@ -3379,8 +3398,7 @@
     <div class="cin-block-inner">
       <div class="cin-rv">
         <div class="cin-ico i4" aria-hidden="true"></div>
-        <div class="cin-lead">지금은 매번 직접 판단하십니다</div>
-        <h3 class="cin-h3">조건을 채운 학생에게<br>승인 없이 지급됩니다</h3>
+        <h3 class="cin-h3">정해둔 조건을 채운 학생에게<br>보상이 자동으로 지급됩니다</h3>
         <p class="cin-bdesc">규칙을 한 번 켜두면 매주 판정해서 자동으로 나갑니다.</p>
         <div class="cin-subs">
           <div class="cin-sub"><b>켜고 끄기만</b><span>출석률·완주율·숙제·성적 중 원하는 조건만.</span></div>
@@ -10755,6 +10773,49 @@
      스크롤을 내릴수록 섹션이 순차로 드러난다. .main이 스크롤 컨테이너라 root로 지정한다. */
   let _cinObserver = null;
 
+  /* 유입 칩 → 크래빗 오브 → 유출 칩을 잇는 곡선을 실제 좌표로 그린다.
+     pathLength=100으로 정규화해 두면 길이와 무관하게 같은 속도로 흐른다. */
+  function cfdDrawWires() {
+    const map = document.getElementById('cfd-map');
+    const svg = document.getElementById('cfd-wires');
+    const orb = map && map.querySelector('.cfd-orb');
+    if (!map || !svg || !orb) return;
+
+    const m = map.getBoundingClientRect();
+    if (m.width < 40 || m.height < 40) return;          // 숨겨진 페이지면 건너뛴다
+    if (window.innerWidth <= 900) { svg.innerHTML = ''; return; }
+
+    svg.setAttribute('viewBox', `0 0 ${m.width} ${m.height}`);
+    const o = orb.getBoundingClientRect();
+    const hubY = o.top + o.height / 2 - m.top;
+    const hubL = o.left - m.left - 8;
+    const hubR = o.right - m.left + 8;
+
+    let out = '';
+    const wire = (sx, sy, ex, ey, cls, delay) => {
+      const dx = ex - sx;
+      const d = `M${sx.toFixed(1)},${sy.toFixed(1)} C${(sx + dx * 0.62).toFixed(1)},${sy.toFixed(1)} ${(ex - dx * 0.32).toFixed(1)},${ey.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)}`;
+      out += `<path class="cfd-wire" pathLength="100" d="${d}"/>`;
+      out += `<path class="cfd-pulse ${cls}" pathLength="100" d="${d}" style="animation-delay:${delay}s"/>`;
+    };
+
+    map.querySelectorAll('.cfd-col.in .cfd-chip').forEach((el, i) => {
+      const r = el.getBoundingClientRect();
+      wire(r.right - m.left, r.top + r.height / 2 - m.top, hubL, hubY, 'g', i * 0.42);
+    });
+    map.querySelectorAll('.cfd-col.out .cfd-chip').forEach((el, i) => {
+      const r = el.getBoundingClientRect();
+      wire(hubR, hubY, r.left - m.left, r.top + r.height / 2 - m.top, 'p', 0.8 + i * 0.42);
+    });
+
+    svg.innerHTML = out;
+  }
+  let _cfdRedraw;
+  window.addEventListener('resize', () => {
+    clearTimeout(_cfdRedraw);
+    _cfdRedraw = setTimeout(cfdDrawWires, 140);
+  });
+
   function cinInitIntro() {
     const page = document.getElementById('page-classin-intro');
     if (!page) return;
@@ -10764,6 +10825,7 @@
       items.forEach(el => el.classList.add('in'));
       const cfd0 = document.getElementById('cfd-sec');
       if (cfd0) cfd0.classList.add('play');
+      cfdDrawWires();
       cinInitMocks();
       return;
     }
@@ -10778,6 +10840,8 @@
       });
     }, { root: document.getElementById('main-content'), rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
     items.forEach(el => _cinObserver.observe(el));
+
+    cfdDrawWires();
 
     // 흐름 다이어그램은 화면에 들어올 때 칩이 순차로 나타난다
     const cfd = document.getElementById('cfd-sec');
