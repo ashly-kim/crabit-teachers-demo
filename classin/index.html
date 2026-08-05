@@ -2029,9 +2029,12 @@
   .ci-mini-play{width:38px;height:38px;border-radius:9px;background:#16192A;display:inline-flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;}
 
   /* ===== API 힌트 말풍선 ===== */
-  [data-api]{position:relative;}
-  body.apihint-on [data-api]{outline:1px dashed rgba(46,139,34,.42);outline-offset:3px;border-radius:6px;cursor:help;}
-  body.apihint-on [data-api]:hover{outline-color:#2E8B22;outline-style:solid;}
+  .api-i{display:none;width:15px;height:15px;flex-shrink:0;border:none;padding:0;margin:0 0 0 5px;
+    border-radius:50%;background:#E7F3E2;color:#2E8B22;font-family:inherit;font-size:10.5px;font-weight:700;
+    line-height:15px;text-align:center;cursor:pointer;vertical-align:1px;transition:background .13s,color .13s;}
+  body.apihint-on .api-i{display:inline-block;}
+  .api-i:hover,.api-i:focus-visible{background:#2E8B22;color:#fff;outline:none;}
+  th .api-i{vertical-align:0;}
   .apitip{position:fixed;z-index:400;display:none;width:330px;max-width:calc(100vw - 24px);background:#16192A;color:#fff;border-radius:13px;padding:14px 16px;box-shadow:0 10px 34px rgba(0,0,0,.28);font-size:13px;line-height:1.6;}
   .apitip.show{display:block;}
   .apitip::after{content:'';position:absolute;left:var(--arrow-x,24px);bottom:-6px;width:12px;height:12px;background:#16192A;transform:rotate(45deg);}
@@ -2616,16 +2619,16 @@
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
       <div>
-        <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:4px;display:flex;align-items:center;gap:7px;"><span class="ci-live-dot"></span>클래스인 실시간 수업</div>
-        <div id="ci-dash-live" data-api="dsDetails"></div>
+        <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:4px;display:flex;align-items:center;gap:7px;" data-api="dsDetails"><span class="ci-live-dot"></span>클래스인 실시간 수업</div>
+        <div id="ci-dash-live"></div>
       </div>
       <div>
-        <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:10px;">이번 주 활동 → 자동 지급 장학금</div>
+        <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:10px;" data-api="dsDetails,dsCourseData">이번 주 활동 → 자동 지급 장학금</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
           <div class="ci-stat"><div class="ci-stat-num pink" id="ci-dash-total">0P</div><div class="ci-stat-label">이번 주 자동 지급</div></div>
           <div class="ci-stat"><div class="ci-stat-num" id="ci-dash-count">0명</div><div class="ci-stat-label">지급 학생</div></div>
         </div>
-        <div id="ci-dash-log" data-api="dsDetails,dsCourseData"></div>
+        <div id="ci-dash-log"></div>
       </div>
     </div>
     <div class="dash-action-row" style="margin-top:16px;" onclick="showPage('classin-rewards')">
@@ -2960,7 +2963,7 @@
     <p class="page-sub">클래스인에서 자동 집계된 학생별 학습 활동 데이터예요. 이 데이터를 기준으로 장학금이 자동 지급됩니다.</p>
   </div>
   <div class="ci-flow" style="margin-bottom:16px;">
-    <span class="ci-badge"><span class="ci-dot"></span>클래스인 연동 데이터 · read-only</span>
+    <span class="ci-badge" data-api="dsDescription"><span class="ci-dot"></span>클래스인 연동 데이터 · read-only</span>
     <span class="ci-flow-note">원본은 클래스인에서 관리 · 마지막 동기화 <b id="ci-sync-1"></b></span>
     <button class="ci-openlink" style="margin-left:auto;" data-api="getLoginLinked" onclick="ciOpenClassin()">클래스인에서 열기 ↗</button>
   </div>
@@ -2985,11 +2988,11 @@
     <p class="page-sub">클래스인 클라우드에 자동 녹화된 수업이에요. 학생별 시청률이 장학금 지급 규칙의 기준이 됩니다.</p>
   </div>
   <div class="ci-flow" style="margin-bottom:16px;">
-    <span class="ci-badge"><span class="ci-dot"></span>클래스인 클라우드 녹화 · read-only</span>
+    <span class="ci-badge" data-api="getWebcastUrl,dsClassRelated"><span class="ci-dot"></span>클래스인 클라우드 녹화 · read-only</span>
     <span class="ci-flow-note">다시보기는 클래스인 앱 내에서만 열람 · 재생 시 워터마크</span>
     <button class="ci-openlink" style="margin-left:auto;" data-api="getLoginLinked" onclick="ciOpenClassin()">클래스인에서 열기 ↗</button>
   </div>
-  <div id="ci-recordings-list" data-api="getWebcastUrl,dsClassRelated"></div>
+  <div id="ci-recordings-list"></div>
 </div>
 
 <!-- PAGE: 장학금 자동지급 (클래스인 연동) -->
@@ -3011,15 +3014,15 @@
   <div style="max-width:860px;">
     <div class="ci-card">
       <div class="ci-card-head">
-        <div class="ci-card-title">클래스인 활동 기반 자동 지급 규칙</div>
+        <div class="ci-card-title" data-api="dsDetails,dsCourseData">클래스인 활동 기반 자동 지급 규칙</div>
         <span class="ci-badge" style="background:#FFF7FB;border-color:#FBD0E4;color:#c44f8f;">크래빗 보상 엔진</span>
         <button class="btn-dark" style="margin-left:auto;padding:9px 16px;font-size:13px;" data-api="dsDetails,dsCourseData" onclick="openCiRuleDrawer()">+ 규칙 추가</button>
       </div>
-      <div id="ci-rules-list" data-api="dsDetails,dsCourseData"></div>
+      <div id="ci-rules-list"></div>
     </div>
 
     <div class="ci-card">
-      <div class="ci-card-head" data-api="dsDetails"><div class="ci-card-title">트로피 → 장학 포인트 전환</div></div>
+      <div class="ci-card-head"><div class="ci-card-title" data-api="dsDetails">트로피 → 장학 포인트 전환</div></div>
       <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
         <div class="ci-stat" style="flex:1;min-width:150px;"><div class="ci-stat-num" id="ci-trophy-total">0개</div><div class="ci-stat-label">이번 주 신규 트로피 (전체 학생)</div></div>
         <div style="font-size:22px;color:#43B02A;font-weight:700;">→</div>
@@ -9702,11 +9705,12 @@
     return _apitipEl;
   }
 
-  function showApitip(target) {
+  function showApitip(target, anchorEl) {
     if (!_apiHintOn) return;
     const keys = (target.getAttribute('data-api') || '').split(',').map(k => k.trim()).filter(k => API_REG[k]);
     if (!keys.length) return;
-    const rect0 = target.getBoundingClientRect();
+    const anchor = anchorEl || target;
+    const rect0 = anchor.getBoundingClientRect();
     if (rect0.width === 0 && rect0.height === 0) return; // 화면에 없으면 표시하지 않음
     clearTimeout(_apitipHideTimer);
     const tip = _ensureApitip();
@@ -9722,7 +9726,7 @@
     tip.classList.add('show');
     tip.classList.remove('flip');
 
-    const r = target.getBoundingClientRect();
+    const r = anchor.getBoundingClientRect();
     const tr = tip.getBoundingClientRect();
     let left = r.left + r.width / 2 - tr.width / 2;
     left = Math.max(12, Math.min(left, window.innerWidth - tr.width - 12));
@@ -9746,17 +9750,42 @@
     showToast(_apiHintOn ? 'API 힌트를 켰어요. 표시된 영역에 마우스를 올려보세요.' : 'API 힌트를 껐어요.');
   }
 
+  // 필드명 옆에 ! 배지를 붙이고, 말풍선은 배지에서만 뜬다
+  function mountApiBadges(root) {
+    (root || document).querySelectorAll('[data-api]').forEach(el => {
+      if (el._apiBadge && el._apiBadge.isConnected) return;
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'api-i';
+      b.textContent = '!';
+      b.setAttribute('aria-label', '이 값을 만드는 클래스인 API 보기');
+      b.dataset.for = '';
+      b._owner = el;
+      // 버튼 안에 버튼을 넣을 수 없으므로 형제로 붙인다
+      if (el.tagName === 'BUTTON') el.insertAdjacentElement('afterend', b);
+      else el.appendChild(b);
+      el._apiBadge = b;
+    });
+  }
+
   document.addEventListener('mouseover', e => {
-    const t = e.target.closest('[data-api]');
-    if (t) showApitip(t);
+    const b = e.target.closest('.api-i');
+    if (b && b._owner) showApitip(b._owner, b);
   });
   document.addEventListener('mouseout', e => {
-    if (e.target.closest('[data-api]')) hideApitip();
+    if (e.target.closest('.api-i')) hideApitip();
+  });
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.api-i');
+    if (!b || !b._owner) return;
+    e.preventDefault(); e.stopPropagation();
+    showApitip(b._owner, b);
   });
   document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.toggle('apihint-on', _apiHintOn);
     const sw = document.getElementById('apihint-sw');
     if (sw) sw.classList.toggle('on', _apiHintOn);
+    mountApiBadges();
   });
 
   /* === 크래빗-in 소개 랜딩 인터랙션 ===
@@ -9865,6 +9894,7 @@
   function showPage(page) {
     closeSidebar();
     wrapTablesForScroll();
+    if (typeof mountApiBadges === 'function') mountApiBadges();
     if (typeof cinStopAuto === 'function') cinStopAuto();
     // 연동 전에는 클래스인 기능 페이지 대신 소개 페이지로 보낸다
     if (!_classinLinked && ['classin-activity','classin-recordings','classin-rewards'].includes(page)) {
