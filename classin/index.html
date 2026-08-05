@@ -2028,6 +2028,86 @@
   .ci-log-row:last-child{border-bottom:none;}
   .ci-mini-play{width:38px;height:38px;border-radius:9px;background:#16192A;display:inline-flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;}
 
+  /* ===== API 힌트 말풍선 ===== */
+  [data-api]{position:relative;}
+  body.apihint-on [data-api]{outline:1px dashed rgba(46,139,34,.42);outline-offset:3px;border-radius:6px;cursor:help;}
+  body.apihint-on [data-api]:hover{outline-color:#2E8B22;outline-style:solid;}
+  .apitip{position:fixed;z-index:400;display:none;width:330px;max-width:calc(100vw - 24px);background:#16192A;color:#fff;border-radius:13px;padding:14px 16px;box-shadow:0 10px 34px rgba(0,0,0,.28);font-size:13px;line-height:1.6;}
+  .apitip.show{display:block;}
+  .apitip::after{content:'';position:absolute;left:var(--arrow-x,24px);bottom:-6px;width:12px;height:12px;background:#16192A;transform:rotate(45deg);}
+  .apitip.flip::after{bottom:auto;top:-6px;}
+  .apitip-head{font-size:11px;font-weight:600;letter-spacing:.06em;color:#7FC96E;margin-bottom:9px;}
+  .apitip-item{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .apitip-item:last-child{border-bottom:none;}
+  .apitip-name{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;font-weight:600;color:#fff;display:block;}
+  .apitip-kind{display:inline-block;font-size:10px;font-weight:600;border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:1px;}
+  .apitip-kind.w{background:rgba(127,201,110,.18);color:#9BD98C;}
+  .apitip-kind.s{background:rgba(255,255,255,.13);color:rgba(255,255,255,.75);}
+  .apitip-desc{color:rgba(255,255,255,.68);font-size:12.5px;margin-top:3px;}
+  .apitip-link{display:inline-flex;align-items:center;gap:5px;margin-top:5px;font-size:12px;font-weight:600;color:#FB75BB;text-decoration:none;}
+  .apitip-link:hover{text-decoration:underline;}
+  .apihint-toggle{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#F2F9EF;border:1px solid #CDE9C3;border-radius:11px;padding:9px 11px;margin-top:8px;}
+  .apihint-toggle span{font-size:11.5px;font-weight:600;color:#2E8B22;line-height:1.4;}
+  .apihint-sw{position:relative;width:34px;height:19px;border-radius:11px;background:#c9cdd6;border:none;cursor:pointer;flex-shrink:0;transition:background .15s;padding:0;}
+  .apihint-sw::after{content:'';position:absolute;top:2px;left:2px;width:15px;height:15px;border-radius:50%;background:#fff;transition:transform .15s;}
+  .apihint-sw.on{background:#2E8B22;}
+  .apihint-sw.on::after{transform:translateX(15px);}
+
+  /* ===== 크래빗-in 소개 랜딩 (연동 전) ===== */
+  .cin-hero{background:linear-gradient(135deg,#F6FBF3 0%,#FFF7FB 100%);border:1px solid #E4EFDE;border-radius:22px;padding:40px 44px;margin-bottom:22px;}
+  .cin-hero-badge{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:#2E8B22;background:#fff;border:1px solid #CDE9C3;border-radius:20px;padding:6px 14px;margin-bottom:16px;}
+  .cin-hero h1{font-size:32px;font-weight:700;color:#16192A;letter-spacing:-0.6px;line-height:1.3;margin-bottom:12px;}
+  .cin-hero h1 .pink{color:#FB75BB;}
+  .cin-hero-sub{font-size:16px;color:rgba(22,25,42,.62);line-height:1.65;max-width:640px;}
+  .cin-hero-marks{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .cin-mark{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#16192A;background:#fff;border:1px solid #E8E8E8;border-radius:10px;padding:9px 14px;}
+
+  .cin-sec-title{font-size:19px;font-weight:700;color:#16192A;letter-spacing:-0.2px;margin:32px 0 6px;display:flex;align-items:center;}
+  .cin-sec-title::before{content:'';display:inline-block;width:4px;height:18px;background:#FB75BB;border-radius:2px;margin-right:10px;}
+  .cin-sec-sub{font-size:13.5px;color:rgba(22,25,42,.55);margin-bottom:16px;line-height:1.6;}
+
+  .cin-feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .cin-feat{background:#fff;border:1px solid #ECECEF;border-radius:16px;padding:22px 24px;}
+  .cin-feat-ico{width:42px;height:42px;border-radius:11px;background:#F2F9EF;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .cin-feat-ico.pink{background:#FFF3F9;}
+  .cin-feat h3{font-size:16px;font-weight:700;color:#16192A;margin-bottom:7px;}
+  .cin-feat p{font-size:13.5px;color:rgba(22,25,42,.62);line-height:1.65;}
+
+  .cin-benefit{background:#F9FAFC;border:1px solid #ECECEF;border-radius:16px;padding:24px 26px;}
+  .cin-benefit-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #F0F0F2;}
+  .cin-benefit-row:last-child{border-bottom:none;}
+  .cin-benefit-check{width:20px;height:20px;border-radius:50%;background:#EEF8EA;color:#2E8B22;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:12px;font-weight:700;}
+  .cin-benefit-row b{font-size:14.5px;font-weight:600;color:#16192A;display:block;margin-bottom:2px;}
+  .cin-benefit-row span{font-size:13px;color:rgba(22,25,42,.58);line-height:1.6;}
+
+  .cin-price-card{background:#16192A;border-radius:20px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:24px;}
+  .cin-price-left{flex:1;min-width:260px;}
+  .cin-price-label{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:0.4px;margin-bottom:8px;}
+  .cin-price-num{font-size:34px;font-weight:700;color:#fff;letter-spacing:-0.8px;line-height:1.1;}
+  .cin-price-num small{font-size:16px;font-weight:500;color:rgba(255,255,255,.65);margin-left:4px;}
+  .cin-price-note{font-size:13px;color:rgba(255,255,255,.6);margin-top:10px;line-height:1.6;}
+  .cin-price-cta{background:#FB75BB;color:#fff;border:none;border-radius:13px;padding:16px 32px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;white-space:nowrap;transition:background .13s;}
+  .cin-price-cta:hover{background:#f45faf;}
+
+  /* 결제 모달 */
+  .cpay-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F0F0F2;font-size:14.5px;}
+  .cpay-row:last-of-type{border-bottom:none;}
+  .cpay-row .k{color:rgba(22,25,42,.6);}
+  .cpay-row .v{font-weight:600;color:#16192A;}
+  .cpay-total{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;background:#F9FAFC;border-radius:12px;margin-top:14px;}
+  .cpay-total .k{font-size:14.5px;font-weight:600;color:#16192A;}
+  .cpay-total .v{font-size:21px;font-weight:700;color:#FB75BB;}
+  .cpay-method{display:flex;align-items:center;gap:12px;border:1.5px solid #FBD0E4;background:#FFF7FB;border-radius:12px;padding:14px 16px;margin-top:14px;}
+  .cpay-card-ico{width:38px;height:26px;border-radius:5px;background:linear-gradient(135deg,#16192A,#3a3f5c);flex-shrink:0;}
+
+  @media (max-width:820px){
+    .cin-hero{padding:28px 22px;}
+    .cin-hero h1{font-size:25px;}
+    .cin-feat-grid{grid-template-columns:minmax(0,1fr);}
+    .cin-price-card{padding:24px 22px;}
+    .cin-price-cta{width:100%;}
+  }
+
   /* ============================================================
      반응형 보정 레이어
      1440 기준으로 짠 레이아웃을 노트북·태블릿·모바일에서도 안 깨지게 보정한다.
@@ -2179,7 +2259,7 @@
     <div class="sidebar-header">
       <div class="academy-name">크래빗 영어학원</div>
       <div class="user-info">김현지 원장님 <span class="badge">대표 관리자</span></div>
-      <div style="margin-top:9px;"><span class="ci-badge"><span class="ci-dot"></span>클래스인 LMS 연동됨</span></div>
+      <div id="sb-classin-badge" style="margin-top:9px;display:none;"><span class="ci-badge"><span class="ci-dot"></span>클래스인 LMS 연동됨</span></div>
     </div>
 
     <div class="menu-section">
@@ -2218,7 +2298,31 @@
     <div class="sidebar-divider"></div>
 
     <div class="menu-section">
-      <div class="menu-section-label" style="display:flex;align-items:center;gap:6px;">클래스인 연동 <span class="ci-dot"></span></div>
+      <div class="menu-section-label">소통 관리</div>
+      <a class="menu-item" onclick="showPage('notices')" id="menu-notices">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        공지/배너 관리
+      </a>
+      <a class="menu-item" onclick="showPage('messages')" id="menu-messages">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        메시지
+      </a>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="menu-section" id="menu-section-classin">
+      <div class="menu-section-label" style="display:flex;align-items:center;gap:6px;">클래스인 연동 <span class="ci-dot" id="ci-menu-dot" style="display:none;"></span></div>
+      <!-- 미연동 상태: 소개 메뉴 하나만 -->
+      <div id="classin-menu-locked">
+        <a class="menu-item" onclick="showPage('classin-intro')" id="menu-classin-intro">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+          클래스인 연동
+          <span class="new-badge">NEW</span>
+        </a>
+      </div>
+      <!-- 연동 후: 기능 메뉴 3개 -->
+      <div id="classin-menu-unlocked" style="display:none;">
       <a class="menu-item" onclick="showPage('classin-activity')" id="menu-classin-activity">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg>
         클래스인 학습활동
@@ -2231,20 +2335,7 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg>
         장학금 자동지급
       </a>
-    </div>
-
-    <div class="sidebar-divider"></div>
-
-    <div class="menu-section">
-      <div class="menu-section-label">소통 관리</div>
-      <a class="menu-item" onclick="showPage('notices')" id="menu-notices">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-        공지/배너 관리
-      </a>
-      <a class="menu-item" onclick="showPage('messages')" id="menu-messages">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        메시지
-      </a>
+      </div>
     </div>
 
     <div class="sidebar-divider"></div>
@@ -2266,6 +2357,10 @@
           <option value="GROWTH_TRIAL">그로우 체험</option>
           <option value="GROWTH">그로우</option>
         </select>
+        <div class="apihint-toggle">
+          <span>API 힌트 표시<br>어떤 API를 부르는지 보기</span>
+          <button class="apihint-sw on" id="apihint-sw" onclick="toggleApiHint()" aria-label="API 힌트 켜고 끄기"></button>
+        </div>
       </div>
     </div>
 
@@ -2392,11 +2487,11 @@
     </div>
   </div>
 
-  <!-- 클래스인 연동 (대시보드 위젯) -->
-  <div class="dash-cardmgmt">
+  <!-- 클래스인 연동 (대시보드 위젯) - 연동 결제 후에만 노출 -->
+  <div class="dash-cardmgmt" id="dash-classin-block" style="display:none;">
     <div class="dash-cardmgmt-head" style="justify-content:space-between;">
       <div class="dash-cardmgmt-title" style="display:flex;align-items:center;gap:9px;">클래스인 연동 <span class="ci-badge"><span class="ci-dot"></span>단방향 read</span></div>
-      <button class="ci-openlink" onclick="ciOpenClassin()">클래스인에서 열기 ↗</button>
+      <button class="ci-openlink" data-api="getLoginLinked" onclick="ciOpenClassin()">클래스인에서 열기 ↗</button>
     </div>
     <div class="ci-flow" style="margin-bottom:16px;">
       <span class="ci-flow-node"><span class="ci-dot"></span>클래스인 LMS</span>
@@ -2409,7 +2504,7 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
       <div>
         <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:4px;display:flex;align-items:center;gap:7px;"><span class="ci-live-dot"></span>클래스인 실시간 수업</div>
-        <div id="ci-dash-live"></div>
+        <div id="ci-dash-live" data-api="dsDetails"></div>
       </div>
       <div>
         <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:10px;">이번 주 활동 → 자동 지급 장학금</div>
@@ -2417,7 +2512,7 @@
           <div class="ci-stat"><div class="ci-stat-num pink" id="ci-dash-total">0P</div><div class="ci-stat-label">이번 주 자동 지급</div></div>
           <div class="ci-stat"><div class="ci-stat-num" id="ci-dash-count">0명</div><div class="ci-stat-label">지급 학생</div></div>
         </div>
-        <div id="ci-dash-log"></div>
+        <div id="ci-dash-log" data-api="dsDetails,dsCourseData"></div>
       </div>
     </div>
     <div class="dash-action-row" style="margin-top:16px;" onclick="showPage('classin-rewards')">
@@ -2502,6 +2597,123 @@
   </div>
 </div>
 
+<!-- PAGE: 크래빗-in 소개 (연동 전 랜딩) -->
+<div id="page-classin-intro" style="display:none;">
+  <div class="cin-hero">
+    <div class="cin-hero-badge"><span class="ci-dot"></span>크래빗 × 클래스인 제휴 요금제</div>
+    <h1>수업은 클래스인이,<br><span class="pink">보상은 크래빗</span>이 맡습니다</h1>
+    <p class="cin-hero-sub">원장님은 크래빗 티처스에서 반을 만들고 수업을 여시면 됩니다. 출결·성적·과제 데이터가 자동으로 넘어와, 조건을 채운 학생에게 장학금이 알아서 지급돼요.</p>
+    <div class="cin-hero-marks">
+      <span class="cin-mark"><span class="ci-dot"></span>클래스인 관리자 화면 접속 불필요</span>
+      <span class="cin-mark"><span class="ci-dot"></span>학생 앱에 입장 버튼 자동 생성</span>
+      <span class="cin-mark"><span class="ci-dot"></span>지급 승인 없이 자동 실행</span>
+    </div>
+  </div>
+
+  <div class="ci-flow" style="margin-bottom:6px;">
+    <span class="ci-flow-node crab" data-api="addCourse,addCourseClassMultiple"><span class="ci-dot" style="background:#FB75BB;"></span>티처스에서 반 개설</span>
+    <span class="ci-flow-arrow">→</span>
+    <span class="ci-flow-node" data-api="addCourseStudentMultiple,modifyCourseTeacher"><span class="ci-dot"></span>클래스인 수업 자동 생성</span>
+    <span class="ci-flow-arrow">→</span>
+    <span class="ci-flow-node" data-api="dsDescription,dsDetails"><span class="ci-dot"></span>학습 데이터 수신</span>
+    <span class="ci-flow-arrow">→</span>
+    <span class="ci-flow-node crab"><span class="ci-dot" style="background:#FB75BB;"></span>장학금 자동 지급</span>
+  </div>
+
+  <div class="cin-sec-title">연동하면 이런 메뉴가 열려요</div>
+  <div class="cin-sec-sub">결제 즉시 티처스 왼쪽 메뉴에 세 가지가 추가되고, 대시보드에도 연동 현황 위젯이 생깁니다.</div>
+  <div class="cin-feat-grid">
+    <div class="cin-feat" data-api="dsDetails,dsCourseData">
+      <div class="cin-feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div>
+      <h3>클래스인 학습활동</h3>
+      <p>학생별 출석률, 활동 완수율, 평균 성적, 손들기 횟수, 숙제 제출까지 한 표로 봅니다. 학부모 상담 때 그대로 쓰실 수 있어요.</p>
+    </div>
+    <div class="cin-feat" data-api="getWebcastUrl,dsClassRelated">
+      <div class="cin-feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="15" height="16" rx="2"/><path d="M22 7.5v9l-5-3.5z"/></svg></div>
+      <h3>녹화수업 다시보기</h3>
+      <p>수업이 자동 녹화됩니다. 결석한 학생이 나중에 보고, 누가 얼마나 봤는지 시청률까지 남습니다.</p>
+    </div>
+    <div class="cin-feat" data-api="dsDetails">
+      <div class="cin-feat-ico pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FB75BB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg></div>
+      <h3>장학금 자동지급</h3>
+      <p>출석률 90% 이상이면 3,000P처럼 규칙만 켜두시면 됩니다. 원장님 승인 없이 매주 자동으로 나갑니다.</p>
+    </div>
+    <div class="cin-feat">
+      <div class="cin-feat-ico pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FB75BB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 15h4"/></svg></div>
+      <h3>대시보드 연동 현황</h3>
+      <p>진행 중인 수업과 이번 주 자동 지급액이 대시보드 첫 화면에 올라옵니다.</p>
+    </div>
+  </div>
+
+  <div class="cin-sec-title">원장님이 실제로 덜어내시는 일</div>
+  <div class="cin-sec-sub">기능 목록보다 이쪽이 더 중요할 것 같아 따로 정리했어요.</div>
+  <div class="cin-benefit">
+    <div class="cin-benefit-row">
+      <span class="cin-benefit-check">✓</span>
+      <div><b>같은 정보를 두 번 입력하지 않습니다</b><span>반 편성과 시간표를 티처스에서 한 번만 만들면 클래스인 수업이 따라 생깁니다. 두 시스템을 오갈 일이 없어요.</span></div>
+    </div>
+    <div class="cin-benefit-row">
+      <span class="cin-benefit-check">✓</span>
+      <div><b>매주 수업 링크를 만들어 뿌리지 않습니다</b><span>학생 앱에 입장 버튼이 자동으로 생깁니다. 단톡방에 링크를 복사해 붙이던 일이 없어져요.</span></div>
+    </div>
+    <div class="cin-benefit-row">
+      <span class="cin-benefit-check">✓</span>
+      <div><b>누가 잘하고 있는지 강사 말에만 의존하지 않습니다</b><span>참여도가 숫자로 쌓입니다. 상담 전날 학생별로 뽑아보실 수 있어요.</span></div>
+    </div>
+    <div class="cin-benefit-row">
+      <span class="cin-benefit-check">✓</span>
+      <div><b>장학금 지급을 매번 판단하지 않습니다</b><span>규칙을 한 번 정해두면 조건을 채운 학생에게 자동으로 나갑니다. 기준이 명확해서 학부모 문의도 줄어요.</span></div>
+    </div>
+  </div>
+
+  <div class="cin-price-card">
+    <div class="cin-price-left">
+      <div class="cin-price-label">크래빗-in 결합 요금제</div>
+      <div class="cin-price-num">99,000원<small>/ 월</small></div>
+      <div class="cin-price-note">현재 쓰시는 장학카드 요금에 더해지는 금액이에요. 클래스인 계정은 연동 기간 동안 별도 비용 없이 제공됩니다.</div>
+    </div>
+    <button class="cin-price-cta" onclick="openClassinPay()">연동 시작하기</button>
+  </div>
+
+  <p style="font-size:12.5px;color:rgba(22,25,42,.5);margin-top:14px;line-height:1.6;">연동 후에도 언제든 해지하실 수 있고, 해지 시 이미 지급된 장학 포인트는 그대로 유지됩니다.</p>
+</div>
+
+<!-- Modal: 크래빗-in 결제 -->
+<div class="modal-backdrop" id="classinPayModal">
+  <div class="modal-box" style="width:480px;max-height:90vh;overflow-y:auto;">
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="font-size:21px;font-weight:700;color:#16192A;">크래빗-in 연동 결제</div>
+      <div style="font-size:13.5px;color:rgba(22,25,42,.55);margin-top:6px;">결제가 완료되면 바로 연동이 시작돼요.</div>
+    </div>
+
+    <div class="cpay-row"><span class="k">요금제</span><span class="v">크래빗-in 결합 요금제</span></div>
+    <div class="cpay-row"><span class="k">결제 주기</span><span class="v">매월 자동결제</span></div>
+    <div class="cpay-row"><span class="k">학원</span><span class="v">크래빗 영어학원</span></div>
+    <div class="cpay-row"><span class="k">클래스인 계정</span><span class="v" style="color:#2E8B22;">연동 기간 무상 제공</span></div>
+
+    <div class="cpay-total">
+      <span class="k">이번 달 결제 금액</span>
+      <span class="v">99,000원</span>
+    </div>
+
+    <div style="font-size:12.5px;font-weight:600;color:rgba(22,25,42,.55);margin:18px 0 0;">결제 수단</div>
+    <div class="cpay-method">
+      <span class="cpay-card-ico"></span>
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:14px;font-weight:600;color:#16192A;">신한카드 1234-****-****-5678</div>
+        <div style="font-size:12px;color:rgba(22,25,42,.5);margin-top:2px;">장학카드 결제에 등록된 카드</div>
+      </div>
+      <span class="ci-chip-green" style="color:#FB75BB;background:#FFF3F9;border-color:#FBD0E4;">기본</span>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:24px;">
+      <button class="btn-submit" style="flex:1;background:#fff;border:1.5px solid #e4e3e6;color:#444;box-shadow:none;" onclick="document.getElementById('classinPayModal').classList.remove('show')">나중에 하기</button>
+      <button class="btn-submit dark" id="cpay-submit-btn" style="flex:1.4;background:#FB75BB;" onclick="submitClassinPay()">99,000원 결제하기</button>
+    </div>
+    <p style="font-size:11.5px;color:rgba(22,25,42,.45);text-align:center;margin-top:14px;line-height:1.6;">데모 화면이라 실제로 결제되지 않습니다.</p>
+  </div>
+</div>
+
 <!-- PAGE: 클래스인 학습활동 -->
 <div id="page-classin-activity" style="display:none;">
   <button class="detail-back" onclick="showPage('dashboard')" style="margin-bottom:20px;">← 대시보드</button>
@@ -2512,7 +2724,7 @@
   <div class="ci-flow" style="margin-bottom:16px;">
     <span class="ci-badge"><span class="ci-dot"></span>클래스인 연동 데이터 · read-only</span>
     <span class="ci-flow-note">원본은 클래스인에서 관리 · 마지막 동기화 <b id="ci-sync-1"></b></span>
-    <button class="ci-openlink" style="margin-left:auto;" onclick="ciOpenClassin()">클래스인에서 열기 ↗</button>
+    <button class="ci-openlink" style="margin-left:auto;" data-api="getLoginLinked" onclick="ciOpenClassin()">클래스인에서 열기 ↗</button>
   </div>
   <div class="ci-card" style="padding:8px 10px;">
     <div style="overflow-x:auto;">
@@ -2520,7 +2732,7 @@
         <thead><tr>
           <th>학생</th><th>반</th><th>출석률</th><th>활동 완수율</th><th>평균 성적</th><th>손들기</th><th>숙제</th><th>녹화 시청률</th><th>트로피</th><th>이번 달 자동지급</th>
         </tr></thead>
-        <tbody id="ci-activity-tbody"></tbody>
+        <tbody id="ci-activity-tbody" data-api="dsDetails,dsCourseData"></tbody>
       </table>
     </div>
   </div>
@@ -2537,9 +2749,9 @@
   <div class="ci-flow" style="margin-bottom:16px;">
     <span class="ci-badge"><span class="ci-dot"></span>클래스인 클라우드 녹화 · read-only</span>
     <span class="ci-flow-note">다시보기는 클래스인 앱 내에서만 열람 · 재생 시 워터마크</span>
-    <button class="ci-openlink" style="margin-left:auto;" onclick="ciOpenClassin()">클래스인에서 열기 ↗</button>
+    <button class="ci-openlink" style="margin-left:auto;" data-api="getLoginLinked" onclick="ciOpenClassin()">클래스인에서 열기 ↗</button>
   </div>
-  <div id="ci-recordings-list"></div>
+  <div id="ci-recordings-list" data-api="getWebcastUrl,dsClassRelated"></div>
 </div>
 
 <!-- PAGE: 장학금 자동지급 (클래스인 연동) -->
@@ -2563,13 +2775,13 @@
       <div class="ci-card-head">
         <div class="ci-card-title">클래스인 활동 기반 자동 지급 규칙</div>
         <span class="ci-badge" style="background:#FFF7FB;border-color:#FBD0E4;color:#c44f8f;">크래빗 보상 엔진</span>
-        <button class="btn-dark" style="margin-left:auto;padding:9px 16px;font-size:13px;" onclick="openCiRuleDrawer()">+ 규칙 추가</button>
+        <button class="btn-dark" style="margin-left:auto;padding:9px 16px;font-size:13px;" data-api="dsDetails,dsCourseData" onclick="openCiRuleDrawer()">+ 규칙 추가</button>
       </div>
       <div id="ci-rules-list"></div>
     </div>
 
     <div class="ci-card">
-      <div class="ci-card-head"><div class="ci-card-title">트로피 → 장학 포인트 전환</div></div>
+      <div class="ci-card-head" data-api="dsDetails"><div class="ci-card-title">트로피 → 장학 포인트 전환</div></div>
       <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
         <div class="ci-stat" style="flex:1;min-width:150px;"><div class="ci-stat-num" id="ci-trophy-total">0개</div><div class="ci-stat-label">이번 주 신규 트로피 (전체 학생)</div></div>
         <div style="font-size:22px;color:#43B02A;font-weight:700;">→</div>
@@ -9215,6 +9427,139 @@
   function msgSentGoPage(p) { _msgSentPage = p; renderSentMessages(); }
   document.addEventListener('click', e => { const m = document.getElementById('msg-quick-menu'); if (m && !e.target.closest('#msg-compose-write')) m.style.display = 'none'; });
 
+  /* === API 힌트 말풍선 ===
+     데모 화면의 어떤 요소가 클래스인의 어떤 API를 부르는지 hover로 보여주고,
+     공식 문서(docs.eeo.cn)의 해당 페이지로 바로 이동시킨다. */
+  const API_DOC_BASE = 'https://docs.eeo.cn/api/en/';
+  const API_REG = {
+    register:            ['user/register.html',                  'w', '학생·강사 계정을 클래스인에 생성하고 UID를 돌려받습니다.'],
+    addSchoolStudent:    ['user/addSchoolStudent.html',           'w', '생성된 계정을 우리 학원 소속 학생으로 등록합니다.'],
+    addTeacher:          ['user/addTeacher.html',                 'w', '강사 계정을 학원에 추가합니다.'],
+    stopUsingTeacher:    ['user/stopUsingTeacher.html',           'w', '퇴사한 강사 계정을 정지시킵니다.'],
+    addCourse:           ['classroom/addCourse.html',             'w', '반(코스)을 만듭니다. 개별 수업의 상위 단위입니다.'],
+    addCourseClass:      ['classroom/addCourseClass.html',        'w', '코스 아래 실제 수업 한 회차를 생성합니다.'],
+    addCourseClassMultiple: ['classroom/addCourseClassMultiple.html','w','시간표대로 여러 회차를 한 번에 생성합니다.'],
+    addCourseStudentMultiple: ['classroom/addCourseStudentMultiple.html','w','학생 여러 명을 코스에 한 번에 배정합니다.'],
+    modifyCourseTeacher: ['classroom/modifyCourseTeacher.html',   'w', '담당 강사를 변경합니다.'],
+    getLoginLinked:      ['getLoginLinked.html',                  'w', '해당 수업으로 바로 들어가는 클래스인 앱 실행 링크를 발급합니다.'],
+    getWebcastUrl:       ['broadcast/getWebcastUrl.html',         'w', '녹화본 재생 주소를 받아옵니다.'],
+    addPlaybackUser:     ['LMS/addPlaybackUser.html',             'w', '특정 학생에게 이 수업 다시보기 시청 권한을 부여합니다.'],
+    dsDetails:           ['datasub/details.html',                 's', '수업 중 발생한 출결·손들기·트로피·발표 응답이 실시간으로 넘어옵니다.', 'Class Detail Data'],
+    dsCourseData:        ['datasub/coursedata.html',              's', '과제 제출과 채점, 시험 점수가 넘어옵니다.', 'LMS Data'],
+    dsClassRelated:      ['datasub/classrelated.html',            's', '수업 단위 정보와 녹화본 링크, 시청 횟수가 넘어옵니다.', 'Class Related Data'],
+    dsDescription:       ['datasub/description.html',             's', '데이터 구독 동작 방식과 수신 규약입니다.', 'Message Subscription']
+  };
+  const API_KIND_LABEL = { w: '호출', s: '수신' };
+
+  let _apiHintOn = true;
+  let _apitipEl = null, _apitipHideTimer = null;
+
+  function _ensureApitip() {
+    if (_apitipEl) return _apitipEl;
+    _apitipEl = document.createElement('div');
+    _apitipEl.className = 'apitip';
+    document.body.appendChild(_apitipEl);
+    _apitipEl.addEventListener('mouseenter', () => clearTimeout(_apitipHideTimer));
+    _apitipEl.addEventListener('mouseleave', hideApitip);
+    return _apitipEl;
+  }
+
+  function showApitip(target) {
+    if (!_apiHintOn) return;
+    const keys = (target.getAttribute('data-api') || '').split(',').map(k => k.trim()).filter(k => API_REG[k]);
+    if (!keys.length) return;
+    const rect0 = target.getBoundingClientRect();
+    if (rect0.width === 0 && rect0.height === 0) return; // 화면에 없으면 표시하지 않음
+    clearTimeout(_apitipHideTimer);
+    const tip = _ensureApitip();
+    const rows = keys.map(k => {
+      const [path, kind, desc, label] = API_REG[k];
+      return `<div class="apitip-item">
+        <span class="apitip-name">${label || k}<span class="apitip-kind ${kind}">${API_KIND_LABEL[kind]}</span></span>
+        <div class="apitip-desc">${desc}</div>
+        <a class="apitip-link" href="${API_DOC_BASE}${path}" target="_blank" rel="noopener">공식 문서에서 보기 ↗</a>
+      </div>`;
+    }).join('');
+    tip.innerHTML = `<div class="apitip-head">클래스인 API</div>${rows}`;
+    tip.classList.add('show');
+    tip.classList.remove('flip');
+
+    const r = target.getBoundingClientRect();
+    const tr = tip.getBoundingClientRect();
+    let left = r.left + r.width / 2 - tr.width / 2;
+    left = Math.max(12, Math.min(left, window.innerWidth - tr.width - 12));
+    let top = r.top - tr.height - 12;
+    if (top < 12) { top = r.bottom + 12; tip.classList.add('flip'); }
+    tip.style.left = left + 'px';
+    tip.style.top = top + 'px';
+    tip.style.setProperty('--arrow-x', Math.max(14, Math.min(r.left + r.width / 2 - left - 6, tr.width - 26)) + 'px');
+  }
+
+  function hideApitip() {
+    _apitipHideTimer = setTimeout(() => { if (_apitipEl) _apitipEl.classList.remove('show'); }, 220);
+  }
+
+  function toggleApiHint() {
+    _apiHintOn = !_apiHintOn;
+    document.body.classList.toggle('apihint-on', _apiHintOn);
+    const sw = document.getElementById('apihint-sw');
+    if (sw) sw.classList.toggle('on', _apiHintOn);
+    if (!_apiHintOn && _apitipEl) _apitipEl.classList.remove('show');
+    showToast(_apiHintOn ? 'API 힌트를 켰어요. 표시된 영역에 마우스를 올려보세요.' : 'API 힌트를 껐어요.');
+  }
+
+  document.addEventListener('mouseover', e => {
+    const t = e.target.closest('[data-api]');
+    if (t) showApitip(t);
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest('[data-api]')) hideApitip();
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.toggle('apihint-on', _apiHintOn);
+    const sw = document.getElementById('apihint-sw');
+    if (sw) sw.classList.toggle('on', _apiHintOn);
+  });
+
+  /* === 크래빗-in(클래스인) 연동 게이트 ===
+     데모 시작 시엔 미연동 상태. 소개 페이지에서 결제하면 메뉴 3개와 대시보드 위젯이 열린다.
+     새로고침하면 다시 미연동으로 돌아가서 시연을 반복할 수 있다. */
+  let _classinLinked = false;
+
+  function applyClassinLinkState() {
+    const locked = document.getElementById('classin-menu-locked');
+    const unlocked = document.getElementById('classin-menu-unlocked');
+    const dot = document.getElementById('ci-menu-dot');
+    const dash = document.getElementById('dash-classin-block');
+    const badge = document.getElementById('sb-classin-badge');
+    if (badge) badge.style.display = _classinLinked ? '' : 'none';
+    if (locked) locked.style.display = _classinLinked ? 'none' : '';
+    if (unlocked) unlocked.style.display = _classinLinked ? '' : 'none';
+    if (dot) dot.style.display = _classinLinked ? '' : 'none';
+    if (dash) dash.style.display = _classinLinked ? '' : 'none';
+  }
+
+  function openClassinPay() {
+    const m = document.getElementById('classinPayModal');
+    if (m) m.classList.add('show');
+  }
+
+  function submitClassinPay() {
+    const btn = document.getElementById('cpay-submit-btn');
+    if (btn) { btn.disabled = true; btn.style.opacity = '.6'; btn.textContent = '결제 중...'; }
+    setTimeout(() => {
+      const m = document.getElementById('classinPayModal');
+      if (m) m.classList.remove('show');
+      if (btn) { btn.disabled = false; btn.style.opacity = ''; btn.textContent = '99,000원 결제하기'; }
+      _classinLinked = true;
+      applyClassinLinkState();
+      showPage('dashboard');
+      showToast('크래빗-in 연동이 시작됐어요. 왼쪽 메뉴에 3개가 추가됐습니다.', 'success');
+    }, 900);
+  }
+
+  document.addEventListener('DOMContentLoaded', applyClassinLinkState);
+
   /* === 반응형: 모바일 사이드바 서랍 === */
   function toggleSidebar() {
     const sb = document.getElementById('app-sidebar');
@@ -9249,6 +9594,10 @@
   function showPage(page) {
     closeSidebar();
     wrapTablesForScroll();
+    // 연동 전에는 클래스인 기능 페이지 대신 소개 페이지로 보낸다
+    if (!_classinLinked && ['classin-activity','classin-recordings','classin-rewards'].includes(page)) {
+      page = 'classin-intro';
+    }
     document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
 
     ['page-mission', 'page-stats', 'page-settings',
@@ -9258,7 +9607,7 @@
      'page-banner-detail', 'page-mission-create', 'page-mission-create-pro', 'page-mission-detail',
      'page-stamp-board', 'page-point-rules', 'page-mission-template', 'page-card-template', 'page-card-franchise',
      'page-dashboard', 'page-deposit-charge', 'page-card-charge', 'page-card-order-1', 'page-card-order-2', 'page-card-order-3', 'page-loss-report', 'page-guide',
-     'page-classin-activity', 'page-classin-recordings', 'page-classin-rewards'].forEach(id => {
+     'page-classin-intro', 'page-classin-activity', 'page-classin-recordings', 'page-classin-rewards'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.style.display = 'none';
     });
@@ -9380,6 +9729,10 @@
       initCardFranchisePage();
     } else if (page === 'guide') {
       document.getElementById('page-guide').style.display = 'block';
+    } else if (page === 'classin-intro') {
+      document.getElementById('page-classin-intro').style.display = 'block';
+      const mi = document.getElementById('menu-classin-intro');
+      if (mi) mi.classList.add('active');
     } else if (page === 'classin-activity') {
       document.getElementById('page-classin-activity').style.display = 'block';
       document.getElementById('menu-classin-activity').classList.add('active');
@@ -15113,7 +15466,7 @@ function ciRenderRecordings(){
         <span class="ci-bar" style="width:150px;"><i class="${pct<75?'warn':''}" style="width:${pct}%"></i></span>
       </div>
       <span class="ci-chip-green">다시보기 제공</span>
-      <button class="ci-openlink" onclick="ciOpenClassin()">재생 ↗</button>
+      <button class="ci-openlink" data-api="getWebcastUrl" onclick="ciOpenClassin()">재생 ↗</button>
     </div>`;
   }).join('');
 }
