@@ -2918,8 +2918,8 @@
         대시보드
       </a>
       <a class="menu-item" onclick="showPage('students')" id="menu-students">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        학생 목록
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/><path d="M6 15h4"/></svg>
+        카드 관리 / 충전
       </a>
       <a class="menu-item" onclick="showPage('point-history')" id="menu-point-history">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
@@ -2930,25 +2930,19 @@
     <div class="sidebar-divider"></div>
 
     <div class="menu-section">
-      <div class="menu-section-label">보상 관리</div>
+      <a class="menu-item" onclick="showPage('point-rules')" id="menu-point-rules">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v9"/><path d="M14.6 9.6c-.6-.7-1.6-1.1-2.6-1.1-1.5 0-2.6.8-2.6 1.9 0 2.6 5.2 1.4 5.2 4 0 1.1-1.1 1.9-2.6 1.9-1 0-2-.4-2.6-1.1"/></svg>
+        포인트 관리
+      </a>
       <a class="menu-item" onclick="showPage('stamp-board')" id="menu-stamp-board">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        스탬프판 관리
-      </a>
-      <a class="menu-item" onclick="showPage('mission')" id="menu-mission">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-        미션 관리
-      </a>
-      <a class="menu-item" onclick="showPage('stats')" id="menu-stats">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        보상 통계
+        스탬프 관리
       </a>
     </div>
 
     <div class="sidebar-divider"></div>
 
     <div class="menu-section">
-      <div class="menu-section-label">소통 관리</div>
       <a class="menu-item" onclick="showPage('notices')" id="menu-notices">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         공지/배너 관리
@@ -4496,7 +4490,6 @@
       <button class="stats-tab-pill active" onclick="showLrTab('status',this)">학습 현황</button>
       <button class="stats-tab-pill v2only" onclick="showLrTab('review',this)">시청 관리</button>
       <button class="stats-tab-pill" onclick="showLrTab('rules',this)">지급 규칙</button>
-      <button class="stats-tab-pill" onclick="showLrTab('log',this)">지급 내역</button>
     </div>
     <button class="ci-openlink" style="margin-left:auto;" data-api="getLoginLinked" onclick="ciOpenClassin()">클래스인에서 열기 ↗</button>
   </div>
@@ -6057,7 +6050,7 @@
       <!-- 타이틀 -->
       <div class="page-head">
         <div style="display:flex;align-items:center;gap:10px;">
-          <h1>학생 목록</h1>
+          <h1>카드 관리 / 충전</h1>
           <span class="sl-count-badge">52</span>
         </div>
         <p class="page-sub">학생별 카드·포인트 잔액과 그룹을 한눈에 파악할 수 있어요</p>
@@ -6260,7 +6253,7 @@
 
     <!-- ─── PAGE: 퇴원생 목록 (풀페이지) ─── -->
     <div id="page-withdrawn" style="display:none;">
-      <button class="detail-back" onclick="showPage('students')">← 학생 목록</button>
+      <button class="detail-back" onclick="showPage('students')">← 카드 관리</button>
       <div class="page-head">
         <div style="display:flex;align-items:center;gap:10px;">
           <h1>퇴원생 목록</h1>
@@ -6291,7 +6284,7 @@
 
     <!-- ─── PAGE: 학생 상세 ─── -->
     <div id="page-student-detail" style="display:none;">
-      <button class="detail-back" onclick="showPage('students')">← 학생 목록</button>
+      <button class="detail-back" onclick="showPage('students')">← 카드 관리</button>
       <div id="sd-content"></div>
     </div>
 
@@ -6312,6 +6305,7 @@
         <div class="history-tab active" onclick="switchChargeTab('point', this)">포인트 내역</div>
         <div class="history-tab" onclick="switchChargeTab('card', this)">카드 충전 내역</div>
         <div class="history-tab" onclick="switchChargeTab('deposit', this)">예치금 충전 내역</div>
+        <div class="history-tab" id="charge-tab-btn-auto" style="display:none;" onclick="switchChargeTab('auto', this)">장학금 자동지급 내역</div>
       </div>
 
       <!-- ── 포인트 탭 ── -->
@@ -11629,6 +11623,11 @@
   }
   /* v2에서는 메뉴를 학습 성과 하나로 줄이고, 시청 관리 탭을 그 안으로 옮긴다 */
   function applyCinVersionLayout() {
+    // 자동지급 내역 패널은 충전 내역 페이지 소속으로 옮긴다
+    const log = document.getElementById('lr-tab-log');
+    const ph = document.getElementById('page-point-history');
+    if (log && ph && log.parentElement !== ph) { log.style.display = 'none'; ph.appendChild(log); }
+
     const simple = _cinVersion === 'simple';
     const panel = document.getElementById('cm-tab-review');
     const host = document.getElementById(simple ? 'page-learn-reward' : 'page-class-mgmt');
@@ -11673,6 +11672,8 @@
     if (unlocked) unlocked.style.display = _classinLinked ? '' : 'none';
     if (dot) dot.style.display = _classinLinked ? '' : 'none';
     if (dash) dash.style.display = _classinLinked ? '' : 'none';
+    const autoTab = document.getElementById('charge-tab-btn-auto');
+    if (autoTab) autoTab.style.display = _classinLinked ? '' : 'none';
   }
 
   function openStructModal() {
@@ -11791,7 +11792,7 @@
 
     if (page === 'dashboard') {
       document.getElementById('page-dashboard').style.display = 'block';
-      document.getElementById('menu-dashboard').classList.add('active');
+      {const _m=document.getElementById('menu-dashboard'); if(_m)_m.classList.add('active');}
       initDashboard();
     } else if (page === 'students') {
       document.getElementById('page-students').style.display = 'block';
@@ -11806,39 +11807,39 @@
       if (typeof renderWithdrawn === 'function') renderWithdrawn();
     } else if (page === 'point-history') {
       document.getElementById('page-point-history').style.display = 'block';
-      document.getElementById('menu-point-history').classList.add('active');
+      {const _m=document.getElementById('menu-point-history'); if(_m)_m.classList.add('active');}
       const activeTab = document.querySelector('#page-point-history .history-tab.active');
       renderChargeCharts(activeTab && activeTab.textContent.includes('카드') ? 'card' : 'point');
     } else if (page === 'notices') {
       document.getElementById('page-notices').style.display = 'block';
-      document.getElementById('menu-notices').classList.add('active');
+      {const _m=document.getElementById('menu-notices'); if(_m)_m.classList.add('active');}
     } else if (page === 'messages') {
       document.getElementById('page-messages').style.display = 'block';
       const mm = document.getElementById('menu-messages'); if (mm) mm.classList.add('active');
       initMessages();
     } else if (page === 'notice-detail') {
       document.getElementById('page-notice-detail').style.display = 'block';
-      document.getElementById('menu-notices').classList.add('active');
+      {const _m=document.getElementById('menu-notices'); if(_m)_m.classList.add('active');}
     } else if (page === 'notice-editor') {
       document.getElementById('page-notice-editor').style.display = 'block';
-      document.getElementById('menu-notices').classList.add('active');
+      {const _m=document.getElementById('menu-notices'); if(_m)_m.classList.add('active');}
       // 발송 옵션 메타 초기화
       if (typeof _initNoticeEditorMeta === 'function') _initNoticeEditorMeta();
     } else if (page === 'banner-detail') {
       document.getElementById('page-banner-detail').style.display = 'block';
-      document.getElementById('menu-notices').classList.add('active');
+      {const _m=document.getElementById('menu-notices'); if(_m)_m.classList.add('active');}
     } else if (page === 'mission-detail') {
       document.getElementById('page-mission-detail').style.display = 'block';
-      document.getElementById('menu-mission').classList.add('active');
+      {const _m=document.getElementById('menu-mission'); if(_m)_m.classList.add('active');}
     } else if (page === 'mission-create-pro') {
       document.getElementById('page-mission-create-pro').style.display = 'block';
-      document.getElementById('menu-mission').classList.add('active');
+      {const _m=document.getElementById('menu-mission'); if(_m)_m.classList.add('active');}
     } else if (page === 'mission-create') {
       document.getElementById('page-mission-create').style.display = 'block';
-      document.getElementById('menu-mission').classList.add('active');
+      {const _m=document.getElementById('menu-mission'); if(_m)_m.classList.add('active');}
     } else if (page === 'mission') {
       document.getElementById('page-mission').style.display = 'block';
-      document.getElementById('menu-mission').classList.add('active');
+      {const _m=document.getElementById('menu-mission'); if(_m)_m.classList.add('active');}
       // 항상 '미션 리스트' 탭으로 시작
       document.querySelectorAll('#page-mission .history-tab').forEach((t, i) => t.classList.toggle('active', i === 0));
       document.getElementById('mm-tab-list').style.display = 'block';
@@ -11847,11 +11848,11 @@
       updateMissionTabBadge();
     } else if (page === 'stats') {
       document.getElementById('page-stats').style.display = 'block';
-      document.getElementById('menu-stats').classList.add('active');
+      {const _m=document.getElementById('menu-stats'); if(_m)_m.classList.add('active');}
       initStatsCharts();
     } else if (page === 'stamp-board') {
       document.getElementById('page-stamp-board').style.display = 'block';
-      document.getElementById('menu-stamp-board').classList.add('active');
+      {const _m=document.getElementById('menu-stamp-board'); if(_m)_m.classList.add('active');}
       // 상세 뷰 닫고 목록으로, 선택 초기화
       const detailEl = document.getElementById('sb-student-detail');
       const panelEl = document.getElementById('sb-manage-panel');
@@ -11863,46 +11864,47 @@
       renderStampBoardPanel();
     } else if (page === 'settings') {
       document.getElementById('page-settings').style.display = 'block';
-      document.getElementById('menu-settings').classList.add('active');
+      {const _m=document.getElementById('menu-settings'); if(_m)_m.classList.add('active');}
       showSettingsTab('general');
     } else if (page === 'deposit-charge') {
       document.getElementById('page-deposit-charge').style.display = 'block';
-      document.getElementById('menu-dashboard').classList.add('active');
+      {const _m=document.getElementById('menu-dashboard'); if(_m)_m.classList.add('active');}
       initDepositCharge();
     } else if (page === 'card-charge') {
       document.getElementById('page-card-charge').style.display = 'block';
-      document.getElementById('menu-dashboard').classList.add('active');
+      {const _m=document.getElementById('menu-dashboard'); if(_m)_m.classList.add('active');}
       initCardCharge();
     } else if (page === 'card-order-1') {
       document.getElementById('page-card-order-1').style.display = 'block';
-      document.getElementById('menu-dashboard').classList.add('active');
+      {const _m=document.getElementById('menu-dashboard'); if(_m)_m.classList.add('active');}
       initCardOrder();
     } else if (page === 'card-order-2') {
       document.getElementById('page-card-order-2').style.display = 'block';
-      document.getElementById('menu-dashboard').classList.add('active');
+      {const _m=document.getElementById('menu-dashboard'); if(_m)_m.classList.add('active');}
     } else if (page === 'card-order-3') {
       document.getElementById('page-card-order-3').style.display = 'block';
-      document.getElementById('menu-dashboard').classList.add('active');
+      {const _m=document.getElementById('menu-dashboard'); if(_m)_m.classList.add('active');}
       renderCardOrderPayment();
     } else if (page === 'loss-report') {
       document.getElementById('page-loss-report').style.display = 'block';
-      document.getElementById('menu-dashboard').classList.add('active');
+      {const _m=document.getElementById('menu-dashboard'); if(_m)_m.classList.add('active');}
       switchLossTab('pending');
     } else if (page === 'point-rules') {
       document.getElementById('page-point-rules').style.display = 'block';
-      document.getElementById('menu-dashboard').classList.add('active');
+      {const _m=document.getElementById('menu-point-rules'); if(_m)_m.classList.add('active');}
+      {const _m=document.getElementById('menu-dashboard'); if(_m)_m.classList.add('active');}
       initPointRulesPage();
     } else if (page === 'mission-template') {
       document.getElementById('page-mission-template').style.display = 'block';
-      document.getElementById('menu-mission').classList.add('active');
+      {const _m=document.getElementById('menu-mission'); if(_m)_m.classList.add('active');}
       initMissionTemplatePage();
     } else if (page === 'card-template') {
       document.getElementById('page-card-template').style.display = 'block';
-      document.getElementById('menu-dashboard').classList.add('active');
+      {const _m=document.getElementById('menu-dashboard'); if(_m)_m.classList.add('active');}
       initCardTemplatePage();
     } else if (page === 'card-franchise') {
       document.getElementById('page-card-franchise').style.display = 'block';
-      document.getElementById('menu-dashboard').classList.add('active');
+      {const _m=document.getElementById('menu-dashboard'); if(_m)_m.classList.add('active');}
       initCardFranchisePage();
     } else if (page === 'guide') {
       document.getElementById('page-guide').style.display = 'block';
@@ -11915,12 +11917,12 @@
       cinInitIntro();
     } else if (page === 'class-mgmt') {
       document.getElementById('page-class-mgmt').style.display = 'block';
-      document.getElementById('menu-class-mgmt').classList.add('active');
+      {const _m=document.getElementById('menu-class-mgmt'); if(_m)_m.classList.add('active');}
       cmRenderAll();
       ciRenderRecordings();
     } else if (page === 'learn-reward') {
       document.getElementById('page-learn-reward').style.display = 'block';
-      document.getElementById('menu-learn-reward').classList.add('active');
+      {const _m=document.getElementById('menu-learn-reward'); if(_m)_m.classList.add('active');}
       ciRenderActivity();
       ciRenderRewards();
       if (_cinVersion === 'simple') ciRenderRecordings();
@@ -15459,7 +15461,10 @@
     document.getElementById('charge-tab-card').style.display = tab === 'card' ? 'block' : 'none';
     const dep = document.getElementById('charge-tab-deposit');
     if (dep) dep.style.display = tab === 'deposit' ? 'block' : 'none';
+    const auto = document.getElementById('lr-tab-log');
+    if (auto) auto.style.display = tab === 'auto' ? 'block' : 'none';
     if (tab === 'deposit') renderChargeDepositTab();
+    else if (tab === 'auto') { if (typeof ciRenderRewards === 'function') ciRenderRewards(); }
     else renderChargeCharts(tab);
   }
 
@@ -17745,7 +17750,7 @@ function showCmTab(key, btn){
   if(typeof mountApiBadges==='function') mountApiBadges();
 }
 function showLrTab(key, btn){
-  ['status','review','rules','log'].forEach(k=>{
+  ['status','review','rules'].forEach(k=>{
     const el = document.getElementById(k === 'review' ? 'cm-tab-review' : 'lr-tab-'+k);
     if(el) el.style.display = (k===key) ? 'block' : 'none';
   });
