@@ -2010,7 +2010,14 @@
   /* ===== 클래스인 연동 모듈 ===== */
   .ci-badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:#2E8B22;background:#EEF8EA;border:1px solid #CDE9C3;padding:3px 9px;border-radius:999px;line-height:1.4;}
   .ci-dot{width:6px;height:6px;border-radius:50%;background:#43B02A;box-shadow:0 0 0 3px rgba(67,176,42,.16);flex-shrink:0;}
-  .ci-navchip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:#16192A;background:#F6FBF3;border:1px solid #DCEED4;border-radius:999px;padding:5px 12px 5px 10px;}
+  .ci-navchip{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;color:#16192A;background:#F6FBF3;border:1px solid #DCEED4;border-radius:999px;padding:4px 5px 4px 11px;}
+  .ci-navchip-k{white-space:nowrap;}
+  .ci-verseg{display:inline-flex;gap:2px;background:#fff;border:1px solid #DCEED4;border-radius:999px;padding:2px;}
+  .ci-verbtn{border:none;background:transparent;font-family:inherit;font-size:11.5px;font-weight:600;color:rgba(22,25,42,.5);
+    border-radius:999px;padding:5px 11px;cursor:pointer;white-space:nowrap;transition:background .15s,color .15s;}
+  .ci-verbtn:hover{color:#16192A;}
+  .ci-verbtn.active{background:#16192A;color:#fff;}
+  @media (max-width:1180px){ .ci-navchip-k{display:none;} .ci-verbtn{font-size:11px;padding:5px 9px;} }
   .ci-card{background:#fff;border:1px solid #E8E8E8;border-radius:16px;padding:22px 24px;margin-bottom:16px;}
   .ci-card-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
   .ci-card-title{font-size:17px;font-weight:700;color:#16192A;}
@@ -2778,7 +2785,14 @@
     </button>
     <div class="nav-logo"><img src="logo.png" alt="Crabit"></div>
   </div>
-  <div class="ci-navchip" title="클래스인 연동 요금제(크래빗 클래스) 전용 데모 공간"><span class="ci-dot"></span>크래빗 클래스 · 클래스인 연동</div>
+  <div class="ci-navchip" title="연동 범위 시나리오를 바꿔 봅니다">
+    <span class="ci-dot"></span>
+    <span class="ci-navchip-k">크래빗 클래스</span>
+    <span class="ci-verseg" role="group" aria-label="연동 버전 선택">
+      <button class="ci-verbtn active" id="verbtn-heavy" onclick="setCinVersion('heavy')" title="티처스 안에서 수업 개설·영상 배포까지 하는 버전">v1 LMS Heavy</button>
+      <button class="ci-verbtn" id="verbtn-simple" onclick="setCinVersion('simple')" title="수업 운영은 클래스인에서 하고, 크래빗은 데이터와 보상만 맡는 버전">v2 Simple Integration</button>
+    </span>
+  </div>
   <div class="nav-right">
     <div class="bell" title="알림"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
     <div class="avatar" onclick="showPage('profile')">김</div>
@@ -11039,6 +11053,30 @@
      데모 시작 시엔 미연동 상태. 소개 페이지에서 결제하면 메뉴 3개와 대시보드 위젯이 열린다.
      새로고침하면 다시 미연동으로 돌아가서 시연을 반복할 수 있다. */
   let _classinLinked = false;
+
+  /* 연동 범위 시나리오: 'heavy' = 티처스에서 수업 개설·영상 배포까지,
+     'simple' = 수업 운영은 클래스인, 크래빗은 학습 데이터 수신과 보상만 */
+  let _cinVersion = 'heavy';
+  function setCinVersion(v) {
+    _cinVersion = v;
+    try { localStorage.setItem('crabitCinVersion', v); } catch (e) {}
+    document.body.classList.toggle('ver-simple', v === 'simple');
+    const a = document.getElementById('verbtn-heavy'), b = document.getElementById('verbtn-simple');
+    if (a) a.classList.toggle('active', v === 'heavy');
+    if (b) b.classList.toggle('active', v === 'simple');
+    showToast(v === 'simple'
+      ? 'v2 Simple Integration으로 전환했어요. 수업 운영은 클래스인에서, 크래빗은 학습 데이터와 보상만 맡는 시나리오입니다.'
+      : 'v1 LMS Heavy로 전환했어요. 티처스 안에서 수업 개설과 영상 배포까지 하는 시나리오입니다.');
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    let v = 'heavy';
+    try { v = localStorage.getItem('crabitCinVersion') || 'heavy'; } catch (e) {}
+    _cinVersion = v;
+    document.body.classList.toggle('ver-simple', v === 'simple');
+    const a = document.getElementById('verbtn-heavy'), b = document.getElementById('verbtn-simple');
+    if (a) a.classList.toggle('active', v === 'heavy');
+    if (b) b.classList.toggle('active', v === 'simple');
+  });
   let _cinTrialLeft = 0;   // 크래빗 클래스 체험 남은 일수 (0이면 체험 아님)
 
   function applyClassinLinkState() {
