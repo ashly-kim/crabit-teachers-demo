@@ -2000,9 +2000,9 @@
   .ci-table tr:hover td{background:#FAFBFC;}
   .ci-metric-good{color:#2E8B22;font-weight:600;}
   .ci-metric-warn{color:#C77A00;font-weight:600;}
-  .ci-bar{height:6px;border-radius:3px;background:#EDEDED;overflow:hidden;width:70px;display:inline-block;vertical-align:middle;margin-right:7px;}
-  .ci-bar > i{display:block;height:100%;border-radius:3px;background:#43B02A;}
-  .ci-bar > i.warn{background:#E0A73B;}
+  .ci-bar{height:11px;border-radius:6px;background:#EEEFF3;overflow:hidden;width:82px;display:inline-block;vertical-align:middle;margin-right:8px;}
+  .ci-bar > i{display:block;height:100%;border-radius:6px;background:#43B02A;}
+  .ci-bar > i.warn{background:#A9D89D;}
   .ci-rule{display:flex;align-items:center;gap:14px;border:1px solid #E8E8E8;border-radius:13px;padding:15px 18px;margin-bottom:10px;background:#fff;}
   .ci-rule.off{opacity:.5;}
   .ci-rule-cond{flex:1;font-size:14px;color:#16192A;line-height:1.5;}
@@ -2244,11 +2244,11 @@
 
   /* --- 기능 블록 --- */
   .cin-block{padding:88px 56px;background:#fff;border-top:1px solid #F0F1F4;}
-  .cin-block.alt{background:#F9FAFC;}
+  .cin-block.alt{background:#fff;}
   .cin-block-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;}
   .cin-block.flip .cin-block-inner{direction:rtl;}
   .cin-block.flip .cin-block-inner > *{direction:ltr;}
-  .cin-lead{font-size:15px;font-weight:600;color:#8A6D10;background:#FDF6E3;
+  .cin-lead{font-size:14.5px;font-weight:600;color:rgba(22,25,42,.55);background:#F1F2F6;
     border-radius:10px;padding:11px 15px;display:inline-block;margin-bottom:20px;line-height:1.5;}
   #page-classin-intro .cin-h3{color:#16192A;font-size:clamp(21px,2.6vw,29px);font-weight:700;
     letter-spacing:-.028em;line-height:1.36;margin:0 0 14px;text-wrap:balance;}
@@ -2261,7 +2261,7 @@
   /* --- 블록 안 미니 목업 --- */
   .cin-mock{background:#fff;border-radius:18px;padding:20px;
     box-shadow:0 18px 44px rgba(22,25,42,.09);}
-  .cin-block.alt .cin-mock{box-shadow:0 18px 44px rgba(22,25,42,.07);}
+  .cin-block.alt .cin-mock{box-shadow:0 18px 44px rgba(22,25,42,.09);}
   .cin-mock-bar{display:flex;align-items:center;gap:6px;padding-bottom:14px;border-bottom:1px solid #F2F3F6;margin-bottom:14px;}
   .cin-mock-bar i{width:8px;height:8px;border-radius:50%;background:#E4E5EA;display:block;}
   .cin-mock-bar span{margin-left:8px;font-size:11.5px;color:rgba(22,25,42,.45);font-weight:600;}
@@ -2270,8 +2270,8 @@
   .cin-mrow .nm{font-weight:600;color:#16192A;min-width:52px;}
   .cin-mrow .val{margin-left:auto;font-weight:700;color:#16192A;font-variant-numeric:tabular-nums;}
   .cin-mrow .val.p{color:#FB75BB;}
-  .cin-mbar{flex:1;height:10px;border-radius:6px;background:#EEEFF3;overflow:hidden;min-width:40px;}
-  .cin-mbar i{display:block;height:100%;width:0;border-radius:6px;background:#43B02A;}
+  .cin-mbar{flex:1;height:14px;border-radius:8px;background:#EEEFF3;overflow:hidden;min-width:40px;}
+  .cin-mbar i{display:block;height:100%;width:0;border-radius:8px;background:#43B02A;}
   .cin-mchip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;
     color:#2E8B22;background:#E7F5E1;border-radius:7px;padding:4px 9px;}
   .cin-mchip.p{color:#FB75BB;background:#FFEDF6;}
@@ -2870,20 +2870,20 @@
   <section class="cin-sec" id="cin-steps-sec">
     <div class="cin-sec-inner cin-rv">
       <div class="cin-label">WHY 크래빗-in</div>
-      <h2 class="cin-h2">따로 쓰면 반쪽,<br>같이 쓰면 완성됩니다</h2>
-      <p class="cin-desc">장학카드는 줄 이유가 약하고, LMS는 학생이 움직일 이유가 없습니다. 둘을 붙이면 서로의 빈칸이 채워집니다.</p>
+      <h2 class="cin-h2">쓰시던 장학카드에<br>수업 관리가 더해집니다</h2>
+      <p class="cin-desc">지금 구성은 그대로 두고 학습 관리만 얹습니다. 학생이 수업에서 한 활동이 곧바로 장학금으로 이어집니다.</p>
 
       <div class="cin-cmp">
         <table>
           <thead>
-            <tr><th></th><th>장학카드만</th><th>클래스인만</th><th class="hi">크래빗-in</th></tr>
+            <tr><th></th><th>장학카드</th><th>클래스인</th><th class="hi">크래빗-in</th></tr>
           </thead>
           <tbody>
-            <tr><td class="k">수업 진행</td><td class="no">없음</td><td class="yes">가능</td><td class="hi">가능</td></tr>
-            <tr><td class="k">학습 데이터</td><td class="no">없음</td><td>클래스인 안에서만</td><td class="hi">티처스로 자동 수집</td></tr>
-            <tr><td class="k">보상 지급</td><td>원장이 직접 판단</td><td class="no">없음</td><td class="hi">조건 충족 시 자동</td></tr>
-            <tr><td class="k">원장 관리 동선</td><td>티처스 한 곳</td><td class="no">클래스인 한 곳</td><td class="hi">티처스 한 곳</td></tr>
-            <tr><td class="k">학생이 열심히 할 이유</td><td class="no">약함</td><td class="no">약함</td><td class="hi">노력이 곧 장학금</td></tr>
+            <tr><td class="k">수업 진행</td><td class="no">해당 없음</td><td class="yes">클래스인에서</td><td class="hi">클래스인에서</td></tr>
+            <tr><td class="k">학습 데이터</td><td class="no">해당 없음</td><td>클래스인에서 확인</td><td class="hi">티처스로 자동 수집</td></tr>
+            <tr><td class="k">보상 지급</td><td>원장님이 직접</td><td class="no">해당 없음</td><td class="hi">조건 충족 시 자동</td></tr>
+            <tr><td class="k">관리 화면</td><td>티처스</td><td>클래스인</td><td class="hi">티처스 한 곳에서</td></tr>
+            <tr><td class="k">학습과 보상 연결</td><td>따로 관리</td><td>따로 관리</td><td class="hi">자동으로 연결</td></tr>
           </tbody>
         </table>
       </div>
@@ -3047,7 +3047,7 @@
           <div class="cin-mrow"><span class="nm">정하람</span><span class="cin-mbar"><i data-w="98"></i></span><span class="val cnt" data-to="98" data-suffix="%">0%</span></div>
           <div class="cin-mrow"><span class="nm">이서연</span><span class="cin-mbar"><i data-w="100"></i></span><span class="val cnt" data-to="100" data-suffix="%">0%</span></div>
           <div class="cin-mrow"><span class="nm">김민준</span><span class="cin-mbar"><i data-w="96"></i></span><span class="val cnt" data-to="96" data-suffix="%">0%</span></div>
-          <div class="cin-mrow"><span class="nm">최유나</span><span class="cin-mbar"><i data-w="82" style="background:#C9A227"></i></span><span class="val cnt" data-to="82" data-suffix="%">0%</span></div>
+          <div class="cin-mrow"><span class="nm">최유나</span><span class="cin-mbar"><i data-w="82" style="background:#A9D89D"></i></span><span class="val cnt" data-to="82" data-suffix="%">0%</span></div>
           <div style="margin-top:12px;font-size:11.5px;color:rgba(22,25,42,.45);">주간 출석률 · 클래스인에서 자동 집계</div>
         </div>
       </div>
@@ -3112,8 +3112,8 @@
   <section class="cin-sec alt">
     <div class="cin-sec-inner cin-rv" style="text-align:center;">
       <div class="cin-label">요금제</div>
-      <h2 class="cin-h2">장학카드 요금에 더하기만 하면 됩니다</h2>
-      <p class="cin-desc" style="margin:0 auto;">클래스인 계정 비용은 연동 기간 동안 크래빗이 부담합니다. 별도로 계약하거나 따로 결제하실 것이 없습니다.</p>
+      <h2 class="cin-h2">쓰시던 요금제는 그대로 둡니다</h2>
+      <p class="cin-desc" style="margin:0 auto;">수업 관리만 월 단위로 얹으시면 됩니다. 클래스인과 따로 계약하거나 결제하실 것은 없습니다.</p>
 
       <div class="cin-plan" style="text-align:left;">
         <div class="cin-plan-tag">크래빗-in 결합 요금제</div>
@@ -3253,7 +3253,7 @@
       <span class="ci-flow-arrow">&rarr;</span>
       <span class="ci-flow-node"><span class="ci-dot"></span>입장 링크 발급</span>
     </div>
-    <p style="font-size:12.5px;color:rgba(22,25,42,.6);line-height:1.7;margin-top:12px;background:#FBF3D9;border:1px solid #EDDCA6;border-radius:11px;padding:13px 15px;">
+    <p style="font-size:12.5px;color:rgba(22,25,42,.6);line-height:1.7;margin-top:12px;background:#F1F2F6;border-radius:11px;padding:13px 15px;">
       각 단계에서 돌아오는 식별자(UID, courseId, classId)를 크래빗 DB에 반드시 저장해야 합니다. 조회용 인터페이스가 없어서 한 번 놓치면 되찾을 방법이 없습니다. <b>매핑 테이블 설계가 연동의 첫 관문입니다.</b>
     </p>
 
