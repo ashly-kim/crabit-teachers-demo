@@ -2227,10 +2227,10 @@
   .cin-sec{padding:100px 56px;background:#fff;}
   .cin-sec.alt{background:#F9FAFC;}
   .cin-sec-inner{max-width:1000px;margin:0 auto;}
-  .cin-label{font-size:12px;font-weight:600;letter-spacing:.12em;color:#FB75BB;margin-bottom:16px;}
+  .cin-label{font-size:13px;font-weight:600;letter-spacing:.12em;color:#FB75BB;margin-bottom:16px;}
   #page-classin-intro .cin-h2{color:#16192A;font-size:clamp(24px,3.4vw,38px);font-weight:700;
     letter-spacing:-.03em;line-height:1.34;margin:0 0 16px;text-wrap:balance;}
-  .cin-desc{font-size:16px;color:rgba(22,25,42,.6);line-height:1.8;max-width:640px;}
+  .cin-desc{font-size:17.5px;color:rgba(22,25,42,.62);line-height:1.8;max-width:680px;}
 
 
   /* --- 목업 인터랙션 --- */
@@ -2331,11 +2331,11 @@
     border-radius:10px;padding:11px 15px;display:inline-block;margin-bottom:20px;line-height:1.5;}
   #page-classin-intro .cin-h3{color:#16192A;font-size:clamp(21px,2.6vw,29px);font-weight:700;
     letter-spacing:-.028em;line-height:1.36;margin:0 0 14px;text-wrap:balance;}
-  .cin-bdesc{font-size:15px;color:rgba(22,25,42,.62);line-height:1.8;margin:0 0 24px;}
+  .cin-bdesc{font-size:17px;color:rgba(22,25,42,.62);line-height:1.78;margin:0 0 26px;}
   .cin-subs{display:flex;flex-direction:column;gap:16px;}
   .cin-sub{padding-left:16px;border-left:2px solid #FBD0E4;}
-  .cin-sub b{display:block;font-size:14.5px;font-weight:600;color:#16192A;margin-bottom:4px;}
-  .cin-sub span{font-size:13.5px;color:rgba(22,25,42,.58);line-height:1.65;}
+  .cin-sub b{display:block;font-size:17px;font-weight:600;color:#16192A;margin-bottom:5px;letter-spacing:-.01em;}
+  .cin-sub span{font-size:15.5px;color:rgba(22,25,42,.6);line-height:1.7;}
 
   /* --- 블록 안 미니 목업 --- */
   .cin-mock{background:#fff;border-radius:18px;padding:20px;
@@ -2410,10 +2410,10 @@
   .cfd-h2{font-size:clamp(25px,3.5vw,38px);font-weight:600;color:#16192A;letter-spacing:-.03em;
     line-height:1.36;margin:0 0 16px;text-wrap:balance;}
   .cfd-h2 b{font-weight:700;color:#FB75BB;}
-  .cfd-sub{font-size:15.5px;color:rgba(22,25,42,.58);line-height:1.8;text-wrap:balance;}
+  .cfd-sub{font-size:17.5px;color:rgba(22,25,42,.6);line-height:1.78;text-wrap:balance;}
 
   /* 좌: 유입 · 중앙: 크래빗 오브 · 우: 유출 (곡선 와이어는 JS로 그린다) */
-  .cfd-map{position:relative;display:grid;grid-template-columns:minmax(0,236px) minmax(0,1fr) minmax(0,236px);
+  .cfd-map{position:relative;display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr) minmax(0,250px);
     gap:0;align-items:center;justify-content:space-between;}
   .cfd-wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible;}
   .cfd-wire{fill:none;stroke:#CDD7CF;stroke-width:1.1;opacity:.9;}
@@ -2424,7 +2424,7 @@
   @keyframes cfdFlow{from{stroke-dashoffset:100;}to{stroke-dashoffset:0;}}
 
   .cfd-col{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;}
-  .cfd-coltag{font-size:11px;font-weight:600;letter-spacing:.11em;color:rgba(22,25,42,.4);margin-bottom:4px;}
+  .cfd-coltag{font-size:12.5px;font-weight:600;letter-spacing:.1em;color:rgba(22,25,42,.42);margin-bottom:6px;}
   .cfd-col.out .cfd-coltag{text-align:right;}
   .cfd-chip{display:flex;align-items:center;gap:9px;background:#fff;border-radius:13px;padding:11px 14px;
     box-shadow:0 1px 2px rgba(22,25,42,.05);opacity:0;transform:translateX(-14px);}
@@ -2434,8 +2434,8 @@
   .cfd-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
   .cfd-col.in .cfd-dot{background:#43B02A;}
   .cfd-col.out .cfd-dot{background:#FB75BB;}
-  .cfd-chip b{font-size:13.5px;font-weight:600;color:#16192A;display:block;line-height:1.4;}
-  .cfd-chip span{font-size:11.5px;color:rgba(22,25,42,.5);display:block;margin-top:1px;line-height:1.45;}
+  .cfd-chip b{font-size:15px;font-weight:600;color:#16192A;display:block;line-height:1.4;}
+  .cfd-chip span{font-size:12.5px;color:rgba(22,25,42,.52);display:block;margin-top:2px;line-height:1.45;}
 
   /* 경로 위 태그 */
   .cfd-tag{position:absolute;z-index:1;top:50%;transform:translate(-50%,-50%);
@@ -2464,46 +2464,44 @@
   .cfd-orb-mark{width:42px;height:42px;border-radius:14px;background:rgba(10,14,24,.42);
     display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
   .cfd-orb-t{font-size:17px;font-weight:700;letter-spacing:-.02em;}
-  .cfd-hub-cap{font-size:12.5px;color:rgba(22,25,42,.55);line-height:1.7;text-align:center;margin-top:18px;}
+  .cfd-hub-cap{font-size:14.5px;color:rgba(22,25,42,.58);line-height:1.7;text-align:center;margin-top:18px;}
 
   .cfd-notes{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:38px;}
-  .cfd-notes span{font-size:12.5px;font-weight:600;color:#16192A;background:#fff;border-radius:999px;padding:9px 16px;}
+  .cfd-notes span{font-size:14.5px;font-weight:600;color:#16192A;background:#fff;border-radius:999px;padding:11px 19px;}
 
-  .cfd-foot{margin-top:44px;text-align:center;font-size:14.5px;color:rgba(22,25,42,.6);line-height:1.8;text-wrap:balance;}
+  .cfd-foot{margin-top:44px;text-align:center;font-size:16.5px;color:rgba(22,25,42,.62);line-height:1.8;text-wrap:balance;}
   .cfd-foot b{color:#16192A;font-weight:600;}
 
   /* ===== 일러스트 카드 (토스풍 3D · 1:1 · 라운드) ===== */
   .cin-ill{position:relative;width:100%;aspect-ratio:1/1;border-radius:28px;overflow:hidden;background:#F4F6F4;}
-  .cin-ill img{display:block;width:100%;height:100%;object-fit:cover;animation:illFloat 6s ease-in-out infinite;}
-  .cin-ill.d2 img{animation-delay:-2s;}
-  .cin-ill.d3 img{animation-delay:-4s;}
-  .cin-illrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:600px;margin:34px auto 0;}
-  .cin-illrow figure{margin:0;}
-  .cin-illrow figcaption{font-size:13px;color:rgba(22,25,42,.55);line-height:1.6;margin-top:12px;text-align:center;}
-  @keyframes illFloat{0%,100%{transform:translateY(0) scale(1.02);}50%{transform:translateY(-11px) scale(1.02);}}
+  .cin-ill img{display:block;width:100%;height:100%;object-fit:cover;}
 
   /* ===== 조교 대체 / 학생 경험 ===== */
   .cin-swap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:34px;}
   .cin-swapc{border-radius:22px;padding:26px 26px 28px;}
   .cin-swapc.was{background:#F2F3F2;}
   .cin-swapc.now{background:#F1F8ED;}
-  .cin-swapc h4{font-size:12px;font-weight:600;letter-spacing:.1em;margin:0 0 14px;}
+  .cin-swapc h4{font-size:14px;font-weight:600;letter-spacing:.08em;margin:0 0 16px;}
   .cin-swapc.was h4{color:rgba(22,25,42,.45);}
   .cin-swapc.now h4{color:#2E8B22;}
-  .cin-swapl{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none;}
-  .cin-swapl li{position:relative;padding-left:17px;font-size:14.5px;line-height:1.65;}
+  .cin-swapl{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none;}
+  .cin-swapl li{position:relative;padding-left:18px;font-size:16.5px;line-height:1.68;}
   .cin-swapc.was .cin-swapl li{color:rgba(22,25,42,.55);}
   .cin-swapc.now .cin-swapl li{color:#16192A;}
   .cin-swapl li::before{content:'';position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;}
   .cin-swapc.was .cin-swapl li::before{background:#C9CBC9;}
   .cin-swapc.now .cin-swapl li::before{background:#43B02A;}
 
-  .cin-only{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:26px;}
-  .cin-onlyc{background:#fff;border-radius:20px;padding:24px 24px 26px;}
-  .cin-onlyn{width:30px;height:30px;border-radius:10px;background:#FDEDF4;color:#c44f8f;font-size:13px;font-weight:700;
-    display:flex;align-items:center;justify-content:center;margin-bottom:13px;}
-  .cin-onlyc b{display:block;font-size:16px;font-weight:600;color:#16192A;margin-bottom:5px;}
-  .cin-onlyc span{font-size:13.5px;color:rgba(22,25,42,.58);line-height:1.7;}
+  .cin-only{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:34px;}
+  .cin-onlyc{display:flex;align-items:center;gap:22px;background:#fff;border:1px solid #EDEEF1;
+    border-radius:22px;padding:22px 26px 22px 22px;}
+  .cin-onlyill{width:136px;height:136px;border-radius:18px;overflow:hidden;flex-shrink:0;background:#F4F6F4;}
+  .cin-onlyill img{display:block;width:100%;height:100%;object-fit:cover;}
+  .cin-onlytx{min-width:0;}
+  .cin-onlyn{width:28px;height:28px;border-radius:9px;background:#FDEDF4;color:#c44f8f;font-size:13px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;margin-bottom:11px;}
+  .cin-onlyc b{display:block;font-size:19px;font-weight:600;color:#16192A;margin-bottom:6px;letter-spacing:-.015em;}
+  .cin-onlyc span{font-size:15.5px;color:rgba(22,25,42,.6);line-height:1.72;}
 
   .cin-split{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:52px;align-items:center;margin-top:30px;}
   .cin-gains{display:flex;flex-direction:column;gap:12px;}
@@ -2537,7 +2535,8 @@
     .cfd-orb-halo{width:230px;height:230px;}
     .cin-swap,.cin-only{grid-template-columns:minmax(0,1fr);}
     .cin-split{grid-template-columns:minmax(0,1fr);gap:24px;}
-    .cin-illrow{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+    .cin-onlyc{flex-direction:column;align-items:flex-start;gap:16px;padding:20px;}
+    .cin-onlyill{width:100%;height:auto;aspect-ratio:16/10;}
     .cin-ill{border-radius:20px;}
   }
   @media (prefers-reduced-motion:reduce){
@@ -2546,7 +2545,7 @@
     .cfd-chip{opacity:1;transform:none;}
     .cfd-sec.play .cfd-chip{animation:none;}
     .cfd-pulse{opacity:1;}
-    .cfd-sec.play .cfd-pulse,.cfd-orb::before,.cfd-orb::after,.cfd-orb-halo,.cin-ill img{animation:none;}
+    .cfd-sec.play .cfd-pulse,.cfd-orb::before,.cfd-orb::after,.cfd-orb-halo{animation:none;}
     .cin-hero-cta:hover{transform:none;}
   }
 
@@ -3164,26 +3163,21 @@
 
       <div class="cin-only">
         <div class="cin-onlyc">
-          <div class="cin-onlyn">1</div>
-          <b>기준 설정</b>
-          <span>출석률 90% 이상이면 3,000P처럼, 우리 학원에 맞는 조건과 금액을 한 번만 정해두시면 됩니다.</span>
+          <div class="cin-onlyill"><img src="ill-data.jpg" alt="자동으로 모이는 학습 데이터"></div>
+          <div class="cin-onlytx">
+            <div class="cin-onlyn">1</div>
+            <b>기준 설정</b>
+            <span>출석률 90% 이상이면 3,000P처럼, 우리 학원에 맞는 조건과 금액을 한 번만 정해두시면 됩니다.</span>
+          </div>
         </div>
         <div class="cin-onlyc">
-          <div class="cin-onlyn">2</div>
-          <b>예치금 충전</b>
-          <span>지급은 충전해두신 예치금에서 자동으로 빠져나갑니다. 잔액이 줄면 미리 알려드립니다.</span>
+          <div class="cin-onlyill"><img src="ill-reward.jpg" alt="예치금에서 자동으로 나가는 장학 포인트"></div>
+          <div class="cin-onlytx">
+            <div class="cin-onlyn">2</div>
+            <b>예치금 충전</b>
+            <span>지급은 충전해두신 예치금에서 자동으로 빠져나갑니다. 잔액이 줄면 미리 알려드립니다.</span>
+          </div>
         </div>
-      </div>
-
-      <div class="cin-illrow">
-        <figure>
-          <div class="cin-ill"><img src="ill-data.jpg" alt="자동으로 모이는 학습 데이터"></div>
-          <figcaption>수업에서 쌓인 기록이 알아서 모입니다</figcaption>
-        </figure>
-        <figure>
-          <div class="cin-ill d2"><img src="ill-reward.jpg" alt="예치금에서 자동으로 나가는 장학 포인트"></div>
-          <figcaption>기준을 넘기면 예치금에서 바로 나갑니다</figcaption>
-        </figure>
       </div>
     </div>
   </section>
