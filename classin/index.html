@@ -2101,6 +2101,31 @@
   #page-class-mgmt .page-head h1, #page-learn-reward .page-head h1{font-size:30px;}
   #page-class-mgmt .page-head .page-sub, #page-learn-reward .page-head .page-sub{font-size:15.5px;}
   @media (max-width:760px){ .cm-vstat{grid-template-columns:minmax(0,1fr);} }
+  .lr-namebtn{background:none;border:none;font-family:inherit;font-size:inherit;font-weight:600;color:#16192A;
+    cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:3px;}
+  .lr-namebtn:hover{color:#c44f8f;}
+  .lr-namebtn span{color:rgba(22,25,42,.35);font-size:1.05em;}
+  .lr-namebtn:hover span{color:#c44f8f;}
+
+  /* 학생 상세 안의 학습 블록 */
+  .sdl{background:#fff;border:1px solid #E8E8E8;border-radius:18px;padding:26px 28px;margin-top:20px;}
+  .sdl-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
+  .sdl-title{font-size:19.5px;font-weight:700;color:#16192A;letter-spacing:-.015em;}
+  .sdl-kpi{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:22px;}
+  .sdl-kpi > div{background:#F9FAFC;border:1px solid #EEE;border-radius:14px;padding:16px 18px;}
+  .sdl-kpi b{display:block;font-size:24px;font-weight:700;color:#16192A;line-height:1.1;font-variant-numeric:tabular-nums;}
+  .sdl-kpi b.warn{color:#c44f8f;}
+  .sdl-kpi span{display:block;font-size:12.5px;color:rgba(22,25,42,.55);margin-top:6px;}
+  .sdl-body{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:26px;align-items:start;}
+  .sdl-chart{position:relative;height:280px;}
+  .sdl-sub{font-size:13px;font-weight:600;color:rgba(22,25,42,.5);margin-bottom:12px;}
+  .sdl-row{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #F3F3F5;}
+  .sdl-row:last-child{border-bottom:none;}
+  .sdl-row b{font-size:15px;font-weight:600;color:#16192A;}
+  .sdl-row small{display:block;font-size:12.5px;color:rgba(22,25,42,.5);margin-top:3px;}
+  @media (max-width:1080px){ .sdl-body{grid-template-columns:minmax(0,1fr);} .sdl-kpi{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  @media (max-width:600px){ .sdl-kpi{grid-template-columns:minmax(0,1fr);} }
+
   .lr-behind{background:#FFF7FB;border:1px solid #FBD0E4;border-radius:18px;padding:26px 26px;}
   .lr-behind-t{font-size:18px;font-weight:600;color:#16192A;margin-bottom:5px;letter-spacing:-.015em;}
   .lr-behind-s{font-size:14.5px;color:rgba(22,25,42,.6);line-height:1.65;margin-bottom:18px;}
@@ -13180,6 +13205,19 @@
         { title: '영단어 암기 인증',  status: '종료',    done: 28, goal: 28 },
       ],
     },
+    '강도윤': {
+      monthlyEarned: 4000,
+      pointHistory: [
+        { date: '2026.05.09', type: 'plus',  reason: '출석',   amt: 4000,  bal: 23500, comment: '' },
+        { date: '2026.05.02', type: 'minus', reason: '숙제 미제출', amt: -2000, bal: 19500, comment: '' },
+      ],
+      cardHistory: [
+        { date: '2026.05.06 14:20', type: 'charge', memo: '개별 충전', amt: 12000, bal: 12000 },
+      ],
+      missions: [
+        { title: '복습 인증 챌린지', status: '진행 중', done: 6, goal: 30 },
+      ],
+    },
     '정하늘': {
       monthlyEarned: 30000,
       pointHistory: [
@@ -16833,13 +16871,13 @@
 /* ===================== 클래스인 연동 모듈 ===================== */
 const CI_SYNC = '2026-07-24 13:20';
 const CI_TROPHY_RATE = 500;
-const CI_LECTURE_TOTAL = 8;   // 이번 달 공개된 강의 수
+const CI_LECTURE_TOTAL = 4;   // 이번 달 공개된 강의 수 (CLASSIN_RECORDINGS와 동일)
 
 const CLASSIN_STUDENTS = [
-  {name:'정하람', grp:'초등 부스터반', att:98, comp:92, grade:95, hands:18, hw:'12/12', watch:99, trophy:6, disc:9},
-  {name:'이서연', grp:'중등 심화반', att:100, comp:95, grade:88, hands:11, hw:'12/12', watch:97, trophy:5, disc:7},
+  {name:'정하늘', grp:'초등 부스터반', att:98, comp:92, grade:95, hands:18, hw:'12/12', watch:99, trophy:6, disc:9},
+  {name:'이서윤', grp:'중등 심화반', att:100, comp:95, grade:88, hands:11, hw:'12/12', watch:97, trophy:5, disc:7},
   {name:'김민준', grp:'중등 심화반', att:96, comp:88, grade:92, hands:14, hw:'12/12', watch:94, trophy:4, disc:6},
-  {name:'최유나', grp:'고등 정규반', att:91, comp:84, grade:90, hands:9,  hw:'11/12', watch:88, trophy:3, disc:5},
+  {name:'최은비', grp:'고등 정규반', att:91, comp:84, grade:90, hands:9,  hw:'11/12', watch:88, trophy:3, disc:5},
   {name:'박지호', grp:'고등 정규반', att:82, comp:71, grade:76, hands:5,  hw:'9/12',  watch:68, trophy:2, disc:3},
   {name:'강도윤', grp:'초등 부스터반', att:75, comp:60, grade:70, hands:3,  hw:'7/12',  watch:55, trophy:1, disc:1},
 ];
@@ -16866,8 +16904,8 @@ let CLASSIN_RULES = [
 ];
 
 const CLASSIN_LOG = [
-  {name:'정하람', trigger:'강의 완주율 99% · 과제 100% 제출 · 퀴즈 평균 95점', pts:8500, time:'오늘 13:05'},
-  {name:'이서연', trigger:'강의 완주율 97% · 과제 100% 제출', pts:5500, time:'오늘 11:40'},
+  {name:'정하늘', trigger:'강의 완주율 99% · 과제 100% 제출 · 퀴즈 평균 95점', pts:8500, time:'오늘 13:05'},
+  {name:'이서윤', trigger:'강의 완주율 97% · 과제 100% 제출', pts:5500, time:'오늘 11:40'},
   {name:'김민준', trigger:'퀴즈 평균 92점 · 출석률 96%', pts:5500, time:'어제 18:22'},
 ];
 
@@ -17119,7 +17157,7 @@ function ciRenderActivity(){
     const award = ciStudentAward(s);
     const seen = Math.round(s.watch/100*CI_LECTURE_TOTAL);
     return `<tr>
-      <td style="font-weight:600;">${s.name}</td>
+      <td><button class="lr-namebtn" onclick="ciOpenStudent('${s.name}')">${s.name}<span>›</span></button></td>
       <td style="color:rgba(22,25,42,.55);">${s.grp}</td>
       <td>${ciMetricCell(s.watch,'%')}</td>
       <td>${seen}/${CI_LECTURE_TOTAL}강</td>
@@ -17145,7 +17183,7 @@ function ciRenderRecordings(){
         <div class="lr-behind-row">
           <div style="width:36px;height:36px;border-radius:10px;background:#FDEDF4;color:#c44f8f;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13.5px;font-weight:600;">${s.name.charAt(0)}</div>
           <div style="flex:1;min-width:0;">
-            <div class="lr-behind-name">${s.name}</div>
+            <div class="lr-behind-name"><button class="lr-namebtn" onclick="ciOpenStudent('${s.name}')">${s.name}<span>›</span></button></div>
             <div class="lr-behind-sub">${s.grp} · 강의 완주율 ${s.watch}% · 과제 ${s.hw}</div>
           </div>
           <span class="ci-bar" style="width:110px;"><i class="warn" style="width:${s.watch}%"></i></span>
@@ -17174,6 +17212,102 @@ function ciRenderRecordings(){
     </div>`;
   }).join('');
 }
+/* ---- 학생별 학습 상세 (학생 상세 페이지 안의 학습 블록) ---- */
+function ciOpenStudent(name){
+  if (typeof showStudentDetail !== 'function') return;
+  showPage('student-detail');
+  showStudentDetail(name);
+  setTimeout(()=>ciMountStudentLearning(name), 30);
+}
+
+let _sdlChart = null;
+function ciMountStudentLearning(name){
+  const host = document.getElementById('sd-content');
+  const st = CLASSIN_STUDENTS.find(x=>x.name===name);
+  if(!host || !st || !_classinLinked) return;
+  if(document.getElementById('sdl-block')) document.getElementById('sdl-block').remove();
+
+  const seen = Math.round(st.watch/100*CI_LECTURE_TOTAL);
+  const hwPct = (()=>{ const p=st.hw.split('/').map(Number); return Math.round(p[0]/p[1]*100); })();
+  const award = ciStudentAward(st);
+
+  // 완주율에서 역산한 시청 강의 수와 목록을 일치시킨다
+  const lectures = CLASSIN_RECORDINGS.map((r,i)=>({
+    title:r.title, course:r.course, dur:r.dur, date:r.date, done: i < seen
+  }));
+
+  const box = document.createElement('div');
+  box.className = 'sdl';
+  box.id = 'sdl-block';
+  box.innerHTML = `
+    <div class="sdl-head">
+      <div class="sdl-title">학습 요약</div>
+      <span class="ci-badge"><span class="ci-dot"></span>클래스인 연동 데이터 · ${st.grp}</span>
+      <button class="btn-dark" style="margin-left:auto;padding:9px 16px;font-size:13px;" onclick="ciSaveStudentSummary('${name}')">이미지로 저장</button>
+    </div>
+
+    <div class="sdl-kpi">
+      <div><b class="${st.watch<80?'warn':''}">${st.watch}%</b><span>강의 완주율</span></div>
+      <div><b>${seen}/${CI_LECTURE_TOTAL}강</b><span>시청한 강의</span></div>
+      <div><b>${st.hw}</b><span>과제 제출</span></div>
+      <div><b>${st.grade}점</b><span>퀴즈 평균</span></div>
+      <div><b>${award>0?ciFmt(award)+'P':'-'}</b><span>이번 달 자동지급</span></div>
+    </div>
+
+    <div class="sdl-body">
+      <div>
+        <div class="sdl-sub">반 평균과 비교</div>
+        <div class="sdl-chart"><canvas id="sdl-canvas"></canvas></div>
+      </div>
+      <div>
+        <div class="sdl-sub">강의별 시청 이력</div>
+        ${lectures.map(l=>`
+          <div class="sdl-row">
+            <span class="cm-chip ${l.done?'ok':'wait'}">${l.done?'시청 완료':'아직 안 봄'}</span>
+            <div style="flex:1;min-width:0;">
+              <b>${l.title}</b>
+              <small>${l.course} · ${l.date} · ${l.dur}</small>
+            </div>
+          </div>`).join('')}
+        ${st.watch<80 ? `<button class="btn-dark" style="margin-top:14px;padding:10px 18px;font-size:13.5px;" onclick="ciRemind('${name}')">밀린 강의 리마인드 보내기</button>` : ''}
+      </div>
+    </div>`;
+  if(host.children.length > 1) host.insertBefore(box, host.children[1]);
+  else host.appendChild(box);
+
+  // 반 평균 (같은 클래스인 반 기준)
+  const peers = CLASSIN_STUDENTS.filter(x=>x.grp===st.grp);
+  const avg = k => Math.round(peers.reduce((a,x)=>a+x[k],0)/peers.length);
+  const avgHw = Math.round(peers.reduce((a,x)=>{const p=x.hw.split('/').map(Number);return a+p[0]/p[1]*100;},0)/peers.length);
+
+  if(typeof Chart === 'undefined') return;
+  if(_sdlChart){ _sdlChart.destroy(); _sdlChart = null; }
+  _sdlChart = new Chart(document.getElementById('sdl-canvas'), {
+    type: 'radar',
+    data: {
+      labels: ['강의 완주율','과제 제출률','퀴즈 평균','출석률','토론 참여'],
+      datasets: [
+        { label: name, data:[st.watch, hwPct, st.grade, st.att, Math.min(st.disc*10,100)],
+          borderColor:'#FB75BB', backgroundColor:'rgba(251,117,187,.18)', borderWidth:2,
+          pointBackgroundColor:'#FB75BB', pointRadius:3 },
+        { label: '반 평균', data:[avg('watch'), avgHw, avg('grade'), avg('att'), Math.min(avg('disc')*10,100)],
+          borderColor:'#43B02A', backgroundColor:'rgba(67,176,42,.12)', borderWidth:2,
+          pointBackgroundColor:'#43B02A', pointRadius:3 },
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'bottom', labels:{ boxWidth:10, font:{ size:12, family:'Pretendard' } } } },
+      scales:{ r:{ min:0, max:100, ticks:{ stepSize:25, font:{ size:10 } },
+        pointLabels:{ font:{ size:12, family:'Pretendard' }, color:'rgba(22,25,42,.65)' },
+        grid:{ color:'#EDEEF1' }, angleLines:{ color:'#EDEEF1' } } }
+    }
+  });
+}
+function ciSaveStudentSummary(name){
+  showToast(`${name} 학생 학습 요약을 이미지로 저장했어요. 상담 자료로 바로 쓰실 수 있습니다.`);
+}
+
 function ciRemind(name){ cmToast(`${name} 학생에게 강의 시청 리마인드를 보냈어요. 크래빗 앱으로 알림이 갑니다.`); }
 function ciRemindClass(title, n){ cmToast(`'${title}' 아직 안 본 학생 ${n}명에게 리마인드를 보냈어요.`); }
 
