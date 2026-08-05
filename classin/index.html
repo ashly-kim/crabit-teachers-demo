@@ -2405,8 +2405,6 @@
   .cfd-sec{background:#F7F8F6;padding:104px 56px 108px;}
   .cfd-inner{max-width:1140px;margin:0 auto;}
   .cfd-head{text-align:center;max-width:660px;margin:0 auto 56px;}
-  .cfd-eyebrow{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.14em;color:#2E8B22;
-    background:#EAF4E5;border-radius:999px;padding:6px 14px;margin-bottom:20px;}
   .cfd-h2{font-size:clamp(25px,3.5vw,38px);font-weight:600;color:#16192A;letter-spacing:-.03em;
     line-height:1.36;margin:0 0 16px;text-wrap:balance;}
   .cfd-h2 b{font-weight:700;color:#FB75BB;}
@@ -2424,21 +2422,24 @@
   @keyframes cfdFlow{from{stroke-dashoffset:100;}to{stroke-dashoffset:0;}}
 
   .cfd-col{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;}
-  .cfd-coltag{font-size:12.5px;font-weight:600;letter-spacing:.1em;color:rgba(22,25,42,.42);margin-bottom:6px;}
-  .cfd-col.cfd-dst .cfd-coltag{text-align:right;}
+  .cfd-coltag{display:flex;align-items:center;height:30px;margin-bottom:12px;}
+  .cfd-logo{display:block;width:auto;}
+  .cfd-logo.ci{height:23px;}
+  .cfd-logo.cr{height:26px;}
   .cfd-chip{display:flex;align-items:center;background:#fff;border-radius:13px;padding:13px 17px;
     box-shadow:0 1px 2px rgba(22,25,42,.05);opacity:0;transform:translateX(-14px);}
-  .cfd-col.cfd-dst .cfd-chip{text-align:right;transform:translateX(14px);}
+  .cfd-col.cfd-dst .cfd-chip{transform:translateX(14px);}
   .cfd-sec.play .cfd-chip{animation:cfdIn .55s cubic-bezier(.22,1,.36,1) forwards;}
   @keyframes cfdIn{to{opacity:1;transform:none;}}
   .cfd-chip b{font-size:15px;font-weight:600;color:#16192A;display:block;line-height:1.4;}
   .cfd-chip span{font-size:12.5px;color:rgba(22,25,42,.52);display:block;margin-top:2px;line-height:1.45;}
 
   /* 경로 위 태그 */
-  .cfd-tag{position:absolute;z-index:1;top:50%;transform:translate(-50%,-50%);
-    font-size:10.5px;font-weight:600;letter-spacing:.06em;border-radius:999px;padding:4px 10px;white-space:nowrap;}
-  .cfd-tag.g{left:29%;color:#2E8B22;background:#EAF4E5;}
-  .cfd-tag.p{left:71%;color:#c44f8f;background:#FDEDF4;}
+  .cfd-tag{position:absolute;z-index:2;top:50%;transform:translate(-50%,-50%);
+    font-size:12px;font-weight:600;border-radius:999px;padding:7px 13px;white-space:nowrap;
+    box-shadow:0 1px 3px rgba(22,25,42,.06);}
+  .cfd-tag.g{left:31%;color:#2E8B22;background:#EAF4E5;}
+  .cfd-tag.p{left:69%;color:#c44f8f;background:#FDEDF4;}
 
   /* 중앙 오브 */
   .cfd-hub{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;}
@@ -2523,8 +2524,6 @@
     .cfd-head{margin-bottom:34px;}
     .cfd-map{grid-template-columns:minmax(0,1fr);gap:26px;}
     .cfd-wires,.cfd-tag{display:none;}
-    .cfd-col.cfd-dst .cfd-coltag{text-align:left;}
-    .cfd-col.cfd-dst .cfd-chip{text-align:left;}
     .cfd-col.cfd-dst .cfd-chip,.cfd-chip{transform:translateY(12px);}
     .cfd-orb{width:150px;height:150px;}
     .cfd-orb-halo{width:230px;height:230px;}
@@ -3075,7 +3074,6 @@
   <section class="cfd-sec" id="cfd-sec">
     <div class="cfd-inner">
       <div class="cfd-head cin-rv">
-        <div class="cfd-eyebrow">CRABIT CLASS</div>
         <h2 class="cfd-h2">학습 데이터가 들어오면,<br><b>보상은 알아서 나갑니다</b></h2>
         <p class="cfd-sub">수업에서 쌓인 기록이 그대로 보상의 기준이 됩니다. 원장님이 중간에서 판단하고 옮겨 적을 일이 없습니다.</p>
       </div>
@@ -3084,7 +3082,7 @@
         <svg class="cfd-wires" id="cfd-wires" aria-hidden="true"></svg>
 
         <div class="cfd-col cfd-src cin-rv">
-          <div class="cfd-coltag">클래스인에서 들어옵니다</div>
+          <div class="cfd-coltag"><img src="classin-logo.png" alt="ClassIn" class="cfd-logo ci"></div>
           <div class="cfd-chip" style="animation-delay:.05s"><div><b>출결</b><span>지각·조퇴까지 회차별로</span></div></div>
           <div class="cfd-chip" style="animation-delay:.13s"><div><b>수업 참여</b><span>손들기, 발표, 토론 횟수</span></div></div>
           <div class="cfd-chip" style="animation-delay:.21s"><div><b>과제 제출</b><span>제출 여부와 채점 결과</span></div></div>
@@ -3104,7 +3102,7 @@
         </div>
 
         <div class="cfd-col cfd-dst cin-rv">
-          <div class="cfd-coltag">학생에게 나갑니다</div>
+          <div class="cfd-coltag"><img src="logo.png" alt="크래빗" class="cfd-logo cr"></div>
           <div class="cfd-chip" style="animation-delay:.05s"><div><b>장학 포인트 적립</b><span>왜 받았는지 사유와 함께</span></div></div>
           <div class="cfd-chip" style="animation-delay:.13s"><div><b>스탬프와 미션</b><span>모으는 재미가 붙습니다</span></div></div>
           <div class="cfd-chip" style="animation-delay:.21s"><div><b>장학카드로 사용</b><span>모은 만큼 직접 씁니다</span></div></div>
@@ -3112,8 +3110,8 @@
           <div class="cfd-chip" style="animation-delay:.37s"><div><b>학원 소속감</b><span>우리 학원에서만 받는 보상</span></div></div>
         </div>
 
-        <span class="cfd-tag g">자동 수집</span>
-        <span class="cfd-tag p">자동 지급</span>
+        <span class="cfd-tag g">클래스인에서 자동으로 수집합니다</span>
+        <span class="cfd-tag p">크래빗에서 자동으로 보상합니다</span>
       </div>
 
       <p class="cfd-foot cin-rv">원장님이 해두실 일은 두 가지입니다. <b>기준을 정하는 것</b>, 그리고 <b>예치금을 채워두는 것</b>.</p>
