@@ -2053,41 +2053,114 @@
   .apihint-sw.on{background:#2E8B22;}
   .apihint-sw.on::after{transform:translateX(15px);}
 
-  /* ===== 크래빗-in 소개 랜딩 (연동 전) ===== */
-  .cin-hero{background:linear-gradient(135deg,#F6FBF3 0%,#FFF7FB 100%);border:1px solid #E4EFDE;border-radius:22px;padding:40px 44px;margin-bottom:22px;}
-  .cin-hero-badge{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:#2E8B22;background:#fff;border:1px solid #CDE9C3;border-radius:20px;padding:6px 14px;margin-bottom:16px;}
-  .cin-hero h1{font-size:32px;font-weight:700;color:#16192A;letter-spacing:-0.6px;line-height:1.3;margin-bottom:12px;}
-  .cin-hero h1 .pink{color:#FB75BB;}
-  .cin-hero-sub{font-size:16px;color:rgba(22,25,42,.62);line-height:1.65;max-width:640px;}
-  .cin-hero-marks{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
-  .cin-mark{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#16192A;background:#fff;border:1px solid #E8E8E8;border-radius:10px;padding:9px 14px;}
+  /* ===== 크래빗-in 소개 랜딩 (연동 전) - 어드민 화면과 의도적으로 다른 톤 ===== */
+  #page-classin-intro{margin:-40px -44px 0;}
+  @media (max-width:900px){ #page-classin-intro{margin:-24px -16px 0;} }
+  @media (max-width:560px){ #page-classin-intro{margin:-20px -12px 0;} }
 
-  .cin-sec-title{font-size:19px;font-weight:700;color:#16192A;letter-spacing:-0.2px;margin:32px 0 6px;display:flex;align-items:center;}
-  .cin-sec-title::before{content:'';display:inline-block;width:4px;height:18px;background:#FB75BB;border-radius:2px;margin-right:10px;}
-  .cin-sec-sub{font-size:13.5px;color:rgba(22,25,42,.55);margin-bottom:16px;line-height:1.6;}
+  .cin-dark{background:#0F1120;color:#fff;padding:70px 56px 64px;position:relative;overflow:hidden;}
+  .cin-dark::before{content:'';position:absolute;inset:-40% 0 auto 0;height:520px;
+    background:radial-gradient(closest-side at 30% 50%, rgba(46,139,34,.28), transparent 70%),
+               radial-gradient(closest-side at 72% 40%, rgba(251,117,187,.26), transparent 70%);
+    filter:blur(14px);animation:cinAurora 14s ease-in-out infinite alternate;}
+  @keyframes cinAurora{0%{transform:translate3d(0,0,0) scale(1);}100%{transform:translate3d(0,4%,0) scale(1.1);}}
+  .cin-dark > *{position:relative;z-index:1;}
 
-  .cin-feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
-  .cin-feat{background:#fff;border:1px solid #ECECEF;border-radius:16px;padding:22px 24px;}
-  .cin-feat-ico{width:42px;height:42px;border-radius:11px;background:#F2F9EF;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-  .cin-feat-ico.pink{background:#FFF3F9;}
-  .cin-feat h3{font-size:16px;font-weight:700;color:#16192A;margin-bottom:7px;}
-  .cin-feat p{font-size:13.5px;color:rgba(22,25,42,.62);line-height:1.65;}
+  .cin-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;letter-spacing:.08em;
+    color:#9BD98C;background:rgba(255,255,255,.06);border:1px solid rgba(155,217,140,.3);border-radius:20px;padding:7px 15px;margin-bottom:22px;}
+  #page-classin-intro .cin-h1{color:#fff;font-size:clamp(30px,4.6vw,52px);font-weight:700;line-height:1.22;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;}
+  .cin-h1 .g{background:linear-gradient(92deg,#FB75BB 0%,#FFB3DA 60%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .cin-lead{font-size:clamp(15px,1.6vw,17.5px);color:rgba(255,255,255,.66);line-height:1.7;max-width:560px;}
+  .cin-cta-row{display:flex;flex-wrap:wrap;gap:11px;margin-top:32px;}
+  .cin-btn{border:none;border-radius:13px;padding:15px 28px;font-size:15.5px;font-weight:700;font-family:inherit;cursor:pointer;transition:transform .16s,box-shadow .16s,background .16s;}
+  .cin-btn.primary{background:#FB75BB;color:#fff;box-shadow:0 8px 26px rgba(251,117,187,.34);}
+  .cin-btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(251,117,187,.46);}
+  .cin-btn.ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18);}
+  .cin-btn.ghost:hover{background:rgba(255,255,255,.14);}
 
-  .cin-benefit{background:#F9FAFC;border:1px solid #ECECEF;border-radius:16px;padding:24px 26px;}
-  .cin-benefit-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #F0F0F2;}
-  .cin-benefit-row:last-child{border-bottom:none;}
-  .cin-benefit-check{width:20px;height:20px;border-radius:50%;background:#EEF8EA;color:#2E8B22;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:12px;font-weight:700;}
-  .cin-benefit-row b{font-size:14.5px;font-weight:600;color:#16192A;display:block;margin-bottom:2px;}
-  .cin-benefit-row span{font-size:13px;color:rgba(22,25,42,.58);line-height:1.6;}
+  /* 히어로 데이터 흐름 시각화 */
+  .cin-viz{margin-top:44px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:26px 28px;}
+  .cin-viz-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+  .cin-viz-label{font-size:11.5px;font-weight:600;letter-spacing:.1em;color:rgba(255,255,255,.45);}
+  .cin-viz-live{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:#9BD98C;}
+  .cin-viz-live i{width:7px;height:7px;border-radius:50%;background:#7FC96E;display:block;animation:cinPulse 1.6s ease-in-out infinite;}
+  @keyframes cinPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.8);}}
+  .cin-viz svg{width:100%;height:auto;display:block;}
+  .cin-viz-legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:8px;}
+  .cin-viz-legend span{font-size:12px;color:rgba(255,255,255,.55);display:inline-flex;align-items:center;gap:6px;}
+  .cin-viz-legend i{width:8px;height:8px;border-radius:2px;display:block;}
 
-  .cin-price-card{background:#16192A;border-radius:20px;padding:32px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:24px;}
-  .cin-price-left{flex:1;min-width:260px;}
-  .cin-price-label{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:0.4px;margin-bottom:8px;}
-  .cin-price-num{font-size:34px;font-weight:700;color:#fff;letter-spacing:-0.8px;line-height:1.1;}
-  .cin-price-num small{font-size:16px;font-weight:500;color:rgba(255,255,255,.65);margin-left:4px;}
-  .cin-price-note{font-size:13px;color:rgba(255,255,255,.6);margin-top:10px;line-height:1.6;}
-  .cin-price-cta{background:#FB75BB;color:#fff;border:none;border-radius:13px;padding:16px 32px;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;white-space:nowrap;transition:background .13s;}
-  .cin-price-cta:hover{background:#f45faf;}
+  /* 인터랙티브 단계 */
+  .cin-light{background:#fff;padding:64px 56px;}
+  .cin-kicker{font-size:12px;font-weight:600;letter-spacing:.1em;color:#FB75BB;margin-bottom:10px;}
+  #page-classin-intro .cin-h2{color:#16192A;font-size:clamp(22px,2.8vw,30px);font-weight:700;letter-spacing:-.025em;line-height:1.3;margin:0 0 10px;text-wrap:balance;}
+  .cin-sub2{font-size:15px;color:rgba(22,25,42,.58);line-height:1.7;max-width:600px;}
+
+  .cin-steps{display:grid;grid-template-columns:270px minmax(0,1fr);gap:26px;margin-top:32px;align-items:start;}
+  .cin-step-list{display:flex;flex-direction:column;gap:8px;}
+  .cin-step > span:last-child{display:block;min-width:0;}
+  .cin-step{display:flex;align-items:flex-start;gap:13px;padding:15px 17px;border-radius:14px;border:1px solid #ECECEF;background:#fff;cursor:pointer;transition:border-color .18s,background .18s,transform .18s;text-align:left;font-family:inherit;width:100%;}
+  .cin-step:hover{border-color:#d6d6db;}
+  .cin-step.on{border-color:#FBD0E4;background:#FFF7FB;transform:translateX(3px);}
+  .cin-step-n{width:24px;height:24px;border-radius:50%;background:#F0F1F4;color:rgba(22,25,42,.5);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .18s,color .18s;}
+  .cin-step.on .cin-step-n{background:#FB75BB;color:#fff;}
+  .cin-step-t{display:block;font-size:14.5px;font-weight:600;color:#16192A;line-height:1.45;}
+  .cin-step-who{display:block;font-size:11.5px;color:rgba(22,25,42,.5);margin-top:3px;}
+  .cin-step-panel{background:#F9FAFC;border:1px solid #ECECEF;border-radius:18px;padding:30px 32px;min-height:250px;}
+  .cin-panel-title{font-size:19px;font-weight:700;color:#16192A;margin-bottom:9px;}
+  .cin-panel-desc{font-size:14.5px;color:rgba(22,25,42,.62);line-height:1.75;margin-bottom:18px;}
+  .cin-panel-shot{background:#fff;border:1px solid #E8E8E8;border-radius:13px;padding:16px 18px;font-size:13px;color:rgba(22,25,42,.62);line-height:1.7;}
+  .cin-panel-shot b{color:#16192A;font-weight:600;}
+  .cin-panel-fade{animation:cinFade .32s ease;}
+  @keyframes cinFade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+  /* Before / After */
+  .cin-ba-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px;margin-bottom:20px;}
+  .cin-ba-sw{display:inline-flex;background:#F0F1F4;border-radius:12px;padding:4px;gap:2px;}
+  .cin-ba-sw button{border:none;background:transparent;font-family:inherit;font-size:13.5px;font-weight:600;color:rgba(22,25,42,.55);padding:9px 18px;border-radius:9px;cursor:pointer;transition:background .18s,color .18s;}
+  .cin-ba-sw button.on{background:#16192A;color:#fff;}
+  .cin-ba-list{display:flex;flex-direction:column;gap:10px;}
+  .cin-ba-item{display:flex;align-items:flex-start;gap:12px;background:#fff;border:1px solid #ECECEF;border-radius:14px;padding:16px 18px;animation:cinFade .3s ease;}
+  .cin-ba-mark{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;margin-top:1px;}
+  .cin-ba-mark.before{background:#FBF3D9;color:#8A6D10;}
+  .cin-ba-mark.after{background:#EEF8EA;color:#2E8B22;}
+  .cin-ba-item > span{display:block;min-width:0;}
+  .cin-ba-item b{display:block;font-size:14.5px;font-weight:600;color:#16192A;margin-bottom:3px;}
+  .cin-ba-item span span{display:block;font-size:13px;color:rgba(22,25,42,.58);line-height:1.6;}
+
+  /* 기능 카드 */
+  .cin-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px;}
+  .cin-card{background:#fff;border:1px solid #ECECEF;border-radius:18px;padding:26px 24px;transition:transform .2s,box-shadow .2s,border-color .2s;}
+  .cin-card:hover{transform:translateY(-4px);border-color:#FBD0E4;box-shadow:0 14px 34px rgba(22,25,42,.09);}
+  .cin-card-ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:15px;background:#F2F9EF;}
+  .cin-card-ico.p{background:#FFF3F9;}
+  .cin-card h3{font-size:16.5px;font-weight:700;color:#16192A;margin-bottom:8px;}
+  .cin-card p{font-size:13.5px;color:rgba(22,25,42,.6);line-height:1.7;}
+
+  /* 가격 */
+  .cin-pricewrap{background:#0F1120;padding:60px 56px;}
+  .cin-price{max-width:620px;margin:0 auto;background:linear-gradient(150deg,rgba(251,117,187,.16),rgba(46,139,34,.12));border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:40px 40px 36px;text-align:center;}
+  .cin-price-tag{font-size:12px;font-weight:600;letter-spacing:.1em;color:#9BD98C;margin-bottom:14px;}
+  .cin-price-big{font-size:clamp(34px,5vw,46px);font-weight:700;color:#fff;letter-spacing:-.03em;line-height:1.1;}
+  .cin-price-big small{font-size:17px;font-weight:500;color:rgba(255,255,255,.6);margin-left:5px;}
+  .cin-price-desc{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;margin-top:14px;}
+  .cin-price-incl{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:24px 0 26px;}
+  .cin-price-incl span{font-size:12.5px;font-weight:500;color:rgba(255,255,255,.8);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:9px;padding:7px 13px;}
+  .cin-price-fine{font-size:12px;color:rgba(255,255,255,.42);margin-top:16px;line-height:1.6;}
+
+  @media (max-width:900px){
+    .cin-dark{padding:48px 22px 44px;}
+    .cin-light{padding:46px 22px;}
+    .cin-pricewrap{padding:44px 22px;}
+    .cin-steps{grid-template-columns:minmax(0,1fr);}
+    .cin-cards{grid-template-columns:minmax(0,1fr);}
+    .cin-price{padding:30px 22px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .cin-dark::before,.cin-viz-live i{animation:none;}
+    .cin-panel-fade,.cin-ba-item{animation:none;}
+    .cin-btn.primary:hover,.cin-card:hover{transform:none;}
+  }
 
   /* 결제 모달 */
   .cpay-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #F0F0F2;font-size:14.5px;}
@@ -2599,83 +2672,117 @@
 
 <!-- PAGE: 크래빗-in 소개 (연동 전 랜딩) -->
 <div id="page-classin-intro" style="display:none;">
-  <div class="cin-hero">
-    <div class="cin-hero-badge"><span class="ci-dot"></span>크래빗 × 클래스인 제휴 요금제</div>
-    <h1>수업은 클래스인이,<br><span class="pink">보상은 크래빗</span>이 맡습니다</h1>
-    <p class="cin-hero-sub">원장님은 크래빗 티처스에서 반을 만들고 수업을 여시면 됩니다. 출결·성적·과제 데이터가 자동으로 넘어와, 조건을 채운 학생에게 장학금이 알아서 지급돼요.</p>
-    <div class="cin-hero-marks">
-      <span class="cin-mark"><span class="ci-dot"></span>클래스인 관리자 화면 접속 불필요</span>
-      <span class="cin-mark"><span class="ci-dot"></span>학생 앱에 입장 버튼 자동 생성</span>
-      <span class="cin-mark"><span class="ci-dot"></span>지급 승인 없이 자동 실행</span>
-    </div>
-  </div>
 
-  <div class="ci-flow" style="margin-bottom:6px;">
-    <span class="ci-flow-node crab" data-api="addCourse,addCourseClassMultiple"><span class="ci-dot" style="background:#FB75BB;"></span>티처스에서 반 개설</span>
-    <span class="ci-flow-arrow">→</span>
-    <span class="ci-flow-node" data-api="addCourseStudentMultiple,modifyCourseTeacher"><span class="ci-dot"></span>클래스인 수업 자동 생성</span>
-    <span class="ci-flow-arrow">→</span>
-    <span class="ci-flow-node" data-api="dsDescription,dsDetails"><span class="ci-dot"></span>학습 데이터 수신</span>
-    <span class="ci-flow-arrow">→</span>
-    <span class="ci-flow-node crab"><span class="ci-dot" style="background:#FB75BB;"></span>장학금 자동 지급</span>
-  </div>
+  <!-- 히어로 -->
+  <section class="cin-dark">
+    <div class="cin-eyebrow"><span class="ci-dot"></span>크래빗 × 클래스인 제휴 요금제</div>
+    <h1 class="cin-h1">수업은 클래스인이,<br><span class="g">보상은 크래빗</span>이 맡습니다</h1>
+    <p class="cin-lead">원장님은 티처스에서 반을 만들고 수업만 여시면 됩니다. 출결·성적·과제가 자동으로 넘어와, 조건을 채운 학생에게 장학금이 알아서 나갑니다.</p>
+    <div class="cin-cta-row">
+      <button class="cin-btn primary" onclick="openClassinPay()">연동 시작하기</button>
+      <button class="cin-btn ghost" onclick="cinScrollToSteps()">어떻게 동작하나요</button>
+    </div>
 
-  <div class="cin-sec-title">연동하면 이런 메뉴가 열려요</div>
-  <div class="cin-sec-sub">결제 즉시 티처스 왼쪽 메뉴에 세 가지가 추가되고, 대시보드에도 연동 현황 위젯이 생깁니다.</div>
-  <div class="cin-feat-grid">
-    <div class="cin-feat" data-api="dsDetails,dsCourseData">
-      <div class="cin-feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div>
-      <h3>클래스인 학습활동</h3>
-      <p>학생별 출석률, 활동 완수율, 평균 성적, 손들기 횟수, 숙제 제출까지 한 표로 봅니다. 학부모 상담 때 그대로 쓰실 수 있어요.</p>
+    <div class="cin-viz">
+      <div class="cin-viz-top">
+        <span class="cin-viz-label">데이터 흐름</span>
+        <span class="cin-viz-live"><i></i>실시간 수신 중</span>
+      </div>
+      <svg viewBox="0 0 900 150" preserveAspectRatio="xMidYMid meet" role="img" aria-label="클래스인에서 크래빗으로 학습 데이터가 넘어와 장학금으로 전환되는 흐름">
+        <defs>
+          <linearGradient id="cinLine" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#7FC96E"/><stop offset="55%" stop-color="#7FC96E"/>
+            <stop offset="100%" stop-color="#FB75BB"/>
+          </linearGradient>
+        </defs>
+        <path id="cinPath" d="M120 75 C 300 75, 320 75, 450 75 S 620 75, 780 75" fill="none" stroke="url(#cinLine)" stroke-width="2" stroke-dasharray="5 6" opacity=".55"/>
+        <g>
+          <rect x="18" y="47" width="104" height="56" rx="14" fill="rgba(127,201,110,.14)" stroke="rgba(127,201,110,.45)"/>
+          <text x="70" y="71" text-anchor="middle" fill="#9BD98C" font-size="11" font-weight="600" font-family="inherit">클래스인</text>
+          <text x="70" y="88" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="10" font-family="inherit">수업 진행</text>
+        </g>
+        <g>
+          <rect x="398" y="47" width="104" height="56" rx="14" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.2)"/>
+          <text x="450" y="71" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="inherit">크래빗</text>
+          <text x="450" y="88" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="10" font-family="inherit">규칙 판정</text>
+        </g>
+        <g>
+          <rect x="778" y="47" width="104" height="56" rx="14" fill="rgba(251,117,187,.16)" stroke="rgba(251,117,187,.5)"/>
+          <text x="830" y="71" text-anchor="middle" fill="#FFB3DA" font-size="11" font-weight="600" font-family="inherit">장학금</text>
+          <text x="830" y="88" text-anchor="middle" fill="rgba(255,255,255,.55)" font-size="10" font-family="inherit">자동 지급</text>
+        </g>
+        <circle r="4.5" fill="#7FC96E"><animateMotion dur="3.4s" repeatCount="indefinite" begin="0s"><mpath href="#cinPath"/></animateMotion></circle>
+        <circle r="4.5" fill="#9BD98C"><animateMotion dur="3.4s" repeatCount="indefinite" begin="0.85s"><mpath href="#cinPath"/></animateMotion></circle>
+        <circle r="4.5" fill="#FB75BB"><animateMotion dur="3.4s" repeatCount="indefinite" begin="1.7s"><mpath href="#cinPath"/></animateMotion></circle>
+        <circle r="4.5" fill="#FFB3DA"><animateMotion dur="3.4s" repeatCount="indefinite" begin="2.55s"><mpath href="#cinPath"/></animateMotion></circle>
+        <text x="255" y="120" text-anchor="middle" fill="rgba(255,255,255,.4)" font-size="10.5" font-family="inherit">출결 · 손들기 · 과제 · 성적 · 시청률</text>
+        <text x="640" y="120" text-anchor="middle" fill="rgba(255,255,255,.4)" font-size="10.5" font-family="inherit">조건 충족 학생에게 포인트</text>
+      </svg>
+      <div class="cin-viz-legend">
+        <span><i style="background:#7FC96E;"></i>클래스인이 보내는 학습 데이터</span>
+        <span><i style="background:#FB75BB;"></i>크래빗이 지급하는 장학 포인트</span>
+      </div>
     </div>
-    <div class="cin-feat" data-api="getWebcastUrl,dsClassRelated">
-      <div class="cin-feat-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="15" height="16" rx="2"/><path d="M22 7.5v9l-5-3.5z"/></svg></div>
-      <h3>녹화수업 다시보기</h3>
-      <p>수업이 자동 녹화됩니다. 결석한 학생이 나중에 보고, 누가 얼마나 봤는지 시청률까지 남습니다.</p>
-    </div>
-    <div class="cin-feat" data-api="dsDetails">
-      <div class="cin-feat-ico pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FB75BB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg></div>
-      <h3>장학금 자동지급</h3>
-      <p>출석률 90% 이상이면 3,000P처럼 규칙만 켜두시면 됩니다. 원장님 승인 없이 매주 자동으로 나갑니다.</p>
-    </div>
-    <div class="cin-feat">
-      <div class="cin-feat-ico pink"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FB75BB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 15h4"/></svg></div>
-      <h3>대시보드 연동 현황</h3>
-      <p>진행 중인 수업과 이번 주 자동 지급액이 대시보드 첫 화면에 올라옵니다.</p>
-    </div>
-  </div>
+  </section>
 
-  <div class="cin-sec-title">원장님이 실제로 덜어내시는 일</div>
-  <div class="cin-sec-sub">기능 목록보다 이쪽이 더 중요할 것 같아 따로 정리했어요.</div>
-  <div class="cin-benefit">
-    <div class="cin-benefit-row">
-      <span class="cin-benefit-check">✓</span>
-      <div><b>같은 정보를 두 번 입력하지 않습니다</b><span>반 편성과 시간표를 티처스에서 한 번만 만들면 클래스인 수업이 따라 생깁니다. 두 시스템을 오갈 일이 없어요.</span></div>
-    </div>
-    <div class="cin-benefit-row">
-      <span class="cin-benefit-check">✓</span>
-      <div><b>매주 수업 링크를 만들어 뿌리지 않습니다</b><span>학생 앱에 입장 버튼이 자동으로 생깁니다. 단톡방에 링크를 복사해 붙이던 일이 없어져요.</span></div>
-    </div>
-    <div class="cin-benefit-row">
-      <span class="cin-benefit-check">✓</span>
-      <div><b>누가 잘하고 있는지 강사 말에만 의존하지 않습니다</b><span>참여도가 숫자로 쌓입니다. 상담 전날 학생별로 뽑아보실 수 있어요.</span></div>
-    </div>
-    <div class="cin-benefit-row">
-      <span class="cin-benefit-check">✓</span>
-      <div><b>장학금 지급을 매번 판단하지 않습니다</b><span>규칙을 한 번 정해두면 조건을 채운 학생에게 자동으로 나갑니다. 기준이 명확해서 학부모 문의도 줄어요.</span></div>
-    </div>
-  </div>
+  <!-- 인터랙티브 4단계 -->
+  <section class="cin-light" id="cin-steps-sec">
+    <div class="cin-kicker">HOW IT WORKS</div>
+    <h2 class="cin-h2">원장님이 하는 일은 첫 단계 하나뿐입니다</h2>
+    <p class="cin-sub2">나머지 세 단계는 연동이 알아서 돌아갑니다. 단계를 눌러 무엇이 일어나는지 확인해 보세요.</p>
 
-  <div class="cin-price-card">
-    <div class="cin-price-left">
-      <div class="cin-price-label">크래빗-in 결합 요금제</div>
-      <div class="cin-price-num">99,000원<small>/ 월</small></div>
-      <div class="cin-price-note">현재 쓰시는 장학카드 요금에 더해지는 금액이에요. 클래스인 계정은 연동 기간 동안 별도 비용 없이 제공됩니다.</div>
+    <div class="cin-steps">
+      <div class="cin-step-list" id="cin-step-list"></div>
+      <div class="cin-step-panel" id="cin-step-panel"></div>
     </div>
-    <button class="cin-price-cta" onclick="openClassinPay()">연동 시작하기</button>
-  </div>
 
-  <p style="font-size:12.5px;color:rgba(22,25,42,.5);margin-top:14px;line-height:1.6;">연동 후에도 언제든 해지하실 수 있고, 해지 시 이미 지급된 장학 포인트는 그대로 유지됩니다.</p>
+    <div class="cin-ba-head">
+      <div>
+        <div class="cin-kicker" style="margin-bottom:6px;">BEFORE / AFTER</div>
+        <h2 class="cin-h2" style="margin-bottom:0;">원장님 일과가 이렇게 바뀝니다</h2>
+      </div>
+      <div class="cin-ba-sw" style="margin-left:auto;">
+        <button class="on" id="cin-ba-before" onclick="cinSetBA(false)">지금</button>
+        <button id="cin-ba-after" onclick="cinSetBA(true)">연동 후</button>
+      </div>
+    </div>
+    <div class="cin-ba-list" id="cin-ba-list"></div>
+
+    <div class="cin-kicker" style="margin-top:44px;">WHAT YOU GET</div>
+    <h2 class="cin-h2">결제하면 바로 열리는 것</h2>
+    <p class="cin-sub2">티처스 왼쪽 메뉴에 세 가지가 추가되고, 대시보드에도 연동 현황이 올라옵니다.</p>
+    <div class="cin-cards">
+      <div class="cin-card">
+        <div class="cin-card-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/></svg></div>
+        <h3>클래스인 학습활동</h3>
+        <p>학생별 출석률, 완수율, 평균 성적, 손들기, 숙제 제출을 한 표로 봅니다. 상담 자료가 자동으로 쌓입니다.</p>
+      </div>
+      <div class="cin-card">
+        <div class="cin-card-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="15" height="16" rx="2"/><path d="M22 7.5v9l-5-3.5z"/></svg></div>
+        <h3>녹화수업 다시보기</h3>
+        <p>수업이 자동 녹화됩니다. 결석한 학생이 나중에 보고, 누가 얼마나 봤는지 시청률이 남습니다.</p>
+      </div>
+      <div class="cin-card">
+        <div class="cin-card-ico p"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#FB75BB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg></div>
+        <h3>장학금 자동지급</h3>
+        <p>규칙만 켜두시면 조건을 채운 학생에게 매주 자동으로 나갑니다. 승인 절차가 없습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 가격 -->
+  <section class="cin-pricewrap">
+    <div class="cin-price">
+      <div class="cin-price-tag">크래빗-in 결합 요금제</div>
+      <div class="cin-price-big">99,000원<small>/ 월</small></div>
+      <p class="cin-price-desc">지금 쓰시는 장학카드 요금에 더해지는 금액입니다.<br>클래스인 계정은 연동 기간 동안 별도 비용 없이 제공됩니다.</p>
+      <div class="cin-price-incl">
+        <span>수업 개설·배정</span><span>학습 데이터 수신</span><span>녹화 다시보기</span><span>장학금 자동지급</span><span>클래스인 계정 포함</span>
+      </div>
+      <button class="cin-btn primary" style="width:100%;" onclick="openClassinPay()">연동 시작하기</button>
+      <p class="cin-price-fine">언제든 해지하실 수 있고, 해지해도 이미 지급된 장학 포인트는 그대로 유지됩니다.</p>
+    </div>
+  </section>
 </div>
 
 <!-- Modal: 크래빗-in 결제 -->
@@ -2730,7 +2837,7 @@
     <div style="overflow-x:auto;">
       <table class="ci-table">
         <thead><tr>
-          <th>학생</th><th>반</th><th>출석률</th><th>활동 완수율</th><th>평균 성적</th><th>손들기</th><th>숙제</th><th>녹화 시청률</th><th>트로피</th><th>이번 달 자동지급</th>
+          <th data-api="register,addSchoolStudent">학생</th><th data-api="addCourse,addCourseClass">반</th><th data-api="dsDetails">출석률</th><th data-api="dsCourseData">활동 완수율</th><th data-api="dsCourseData">평균 성적</th><th data-api="dsDetails">손들기</th><th data-api="dsCourseData">숙제</th><th data-api="dsClassRelated">녹화 시청률</th><th data-api="dsDetails">트로피</th><th>이번 달 자동지급</th>
         </tr></thead>
         <tbody id="ci-activity-tbody" data-api="dsDetails,dsCourseData"></tbody>
       </table>
@@ -2777,7 +2884,7 @@
         <span class="ci-badge" style="background:#FFF7FB;border-color:#FBD0E4;color:#c44f8f;">크래빗 보상 엔진</span>
         <button class="btn-dark" style="margin-left:auto;padding:9px 16px;font-size:13px;" data-api="dsDetails,dsCourseData" onclick="openCiRuleDrawer()">+ 규칙 추가</button>
       </div>
-      <div id="ci-rules-list"></div>
+      <div id="ci-rules-list" data-api="dsDetails,dsCourseData"></div>
     </div>
 
     <div class="ci-card">
@@ -2786,7 +2893,7 @@
         <div class="ci-stat" style="flex:1;min-width:150px;"><div class="ci-stat-num" id="ci-trophy-total">0개</div><div class="ci-stat-label">이번 주 신규 트로피 (전체 학생)</div></div>
         <div style="font-size:22px;color:#43B02A;font-weight:700;">→</div>
         <div class="ci-stat" style="flex:1;min-width:150px;"><div class="ci-stat-num pink" id="ci-trophy-points">0P</div><div class="ci-stat-label">전환 예정 장학 포인트 (1트로피 = <span id="ci-trophy-rate">500</span>P)</div></div>
-        <button class="btn-dark" style="padding:12px 20px;" onclick="ciConvertTrophies()">전환 실행</button>
+        <button class="btn-dark" style="padding:12px 20px;" data-api="dsDetails" onclick="ciConvertTrophies()">전환 실행</button>
       </div>
     </div>
 
@@ -9521,6 +9628,96 @@
     if (sw) sw.classList.toggle('on', _apiHintOn);
   });
 
+  /* === 크래빗-in 소개 랜딩 인터랙션 === */
+  const CIN_STEPS = [
+    { t: '반과 시간표를 만든다', who: '원장님이 직접', title: '티처스에서 반을 만듭니다',
+      desc: '평소 하시던 그대로 반 이름과 요일, 시간을 입력하시면 됩니다. 저장하는 순간 클래스인에 같은 수업이 자동으로 생성돼요. 클래스인 관리자 화면에 따로 들어가실 필요가 없습니다.',
+      shot: '<b>중등 심화반</b> · 목요일 20:00 · 정원 21명<br>저장하면 클래스인 수업 12회차가 한 번에 만들어집니다.' },
+    { t: '학생이 수업에 들어간다', who: '자동', title: '학생 앱에 입장 버튼이 뜹니다',
+      desc: '배정된 학생의 크래빗 앱에 오늘의 수업과 입장 버튼이 생깁니다. 누르면 클래스인이 열리면서 바로 그 교실로 들어가요. 매주 링크를 만들어 단톡방에 뿌리실 일이 없어집니다.',
+      shot: '학생 앱 · <b>오늘 20:00 중등 심화반</b><br>[ 입장하기 ] 버튼 한 번으로 교실까지 이동합니다.' },
+    { t: '학습 데이터가 넘어온다', who: '자동', title: '수업 중 행동이 실시간으로 쌓입니다',
+      desc: '출결, 손들기, 발표, 과제 제출과 채점, 녹화 시청률까지 수업이 진행되는 동안 크래빗으로 넘어옵니다. 원장님은 강사 말이 아니라 숫자로 참여도를 보시게 됩니다.',
+      shot: '정하람 · 출석률 <b>98%</b> · 완수율 <b>92%</b> · 손들기 <b>18회</b><br>이서연 · 숙제 <b>12/12</b> · 녹화 완주율 <b>97%</b>' },
+    { t: '장학금이 자동으로 나간다', who: '자동', title: '조건을 채운 학생에게 바로 지급됩니다',
+      desc: '주간 출석률 90% 이상이면 3,000P처럼 규칙을 켜두시면 됩니다. 매주 판정해서 승인 없이 지급돼요. 기준이 명확해서 학부모 문의도 줄어듭니다.',
+      shot: '이번 주 자동 지급 <b>32,000P</b> · 지급 학생 <b>4명</b><br>정하람 +8,500P · 이서연 +5,500P · 김민준 +5,500P' }
+  ];
+  let _cinStep = 0, _cinTimer = null;
+
+  function cinRenderSteps() {
+    const list = document.getElementById('cin-step-list');
+    const panel = document.getElementById('cin-step-panel');
+    if (!list || !panel) return;
+    list.innerHTML = CIN_STEPS.map((s, i) => `
+      <button class="cin-step ${i === _cinStep ? 'on' : ''}" onclick="cinPickStep(${i})">
+        <span class="cin-step-n">${i + 1}</span>
+        <span><span class="cin-step-t">${s.t}</span><span class="cin-step-who">${s.who}</span></span>
+      </button>`).join('');
+    const s = CIN_STEPS[_cinStep];
+    panel.innerHTML = `<div class="cin-panel-fade">
+      <div class="cin-panel-title">${s.title}</div>
+      <p class="cin-panel-desc">${s.desc}</p>
+      <div class="cin-panel-shot">${s.shot}</div>
+    </div>`;
+  }
+
+  function cinPickStep(i) { _cinStep = i; cinRenderSteps(); cinStopAuto(); }
+  function cinStartAuto() {
+    cinStopAuto();
+    _cinTimer = setInterval(() => { _cinStep = (_cinStep + 1) % CIN_STEPS.length; cinRenderSteps(); }, 4200);
+  }
+  function cinStopAuto() { if (_cinTimer) { clearInterval(_cinTimer); _cinTimer = null; } }
+
+  const CIN_BA = {
+    before: [
+      ['반을 두 번 만듭니다', '티처스에 한 번, 클래스인 관리자 화면에 또 한 번. 시간표가 바뀌면 양쪽을 다 고쳐야 합니다.'],
+      ['매주 수업 링크를 뿌립니다', '수업마다 링크를 만들어 학년별 단톡방에 복사해 붙입니다. 못 본 학생은 전화가 옵니다.'],
+      ['참여도를 강사 말로만 압니다', '누가 열심히 했는지 물어봐야 알고, 상담 전날 급하게 정리합니다.'],
+      ['장학금을 매번 판단합니다', '누구에게 얼마를 줄지 그때그때 정하니 기준을 묻는 학부모 문의가 옵니다.']
+    ],
+    after: [
+      ['반은 티처스에서 한 번만', '저장하면 클래스인 수업이 따라 생깁니다. 시간표를 고쳐도 한 곳만 고치면 됩니다.'],
+      ['입장 버튼이 알아서 생깁니다', '학생 앱에 오늘 수업이 뜨고 버튼 하나로 들어갑니다. 링크를 뿌릴 일이 없습니다.'],
+      ['참여도가 숫자로 쌓입니다', '출석률, 손들기, 과제 제출이 학생별로 남습니다. 상담 자료를 그대로 쓰십니다.'],
+      ['규칙이 대신 판단합니다', '조건을 채우면 자동 지급됩니다. 기준이 명확해서 문의가 줄어듭니다.']
+    ]
+  };
+  let _cinAfter = false;
+
+  function cinRenderBA() {
+    const el = document.getElementById('cin-ba-list');
+    if (!el) return;
+    const rows = _cinAfter ? CIN_BA.after : CIN_BA.before;
+    const cls = _cinAfter ? 'after' : 'before';
+    const mark = _cinAfter ? '✓' : '!';
+    el.innerHTML = rows.map(([t, d]) => `
+      <div class="cin-ba-item">
+        <span class="cin-ba-mark ${cls}">${mark}</span>
+        <span><b>${t}</b><span>${d}</span></span>
+      </div>`).join('');
+    const b = document.getElementById('cin-ba-before'), a = document.getElementById('cin-ba-after');
+    if (b) b.classList.toggle('on', !_cinAfter);
+    if (a) a.classList.toggle('on', _cinAfter);
+  }
+  function cinSetBA(after) { _cinAfter = after; cinRenderBA(); }
+
+  function cinScrollToSteps() {
+    const el = document.getElementById('cin-steps-sec');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function cinInitIntro() {
+    _cinStep = 0; _cinAfter = false;
+    cinRenderSteps(); cinRenderBA();
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) cinStartAuto();
+    const wrap = document.getElementById('cin-steps-sec');
+    if (wrap && !wrap._cinBound) {
+      wrap.addEventListener('mouseenter', cinStopAuto);
+      wrap._cinBound = true;
+    }
+  }
+
   /* === 크래빗-in(클래스인) 연동 게이트 ===
      데모 시작 시엔 미연동 상태. 소개 페이지에서 결제하면 메뉴 3개와 대시보드 위젯이 열린다.
      새로고침하면 다시 미연동으로 돌아가서 시연을 반복할 수 있다. */
@@ -9594,6 +9791,7 @@
   function showPage(page) {
     closeSidebar();
     wrapTablesForScroll();
+    if (typeof cinStopAuto === 'function') cinStopAuto();
     // 연동 전에는 클래스인 기능 페이지 대신 소개 페이지로 보낸다
     if (!_classinLinked && ['classin-activity','classin-recordings','classin-rewards'].includes(page)) {
       page = 'classin-intro';
@@ -9733,6 +9931,7 @@
       document.getElementById('page-classin-intro').style.display = 'block';
       const mi = document.getElementById('menu-classin-intro');
       if (mi) mi.classList.add('active');
+      cinInitIntro();
     } else if (page === 'classin-activity') {
       document.getElementById('page-classin-activity').style.display = 'block';
       document.getElementById('menu-classin-activity').classList.add('active');
