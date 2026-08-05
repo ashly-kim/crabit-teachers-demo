@@ -2076,6 +2076,8 @@
   .cm-set-b{font-size:14px;font-weight:600;color:#16192A;}
   .cm-set-s{font-size:12.5px;color:rgba(22,25,42,.55);margin-top:3px;line-height:1.6;}
 
+  .cm-vstat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px;}
+  @media (max-width:760px){ .cm-vstat{grid-template-columns:minmax(0,1fr);} }
   .lr-behind{background:#FFF7FB;border:1px solid #FBD0E4;border-radius:16px;padding:20px 22px;}
   .lr-behind-t{font-size:15px;font-weight:600;color:#16192A;margin-bottom:3px;}
   .lr-behind-s{font-size:12.5px;color:rgba(22,25,42,.6);line-height:1.6;margin-bottom:14px;}
@@ -2953,7 +2955,7 @@
     </div>
     <div class="ci-flow" style="margin-bottom:16px;">
       <span class="ci-flow-node"><span class="ci-dot"></span>클래스인 LMS</span>
-      <span class="ci-flow-note">출결·완주율·성적·녹화시청</span>
+      <span class="ci-flow-note">강의 완주율·과제·퀴즈·출결</span>
       <span class="ci-flow-arrow">→</span>
       <span class="ci-flow-node crab">크래빗 티처스</span>
       <span class="ci-flow-arrow">→</span>
@@ -2961,11 +2963,11 @@
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
       <div>
-        <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:4px;display:flex;align-items:center;gap:7px;" data-api="dsDetails"><span class="ci-live-dot"></span>클래스인 실시간 수업</div>
+        <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:4px;display:flex;align-items:center;gap:7px;" data-api="dsClassRelated"><span class="ci-live-dot"></span>공개 중인 강의 · 시청 현황</div>
         <div id="ci-dash-live"></div>
       </div>
       <div>
-        <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:10px;" data-api="dsDetails,dsCourseData">이번 주 활동 → 자동 지급 장학금</div>
+        <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:10px;" data-api="dsDetails,dsCourseData">이번 주 시청·활동 → 자동 지급 장학금</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
           <div class="ci-stat"><div class="ci-stat-num pink" id="ci-dash-total">0P</div><div class="ci-stat-label">이번 주 자동 지급</div></div>
           <div class="ci-stat"><div class="ci-stat-num" id="ci-dash-count">0명</div><div class="ci-stat-label">지급 학생</div></div>
@@ -2975,7 +2977,7 @@
     </div>
     <div class="dash-action-row" style="margin-top:16px;" onclick="showPage('learn-reward')">
       <div style="width:40px;height:40px;border-radius:10px;background:#FDEDF4;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FB75BB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg></div>
-      <div style="flex:1;min-width:0;"><div class="dar-label">장학금 자동지급 규칙 관리</div><div class="dar-sub">클래스인 활동 데이터로 장학금을 자동 지급해요</div></div>
+      <div style="flex:1;min-width:0;"><div class="dar-label">장학금 자동지급 규칙 관리</div><div class="dar-sub">강의 시청과 활동 데이터로 장학금을 자동 지급해요</div></div>
       <div class="dar-arrow">›</div>
     </div>
   </div>
@@ -3663,28 +3665,27 @@
 <div id="page-class-mgmt" style="display:none;">
   <div class="page-head" style="margin-bottom:16px;">
     <h1>수업 관리</h1>
-    <p class="page-sub">반을 만들고 학생을 배정하면 클래스인 수업이 회차별로 자동 생성돼요. 클래스인 관리자 화면에 들어가실 일은 없습니다.</p>
+    <p class="page-sub">보충·복습 강의 영상을 올려두시면 학생 앱에 바로 공개돼요. 누가 어디까지 봤는지도 여기서 확인하실 수 있습니다.</p>
   </div>
 
   <div class="cm-tabbar">
     <div class="stats-tab-pills" role="tablist">
-      <button class="stats-tab-pill active" onclick="showCmTab('classes',this)">반·시간표</button>
-      <button class="stats-tab-pill" onclick="showCmTab('members',this)">구성원</button>
-      <button class="stats-tab-pill" onclick="showCmTab('materials',this)">수업 자료</button>
+      <button class="stats-tab-pill active" onclick="showCmTab('materials',this)">강의 영상</button>
+      <button class="stats-tab-pill" onclick="showCmTab('classes',this)">반·구성원</button>
       <button class="stats-tab-pill" onclick="showCmTab('config',this)">수업 설정</button>
     </div>
     <span class="ci-badge" style="margin-left:auto;"><span class="ci-dot"></span>클래스인 연동됨 · 마지막 동기화 <b id="ci-sync-1"></b></span>
   </div>
 
   <!-- 탭 1: 반·시간표 -->
-  <div id="cm-tab-classes" class="cm-tab">
+  <div id="cm-tab-classes" class="cm-tab" style="display:none;">
     <div class="ci-flow" style="margin-bottom:16px;">
       <span class="ci-flow-node crab">티처스에서 반 생성</span>
       <span class="ci-flow-arrow">→</span>
       <span class="ci-flow-node" data-api="addCourse">클래스인 코스 자동 생성</span>
       <span class="ci-flow-arrow">→</span>
-      <span class="ci-flow-node" data-api="addCourseClassMultiple">요일·시간대로 회차 일괄 생성</span>
-      <span class="ci-flow-note">시간표를 고치시면 클래스인 회차도 같이 바뀝니다</span>
+      <span class="ci-flow-node" data-api="addCourseStudent">학생 계정 생성·연결</span>
+      <span class="ci-flow-note">이 반에 올린 강의가 배정된 학생에게 열립니다</span>
     </div>
 
     <div class="ci-card" style="padding:8px 10px 10px;">
@@ -3696,30 +3697,14 @@
       <div style="overflow-x:auto;">
         <table class="ci-table cm-table">
           <thead><tr>
-            <th data-api="addCourse">반 이름</th><th>담당 강사</th><th data-api="addCourseClassMultiple">요일 · 시간</th><th data-api="addCourseStudent">학생</th><th>이번 주 회차</th><th data-api="getCourseClassList">클래스인 상태</th><th></th>
+            <th data-api="addCourse">반 이름</th><th>담당 강사</th><th data-api="addCourseClassMultiple">요일 · 시간</th><th data-api="addCourseStudent">학생</th><th>공개 중인 강의</th><th data-api="getCourseClassList">클래스인 상태</th><th></th>
           </tr></thead>
           <tbody id="cm-class-tbody"></tbody>
         </table>
       </div>
     </div>
 
-    <div class="cm-hint">
-      반 이름·요일·시간만 입력하시면 됩니다. 클래스인 코스 개설, 회차 생성, 교실 배정은 크래빗이 대신 호출합니다.
-    </div>
-  </div>
-
-  <!-- 탭 2: 구성원 -->
-  <div id="cm-tab-members" class="cm-tab" style="display:none;">
-    <div class="ci-flow" style="margin-bottom:16px;">
-      <span class="ci-flow-node crab">티처스에서 학생 배정</span>
-      <span class="ci-flow-arrow">→</span>
-      <span class="ci-flow-node" data-api="register">클래스인 계정 자동 생성</span>
-      <span class="ci-flow-arrow">→</span>
-      <span class="ci-flow-node" data-api="addCourseStudent">해당 반 수업에 연결</span>
-      <span class="ci-flow-note">학생은 최초 1회만 클래스인 앱에서 계정을 연결합니다</span>
-    </div>
-
-    <div class="cm-2col">
+    <div class="cm-2col" style="margin-top:16px;">
       <div class="ci-card" style="padding:8px 10px 10px;">
         <div class="ci-card-head" style="padding:12px 12px 0;margin-bottom:10px;">
           <div class="ci-card-title">학생</div>
@@ -3741,36 +3726,44 @@
         <div id="cm-teacher-list"></div>
       </div>
     </div>
+
+    <p class="cm-hint">학생을 배정하시면 클래스인 계정이 자동으로 만들어지고 그 반의 강의가 열립니다. 학생은 최초 1회만 앱에서 계정을 연결하면 됩니다.</p>
   </div>
 
-  <!-- 탭 3: 수업 자료 -->
-  <div id="cm-tab-materials" class="cm-tab" style="display:none;">
+  <!-- 탭 3: 강의 영상 -->
+  <div id="cm-tab-materials" class="cm-tab">
     <div class="ci-flow" style="margin-bottom:16px;">
-      <span class="ci-flow-node crab" data-api="uploadFile">티처스에서 자료 업로드</span>
+      <span class="ci-flow-node crab" data-api="uploadFile">티처스에서 영상 업로드</span>
       <span class="ci-flow-arrow">→</span>
-      <span class="ci-flow-node" data-api="addFolder">클래스인 공유 드라이브 저장</span>
+      <span class="ci-flow-node" data-api="addFolder">클래스인 드라이브 저장</span>
       <span class="ci-flow-arrow">→</span>
-      <span class="ci-flow-node" data-api="createActivityNoClass,releaseActivity">반에 학습활동으로 배포</span>
-      <span class="ci-flow-note">PPT · Word · PDF · 음원 · 영상 (개당 최대 500MB)</span>
+      <span class="ci-flow-node" data-api="createActivityNoClass,releaseActivity">반에 강의로 공개</span>
+      <span class="ci-flow-arrow">→</span>
+      <span class="ci-flow-node crab" data-api="dsClassRelated">시청 기록 자동 수집</span>
     </div>
 
-    <div class="cm-drop" data-api="uploadFile" onclick="cmToast('데모 화면이에요. 실제로는 파일이 클래스인 공유 드라이브에 업로드됩니다.')">
+    <div class="cm-drop" data-api="uploadFile" onclick="cmToast('데모 화면이에요. 실제로는 영상이 클래스인 드라이브에 업로드되고 반에 공개됩니다.')">
       <div class="cm-drop-ico">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
       </div>
       <div>
-        <div class="cm-drop-t">여기에 수업 자료를 올려두세요</div>
-        <div class="cm-drop-s">올려둔 자료는 반에 배포하면 학생 클래스인 앱의 학습활동으로 바로 뜹니다</div>
+        <div class="cm-drop-t">여기에 강의 영상을 올려두세요</div>
+        <div class="cm-drop-s">보충·복습·선행 무엇이든. 반을 고르고 올리시면 학생 앱에 바로 공개됩니다 (개당 최대 500MB)</div>
       </div>
     </div>
 
+    <div class="cm-vstat" id="cm-vstat"></div>
+
     <div class="ci-card" style="padding:8px 10px 10px;margin-top:16px;">
       <div class="ci-card-head" style="padding:12px 12px 0;margin-bottom:10px;">
-        <div class="ci-card-title">공유 드라이브</div>
+        <div class="ci-card-title">올려둔 강의</div>
         <span class="ci-flow-note" id="cm-storage-note"></span>
+        <button class="btn-dark" style="margin-left:auto;padding:9px 16px;font-size:13px;" data-api="uploadFile,createActivityNoClass" onclick="cmToast('데모 화면이에요. 실제로는 영상을 올리고 반을 고르시면 끝입니다.')">+ 강의 올리기</button>
       </div>
       <div id="cm-material-list"></div>
     </div>
+
+    <p class="cm-hint">한 번 올린 강의는 다음 기수에도 그대로 다시 쓰실 수 있어요. 시청 기록은 수업 종료 약 20분 뒤에 반영됩니다.</p>
   </div>
 
   <!-- 탭 4: 수업 설정 -->
@@ -3796,13 +3789,13 @@
 <div id="page-learn-reward" style="display:none;">
   <div class="page-head" style="margin-bottom:16px;">
     <h1>학습 보상</h1>
-    <p class="page-sub">클래스인에서 모인 학습 데이터를 기준으로 장학 포인트가 자동으로 나갑니다. 원장님은 기준만 정해두시면 됩니다. (1P = 1원)</p>
+    <p class="page-sub">올려두신 강의를 학생이 보면 그 기록이 여기로 모입니다. 정해두신 기준을 넘기면 장학 포인트가 자동으로 나갑니다. (1P = 1원)</p>
   </div>
 
   <div class="cm-tabbar">
     <div class="stats-tab-pills" role="tablist">
       <button class="stats-tab-pill active" onclick="showLrTab('status',this)">학습 현황</button>
-      <button class="stats-tab-pill" onclick="showLrTab('review',this)">복습 관리</button>
+      <button class="stats-tab-pill" onclick="showLrTab('review',this)">시청 관리</button>
       <button class="stats-tab-pill" onclick="showLrTab('rules',this)">지급 규칙</button>
       <button class="stats-tab-pill" onclick="showLrTab('log',this)">지급 내역</button>
     </div>
@@ -3813,13 +3806,13 @@
   <div id="lr-tab-status" class="cm-tab">
     <div class="ci-flow" style="margin-bottom:16px;">
       <span class="ci-badge" data-api="dsDescription"><span class="ci-dot"></span>클래스인 연동 데이터 · read-only</span>
-      <span class="ci-flow-note">수업 종료 약 20분 뒤 자동 수집 · 마지막 동기화 <b id="ci-sync-2"></b></span>
+      <span class="ci-flow-note">학생이 강의를 보면 약 20분 뒤 반영 · 마지막 동기화 <b id="ci-sync-2"></b></span>
     </div>
     <div class="ci-card" style="padding:8px 10px;">
       <div style="overflow-x:auto;">
         <table class="ci-table">
           <thead><tr>
-            <th data-api="register,addSchoolStudent">학생</th><th data-api="addCourse,addCourseClass">반</th><th data-api="dsDetails">출석률</th><th data-api="dsCourseData">활동 완수율</th><th data-api="dsCourseData">평균 성적</th><th data-api="dsDetails">손들기</th><th data-api="dsCourseData">숙제</th><th data-api="dsClassRelated">녹화 시청률</th><th data-api="dsDetails">트로피</th><th>이번 달 자동지급</th>
+            <th data-api="register,addSchoolStudent">학생</th><th data-api="addCourse,addCourseClass">반</th><th data-api="dsClassRelated">강의 완주율</th><th data-api="dsClassRelated">시청한 강의</th><th data-api="dsCourseData">과제</th><th data-api="dsCourseData">퀴즈 평균</th><th data-api="dsDetails">출석률</th><th data-api="dsCourseData">토론 참여</th><th data-api="dsDetails">트로피</th><th>이번 달 자동지급</th>
           </tr></thead>
           <tbody id="ci-activity-tbody" data-api="dsDetails,dsCourseData"></tbody>
         </table>
@@ -3828,11 +3821,11 @@
     <p class="cm-hint">크래빗은 클래스인 데이터를 읽어오기만 합니다(단방향 read). 수업 진행·채점·출결 집계는 클래스인에서 이루어지고, 크래빗은 그 결과를 보상으로 바꿉니다.</p>
   </div>
 
-  <!-- 탭 2: 복습 관리 -->
+  <!-- 탭 2: 시청 관리 -->
   <div id="lr-tab-review" class="cm-tab" style="display:none;">
     <div class="ci-flow" style="margin-bottom:16px;">
-      <span class="ci-badge" data-api="dsClassRelated"><span class="ci-dot"></span>녹화 시청 데이터 자동 수집</span>
-      <span class="ci-flow-note">누가 아직 안 봤는지만 보시면 됩니다 · 재생 자체는 학생 클래스인 앱에서</span>
+      <span class="ci-badge" data-api="dsClassRelated"><span class="ci-dot"></span>강의 시청 데이터 자동 수집</span>
+      <span class="ci-flow-note">누가 아직 안 봤는지만 보시면 됩니다 · 재생은 학생 앱에서</span>
     </div>
 
     <div class="lr-behind" id="lr-behind-box"></div>
@@ -16818,6 +16811,7 @@
 /* ===================== 클래스인 연동 모듈 ===================== */
 const CI_SYNC = '2026-07-24 13:20';
 const CI_TROPHY_RATE = 500;
+const CI_LECTURE_TOTAL = 8;   // 이번 달 공개된 강의 수
 
 const CLASSIN_STUDENTS = [
   {name:'정하람', grp:'초등 부스터반', att:98, comp:92, grade:95, hands:18, hw:'12/12', watch:99, trophy:6, disc:9},
@@ -16835,33 +16829,33 @@ const CLASSIN_LIVE = [
 ];
 
 const CLASSIN_RECORDINGS = [
-  {title:'중등 심화 · 관계대명사 총정리', course:'중등 심화반', date:'07/22', dur:'52분', watched:18, total:21},
-  {title:'고등 독해 · 빈칸추론 유형 훈련', course:'고등 정규반', date:'07/21', dur:'1시간 08분', watched:14, total:20},
-  {title:'초등 부스터 · Phonics Unit 5', course:'초등 부스터반', date:'07/20', dur:'44분', watched:15, total:16},
-  {title:'중등 심화 · 서술형 대비 클래스', course:'중등 심화반', date:'07/18', dur:'1시간 02분', watched:20, total:21},
+  {title:'7월 보충 3강 · 관계대명사 총정리', course:'중등 심화반', date:'07/22', dur:'42분', watched:18, total:21},
+  {title:'빈칸추론 유형 훈련 해설',          course:'고등 정규반', date:'07/21', dur:'38분', watched:14, total:20},
+  {title:'Phonics Unit 6 따라읽기',          course:'초등 부스터반', date:'07/23', dur:'21분', watched:15, total:16},
+  {title:'서술형 대비 · 오답 유형 정리',     course:'중등 심화반', date:'07/18', dur:'33분', watched:20, total:21},
 ];
 
 let CLASSIN_RULES = [
-  {id:1, metricKey:'att',   label:'주간 출석률',        unit:'%', val:90,  pts:3000, on:true},
-  {id:2, metricKey:'watch', label:'녹화영상 완주율',    unit:'%', val:80,  pts:2000, on:true},
-  {id:3, metricKey:'hw',    label:'숙제 제출률',        unit:'%', val:100, pts:1500, on:true},
-  {id:4, metricKey:'grade', label:'주간 평균 성적',     unit:'점', val:90, pts:2500, on:true},
-  {id:5, metricKey:'hands', label:'수업 중 손들기(발표)', unit:'회', val:10, pts:1000, on:false},
+  {id:1, metricKey:'watch', label:'강의 완주율',      unit:'%', val:80,  pts:3000, on:true},
+  {id:2, metricKey:'hw',    label:'과제 제출률',      unit:'%', val:100, pts:2000, on:true},
+  {id:3, metricKey:'grade', label:'퀴즈 평균 점수',   unit:'점', val:90, pts:2500, on:true},
+  {id:4, metricKey:'att',   label:'주간 출석률',      unit:'%', val:90,  pts:1500, on:true},
+  {id:5, metricKey:'disc',  label:'토론 참여',        unit:'회', val:5,  pts:1000, on:false},
 ];
 
 const CLASSIN_LOG = [
-  {name:'정하람', trigger:'주간 출석률 100% · 녹화 완주율 99% · 평균성적 95점', pts:8500, time:'오늘 13:05'},
-  {name:'이서연', trigger:'숙제 100% 제출 · 녹화 완주율 97%', pts:5500, time:'오늘 11:40'},
-  {name:'김민준', trigger:'주간 평균 성적 92점 · 출석률 96%', pts:5500, time:'어제 18:22'},
+  {name:'정하람', trigger:'강의 완주율 99% · 과제 100% 제출 · 퀴즈 평균 95점', pts:8500, time:'오늘 13:05'},
+  {name:'이서연', trigger:'강의 완주율 97% · 과제 100% 제출', pts:5500, time:'오늘 11:40'},
+  {name:'김민준', trigger:'퀴즈 평균 92점 · 출석률 96%', pts:5500, time:'어제 18:22'},
 ];
 
 const CI_METRICS = [
-  {key:'att',   label:'주간 출석률',        unit:'%'},
-  {key:'watch', label:'녹화영상 완주율',    unit:'%'},
-  {key:'hw',    label:'숙제 제출률',        unit:'%'},
-  {key:'hands', label:'수업 중 손들기(발표)', unit:'회'},
-  {key:'grade', label:'주간 평균 성적',     unit:'점'},
-  {key:'disc',  label:'토론 참여',          unit:'회'},
+  {key:'watch', label:'강의 완주율',      unit:'%'},
+  {key:'hw',    label:'과제 제출률',      unit:'%'},
+  {key:'grade', label:'퀴즈 평균 점수',   unit:'점'},
+  {key:'att',   label:'주간 출석률',      unit:'%'},
+  {key:'disc',  label:'토론 참여',        unit:'회'},
+  {key:'hands', label:'수업 중 발표',     unit:'회'},
 ];
 
 function ciFmt(n){ return (n||0).toLocaleString('ko-KR'); }
@@ -16887,15 +16881,15 @@ function ciMetricCell(val, unit){
 function ciRenderDashboard(){
   const live = document.getElementById('ci-dash-live');
   if(!live) return;
-  live.innerHTML = CLASSIN_LIVE.map(c=>{
-    const soon = c.status==='soon';
+  live.innerHTML = CLASSIN_RECORDINGS.slice(0,3).map(r=>{
+    const miss = r.total - r.watched;
     return `<div class="ci-live-row">
-      <span class="ci-live-dot ${soon?'soon':''}"></span>
+      <span class="ci-live-dot ${miss>2?'soon':''}"></span>
       <div style="flex:1;min-width:0;">
-        <div style="font-size:13.5px;font-weight:600;color:#16192A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${c.title}</div>
-        <div style="font-size:12px;color:rgba(22,25,42,.55);">${c.teacher} · 참여 ${c.joined}/${c.total}</div>
+        <div style="font-size:13.5px;font-weight:600;color:#16192A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.title}</div>
+        <div style="font-size:12px;color:rgba(22,25,42,.55);">${r.course} · 시청 ${r.watched}/${r.total}</div>
       </div>
-      <span class="${soon?'ci-chip-soon':'ci-chip-green'}">${soon?'곧 시작':'수업 중'}</span>
+      <span class="${miss>0?'ci-chip-soon':'ci-chip-green'}">${miss>0?'미시청 '+miss+'명':'전원 완료'}</span>
     </div>`;
   }).join('');
 
@@ -16916,13 +16910,13 @@ function ciRenderDashboard(){
 }
 
 /* =========================================================
-   수업 관리 (반·시간표 / 구성원 / 수업 자료 / 수업 설정)
+   수업 관리 (강의 영상 / 반·구성원 / 수업 설정)
    ========================================================= */
 const CM_CLASSES = [
-  {name:'초등 부스터반', teacher:'이수화 강사', days:'월·수·금', time:'16:00~17:20', students:16, sessions:3, sync:'ok'},
+  {name:'초등 부스터반', teacher:'이수화 강사', days:'월·수·금', time:'16:00~17:20', students:16, sessions:1, sync:'ok'},
   {name:'중등 심화반',   teacher:'고소희 강사', days:'화·목',     time:'20:00~21:30', students:21, sessions:2, sync:'ok'},
-  {name:'고등 정규반',   teacher:'박준영 강사', days:'월·목',     time:'19:00~20:40', students:20, sessions:2, sync:'ok'},
-  {name:'예비 중1 특강', teacher:'이수화 강사', days:'토',        time:'10:00~12:00', students:9,  sessions:1, sync:'wait'},
+  {name:'고등 정규반',   teacher:'박준영 강사', days:'월·목',     time:'19:00~20:40', students:20, sessions:1, sync:'ok'},
+  {name:'예비 중1 특강', teacher:'이수화 강사', days:'토',        time:'10:00~12:00', students:9,  sessions:0, sync:'wait'},
 ];
 const CM_TEACHERS = [
   {name:'이수화 강사', role:'초등 총괄', classes:2, linked:true},
@@ -16930,12 +16924,14 @@ const CM_TEACHERS = [
   {name:'박준영 강사', role:'고등 독해', classes:1, linked:true},
 ];
 const CM_MATERIALS = [
-  {name:'Phonics Unit 6 워크북.pdf',      kind:'PDF',  size:'4.2MB',  cls:'초등 부스터반', on:'07/23', released:true},
-  {name:'관계대명사 총정리.pptx',          kind:'PPT',  size:'18.6MB', cls:'중등 심화반',   on:'07/22', released:true},
-  {name:'빈칸추론 유형 훈련 해설.mp4',     kind:'영상', size:'312MB',  cls:'고등 정규반',   on:'07/21', released:true},
-  {name:'7월 4주차 단어시험지.docx',       kind:'DOC',  size:'0.9MB',  cls:'미배포',        on:'07/24', released:false},
+  {name:'7월 보충 3강 · 관계대명사 총정리', kind:'영상', size:'312MB', dur:'42분', cls:'중등 심화반',   on:'07/22', released:true,  watched:18, total:21},
+  {name:'빈칸추론 유형 훈련 해설',          kind:'영상', size:'286MB', dur:'38분', cls:'고등 정규반',   on:'07/21', released:true,  watched:14, total:20},
+  {name:'Phonics Unit 6 따라읽기',          kind:'영상', size:'174MB', dur:'21분', cls:'초등 부스터반', on:'07/23', released:true,  watched:15, total:16},
+  {name:'서술형 대비 · 오답 유형 정리',     kind:'영상', size:'240MB', dur:'33분', cls:'중등 심화반',   on:'07/18', released:true,  watched:20, total:21},
+  {name:'8월 선행 1강 · 분사구문',          kind:'영상', size:'298MB', dur:'40분', cls:'미공개',        on:'07/24', released:false, watched:0,  total:21},
+  {name:'7월 4주차 단어시험지',             kind:'자료', size:'0.9MB', dur:'PDF',  cls:'미공개',        on:'07/24', released:false, watched:0,  total:21},
 ];
-const CM_KIND_STYLE = {PDF:['#FFF1F1','#c9515a'], PPT:['#FFF3EA','#c2712c'], 영상:['#FFF7FB','#c44f8f'], DOC:['#EEF3FF','#4a63a8']};
+const CM_KIND_STYLE = {'영상':['#FFF7FB','#c44f8f'], '자료':['#EEF3FF','#4a63a8']};
 let CM_CONFIG_BASIC = [
   {id:'rec',   on:true,  b:'수업 자동 녹화',        s:'수업이 시작되면 자동으로 녹화되고, 끝나면 다시보기가 저장됩니다.'},
   {id:'open',  on:true,  b:'학생에게 다시보기 공개', s:'결석했거나 복습이 필요한 학생이 클래스인 앱에서 바로 재생합니다.'},
@@ -16952,7 +16948,7 @@ let CM_CONFIG_AI = [
 function cmToast(msg){ if(typeof showToast==='function') showToast(msg); }
 
 function showCmTab(key, btn){
-  ['classes','members','materials','config'].forEach(k=>{
+  ['materials','classes','config'].forEach(k=>{
     const el = document.getElementById('cm-tab-'+k);
     if(el) el.style.display = (k===key) ? 'block' : 'none';
   });
@@ -16983,7 +16979,7 @@ function cmRenderAll(){
     <td style="color:rgba(22,25,42,.62);">${c.teacher}</td>
     <td>${c.days} · ${c.time}</td>
     <td>${c.students}명</td>
-    <td>${c.sessions}회</td>
+    <td>${c.sessions}개</td>
     <td>${c.sync==='ok'
       ? '<span class="cm-chip ok"><span class="ci-dot"></span>수업 생성 완료</span>'
       : '<span class="cm-chip wait">개설 대기</span>'}</td>
@@ -16993,7 +16989,7 @@ function cmRenderAll(){
   const cnt = document.getElementById('cm-class-count');
   if(cnt){
     const total = CM_CLASSES.reduce((a,c)=>a+c.sessions,0);
-    cnt.textContent = `${CM_CLASSES.length}개 반 · 이번 주 클래스인 수업 ${total}회차`;
+    cnt.textContent = `${CM_CLASSES.length}개 반 · 공개 중인 강의 ${total}개`;
   }
 
   const mb = document.getElementById('cm-member-tbody');
@@ -17020,20 +17016,40 @@ function cmRenderAll(){
   const ml = document.getElementById('cm-material-list');
   if(ml) ml.innerHTML = CM_MATERIALS.map((m,i)=>{
     const st = CM_KIND_STYLE[m.kind] || ['#F2F2F4','#6b6b73'];
+    const pct = m.total ? Math.round(m.watched/m.total*100) : 0;
+    const miss = m.total - m.watched;
     return `<div class="cm-file">
       <div class="cm-file-ico" style="background:${st[0]};color:${st[1]};">${m.kind}</div>
       <div style="flex:1;min-width:0;">
         <div class="cm-file-name">${m.name}</div>
-        <div class="cm-file-meta">${m.size} · 업로드 ${m.on} · ${m.released ? m.cls+'에 배포됨' : '아직 배포 안 됨'}</div>
+        <div class="cm-file-meta">${m.dur} · ${m.size} · 올린 날 ${m.on} · ${m.released ? m.cls : '아직 공개 안 함'}</div>
       </div>
-      ${m.released
-        ? '<span class="cm-chip ok">학습활동으로 배포됨</span>'
-        : `<button class="btn-dark" style="padding:8px 14px;font-size:12.5px;" data-api="createActivityNoClass,releaseActivity" onclick="cmRelease(${i})">반에 배포</button>`}
+      ${m.released ? `
+        <div style="text-align:right;min-width:150px;" data-api="dsClassRelated">
+          <div style="font-size:12.5px;color:#16192A;margin-bottom:5px;">시청 <b>${m.watched}/${m.total}</b>
+            <span style="color:${miss>0?'#c44f8f':'#2E8B22'};">${miss>0?'· 미시청 '+miss+'명':'· 전원 완료'}</span></div>
+          <span class="ci-bar" style="width:142px;"><i class="${pct<75?'warn':''}" style="width:${pct}%"></i></span>
+        </div>
+        <button class="cm-link" onclick="cmRemind(${i})">리마인드</button>`
+        : `<button class="btn-dark" style="padding:8px 14px;font-size:12.5px;" data-api="createActivityNoClass,releaseActivity" onclick="cmRelease(${i})">반에 공개</button>`}
     </div>`;
   }).join('');
 
   const note = document.getElementById('cm-storage-note');
-  if(note) note.textContent = `${CM_MATERIALS.length}개 자료 · 사용 336MB / 100GB`;
+  if(note) note.textContent = `${CM_MATERIALS.length}개 · 사용 1.3GB / 100GB`;
+
+  const vs = document.getElementById('cm-vstat');
+  if(vs){
+    const open = CM_MATERIALS.filter(m=>m.released);
+    const seats = open.reduce((a,m)=>a+m.total,0);
+    const seen  = open.reduce((a,m)=>a+m.watched,0);
+    const rate  = seats ? Math.round(seen/seats*100) : 0;
+    const behind = open.reduce((a,m)=>a+(m.total-m.watched),0);
+    vs.innerHTML = `
+      <div class="ci-stat"><div class="ci-stat-num">${open.length}개</div><div class="ci-stat-label">공개 중인 강의</div></div>
+      <div class="ci-stat"><div class="ci-stat-num">${rate}%</div><div class="ci-stat-label">평균 시청률</div></div>
+      <div class="ci-stat"><div class="ci-stat-num pink">${behind}건</div><div class="ci-stat-label">아직 안 본 학생 (누적)</div></div>`;
+  }
 
   const cb = document.getElementById('cm-config-basic');
   if(cb) cb.innerHTML = CM_CONFIG_BASIC.map(o=>cmSettingRow(o,'basic')).join('');
@@ -17058,10 +17074,16 @@ function cmToggleSetting(grp, id){
 }
 function cmRelease(i){
   const m = CM_MATERIALS[i]; if(!m) return;
-  if(m.cls==='미배포') m.cls = CM_CLASSES[1].name;
+  if(m.cls==='미공개') m.cls = CM_CLASSES[1].name;
   m.released = true;
   cmRenderAll();
-  cmToast(`${m.name}을(를) ${m.cls} 학습활동으로 배포했어요. 학생 클래스인 앱에 바로 뜹니다.`);
+  cmToast(`'${m.name}'을(를) ${m.cls}에 공개했어요. 학생 앱에 바로 뜹니다.`);
+}
+function cmRemind(i){
+  const m = CM_MATERIALS[i]; if(!m) return;
+  const miss = m.total - m.watched;
+  if(miss<=0){ cmToast('이미 전원이 시청을 마쳤어요.'); return; }
+  cmToast(`'${m.name}' 미시청 학생 ${miss}명에게 리마인드를 보냈어요.`);
 }
 function openCmClassDrawer(){
   cmToast('반 이름·요일·시간만 정하시면 클래스인 코스와 회차가 자동으로 생성됩니다. (데모 화면)');
@@ -17073,40 +17095,41 @@ function ciRenderActivity(){
   const tb = document.getElementById('ci-activity-tbody'); if(!tb) return;
   tb.innerHTML = CLASSIN_STUDENTS.map(s=>{
     const award = ciStudentAward(s);
+    const seen = Math.round(s.watch/100*CI_LECTURE_TOTAL);
     return `<tr>
       <td style="font-weight:600;">${s.name}</td>
       <td style="color:rgba(22,25,42,.55);">${s.grp}</td>
-      <td>${ciMetricCell(s.att,'%')}</td>
-      <td>${ciMetricCell(s.comp,'%')}</td>
-      <td>${ciMetricCell(s.grade,'점')}</td>
-      <td>${s.hands}회</td>
-      <td>${s.hw}</td>
       <td>${ciMetricCell(s.watch,'%')}</td>
+      <td>${seen}/${CI_LECTURE_TOTAL}강</td>
+      <td>${s.hw}</td>
+      <td>${ciMetricCell(s.grade,'점')}</td>
+      <td>${ciMetricCell(s.att,'%')}</td>
+      <td>${s.disc}회</td>
       <td>${s.trophy}개</td>
-      <td style="font-weight:700;color:${award>0?'#FB75BB':'#bbb'};">${award>0?ciFmt(award)+'P':'—'}</td>
+      <td style="font-weight:700;color:${award>0?'#FB75BB':'#bbb'};">${award>0?ciFmt(award)+'P':'-'}</td>
     </tr>`;
   }).join('');
 }
 
-/* ---- 복습 관리 페이지 (미시청자 중심) ---- */
+/* ---- 시청 관리 페이지 (미시청자 중심) ---- */
 function ciRenderRecordings(){
   const behind = document.getElementById('lr-behind-box');
   if(behind){
     const late = CLASSIN_STUDENTS.filter(s=>s.watch < 80).sort((a,b)=>a.watch-b.watch);
     behind.innerHTML = `
-      <div class="lr-behind-t">이번 주 복습이 밀린 학생 ${late.length}명</div>
-      <div class="lr-behind-s">완주율 80% 미만인 학생만 모았습니다. 리마인드를 보내면 학생 크래빗 앱으로 알림이 갑니다.</div>
+      <div class="lr-behind-t">강의가 밀린 학생 ${late.length}명</div>
+      <div class="lr-behind-s">강의 완주율 80% 미만인 학생만 모았습니다. 리마인드를 보내면 학생 크래빗 앱으로 알림이 갑니다.</div>
       ${late.length ? late.map(s=>`
         <div class="lr-behind-row">
           <div style="width:36px;height:36px;border-radius:10px;background:#FDEDF4;color:#c44f8f;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13.5px;font-weight:600;">${s.name.charAt(0)}</div>
           <div style="flex:1;min-width:0;">
             <div class="lr-behind-name">${s.name}</div>
-            <div class="lr-behind-sub">${s.grp} · 녹화 완주율 ${s.watch}% · 숙제 ${s.hw}</div>
+            <div class="lr-behind-sub">${s.grp} · 강의 완주율 ${s.watch}% · 과제 ${s.hw}</div>
           </div>
           <span class="ci-bar" style="width:110px;"><i class="warn" style="width:${s.watch}%"></i></span>
           <button class="btn-dark" style="padding:8px 14px;font-size:12.5px;" onclick="ciRemind('${s.name}')">리마인드</button>
         </div>`).join('')
-        : '<div class="lr-behind-row"><div class="lr-behind-name">모두 복습을 마쳤습니다.</div></div>'}`;
+        : '<div class="lr-behind-row"><div class="lr-behind-name">모두 강의를 끝까지 봤습니다.</div></div>'}`;
   }
 
   const box = document.getElementById('ci-recordings-list'); if(!box) return;
@@ -17129,8 +17152,8 @@ function ciRenderRecordings(){
     </div>`;
   }).join('');
 }
-function ciRemind(name){ cmToast(`${name} 학생에게 복습 리마인드를 보냈어요. 크래빗 앱으로 알림이 갑니다.`); }
-function ciRemindClass(title, n){ cmToast(`'${title}' 미시청 학생 ${n}명에게 리마인드를 보냈어요.`); }
+function ciRemind(name){ cmToast(`${name} 학생에게 강의 시청 리마인드를 보냈어요. 크래빗 앱으로 알림이 갑니다.`); }
+function ciRemindClass(title, n){ cmToast(`'${title}' 아직 안 본 학생 ${n}명에게 리마인드를 보냈어요.`); }
 
 /* ---- 장학금 자동지급 페이지 ---- */
 function ciRuleLine(r){
