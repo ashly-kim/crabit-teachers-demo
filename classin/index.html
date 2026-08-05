@@ -2121,15 +2121,11 @@
   .cin-hero{position:relative;background:#070910;color:#fff;min-height:calc(100vh - 60px);
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
     padding:80px 32px 60px;overflow:hidden;}
-  .cin-heroline{position:absolute;left:0;right:0;bottom:20%;pointer-events:none;}
-  .cin-heroline svg{width:100%;height:auto;display:block;}
-  .cin-heroline .dash{stroke-dasharray:7 9;animation:cinDash 2.4s linear infinite;}
-  @keyframes cinDash{to{stroke-dashoffset:-32;}}
   .cin-hero-glow{position:absolute;left:50%;top:52%;width:min(820px,100%);height:420px;transform:translate(-50%,-50%);pointer-events:none;
     background:radial-gradient(closest-side,rgba(251,117,187,.20),transparent 72%);filter:blur(18px);
     animation:cinGlow 9s ease-in-out infinite alternate;}
   @keyframes cinGlow{from{opacity:.65;transform:translate(-50%,-50%) scale(.96);}to{opacity:1;transform:translate(-50%,-50%) scale(1.06);}}
-  .cin-hero > *:not(.cin-heroline):not(.cin-hero-glow):not(.cin-scrollcue){position:relative;z-index:1;}
+  .cin-hero > *:not(.cin-hero-glow):not(.cin-scrollcue){position:relative;z-index:1;}
 
   .cin-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;
     color:rgba(255,255,255,.72);margin-bottom:26px;}
@@ -2152,7 +2148,7 @@
 
   /* --- 토스풍 3D 아이콘 (한 장을 4분할로 사용) --- */
   .cin-ico{width:76px;height:76px;background-image:url("cin-icons.png");background-size:200% 200%;
-    background-repeat:no-repeat;margin-bottom:18px;}
+    background-repeat:no-repeat;margin-bottom:18px;image-rendering:auto;}
   .cin-ico.i1{background-position:0 0;}
   .cin-ico.i2{background-position:100% 0;}
   .cin-ico.i3{background-position:0 100%;}
@@ -2172,24 +2168,98 @@
     letter-spacing:-.03em;line-height:1.34;margin:0 0 16px;text-wrap:balance;}
   .cin-desc{font-size:16px;color:rgba(22,25,42,.6);line-height:1.8;max-width:640px;}
 
+
+  /* --- 목업 인터랙션 --- */
+  .cin-mock{position:relative;}
+  .cin-cursor{position:absolute;width:19px;height:19px;left:0;top:0;pointer-events:none;opacity:0;z-index:5;
+    transition:transform .55s cubic-bezier(.4,0,.2,1),opacity .25s;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));}
+  .cin-cursor.on{opacity:1;}
+  .cin-cursor svg{width:100%;height:100%;display:block;transform-origin:20% 20%;}
+  .cin-cursor.tap svg{animation:cinTap .32s ease;}
+  @keyframes cinTap{50%{transform:scale(.72);}}
+  .cin-msw{transition:background .25s;}
+  .cin-msw::after{transition:transform .25s,left .25s,right .25s;}
+  .cin-mtoggle{transition:color .25s;}
+  .cin-mtoggle .amt{margin-left:auto;font-weight:700;transition:color .25s;}
+  .cin-mbar i{transition:width .9s cubic-bezier(.3,0,.2,1);}
+  .cin-mfield{transition:border-color .2s,background .2s;}
+  .cin-mfield.filling{background:#FFF3F9;}
+  .cin-mbtn{transition:transform .18s,filter .18s;}
+  .cin-mbtn.press{transform:scale(.97);filter:brightness(.93);}
+  .cin-mchip-wrap{min-height:26px;}
+  .cin-reveal{opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s;}
+  .cin-reveal.on{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    .cin-cursor{display:none;}
+    .cin-reveal{opacity:1;transform:none;}
+  }
+
+  /* --- 3자 비교표 --- */
+  .cin-cmp{overflow-x:auto;border-radius:18px;background:#fff;margin-top:26px;}
+  .cin-cmp table{border-collapse:collapse;width:100%;min-width:660px;}
+  .cin-cmp th,.cin-cmp td{padding:15px 18px;border-bottom:1px solid #F4F5F8;text-align:left;font-size:13.5px;vertical-align:middle;}
+  .cin-cmp thead th{background:#F1F2F6;font-size:12.5px;font-weight:700;color:rgba(22,25,42,.55);white-space:nowrap;}
+  .cin-cmp thead th.hi{background:#16192A;color:#fff;}
+  .cin-cmp tbody tr:last-child td{border-bottom:none;}
+  .cin-cmp td.k{font-weight:600;color:#16192A;white-space:nowrap;}
+  .cin-cmp td.hi{background:#FFF7FB;font-weight:600;color:#16192A;}
+  .cin-cmp .no{color:rgba(22,25,42,.38);}
+  .cin-cmp .yes{color:#2E8B22;font-weight:600;}
+
+  /* --- 사진 --- */
+  .cin-photo{border-radius:20px;overflow:hidden;background:#F2F3F6;}
+  .cin-photo img{display:block;width:100%;height:100%;object-fit:cover;}
+  .cin-photo-cap{font-size:12.5px;color:rgba(22,25,42,.5);margin-top:10px;line-height:1.6;}
+
+  /* --- 어디서 무엇을 (2단) --- */
+  .cin-where{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:24px;}
+  .cin-wcol{border-radius:18px;padding:26px 26px 28px;}
+  .cin-wcol.t{background:#FFF0F8;}
+  .cin-wcol.c{background:#EEF7E9;}
+  .cin-wcol h4{font-size:16px;font-weight:700;color:#16192A;margin:0 0 4px;}
+  .cin-wcol .sub{font-size:12.5px;margin-bottom:16px;}
+  .cin-wcol.t .sub{color:#FB75BB;font-weight:600;}
+  .cin-wcol.c .sub{color:#2E8B22;font-weight:600;}
+  .cin-wlist{display:flex;flex-direction:column;gap:9px;margin:0;padding:0;list-style:none;}
+  .cin-wlist li{position:relative;padding-left:15px;font-size:14px;color:rgba(22,25,42,.7);line-height:1.6;}
+  .cin-wlist li::before{content:'';position:absolute;left:0;top:.6em;width:6px;height:2px;border-radius:1px;}
+  .cin-wcol.t .cin-wlist li::before{background:#FB75BB;}
+  .cin-wcol.c .cin-wlist li::before{background:#43B02A;}
+
+  /* --- 학생 동선 --- */
+  .cin-stu{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:center;margin-top:26px;}
+  .cin-steps3{display:flex;flex-direction:column;gap:0;}
+  .cin-st3{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #F0F1F4;}
+  .cin-st3:last-child{border-bottom:none;}
+  .cin-st3-n{width:26px;height:26px;border-radius:50%;background:#16192A;color:#fff;font-size:12px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cin-st3-n.c{background:#43B02A;}
+  .cin-st3 b{display:block;font-size:15px;font-weight:600;color:#16192A;margin-bottom:3px;}
+  .cin-st3 > div span{font-size:13.5px;color:rgba(22,25,42,.6);line-height:1.65;}
+
+  @media (max-width:900px){
+    .cin-where,.cin-stu{grid-template-columns:minmax(0,1fr);gap:20px;}
+    .cin-wcol{padding:22px 20px;}
+  }
+
   /* --- 기능 블록 --- */
   .cin-block{padding:88px 56px;background:#fff;border-top:1px solid #F0F1F4;}
   .cin-block.alt{background:#F9FAFC;}
   .cin-block-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;}
   .cin-block.flip .cin-block-inner{direction:rtl;}
   .cin-block.flip .cin-block-inner > *{direction:ltr;}
-  .cin-lead{font-size:15px;font-weight:600;color:#8A6D10;background:#FBF3D9;border:1px solid #EDDCA6;
+  .cin-lead{font-size:15px;font-weight:600;color:#8A6D10;background:#FDF6E3;
     border-radius:10px;padding:11px 15px;display:inline-block;margin-bottom:20px;line-height:1.5;}
   #page-classin-intro .cin-h3{color:#16192A;font-size:clamp(21px,2.6vw,29px);font-weight:700;
     letter-spacing:-.028em;line-height:1.36;margin:0 0 14px;text-wrap:balance;}
-  .cin-block p.cin-bdesc{font-size:15px;color:rgba(22,25,42,.62);line-height:1.8;margin-bottom:24px;}
+  .cin-bdesc{font-size:15px;color:rgba(22,25,42,.62);line-height:1.8;margin:0 0 24px;}
   .cin-subs{display:flex;flex-direction:column;gap:16px;}
   .cin-sub{padding-left:16px;border-left:2px solid #FBD0E4;}
   .cin-sub b{display:block;font-size:14.5px;font-weight:600;color:#16192A;margin-bottom:4px;}
   .cin-sub span{font-size:13.5px;color:rgba(22,25,42,.58);line-height:1.65;}
 
   /* --- 블록 안 미니 목업 --- */
-  .cin-mock{background:#fff;border:1px solid #E8E8E8;border-radius:18px;padding:20px;
+  .cin-mock{background:#fff;border-radius:18px;padding:20px;
     box-shadow:0 18px 44px rgba(22,25,42,.09);}
   .cin-block.alt .cin-mock{box-shadow:0 18px 44px rgba(22,25,42,.07);}
   .cin-mock-bar{display:flex;align-items:center;gap:6px;padding-bottom:14px;border-bottom:1px solid #F2F3F6;margin-bottom:14px;}
@@ -2200,12 +2270,13 @@
   .cin-mrow .nm{font-weight:600;color:#16192A;min-width:52px;}
   .cin-mrow .val{margin-left:auto;font-weight:700;color:#16192A;font-variant-numeric:tabular-nums;}
   .cin-mrow .val.p{color:#FB75BB;}
-  .cin-mbar{flex:1;height:6px;border-radius:4px;background:#F0F1F4;overflow:hidden;min-width:40px;}
-  .cin-mbar i{display:block;height:100%;border-radius:4px;background:#43B02A;}
+  .cin-mbar{flex:1;height:10px;border-radius:6px;background:#EEEFF3;overflow:hidden;min-width:40px;}
+  .cin-mbar i{display:block;height:100%;width:0;border-radius:6px;background:#43B02A;}
   .cin-mchip{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;
-    color:#2E8B22;background:#EEF8EA;border:1px solid #CDE9C3;border-radius:7px;padding:4px 9px;}
-  .cin-mchip.p{color:#FB75BB;background:#FFF3F9;border-color:#FBD0E4;}
-  .cin-mfield{border:1px solid #E8E8E8;border-radius:10px;padding:11px 13px;font-size:13px;color:#16192A;font-weight:600;margin-bottom:9px;background:#fff;}
+    color:#2E8B22;background:#E7F5E1;border-radius:7px;padding:4px 9px;}
+  .cin-mchip.p{color:#FB75BB;background:#FFEDF6;}
+  .cin-mfield{border-radius:10px;padding:11px 13px;font-size:13px;color:#16192A;font-weight:600;margin-bottom:9px;background:#F5F6F8;}
+  .cin-mfield em{font-style:normal;}
   .cin-mfield small{display:block;font-size:11px;color:rgba(22,25,42,.45);font-weight:500;margin-bottom:3px;}
   .cin-mtoggle{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid #F5F6F8;font-size:13px;color:#16192A;}
   .cin-mtoggle:last-child{border-bottom:none;}
@@ -2219,7 +2290,7 @@
   /* --- Before / After --- */
   .cin-ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:34px;}
   .cin-bacol{border-radius:18px;padding:26px 24px;}
-  .cin-bacol.b{background:#F4F5F7;border:1px solid #E6E7EB;}
+  .cin-bacol.b{background:#F1F2F6;}
   .cin-bacol.a{background:#16192A;}
   .cin-bacol h4{font-size:12px;font-weight:600;letter-spacing:.12em;margin:0 0 18px;}
   .cin-bacol.b h4{color:rgba(22,25,42,.45);}
@@ -2233,10 +2304,10 @@
   .cin-bacol.a .cin-ban{background:#FB75BB;color:#fff;}
 
   /* --- 요금제 --- */
-  .cin-plan{max-width:640px;margin:34px auto 0;background:#fff;border:1px solid #E8E8E8;border-radius:24px;
+  .cin-plan{max-width:640px;margin:34px auto 0;background:#fff;border-radius:24px;
     padding:38px 38px 32px;box-shadow:0 22px 56px rgba(22,25,42,.1);}
   .cin-plan-tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.1em;color:#FB75BB;
-    background:#FFF3F9;border:1px solid #FBD0E4;border-radius:8px;padding:5px 11px;margin-bottom:18px;}
+    background:#FFEDF6;border-radius:8px;padding:5px 11px;margin-bottom:18px;}
   .cin-plan-price{font-size:clamp(34px,5vw,46px);font-weight:700;color:#16192A;letter-spacing:-.035em;line-height:1.1;}
   .cin-plan-price small{font-size:17px;font-weight:500;color:rgba(22,25,42,.5);margin-left:5px;}
   .cin-plan-sub{font-size:14px;color:rgba(22,25,42,.58);line-height:1.75;margin-top:12px;}
@@ -2785,36 +2856,119 @@
 
   <!-- 히어로 -->
   <section class="cin-hero">
-    <div class="cin-heroline" aria-hidden="true">
-      <svg viewBox="0 0 1400 60" fill="none" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="cinHeroGrad" gradientUnits="userSpaceOnUse" x1="60" y1="30" x2="1322" y2="30">
-            <stop offset="0%" stop-color="#43B02A" stop-opacity="0"/>
-            <stop offset="22%" stop-color="#43B02A" stop-opacity=".55"/>
-            <stop offset="78%" stop-color="#FB75BB" stop-opacity=".75"/>
-            <stop offset="100%" stop-color="#FB75BB" stop-opacity=".9"/>
-          </linearGradient>
-        </defs>
-        <path class="dash" d="M60 30 H1300" stroke="url(#cinHeroGrad)" stroke-width="2" stroke-linecap="round"/>
-        <path d="M1296 21 L1322 30 L1296 39" stroke="#FB75BB" stroke-opacity=".9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </svg>
-    </div>
     <div class="cin-hero-glow" aria-hidden="true"></div>
 
     <div class="cin-eyebrow">크래빗 × 클래스인 제휴 요금제 <b>크래빗-in</b></div>
-    <h1 class="cin-h1">수업은 클래스인이,<br><span class="g">보상은 크래빗이 맡습니다</span></h1>
-    <button class="cin-hero-cta" onclick="cinScrollToSteps()">어떻게 동작하는지 보기</button>
-    <p class="cin-hero-note">원장님은 티처스에서 반만 만드시면 됩니다.<br>수업 진행부터 장학금 지급까지 나머지는 연동이 처리합니다.</p>
+    <h1 class="cin-h1">클래스인이 크래빗 안에서.<br><span class="g">스마트한 교실 운영을 시작하세요</span></h1>
+    <button class="cin-hero-cta" onclick="cinScrollToSteps()">자세히 보기</button>
+    <p class="cin-hero-note">수업은 클래스인이, 보상은 크래빗이.<br>원장님은 티처스 한 곳만 보시면 됩니다.</p>
 
     <div class="cin-scrollcue" aria-hidden="true"><span>SCROLL</span><i></i></div>
   </section>
 
-  <!-- 소개 전환 -->
+  <!-- 왜 크래빗-in인가 -->
   <section class="cin-sec" id="cin-steps-sec">
     <div class="cin-sec-inner cin-rv">
-      <div class="cin-label">크래빗-in 서비스 소개</div>
-      <h2 class="cin-h2">수업 관리는 클래스인에 맡기고,<br>원장님은 보상만 챙기세요</h2>
-      <p class="cin-desc">크래빗이 학습관리 도구를 새로 만드는 대신, 이미 160개국에서 쓰는 클래스인을 티처스 안으로 들여왔습니다. 원장님은 클래스인 관리자 화면에 들어가실 일이 없고, 학생 활동 데이터는 자동으로 장학금이 됩니다.</p>
+      <div class="cin-label">WHY 크래빗-in</div>
+      <h2 class="cin-h2">따로 쓰면 반쪽,<br>같이 쓰면 완성됩니다</h2>
+      <p class="cin-desc">장학카드는 줄 이유가 약하고, LMS는 학생이 움직일 이유가 없습니다. 둘을 붙이면 서로의 빈칸이 채워집니다.</p>
+
+      <div class="cin-cmp">
+        <table>
+          <thead>
+            <tr><th></th><th>장학카드만</th><th>클래스인만</th><th class="hi">크래빗-in</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="k">수업 진행</td><td class="no">없음</td><td class="yes">가능</td><td class="hi">가능</td></tr>
+            <tr><td class="k">학습 데이터</td><td class="no">없음</td><td>클래스인 안에서만</td><td class="hi">티처스로 자동 수집</td></tr>
+            <tr><td class="k">보상 지급</td><td>원장이 직접 판단</td><td class="no">없음</td><td class="hi">조건 충족 시 자동</td></tr>
+            <tr><td class="k">원장 관리 동선</td><td>티처스 한 곳</td><td class="no">클래스인 한 곳</td><td class="hi">티처스 한 곳</td></tr>
+            <tr><td class="k">학생이 열심히 할 이유</td><td class="no">약함</td><td class="no">약함</td><td class="hi">노력이 곧 장학금</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 어디서 무엇을 하나 -->
+  <section class="cin-sec alt">
+    <div class="cin-sec-inner cin-rv">
+      <div class="cin-label">역할 분담</div>
+      <h2 class="cin-h2">원장님은 티처스만 보시면 됩니다</h2>
+      <p class="cin-desc">관리는 전부 티처스에서 끝납니다. 클래스인은 수업이 열릴 때만 켜집니다.</p>
+
+      <div class="cin-where">
+        <div class="cin-wcol t">
+          <h4>티처스에서</h4>
+          <div class="sub">원장님이 하시는 일</div>
+          <ul class="cin-wlist">
+            <li>반 편성과 시간표 만들기</li>
+            <li>학생·강사 배정</li>
+            <li>출결·성적·참여도 확인</li>
+            <li>녹화수업 관리</li>
+            <li>장학금 규칙 설정</li>
+          </ul>
+        </div>
+        <div class="cin-wcol c">
+          <h4>클래스인 앱에서</h4>
+          <div class="sub">수업 시간에만 열립니다</div>
+          <ul class="cin-wlist">
+            <li>실시간 수업 진행</li>
+            <li>판서·화면공유·교구</li>
+            <li>손들기·발표·트로피</li>
+            <li>과제와 시험 제출</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cin-stu" style="margin-top:34px;">
+        <div>
+          <div class="cin-photo" style="aspect-ratio:4/3;"><img src="photo-director.jpg" alt="노트북으로 티처스를 확인하는 학원 원장"></div>
+          <p class="cin-photo-cap">클래스인 관리자 화면에는 들어가실 일이 없습니다.</p>
+        </div>
+        <div>
+          <h3 class="cin-h3">두 번 입력하던 일이 사라집니다</h3>
+          <p class="cin-bdesc">반을 한 번 만들면 클래스인 수업이 따라 생깁니다. 시간표가 바뀌어도 티처스 한 곳만 고치시면 됩니다.</p>
+          <div class="cin-subs">
+            <div class="cin-sub"><b>상담 자료가 저절로 쌓입니다</b><span>출석률, 과제 제출, 참여도가 학생별로 남습니다.</span></div>
+            <div class="cin-sub"><b>지급 기준이 명확해집니다</b><span>규칙대로 나가니 왜 저 학생만 받았냐는 문의가 줄어듭니다.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 학생은 이렇게 씁니다 -->
+  <section class="cin-sec">
+    <div class="cin-sec-inner cin-rv">
+      <div class="cin-label">학생 사용 방법</div>
+      <h2 class="cin-h2">확인은 크래빗 앱에서,<br>수업은 클래스인에서</h2>
+      <p class="cin-desc">학생은 크래빗 앱만 열면 됩니다. 수업 시간이 되면 앱 안의 버튼으로 교실까지 이어집니다.</p>
+
+      <div class="cin-stu">
+        <div class="cin-steps3">
+          <div class="cin-st3">
+            <span class="cin-st3-n">1</span>
+            <div><b>크래빗 앱에서 확인</b><span>오늘의 수업, 내 출석률과 시청률, 받은 장학금과 사유를 봅니다.</span></div>
+          </div>
+          <div class="cin-st3">
+            <span class="cin-st3-n c">2</span>
+            <div><b>입장 버튼으로 교실까지</b><span>버튼을 누르면 클래스인이 열리며 해당 수업으로 바로 들어갑니다. 비밀번호는 첫 1회만 입력합니다.</span></div>
+          </div>
+          <div class="cin-st3">
+            <span class="cin-st3-n c">3</span>
+            <div><b>수업과 과제는 클래스인에서</b><span>손들기, 발표, 과제 제출은 클래스인 안에서 이루어집니다.</span></div>
+          </div>
+          <div class="cin-st3">
+            <span class="cin-st3-n">4</span>
+            <div><b>보상은 다시 크래빗으로</b><span>조건을 채우면 장학금이 앱에 쌓입니다. 노력한 만큼 받는 게 눈에 보입니다.</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="cin-photo" style="aspect-ratio:4/3;"><img src="photo-student.jpg" alt="크래빗 앱으로 받은 장학금을 확인하는 학생"></div>
+          <p class="cin-photo-cap">학생이 매일 여는 앱은 크래빗 하나입니다.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2823,24 +2977,25 @@
     <div class="cin-block-inner">
       <div class="cin-rv">
         <div class="cin-ico i1" aria-hidden="true"></div>
-        <div class="cin-lead">지금은 같은 정보를 두 번 입력하고 계십니다</div>
+        <div class="cin-lead">지금은 반을 두 번 만드십니다</div>
         <h3 class="cin-h3">티처스에서 반을 만들면<br>클래스인 수업이 따라 생깁니다</h3>
-        <p class="cin-bdesc">반 이름과 요일, 시간을 평소처럼 입력하고 저장하시면 됩니다. 그 순간 클래스인에 같은 수업이 회차별로 만들어지고 학생까지 배정됩니다. 시간표가 바뀌어도 티처스 한 곳만 고치시면 됩니다.</p>
+        <p class="cin-bdesc">저장하는 순간 클래스인에 같은 수업이 회차별로 생기고 학생까지 배정됩니다.</p>
         <div class="cin-subs">
-          <div class="cin-sub"><b>회차를 한 번에 생성</b><span>12주 과정이면 12개 수업이 시간표대로 한 번에 만들어집니다.</span></div>
-          <div class="cin-sub"><b>학생·강사 배정까지 그대로</b><span>반에 넣은 학생과 담당 강사가 클래스인에도 동일하게 반영됩니다.</span></div>
+          <div class="cin-sub"><b>회차 일괄 생성</b><span>12주 과정이면 12개가 시간표대로 한 번에.</span></div>
+          <div class="cin-sub"><b>배정도 그대로</b><span>학생과 담당 강사가 클래스인에 동일하게 반영됩니다.</span></div>
         </div>
       </div>
       <div class="cin-rv">
-        <div class="cin-mock">
+        <div class="cin-mock" data-cin-demo="form">
           <div class="cin-mock-bar"><i></i><i></i><i></i><span>티처스 · 반 만들기</span></div>
-          <div class="cin-mfield"><small>반 이름</small>중등 심화반</div>
-          <div class="cin-mfield"><small>요일 · 시간</small>목요일 20:00 - 21:30</div>
-          <div class="cin-mfield"><small>담당 강사</small>고소희</div>
+          <div class="cin-mfield"><small>반 이름</small><em class="tw" data-full="중등 심화반">&nbsp;</em></div>
+          <div class="cin-mfield"><small>요일 · 시간</small><em class="tw" data-full="목요일 20:00 - 21:30">&nbsp;</em></div>
+          <div class="cin-mfield"><small>담당 강사</small><em class="tw" data-full="고소희">&nbsp;</em></div>
           <div class="cin-mbtn p">저장하기</div>
-          <div style="margin-top:14px;display:flex;align-items:center;gap:8px;">
-            <span class="cin-mchip"><span class="ci-dot"></span>클래스인 수업 12회차 생성됨</span>
+          <div class="cin-mchip-wrap" style="margin-top:14px;display:flex;align-items:center;gap:8px;">
+            <span class="cin-mchip cin-reveal"><span class="ci-dot"></span>클래스인 수업 12회차 생성됨</span>
           </div>
+          <span class="cin-cursor"><svg viewBox="0 0 24 24" fill="#16192A" stroke="#fff" stroke-width="1.4"><path d="M5 3l14 8-6 1.6L10.5 19z"/></svg></span>
         </div>
       </div>
     </div>
@@ -2851,22 +3006,23 @@
     <div class="cin-block-inner">
       <div class="cin-rv">
         <div class="cin-ico i2" aria-hidden="true"></div>
-        <div class="cin-lead">지금은 매주 수업 링크를 만들어 뿌리고 계십니다</div>
+        <div class="cin-lead">지금은 매주 링크를 뿌리십니다</div>
         <h3 class="cin-h3">학생 앱에 입장 버튼이<br>알아서 생깁니다</h3>
-        <p class="cin-bdesc">배정된 학생의 크래빗 앱에 오늘의 수업이 뜨고, 버튼 하나로 그 교실까지 들어갑니다. 링크를 복사해 단톡방에 붙이거나, 못 봤다는 전화를 받으실 일이 없어집니다.</p>
+        <p class="cin-bdesc">단톡방에 링크를 뿌리거나 못 봤다는 전화를 받으실 일이 없어집니다.</p>
         <div class="cin-subs">
-          <div class="cin-sub"><b>수업별 바로 진입</b><span>수업 목록에서 누르면 해당 교실로 곧장 들어갑니다.</span></div>
-          <div class="cin-sub"><b>첫 로그인 이후엔 한 번에</b><span>비밀번호는 처음 한 번만 입력하면 이후로는 저장됩니다.</span></div>
+          <div class="cin-sub"><b>해당 교실로 바로</b><span>목록에서 누르면 그 수업으로 곧장 들어갑니다.</span></div>
+          <div class="cin-sub"><b>비밀번호는 첫 1회만</b><span>이후로는 버튼 한 번으로 들어갑니다.</span></div>
         </div>
       </div>
       <div class="cin-rv">
-        <div class="cin-mock" style="max-width:300px;margin:0 auto;">
+        <div class="cin-mock" data-cin-demo="enter" style="max-width:300px;margin:0 auto;">
           <div class="cin-mock-bar"><i></i><i></i><i></i><span>학생 앱 · 오늘의 수업</span></div>
           <div style="font-size:12px;color:rgba(22,25,42,.5);margin-bottom:6px;">목요일 20:00</div>
           <div style="font-size:16px;font-weight:700;color:#16192A;margin-bottom:4px;">중등 심화반</div>
-          <div style="font-size:12.5px;color:rgba(22,25,42,.55);margin-bottom:16px;">고소희 강사 · 참여 18/21</div>
+          <div style="font-size:12.5px;color:rgba(22,25,42,.55);margin-bottom:16px;">고소희 강사 · 참여 <em class="cnt" data-to="18">17</em>/21</div>
           <div class="cin-mbtn p">입장하기</div>
-          <div style="margin-top:12px;text-align:center;"><span class="cin-mchip">수업 중</span></div>
+          <div class="cin-mchip-wrap" style="margin-top:12px;text-align:center;"><span class="cin-mchip cin-reveal">클래스인 교실 입장 완료</span></div>
+          <span class="cin-cursor"><svg viewBox="0 0 24 24" fill="#16192A" stroke="#fff" stroke-width="1.4"><path d="M5 3l14 8-6 1.6L10.5 19z"/></svg></span>
         </div>
       </div>
     </div>
@@ -2877,21 +3033,21 @@
     <div class="cin-block-inner">
       <div class="cin-rv">
         <div class="cin-ico i3" aria-hidden="true"></div>
-        <div class="cin-lead">지금은 누가 열심히 했는지 강사 말로만 아십니다</div>
+        <div class="cin-lead">지금은 강사 말로만 아십니다</div>
         <h3 class="cin-h3">수업 중 행동이<br>학생별 숫자로 쌓입니다</h3>
-        <p class="cin-bdesc">출결과 손들기, 발표, 과제 제출과 채점, 녹화 시청률까지 수업이 진행되는 동안 크래빗으로 넘어옵니다. 상담 전날 급하게 정리하지 않아도 학부모께 보여드릴 자료가 이미 만들어져 있습니다.</p>
+        <p class="cin-bdesc">상담 전날 급하게 정리하지 않아도 보여드릴 자료가 이미 만들어져 있습니다.</p>
         <div class="cin-subs">
-          <div class="cin-sub"><b>학생별로 한 표에</b><span>출석률, 완수율, 평균 성적, 손들기, 숙제를 한눈에 봅니다.</span></div>
-          <div class="cin-sub"><b>상담 자료로 그대로</b><span>따로 옮겨 적을 필요 없이 화면을 그대로 쓰실 수 있습니다.</span></div>
+          <div class="cin-sub"><b>학생별 한 표에</b><span>출석률, 완수율, 성적, 손들기, 숙제를 한눈에.</span></div>
+          <div class="cin-sub"><b>상담 자료로 바로</b><span>옮겨 적을 필요 없이 화면 그대로 쓰십니다.</span></div>
         </div>
       </div>
       <div class="cin-rv">
-        <div class="cin-mock">
+        <div class="cin-mock" data-cin-demo="chart">
           <div class="cin-mock-bar"><i></i><i></i><i></i><span>티처스 · 클래스인 학습활동</span></div>
-          <div class="cin-mrow"><span class="nm">정하람</span><span class="cin-mbar"><i style="width:98%"></i></span><span class="val">98%</span></div>
-          <div class="cin-mrow"><span class="nm">이서연</span><span class="cin-mbar"><i style="width:100%"></i></span><span class="val">100%</span></div>
-          <div class="cin-mrow"><span class="nm">김민준</span><span class="cin-mbar"><i style="width:96%"></i></span><span class="val">96%</span></div>
-          <div class="cin-mrow"><span class="nm">최유나</span><span class="cin-mbar"><i style="width:82%;background:#C9A227"></i></span><span class="val">82%</span></div>
+          <div class="cin-mrow"><span class="nm">정하람</span><span class="cin-mbar"><i data-w="98"></i></span><span class="val cnt" data-to="98" data-suffix="%">0%</span></div>
+          <div class="cin-mrow"><span class="nm">이서연</span><span class="cin-mbar"><i data-w="100"></i></span><span class="val cnt" data-to="100" data-suffix="%">0%</span></div>
+          <div class="cin-mrow"><span class="nm">김민준</span><span class="cin-mbar"><i data-w="96"></i></span><span class="val cnt" data-to="96" data-suffix="%">0%</span></div>
+          <div class="cin-mrow"><span class="nm">최유나</span><span class="cin-mbar"><i data-w="82" style="background:#C9A227"></i></span><span class="val cnt" data-to="82" data-suffix="%">0%</span></div>
           <div style="margin-top:12px;font-size:11.5px;color:rgba(22,25,42,.45);">주간 출석률 · 클래스인에서 자동 집계</div>
         </div>
       </div>
@@ -2903,25 +3059,26 @@
     <div class="cin-block-inner">
       <div class="cin-rv">
         <div class="cin-ico i4" aria-hidden="true"></div>
-        <div class="cin-lead">지금은 장학금을 매번 판단하고 계십니다</div>
+        <div class="cin-lead">지금은 매번 직접 판단하십니다</div>
         <h3 class="cin-h3">조건을 채운 학생에게<br>승인 없이 지급됩니다</h3>
-        <p class="cin-bdesc">주간 출석률 90% 이상이면 3,000P처럼 규칙을 한 번 켜두시면 됩니다. 매주 판정해서 자동으로 나가고, 기준이 명확해서 왜 저 학생만 받았냐는 문의도 줄어듭니다.</p>
+        <p class="cin-bdesc">규칙을 한 번 켜두면 매주 판정해서 자동으로 나갑니다.</p>
         <div class="cin-subs">
-          <div class="cin-sub"><b>규칙을 켜고 끄기만</b><span>출석률, 완주율, 숙제, 성적 중 원하는 조건만 켜두시면 됩니다.</span></div>
-          <div class="cin-sub"><b>트로피도 포인트로</b><span>수업 중 받은 트로피를 장학 포인트로 전환할 수 있습니다.</span></div>
+          <div class="cin-sub"><b>켜고 끄기만</b><span>출석률·완주율·숙제·성적 중 원하는 조건만.</span></div>
+          <div class="cin-sub"><b>트로피도 포인트로</b><span>수업 중 받은 트로피를 장학금으로 전환합니다.</span></div>
         </div>
       </div>
       <div class="cin-rv">
-        <div class="cin-mock">
+        <div class="cin-mock" data-cin-demo="rule">
           <div class="cin-mock-bar"><i></i><i></i><i></i><span>티처스 · 장학금 자동지급 규칙</span></div>
-          <div class="cin-mtoggle"><span class="cin-msw"></span><span>주간 출석률 90% 이상</span><span class="val" style="margin-left:auto;font-weight:700;color:#FB75BB;">+3,000P</span></div>
-          <div class="cin-mtoggle"><span class="cin-msw"></span><span>녹화영상 완주율 80% 이상</span><span class="val" style="margin-left:auto;font-weight:700;color:#FB75BB;">+2,000P</span></div>
-          <div class="cin-mtoggle"><span class="cin-msw"></span><span>숙제 제출률 100%</span><span class="val" style="margin-left:auto;font-weight:700;color:#FB75BB;">+1,500P</span></div>
-          <div class="cin-mtoggle"><span class="cin-msw off"></span><span style="color:rgba(22,25,42,.4)">손들기 10회 이상</span><span class="val" style="margin-left:auto;font-weight:700;color:rgba(251,117,187,.45);">+1,000P</span></div>
+          <div class="cin-mtoggle" data-pts="12000"><span class="cin-msw off"></span><span class="lb" style="color:rgba(22,25,42,.4)">주간 출석률 90% 이상</span><span class="amt" style="color:rgba(251,117,187,.4)">+3,000P</span></div>
+          <div class="cin-mtoggle" data-pts="8000"><span class="cin-msw off"></span><span class="lb" style="color:rgba(22,25,42,.4)">녹화영상 완주율 80% 이상</span><span class="amt" style="color:rgba(251,117,187,.4)">+2,000P</span></div>
+          <div class="cin-mtoggle" data-pts="7500"><span class="cin-msw off"></span><span class="lb" style="color:rgba(22,25,42,.4)">숙제 제출률 100%</span><span class="amt" style="color:rgba(251,117,187,.4)">+1,500P</span></div>
+          <div class="cin-mtoggle" data-pts="4500"><span class="cin-msw off"></span><span class="lb" style="color:rgba(22,25,42,.4)">손들기 10회 이상</span><span class="amt" style="color:rgba(251,117,187,.4)">+1,000P</span></div>
           <div style="margin-top:14px;padding-top:14px;border-top:1px solid #F2F3F6;display:flex;align-items:center;">
             <span style="font-size:12.5px;color:rgba(22,25,42,.55);">이번 주 자동 지급</span>
-            <span style="margin-left:auto;font-size:17px;font-weight:700;color:#FB75BB;">32,000P</span>
+            <span class="total" style="margin-left:auto;font-size:19px;font-weight:700;color:#FB75BB;font-variant-numeric:tabular-nums;">0P</span>
           </div>
+          <span class="cin-cursor"><svg viewBox="0 0 24 24" fill="#16192A" stroke="#fff" stroke-width="1.4"><path d="M5 3l14 8-6 1.6L10.5 19z"/></svg></span>
         </div>
       </div>
     </div>
@@ -9979,6 +10136,159 @@
     mountApiBadges();
   });
 
+  /* === 랜딩 목업 인터랙션 ===
+     스크롤로 들어오면 각 목업이 한 번 재생된다. 화면 밖으로 나가면 다시 준비 상태가 된다. */
+  function _cinCount(el, to, suffix, dur) {
+    const from = 0, t0 = performance.now();
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / (dur || 700));
+      const v = Math.round(from + (to - from) * (1 - Math.pow(1 - p, 3)));
+      el.textContent = v.toLocaleString() + (suffix || '');
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function _cinCursorTo(mock, target, cb, wait) {
+    const c = mock.querySelector('.cin-cursor');
+    if (!c) { cb && cb(); return; }
+    const mr = mock.getBoundingClientRect(), tr = target.getBoundingClientRect();
+    c.classList.add('on');
+    c.style.transform = 'translate(' + (tr.left - mr.left + tr.width / 2 - 4) + 'px,' +
+                                       (tr.top - mr.top + tr.height / 2 - 3) + 'px)';
+    setTimeout(() => {
+      c.classList.add('tap');
+      setTimeout(() => c.classList.remove('tap'), 320);
+      cb && cb();
+    }, wait || 620);
+  }
+
+  function _cinResetMock(el) {
+    el.querySelectorAll('.cin-reveal').forEach(r => r.classList.remove('on'));
+    const cur = el.querySelector('.cin-cursor');
+    if (cur) { cur.classList.remove('on'); cur.style.transform = ''; }
+    el.querySelectorAll('.cin-mbar i').forEach(b => { if (b.dataset.w) b.style.width = '0%'; });
+    el.querySelectorAll('.cnt').forEach(c => { c.textContent = (c.dataset.from || '0') + (c.dataset.suffix || ''); });
+    el.querySelectorAll('.tw').forEach(t => { t.textContent = ' '; });
+    el.querySelectorAll('.cin-mtoggle').forEach(t => {
+      t.querySelector('.cin-msw').classList.add('off');
+      t.querySelector('.lb').style.color = 'rgba(22,25,42,.4)';
+      t.querySelector('.amt').style.color = 'rgba(251,117,187,.4)';
+    });
+    const tot = el.querySelector('.total');
+    if (tot) tot.textContent = '0P';
+  }
+
+  function _cinPlayMock(el) {
+    const kind = el.dataset.cinDemo;
+
+    if (kind === 'rule') {
+      const rows = [...el.querySelectorAll('.cin-mtoggle')];
+      const tot = el.querySelector('.total');
+      let sum = 0;
+      const step = (i) => {
+        if (i >= rows.length) {
+          setTimeout(() => { const c = el.querySelector('.cin-cursor'); if (c) c.classList.remove('on'); }, 700);
+          return;
+        }
+        const row = rows[i];
+        _cinCursorTo(el, row.querySelector('.cin-msw'), () => {
+          row.querySelector('.cin-msw').classList.remove('off');
+          row.querySelector('.lb').style.color = '#16192A';
+          row.querySelector('.amt').style.color = '#FB75BB';
+          sum += parseInt(row.dataset.pts, 10);
+          _cinCount(tot, sum, 'P', 520);
+          setTimeout(() => step(i + 1), 640);
+        }, i === 0 ? 500 : 560);
+      };
+      step(0);
+
+    } else if (kind === 'chart') {
+      el.querySelectorAll('.cin-mrow').forEach((row, i) => {
+        setTimeout(() => {
+          const bar = row.querySelector('.cin-mbar i');
+          const val = row.querySelector('.cnt');
+          if (bar) bar.style.width = bar.dataset.w + '%';
+          if (val) _cinCount(val, parseInt(val.dataset.to, 10), val.dataset.suffix, 900);
+        }, 160 + i * 190);
+      });
+
+    } else if (kind === 'form') {
+      const fields = [...el.querySelectorAll('.tw')];
+      const btn = el.querySelector('.cin-mbtn');
+      const type = (idx) => {
+        if (idx >= fields.length) {
+          _cinCursorTo(el, btn, () => {
+            btn.classList.add('press');
+            setTimeout(() => btn.classList.remove('press'), 260);
+            setTimeout(() => {
+              el.querySelector('.cin-reveal').classList.add('on');
+              const c = el.querySelector('.cin-cursor');
+              if (c) setTimeout(() => c.classList.remove('on'), 600);
+            }, 320);
+          }, 560);
+          return;
+        }
+        const f = fields[idx], full = f.dataset.full;
+        f.parentElement.classList.add('filling');
+        let i = 0;
+        const t = setInterval(() => {
+          i++;
+          f.textContent = full.slice(0, i) || ' ';
+          if (i >= full.length) {
+            clearInterval(t);
+            f.parentElement.classList.remove('filling');
+            setTimeout(() => type(idx + 1), 260);
+          }
+        }, 45);
+      };
+      setTimeout(() => type(0), 350);
+
+    } else if (kind === 'enter') {
+      const btn = el.querySelector('.cin-mbtn');
+      _cinCursorTo(el, btn, () => {
+        btn.classList.add('press');
+        setTimeout(() => btn.classList.remove('press'), 260);
+        setTimeout(() => {
+          el.querySelector('.cin-reveal').classList.add('on');
+          const cnt = el.querySelector('.cnt');
+          if (cnt) _cinCount(cnt, parseInt(cnt.dataset.to, 10), '', 400);
+          const c = el.querySelector('.cin-cursor');
+          if (c) setTimeout(() => c.classList.remove('on'), 600);
+        }, 340);
+      }, 700);
+    }
+  }
+
+  let _cinMockObs = null;
+  function cinInitMocks() {
+    const mocks = document.querySelectorAll('[data-cin-demo]');
+    if (!mocks.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
+      mocks.forEach(m => {
+        m.querySelectorAll('.cin-reveal').forEach(r => r.classList.add('on'));
+        m.querySelectorAll('.cin-mbar i').forEach(b => { if (b.dataset.w) b.style.width = b.dataset.w + '%'; });
+        m.querySelectorAll('.cnt').forEach(c => { c.textContent = c.dataset.to + (c.dataset.suffix || ''); });
+        m.querySelectorAll('.tw').forEach(t => { t.textContent = t.dataset.full; });
+      });
+      return;
+    }
+    if (_cinMockObs) _cinMockObs.disconnect();
+    mocks.forEach(_cinResetMock);
+    _cinMockObs = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting && !en.target._cinPlaying) {
+          en.target._cinPlaying = true;
+          _cinPlayMock(en.target);
+        } else if (!en.isIntersecting && en.target._cinPlaying) {
+          en.target._cinPlaying = false;
+          _cinResetMock(en.target);
+        }
+      });
+    }, { root: document.getElementById('main-content'), threshold: 0.45 });
+    mocks.forEach(m => _cinMockObs.observe(m));
+  }
+
   /* === 크래빗-in 소개 랜딩 인터랙션 ===
      스크롤을 내릴수록 섹션이 순차로 드러난다. .main이 스크롤 컨테이너라 root로 지정한다. */
   let _cinObserver = null;
@@ -9990,6 +10300,7 @@
     if (!('IntersectionObserver' in window) ||
         window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       items.forEach(el => el.classList.add('in'));
+      cinInitMocks();
       return;
     }
     if (_cinObserver) _cinObserver.disconnect();
@@ -10003,6 +10314,7 @@
       });
     }, { root: document.getElementById('main-content'), rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
     items.forEach(el => _cinObserver.observe(el));
+    cinInitMocks();
   }
 
   function cinStopAuto() { /* 자동 전환 없음 - 다른 화면에서 호출해도 안전하게 둔다 */ }
