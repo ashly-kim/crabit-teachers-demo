@@ -2055,6 +2055,9 @@
   /* === 학습 관리 / 학습 성과 (탭 화면) === */
   .cm-tabbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px;}
   .cm-tabbar .stats-tab-pill{font-size:15.5px;padding:11px 22px;border-radius:9px;}
+  body.ver-simple .v1only{display:none;}
+  body:not(.ver-simple) .v2only{display:none;}
+  body.ver-simple #menu-class-mgmt{display:none;}
   .cm-2col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start;}
   .cm-hint{font-size:14px;color:rgba(22,25,42,.55);line-height:1.7;margin-top:14px;}
   .cm-table{min-width:820px;}
@@ -4355,7 +4358,7 @@
   <div class="cm-tabbar">
     <div class="stats-tab-pills" role="tablist">
       <button class="stats-tab-pill active" onclick="showCmTab('materials',this)">강의 영상</button>
-      <button class="stats-tab-pill" onclick="showCmTab('review',this)">시청 관리</button>
+      <button class="stats-tab-pill v1only" onclick="showCmTab('review',this)">시청 관리</button>
       <button class="stats-tab-pill" onclick="showCmTab('classes',this)">반·구성원</button>
       <button class="stats-tab-pill" onclick="showCmTab('config',this)">수업 설정</button>
     </div>
@@ -4491,6 +4494,7 @@
   <div class="cm-tabbar">
     <div class="stats-tab-pills" role="tablist">
       <button class="stats-tab-pill active" onclick="showLrTab('status',this)">학습 현황</button>
+      <button class="stats-tab-pill v2only" onclick="showLrTab('review',this)">시청 관리</button>
       <button class="stats-tab-pill" onclick="showLrTab('rules',this)">지급 규칙</button>
       <button class="stats-tab-pill" onclick="showLrTab('log',this)">지급 내역</button>
     </div>
@@ -11614,6 +11618,7 @@
     const a = document.getElementById('verbtn-heavy'), b = document.getElementById('verbtn-simple');
     if (a) a.classList.toggle('active', v === 'heavy');
     if (b) b.classList.toggle('active', v === 'simple');
+    applyCinVersionLayout();
     const onIntro = ['page-classin-intro', 'page-classin-intro-v2'].some(id => {
       const e = document.getElementById(id); return e && e.style.display === 'block';
     });
@@ -11622,6 +11627,21 @@
       ? 'v2 Simple Integration으로 전환했어요. 수업 운영은 클래스인에서, 크래빗은 학습 데이터와 보상을 맡는 시나리오입니다.'
       : 'v1 LMS Heavy로 전환했어요. 티처스 안에서 수업 개설과 영상 배포까지 하는 시나리오입니다.');
   }
+  /* v2에서는 메뉴를 학습 성과 하나로 줄이고, 시청 관리 탭을 그 안으로 옮긴다 */
+  function applyCinVersionLayout() {
+    const simple = _cinVersion === 'simple';
+    const panel = document.getElementById('cm-tab-review');
+    const host = document.getElementById(simple ? 'page-learn-reward' : 'page-class-mgmt');
+    if (panel && host && panel.parentElement !== host) {
+      panel.style.display = 'none';
+      host.appendChild(panel);
+    }
+    const sub = document.querySelector('#page-learn-reward .page-sub');
+    if (sub) sub.textContent = simple
+      ? '클래스인 수업에서 쌓인 기록이 여기로 모입니다. 정해두신 기준을 넘기면 장학 포인트가 자동으로 나갑니다. (1P = 1원)'
+      : '학습 관리에서 모인 기록이 여기로 넘어옵니다. 정해두신 기준을 넘기면 장학 포인트가 자동으로 나갑니다. (1P = 1원)';
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     let v = 'heavy';
     try { v = localStorage.getItem('crabitCinVersion') || 'heavy'; } catch (e) {}
@@ -11630,6 +11650,7 @@
     const a = document.getElementById('verbtn-heavy'), b = document.getElementById('verbtn-simple');
     if (a) a.classList.toggle('active', v === 'heavy');
     if (b) b.classList.toggle('active', v === 'simple');
+    applyCinVersionLayout();
   });
   let _cinTrialLeft = 0;   // 크래빗 클래스 체험 남은 일수 (0이면 체험 아님)
 
@@ -11753,6 +11774,7 @@
     if (!_classinLinked && ['class-mgmt','learn-reward'].includes(page)) {
       page = 'classin-intro';
     }
+    if (_cinVersion === 'simple' && page === 'class-mgmt') page = 'learn-reward';
     document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
 
     ['page-mission', 'page-stats', 'page-settings',
@@ -11901,6 +11923,7 @@
       document.getElementById('menu-learn-reward').classList.add('active');
       ciRenderActivity();
       ciRenderRewards();
+      if (_cinVersion === 'simple') ciRenderRecordings();
     }
 
     document.getElementById('main-content').scrollTop = 0;
@@ -17722,8 +17745,8 @@ function showCmTab(key, btn){
   if(typeof mountApiBadges==='function') mountApiBadges();
 }
 function showLrTab(key, btn){
-  ['status','rules','log'].forEach(k=>{
-    const el = document.getElementById('lr-tab-'+k);
+  ['status','review','rules','log'].forEach(k=>{
+    const el = document.getElementById(k === 'review' ? 'cm-tab-review' : 'lr-tab-'+k);
     if(el) el.style.display = (k===key) ? 'block' : 'none';
   });
   if(btn){
