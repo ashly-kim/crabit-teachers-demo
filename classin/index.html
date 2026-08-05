@@ -2047,44 +2047,67 @@
   .ci-openlink:hover{text-decoration:underline;}
   /* === 수업 관리 / 학습 보상 (탭 화면) === */
   .cm-tabbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px;}
-  .cm-tabbar .stats-tab-pill{font-size:13.5px;padding:8px 16px;}
+  .cm-tabbar .stats-tab-pill{font-size:15.5px;padding:11px 22px;border-radius:9px;}
   .cm-2col{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start;}
-  .cm-hint{font-size:12.5px;color:rgba(22,25,42,.55);line-height:1.65;margin-top:10px;}
+  .cm-hint{font-size:14px;color:rgba(22,25,42,.55);line-height:1.7;margin-top:14px;}
   .cm-table{min-width:820px;}
   .cm-table-s{min-width:420px;}
-  .cm-chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;line-height:1.5;white-space:nowrap;}
+  .cm-chip{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:999px;line-height:1.5;white-space:nowrap;}
   .cm-chip.ok{color:#2E8B22;background:#EEF8EA;}
   .cm-chip.wait{color:#8a8a92;background:#F2F2F4;}
   .cm-chip.crab{color:#c44f8f;background:#FFF7FB;}
-  .cm-link{background:none;border:none;font-family:inherit;font-size:12.5px;font-weight:600;color:#16192A;cursor:pointer;padding:5px 9px;border-radius:8px;white-space:nowrap;}
+  .cm-link{background:none;border:none;font-family:inherit;font-size:13.5px;font-weight:600;color:#16192A;cursor:pointer;padding:7px 11px;border-radius:8px;white-space:nowrap;}
   .cm-link:hover{background:#F4F4F5;}
 
-  .cm-drop{display:flex;align-items:center;gap:16px;background:#F9FAFC;border:1.5px dashed #DDDEE3;border-radius:16px;padding:22px 24px;cursor:pointer;transition:background .15s,border-color .15s;}
+  .cm-drop{display:flex;align-items:center;gap:18px;background:#F9FAFC;border:1.5px dashed #DDDEE3;border-radius:18px;padding:28px 28px;cursor:pointer;transition:background .15s,border-color .15s;}
   .cm-drop:hover{background:#F4F8F2;border-color:#B9DDAC;}
-  .cm-drop-ico{width:46px;height:46px;border-radius:13px;background:#EEF8EA;color:#43B02A;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-  .cm-drop-t{font-size:15px;font-weight:600;color:#16192A;}
-  .cm-drop-s{font-size:12.5px;color:rgba(22,25,42,.55);margin-top:3px;line-height:1.6;}
+  .cm-drop-ico{width:54px;height:54px;border-radius:15px;background:#EEF8EA;color:#43B02A;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cm-drop-t{font-size:17.5px;font-weight:600;color:#16192A;letter-spacing:-.01em;}
+  .cm-drop-s{font-size:14px;color:rgba(22,25,42,.55);margin-top:5px;line-height:1.6;}
 
-  .cm-file{display:flex;align-items:center;gap:14px;padding:14px 12px;border-bottom:1px solid #F1F1F1;}
+  .cm-file{display:flex;align-items:center;gap:16px;padding:18px 14px;border-bottom:1px solid #F1F1F1;}
   .cm-file:last-child{border-bottom:none;}
-  .cm-file-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10.5px;font-weight:700;letter-spacing:.02em;}
-  .cm-file-name{font-size:14px;font-weight:600;color:#16192A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .cm-file-meta{font-size:12px;color:rgba(22,25,42,.55);margin-top:2px;}
+  .cm-file-ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;letter-spacing:.02em;}
+  .cm-file-name{font-size:16px;font-weight:600;color:#16192A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.01em;}
+  .cm-file-meta{font-size:13.5px;color:rgba(22,25,42,.55);margin-top:4px;}
 
-  .cm-set{display:flex;align-items:flex-start;gap:12px;padding:13px 2px;border-bottom:1px solid #F3F3F5;}
+  .cm-set{display:flex;align-items:flex-start;gap:14px;padding:17px 2px;border-bottom:1px solid #F3F3F5;}
   .cm-set:last-child{border-bottom:none;}
-  .cm-set-b{font-size:14px;font-weight:600;color:#16192A;}
-  .cm-set-s{font-size:12.5px;color:rgba(22,25,42,.55);margin-top:3px;line-height:1.6;}
+  .cm-set-b{font-size:16px;font-weight:600;color:#16192A;letter-spacing:-.01em;}
+  .cm-set-s{font-size:14px;color:rgba(22,25,42,.55);margin-top:5px;line-height:1.65;}
 
-  .cm-vstat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px;}
+  .cm-vstat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px;}
+
+  /* 학습 관리 · 학습 보상 화면만 한 단계 큼직하게 (대시보드 위젯은 그대로) */
+  #page-class-mgmt .ci-card, #page-learn-reward .ci-card{border-radius:18px;padding:26px 28px;margin-bottom:18px;}
+  #page-class-mgmt .ci-card-title, #page-learn-reward .ci-card-title{font-size:19.5px;letter-spacing:-.015em;}
+  #page-class-mgmt .ci-card-head, #page-learn-reward .ci-card-head{gap:12px;margin-bottom:18px;}
+  #page-class-mgmt .ci-badge, #page-learn-reward .ci-badge{font-size:12.5px;padding:5px 11px;}
+  #page-class-mgmt .ci-flow, #page-learn-reward .ci-flow{gap:11px;padding:14px 18px;border-radius:14px;}
+  #page-class-mgmt .ci-flow-node, #page-learn-reward .ci-flow-node{font-size:14px;padding:9px 14px;border-radius:10px;}
+  #page-class-mgmt .ci-flow-arrow, #page-learn-reward .ci-flow-arrow{font-size:17px;}
+  #page-class-mgmt .ci-flow-note, #page-learn-reward .ci-flow-note{font-size:13.5px;}
+  #page-class-mgmt .ci-table th, #page-learn-reward .ci-table th{font-size:13.5px;padding:13px 14px;}
+  #page-class-mgmt .ci-table td, #page-learn-reward .ci-table td{font-size:15px;padding:17px 14px;}
+  #page-class-mgmt .ci-stat, #page-learn-reward .ci-stat{border-radius:15px;padding:20px 22px;}
+  #page-class-mgmt .ci-stat-num, #page-learn-reward .ci-stat-num{font-size:29px;}
+  #page-class-mgmt .ci-stat-label, #page-learn-reward .ci-stat-label{font-size:13.5px;margin-top:7px;}
+  #page-class-mgmt .ci-openlink, #page-learn-reward .ci-openlink{font-size:13.5px;}
+  #page-class-mgmt .btn-dark, #page-learn-reward .btn-dark{font-size:14px;}
+  #page-class-mgmt .ci-log-row, #page-learn-reward .ci-log-row{padding:16px 2px;}
+  #page-class-mgmt .ci-rule, #page-learn-reward .ci-rule{padding:18px 20px;gap:16px;}
+  #page-class-mgmt .ci-rule-cond, #page-learn-reward .ci-rule-cond{font-size:15.5px;}
+  #page-class-mgmt .ci-rule-pts, #page-learn-reward .ci-rule-pts{font-size:16.5px;}
+  #page-class-mgmt .page-head h1, #page-learn-reward .page-head h1{font-size:30px;}
+  #page-class-mgmt .page-head .page-sub, #page-learn-reward .page-head .page-sub{font-size:15.5px;}
   @media (max-width:760px){ .cm-vstat{grid-template-columns:minmax(0,1fr);} }
-  .lr-behind{background:#FFF7FB;border:1px solid #FBD0E4;border-radius:16px;padding:20px 22px;}
-  .lr-behind-t{font-size:15px;font-weight:600;color:#16192A;margin-bottom:3px;}
-  .lr-behind-s{font-size:12.5px;color:rgba(22,25,42,.6);line-height:1.6;margin-bottom:14px;}
-  .lr-behind-row{display:flex;align-items:center;gap:12px;background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px;}
+  .lr-behind{background:#FFF7FB;border:1px solid #FBD0E4;border-radius:18px;padding:26px 26px;}
+  .lr-behind-t{font-size:18px;font-weight:600;color:#16192A;margin-bottom:5px;letter-spacing:-.015em;}
+  .lr-behind-s{font-size:14.5px;color:rgba(22,25,42,.6);line-height:1.65;margin-bottom:18px;}
+  .lr-behind-row{display:flex;align-items:center;gap:14px;background:#fff;border-radius:13px;padding:16px 18px;margin-bottom:9px;}
   .lr-behind-row:last-child{margin-bottom:0;}
-  .lr-behind-name{font-size:14px;font-weight:600;color:#16192A;}
-  .lr-behind-sub{font-size:12px;color:rgba(22,25,42,.55);margin-top:2px;}
+  .lr-behind-name{font-size:16px;font-weight:600;color:#16192A;letter-spacing:-.01em;}
+  .lr-behind-sub{font-size:13.5px;color:rgba(22,25,42,.55);margin-top:4px;}
 
   .ci-stat{background:#F9FAFC;border:1px solid #EEE;border-radius:13px;padding:16px 18px;}
   .ci-stat-num{font-size:24px;font-weight:700;color:#16192A;line-height:1.1;}
@@ -2785,8 +2808,8 @@
       <!-- 연동 후: 기능 메뉴 3개 -->
       <div id="classin-menu-unlocked" style="display:none;">
       <a class="menu-item" onclick="showPage('class-mgmt')" id="menu-class-mgmt">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="17" rx="2.5"/><path d="M3 9.5h18"/><path d="M8 2.5v3.5"/><path d="M16 2.5v3.5"/></svg>
-        수업 관리
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="2.5" y="4.5" width="15" height="15" rx="2.5"/><path d="M21.5 8v9l-4-3.5z"/><path d="M6.5 9.5h6"/><path d="M6.5 13.5h4"/></svg>
+        학습 관리
       </a>
       <a class="menu-item" onclick="showPage('learn-reward')" id="menu-learn-reward">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg>
@@ -3663,13 +3686,14 @@
 <!-- PAGE: 수업 관리 (클래스인 연동) -->
 <div id="page-class-mgmt" style="display:none;">
   <div class="page-head" style="margin-bottom:16px;">
-    <h1>수업 관리</h1>
+    <h1>학습 관리</h1>
     <p class="page-sub">보충·복습 강의 영상을 올려두시면 학생 앱에 바로 공개돼요. 누가 어디까지 봤는지도 여기서 확인하실 수 있습니다.</p>
   </div>
 
   <div class="cm-tabbar">
     <div class="stats-tab-pills" role="tablist">
       <button class="stats-tab-pill active" onclick="showCmTab('materials',this)">강의 영상</button>
+      <button class="stats-tab-pill" onclick="showCmTab('review',this)">시청 관리</button>
       <button class="stats-tab-pill" onclick="showCmTab('classes',this)">반·구성원</button>
       <button class="stats-tab-pill" onclick="showCmTab('config',this)">수업 설정</button>
     </div>
@@ -3765,6 +3789,17 @@
     <p class="cm-hint">한 번 올린 강의는 다음 기수에도 그대로 다시 쓰실 수 있어요. 시청 기록은 수업 종료 약 20분 뒤에 반영됩니다.</p>
   </div>
 
+  <!-- 탭 2: 시청 관리 -->
+  <div id="cm-tab-review" class="cm-tab" style="display:none;">
+    <div class="ci-flow" style="margin-bottom:16px;">
+      <span class="ci-badge" data-api="dsClassRelated"><span class="ci-dot"></span>강의 시청 데이터 자동 수집</span>
+      <span class="ci-flow-note">누가 아직 안 봤는지만 보시면 됩니다 · 재생은 학생 앱에서</span>
+    </div>
+
+    <div class="lr-behind" id="lr-behind-box"></div>
+    <div id="ci-recordings-list" style="margin-top:16px;"></div>
+  </div>
+
   <!-- 탭 4: 수업 설정 -->
   <div id="cm-tab-config" class="cm-tab" style="display:none;">
     <div class="cm-2col">
@@ -3788,13 +3823,12 @@
 <div id="page-learn-reward" style="display:none;">
   <div class="page-head" style="margin-bottom:16px;">
     <h1>학습 보상</h1>
-    <p class="page-sub">올려두신 강의를 학생이 보면 그 기록이 여기로 모입니다. 정해두신 기준을 넘기면 장학 포인트가 자동으로 나갑니다. (1P = 1원)</p>
+    <p class="page-sub">학습 관리에서 모인 기록이 여기로 넘어옵니다. 정해두신 기준을 넘기면 장학 포인트가 자동으로 나갑니다. (1P = 1원)</p>
   </div>
 
   <div class="cm-tabbar">
     <div class="stats-tab-pills" role="tablist">
       <button class="stats-tab-pill active" onclick="showLrTab('status',this)">학습 현황</button>
-      <button class="stats-tab-pill" onclick="showLrTab('review',this)">시청 관리</button>
       <button class="stats-tab-pill" onclick="showLrTab('rules',this)">지급 규칙</button>
       <button class="stats-tab-pill" onclick="showLrTab('log',this)">지급 내역</button>
     </div>
@@ -3818,17 +3852,6 @@
       </div>
     </div>
     <p class="cm-hint">크래빗은 클래스인 데이터를 읽어오기만 합니다(단방향 read). 수업 진행·채점·출결 집계는 클래스인에서 이루어지고, 크래빗은 그 결과를 보상으로 바꿉니다.</p>
-  </div>
-
-  <!-- 탭 2: 시청 관리 -->
-  <div id="lr-tab-review" class="cm-tab" style="display:none;">
-    <div class="ci-flow" style="margin-bottom:16px;">
-      <span class="ci-badge" data-api="dsClassRelated"><span class="ci-dot"></span>강의 시청 데이터 자동 수집</span>
-      <span class="ci-flow-note">누가 아직 안 봤는지만 보시면 됩니다 · 재생은 학생 앱에서</span>
-    </div>
-
-    <div class="lr-behind" id="lr-behind-box"></div>
-    <div id="ci-recordings-list" style="margin-top:16px;"></div>
   </div>
 
   <!-- 탭 3: 지급 규칙 -->
@@ -11144,11 +11167,11 @@
       document.getElementById('page-class-mgmt').style.display = 'block';
       document.getElementById('menu-class-mgmt').classList.add('active');
       cmRenderAll();
+      ciRenderRecordings();
     } else if (page === 'learn-reward') {
       document.getElementById('page-learn-reward').style.display = 'block';
       document.getElementById('menu-learn-reward').classList.add('active');
       ciRenderActivity();
-      ciRenderRecordings();
       ciRenderRewards();
     }
 
@@ -16947,7 +16970,7 @@ let CM_CONFIG_AI = [
 function cmToast(msg){ if(typeof showToast==='function') showToast(msg); }
 
 function showCmTab(key, btn){
-  ['materials','classes','config'].forEach(k=>{
+  ['materials','review','classes','config'].forEach(k=>{
     const el = document.getElementById('cm-tab-'+k);
     if(el) el.style.display = (k===key) ? 'block' : 'none';
   });
@@ -16958,7 +16981,7 @@ function showCmTab(key, btn){
   if(typeof mountApiBadges==='function') mountApiBadges();
 }
 function showLrTab(key, btn){
-  ['status','review','rules','log'].forEach(k=>{
+  ['status','rules','log'].forEach(k=>{
     const el = document.getElementById('lr-tab-'+k);
     if(el) el.style.display = (k===key) ? 'block' : 'none';
   });
