@@ -2780,7 +2780,11 @@
   .v2-stepn{width:64px;height:64px;border-radius:20px;display:flex;flex-direction:column;align-items:center;
     justify-content:center;flex-shrink:0;}
   .v2-stepn b{font-size:21px;font-weight:700;line-height:1;}
-  .v2-stepn span{font-size:10.5px;font-weight:600;margin-top:4px;letter-spacing:.02em;}
+  .v2-stepn img{display:block;width:auto;max-width:44px;height:11px;object-fit:contain;margin-top:7px;}
+  .v2-step{background:#fff;}
+  .sec-flow{background:#F4F5F7;}
+  .sec-flow .v2-step{background:#fff;border-color:#E8E9ED;}
+  .sec-flow .v2-sub > div{background:#F7F8FA;}
   .v2-stepn.ci{background:#EAF4E5;color:#2E8B22;}
   .v2-stepn.cr{background:#FDEDF4;color:#c44f8f;}
   .v2-step h4{font-size:20px;font-weight:600;color:#16192A;margin:0 0 8px;letter-spacing:-.015em;}
@@ -3791,7 +3795,7 @@
   </section>
 
   <!-- 5. 어떻게 하나가 되는지 -->
-  <section class="cin-sec">
+  <section class="cin-sec sec-flow">
     <div class="cin-sec-inner cin-rv">
       <div class="cin-label">둘이 하나가 되는 과정</div>
       <h2 class="cin-h2">원장님이 수업을 열면,<br>아이 손에 카드가 쥐어집니다</h2>
@@ -3799,7 +3803,7 @@
 
       <div class="v2-flow">
         <div class="v2-step">
-          <div class="v2-stepn ci"><b>1</b><span>클래스인</span></div>
+          <div class="v2-stepn ci"><b>1</b><img src="classin-logo.png" alt="ClassIn"></div>
           <div>
             <h4>원장님은 클래스인에서 수업을 엽니다</h4>
             <p>반을 만들고 시간표를 넣으면 회차가 생깁니다. 보충 영상을 올려두시거나, 과제와 퀴즈를 걸어두시면 그 반 학생에게 열립니다. 전자칠판이 있는 교실이면 대면 수업 그대로 쓰시면서 화면만 클래스인으로 띄우시면 됩니다.</p>
@@ -3811,7 +3815,7 @@
         </div>
 
         <div class="v2-step">
-          <div class="v2-stepn ci"><b>2</b><span>학생</span></div>
+          <div class="v2-stepn ci"><b>2</b><img src="classin-logo.png" alt="ClassIn"></div>
           <div>
             <h4>학생은 자기 기기로 수업에 참여합니다</h4>
             <p>학생 계정은 원장님이 배정하시는 순간 만들어집니다. 아이가 따로 가입하지 않습니다. 핸드폰이든 태블릿이든 PC든 앱을 한 번 깔고 로그인하면 그 뒤로는 오늘 할 일이 보입니다.</p>
@@ -3823,7 +3827,7 @@
         </div>
 
         <div class="v2-step">
-          <div class="v2-stepn cr"><b>3</b><span>크래빗</span></div>
+          <div class="v2-stepn cr"><b>3</b><img src="logo.png" alt="크래빗"></div>
           <div>
             <h4>그 기록이 크래빗으로 넘어옵니다</h4>
             <p>아이가 수업에서 한 일이 티처스로 자동으로 들어옵니다. 출결, 손들기, 과제 제출, 퀴즈 점수, 녹화 영상을 몇 분까지 봤는지까지 초 단위로 넘어옵니다. 원장님이 옮겨 적으실 게 없습니다.</p>
@@ -3835,7 +3839,7 @@
         </div>
 
         <div class="v2-step">
-          <div class="v2-stepn cr"><b>4</b><span>보상</span></div>
+          <div class="v2-stepn cr"><b>4</b><img src="logo.png" alt="크래빗"></div>
           <div>
             <h4>장학금이 아이 카드에 들어갑니다</h4>
             <p>장학카드는 학원이 아이에게 주는 실물 카드입니다. 조건을 채우면 원장님이 미리 충전해두신 예치금에서 빠져나가 아이 카드에 담깁니다. 1포인트는 1원입니다. 아이 앱에는 왜 받았는지 사유가 같이 뜹니다.</p>
@@ -3847,7 +3851,7 @@
         </div>
 
         <div class="v2-step">
-          <div class="v2-stepn cr"><b>5</b><span>사용</span></div>
+          <div class="v2-stepn cr"><b>5</b><img src="logo.png" alt="크래빗"></div>
           <div>
             <h4>아이가 직접 씁니다</h4>
             <p>모은 포인트로 아이가 직접 고르고 결제합니다. 부모님을 거치지 않고 자기가 번 돈을 자기가 씁니다. 그래서 다음 주에 또 하려고 합니다.</p>
@@ -4001,8 +4005,8 @@
   <!-- 마무리 -->
   <section class="cin-sec end-cta">
     <div class="cin-sec-inner cin-rv" style="text-align:center;">
-      <h2 class="cin-h2">수업도 보상도 크래빗에게 맡기시고,<br>원장님은 운영에만 집중하세요</h2>
-      <p class="cin-desc" style="margin:0 auto;">클래스인 계약도, 계정 만들기도 저희가 대신합니다.<br>지금 쓰시던 티처스 안에서 그대로 시작하시면 됩니다.</p>
+      <h2 class="cin-h2">수업도 보상도 이제는 시스템화하실 때입니다</h2>
+      <p class="cin-desc" style="margin:0 auto;">스마트 클래스 운영을 시작해보세요.</p>
       <div class="end-btns">
         <button class="end-b ghost" onclick="openAskModal()">문의하기</button>
         <button class="end-b main" onclick="openClassinPay()">1주일 무료 체험</button>
@@ -11211,31 +11215,58 @@
     [0, 120, 400, 800].forEach(t => setTimeout(cfdDrawWires, t));
   }
 
-  let _v2CarTimer = null;
-  function v2CarScroll(dir, smooth) {
+  /* 캐러셀은 한 칸씩 튀지 않고 일정한 속도로 흘러간다.
+     카드를 한 벌 복제해 두고 절반을 지나면 되감아, 이음매가 보이지 않는다. */
+  const V2_SPEED = 0.45;          // 프레임당 px (60fps 기준 약 27px/s)
+  let _v2Raf = null, _v2Paused = false, _v2Resume = null;
+
+  function v2CarInit() {
+    const el = document.getElementById('v2-car');
+    if (!el || el.dataset.looped) return;
+    [...el.children].forEach(c => {
+      const clone = c.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      el.appendChild(clone);
+    });
+    el.dataset.looped = '1';
+    el.addEventListener('mouseenter', () => { _v2Paused = true; });
+    el.addEventListener('mouseleave', () => { _v2Paused = false; });
+    el.addEventListener('touchstart', v2CarHold, { passive: true });
+    el.addEventListener('wheel', v2CarHold, { passive: true });
+  }
+
+  // 사용자가 만지면 잠시 멈췄다가 다시 흐른다
+  function v2CarHold() {
+    _v2Paused = true;
+    clearTimeout(_v2Resume);
+    _v2Resume = setTimeout(() => { _v2Paused = false; }, 2200);
+  }
+
+  function v2CarTick() {
+    _v2Raf = requestAnimationFrame(v2CarTick);
+    const el = document.getElementById('v2-car');
+    // 화면에 없거나 탭이 비활성이면 굳이 움직이지 않는다
+    if (!el || _v2Paused || document.hidden || !el.offsetParent) return;
+    const r = el.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > innerHeight) return;
+    const half = el.scrollWidth / 2;
+    el.scrollLeft += V2_SPEED;
+    if (el.scrollLeft >= half) el.scrollLeft -= half;
+  }
+
+  function v2CarAuto() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    v2CarInit();
+    if (_v2Raf === null) _v2Raf = requestAnimationFrame(v2CarTick);
+  }
+
+  function v2CarScroll(dir) {
     const el = document.getElementById('v2-car');
     if (!el) return;
     const card = el.querySelector('.v2-card');
     const step = card ? card.getBoundingClientRect().width + 16 : 300;
-    el.scrollBy({ left: dir * step * (smooth === 'auto' ? 1 : 2), behavior: 'smooth' });
-    if (smooth !== 'auto') v2CarAuto(true);   // 사용자가 만지면 잠시 멈춘다
-  }
-  /* 카드가 천천히 흘러가다 끝에 닿으면 처음으로 돌아온다 */
-  function v2CarAuto(restart) {
-    const el = document.getElementById('v2-car');
-    if (!el) return;
-    clearInterval(_v2CarTimer);
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const tick = () => {
-      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) {
-        el.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        v2CarScroll(1, 'auto');
-      }
-    };
-    _v2CarTimer = setInterval(tick, restart ? 6000 : 3400);
-    el.onmouseenter = () => clearInterval(_v2CarTimer);
-    el.onmouseleave = () => v2CarAuto();
+    v2CarHold();
+    el.scrollBy({ left: dir * step * 2, behavior: 'smooth' });
   }
 
   function cinInitIntro() {
