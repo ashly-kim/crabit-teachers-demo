@@ -11232,7 +11232,7 @@
 
   /* 캐러셀은 한 칸씩 튀지 않고 일정한 속도로 흘러간다.
      카드를 한 벌 복제해 두고 절반을 지나면 되감아, 이음매가 보이지 않는다. */
-  const V2_SPEED = 0.45;          // 프레임당 px (60fps 기준 약 27px/s)
+  const V2_SPEED = 0.45;          // 16ms 틱당 px (약 28px/s)
   let _v2Raf = null, _v2Paused = false, _v2Resume = null;
 
   function v2CarInit() {
@@ -11258,19 +11258,22 @@
   }
 
   function v2CarTick() {
-    _v2Raf = requestAnimationFrame(v2CarTick);
     const el = document.getElementById('v2-car');
-    // 페이지가 안 보이면 건너뛴다. 탭이 비활성일 때는 rAF 자체가 멈춘다.
     if (!el || _v2Paused || !el.offsetParent) return;
     const half = el.scrollWidth / 2;
     el.scrollLeft += V2_SPEED;
-    if (el.scrollLeft >= half) el.scrollLeft -= half;
+    if (el.scrollLeft >= half) el.scrollLeft -= half;   // 이음매 없이 되감기
   }
 
   function v2CarAuto() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     v2CarInit();
-    if (_v2Raf === null) _v2Raf = requestAnimationFrame(v2CarTick);
+    if (_v2Raf !== null) return;
+    _v2Raf = setInterval(v2CarTick, 16);
+    // 다른 탭으로 넘어가면 멈추고, 돌아오면 다시 흐른다
+    document.addEventListener('visibilitychange', () => {
+      _v2Paused = document.visibilityState === 'hidden';
+    });
   }
 
   function v2CarScroll(dir) {
