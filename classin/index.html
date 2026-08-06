@@ -2151,6 +2151,12 @@
   .lr-behind-sub{font-size:13.5px;color:rgba(22,25,42,.55);margin-top:4px;}
 
   .ci-stat{background:#F9FAFC;border:1px solid #EEE;border-radius:13px;padding:16px 18px;}
+  /* 대시보드 클래스인 위젯은 한 단계 큼직하게 */
+  #dash-classin-block .ci-flow-node{font-size:14px;padding:9px 13px;border-radius:10px;}
+  #dash-classin-block .ci-flow-note{font-size:13.5px;}
+  #dash-classin-block .ci-stat{padding:20px 22px;border-radius:15px;}
+  #dash-classin-block .ci-stat-num{font-size:30px;}
+  #dash-classin-block .ci-stat-label{font-size:13.5px;margin-top:7px;}
   .ci-stat-num{font-size:24px;font-weight:700;color:#16192A;line-height:1.1;}
   .ci-stat-num.pink{color:#FB75BB;}
   .ci-stat-label{font-size:12.5px;color:rgba(22,25,42,.55);margin-top:5px;}
@@ -2587,15 +2593,20 @@
   .cfd-map{position:relative;display:grid;grid-template-columns:minmax(0,238px) minmax(0,1fr) minmax(0,238px);
     gap:0;align-items:center;justify-content:space-between;}
   .cfd-wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:visible;}
-  .cfd-wire{fill:none;stroke:#CDD7CF;stroke-width:1.2;opacity:.9;}
-  .cfd-pulse{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:9 91;opacity:0;}
+  .cfd-wire{fill:none;stroke:#CDD7CF;stroke-width:2.4;opacity:.9;}
+  .cfd-pulse{fill:none;stroke-width:7;stroke-linecap:round;stroke-dasharray:9 91;opacity:0;}
   .cfd-sec.play .cfd-pulse{opacity:1;animation:cfdFlow 3.4s linear infinite;}
   .cfd-pulse.g{stroke:#43B02A;}
   .cfd-pulse.p{stroke:#FB75BB;}
   @keyframes cfdFlow{from{stroke-dashoffset:100;}to{stroke-dashoffset:0;}}
 
   .cfd-col{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;}
-  .cfd-coltag{display:flex;align-items:center;height:30px;margin-bottom:12px;}
+  .cfd-coltag{display:flex;flex-direction:column;align-items:flex-start;gap:9px;margin-bottom:14px;}
+  .cfd-dst .cfd-coltag{align-items:flex-end;text-align:right;}
+  .cfd-cap{font-size:12px;font-weight:600;border-radius:999px;padding:6px 12px;line-height:1.3;
+    box-shadow:0 1px 3px rgba(22,25,42,.06);}
+  .cfd-cap.g{color:#2E8B22;background:#EDF7E8;}
+  .cfd-cap.p{color:#c44f8f;background:#FFF0F7;}
   .cfd-logo{display:block;width:auto;}
   .cfd-logo.ci{height:23px;}
   .cfd-logo.cr{height:26px;}
@@ -2744,6 +2755,10 @@
   .cr-feat .ci-shotbox{background:#FDECF4;}
   .cr-feat .ci-tag{color:#FB75BB;}
   .cr-feat .ci-li li{background:#FFF0F7;color:#a8467a;}
+  /* 네 카드의 가로·세로를 동일하게: 열 비율을 균등하게 두고 이미지 비율을 고정한다 */
+  .cr-feat .ci-featc,
+  .cr-feat .ci-featc:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  .cr-feat .ci-shotbox img{aspect-ratio:4/3;object-fit:cover;}
 
   @media (max-width:900px){
     .ci-score{grid-template-columns:minmax(0,1fr);}
@@ -2781,7 +2796,7 @@
   .v2-stepn b{font-size:21px;font-weight:700;line-height:1;}
   .v2-stepn img{display:block;width:auto;max-width:44px;height:11px;object-fit:contain;margin-top:7px;}
   .v2-step{background:#fff;}
-  .sec-flow{background:#F4F5F7;}
+  .sec-flow,.sec-price{background:#F4F5F7;}
   .sec-flow .v2-step{background:#fff;border-color:#E8E9ED;}
   .sec-flow .v2-sub > div{background:#F7F8FA;}
   .v2-stepn.ci{background:#EAF4E5;color:#2E8B22;}
@@ -3157,7 +3172,7 @@
       </a>
       <a class="menu-item" onclick="showPage('learn-reward')" id="menu-learn-reward">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg>
-        학습 성과
+        크래빗 클래스
       </a>
       </div>
     </div>
@@ -3321,13 +3336,17 @@
 
   <!-- 클래스인 연동 (대시보드 위젯) - 연동 결제 후에만 노출 -->
   <div class="dash-cardmgmt" id="dash-classin-block" style="display:none;">
-    <div class="dash-cardmgmt-head" style="justify-content:space-between;">
-      <div class="dash-cardmgmt-title" style="display:flex;align-items:center;gap:9px;">클래스인 연동 <span class="ci-badge"><span class="ci-dot"></span>단방향 read</span></div>
-      <button class="ci-openlink" data-api="getLoginLinked" onclick="ciOpenClassin()">클래스인에서 열기 ↗</button>
+    <div class="dash-cardmgmt-head">
+      <div class="dash-cardmgmt-title">클래스인 연동</div>
+    </div>
+    <div class="dash-action-row" style="margin-bottom:18px;" onclick="showPage('learn-reward')">
+      <div style="width:40px;height:40px;border-radius:10px;background:#FDEDF4;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FB75BB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg></div>
+      <div style="flex:1;min-width:0;"><div class="dar-label">장학금 자동지급 규칙 관리</div><div class="dar-sub">강의 시청과 활동 데이터로 장학금을 자동 지급해요</div></div>
+      <div class="dar-arrow">›</div>
     </div>
     <div class="ci-flow" style="margin-bottom:16px;">
       <span class="ci-flow-node"><span class="ci-dot"></span>클래스인 LMS</span>
-      <span class="ci-flow-note">강의 완주율·과제·퀴즈·출결</span>
+      <span class="ci-flow-note">강의 완주율, 과제, 퀴즈, 출결</span>
       <span class="ci-flow-arrow">→</span>
       <span class="ci-flow-node crab">크래빗 티처스</span>
       <span class="ci-flow-arrow">→</span>
@@ -3335,22 +3354,17 @@
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
       <div>
-        <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:4px;display:flex;align-items:center;gap:7px;" data-api="dsClassRelated"><span class="ci-live-dot"></span>공개 중인 강의 · 시청 현황</div>
+        <div style="font-size:15px;font-weight:700;color:#16192A;margin-bottom:8px;display:flex;align-items:center;gap:7px;" data-api="dsClassRelated"><span class="ci-live-dot"></span>공개 중인 강의와 시청 현황</div>
         <div id="ci-dash-live"></div>
       </div>
       <div>
-        <div style="font-size:13px;font-weight:700;color:#16192A;margin-bottom:10px;" data-api="dsDetails,dsCourseData">이번 주 시청·활동 → 자동 지급 장학금</div>
+        <div style="font-size:15px;font-weight:700;color:#16192A;margin-bottom:12px;" data-api="dsDetails,dsCourseData">이번 주 시청과 활동 → 자동 지급 장학금</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
           <div class="ci-stat"><div class="ci-stat-num pink" id="ci-dash-total">0P</div><div class="ci-stat-label">이번 주 자동 지급</div></div>
           <div class="ci-stat"><div class="ci-stat-num" id="ci-dash-count">0명</div><div class="ci-stat-label">지급 학생</div></div>
         </div>
         <div id="ci-dash-log"></div>
       </div>
-    </div>
-    <div class="dash-action-row" style="margin-top:16px;" onclick="showPage('learn-reward')">
-      <div style="width:40px;height:40px;border-radius:10px;background:#FDEDF4;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FB75BB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 22l5-3 5 3-1.5-9.5"/></svg></div>
-      <div style="flex:1;min-width:0;"><div class="dar-label">장학금 자동지급 규칙 관리</div><div class="dar-sub">강의 시청과 활동 데이터로 장학금을 자동 지급해요</div></div>
-      <div class="dar-arrow">›</div>
     </div>
   </div>
 
@@ -3456,7 +3470,7 @@
         <svg class="cfd-wires" id="cfd-wires" aria-hidden="true"></svg>
 
         <div class="cfd-col cfd-src cin-rv">
-          <div class="cfd-coltag"><img src="classin-logo.png" alt="ClassIn" class="cfd-logo ci"></div>
+          <div class="cfd-coltag"><img src="classin-logo.png" alt="ClassIn" class="cfd-logo ci"><span class="cfd-cap g">클래스인에서 자동으로 수집합니다</span></div>
           <div class="cfd-chip" style="animation-delay:.05s"><div><b>강의 완주율</b><span>어디까지 봤는지 초 단위로</span></div></div>
           <div class="cfd-chip" style="animation-delay:.13s"><div><b>시청 진도</b><span>몇 강까지 끝냈는지</span></div></div>
           <div class="cfd-chip" style="animation-delay:.21s"><div><b>과제 제출</b><span>제출 여부와 채점 결과</span></div></div>
@@ -3476,7 +3490,7 @@
         </div>
 
         <div class="cfd-col cfd-dst cin-rv">
-          <div class="cfd-coltag"><img src="logo.png" alt="크래빗" class="cfd-logo cr"></div>
+          <div class="cfd-coltag"><img src="logo.png" alt="크래빗" class="cfd-logo cr"><span class="cfd-cap p">크래빗에서 자동으로 보상합니다</span></div>
           <div class="cfd-chip" style="animation-delay:.05s"><div><b>장학 포인트 적립</b><span>왜 받았는지 사유와 함께</span></div></div>
           <div class="cfd-chip" style="animation-delay:.13s"><div><b>스탬프와 미션</b><span>모으는 재미가 붙습니다</span></div></div>
           <div class="cfd-chip" style="animation-delay:.21s"><div><b>장학카드로 사용</b><span>모은 만큼 직접 씁니다</span></div></div>
@@ -3484,8 +3498,6 @@
           <div class="cfd-chip" style="animation-delay:.37s"><div><b>학원 소속감</b><span>우리 학원에서만 받는 보상</span></div></div>
         </div>
 
-        <span class="cfd-tag g">클래스인에서 자동으로 수집합니다</span>
-        <span class="cfd-tag p">크래빗에서 자동으로 보상합니다</span>
       </div>
 
       <p class="cfd-foot cin-rv">원장님이 해두실 일은 두 가지입니다. <b>기준을 정하는 것</b>, 그리고 <b>예치금을 채워두는 것</b>.</p>
@@ -4043,7 +4055,7 @@
 
     <div class="cpay-trial">
       <span class="cpay-trial-tag">1주일 무료 체험</span>
-      <span>먼저 7일 동안 모든 기능을 써보시고 결정하세요.<br>체험 기간 안에 해지하시면 <b>한 푼도 청구되지 않습니다.</b></span>
+      <span>먼저 7일 동안 모든 기능을 써보시고 결정하세요.<br>체험 기간 안에 해지하실 시 <b>별도 금액이 청구되지 않습니다.</b></span>
     </div>
 
     <div class="cpay-row"><span class="k">요금제</span><span class="v">크래빗 클래스</span></div>
@@ -4211,10 +4223,10 @@
 
       <div class="ci-feat cr-feat">
         <div class="ci-featc">
-          <div class="ci-shotbox"><img src="emp-2-after.jpg" alt="장학카드를 들고 제 시간에 등원하는 학생" loading="lazy"></div>
+          <div class="ci-shotbox"><img src="cr-ill-study.jpg" alt="책상에 장학카드를 두고 집중해서 공부하는 학생과 뒤에서 지켜보는 선생님" loading="lazy"></div>
           <div class="ci-featb">
             <div class="ci-tag">01</div>
-            <h4>엉덩이를 떼게 만듭니다</h4>
+            <h4>학생을 움직이게 하는 보상</h4>
             <p>학원에 나오는 것도, 집에서 책상 앞에 앉는 것도 이제 시켜서가 아니라 받으려고 합니다. 부모님이 매일 깨워 보내지 않아도 됩니다.</p>
             <ul class="ci-li">
               <li>제 시간 등원</li><li>과제 제출</li><li>강의 완주</li>
@@ -4223,7 +4235,7 @@
         </div>
 
         <div class="ci-featc">
-          <div class="ci-shotbox"><img src="cr-shot-log.jpg" alt="크래빗 장학금 자동지급 내역 화면" loading="lazy"></div>
+          <div class="ci-shotbox"><img src="cr-hp-stamp.jpg" alt="학생 앱에서 스탬프를 모아 포인트가 자동 적립되는 화면" loading="lazy"></div>
           <div class="ci-featb">
             <div class="ci-tag">02</div>
             <h4>노력이 보이는 만족감</h4>
@@ -4235,7 +4247,7 @@
         </div>
 
         <div class="ci-featc">
-          <div class="ci-shotbox"><img src="ill-student.jpg" alt="장학카드를 들고 있는 학생들" loading="lazy"></div>
+          <div class="ci-shotbox"><img src="cr-hp-card.jpg" alt="학원 이름이 들어간 우리 학원 전용 장학카드" loading="lazy"></div>
           <div class="ci-featb">
             <div class="ci-tag">03</div>
             <h4>학원에 대한 소속감</h4>
@@ -4247,7 +4259,7 @@
         </div>
 
         <div class="ci-featc">
-          <div class="ci-shotbox"><img src="ill-reward.jpg" alt="장학카드와 포인트" loading="lazy"></div>
+          <div class="ci-shotbox"><img src="cr-ill-pay.jpg" alt="장학카드를 단말기에 꽂아 직접 결제하는 학생" loading="lazy"></div>
           <div class="ci-featb">
             <div class="ci-tag">04</div>
             <h4>경제 개념이 자랍니다</h4>
@@ -4273,7 +4285,7 @@
         <svg class="cfd-wires" aria-hidden="true"></svg>
 
         <div class="cfd-col cfd-src cin-rv">
-          <div class="cfd-coltag"><img src="classin-logo.png" alt="ClassIn" class="cfd-logo ci"></div>
+          <div class="cfd-coltag"><img src="classin-logo.png" alt="ClassIn" class="cfd-logo ci"><span class="cfd-cap g">클래스인에서 자동으로 수집합니다</span></div>
           <div class="cfd-chip" style="animation-delay:.05s"><div><b>출결</b><span>지각·조퇴까지 회차별로</span></div></div>
           <div class="cfd-chip" style="animation-delay:.13s"><div><b>수업 참여</b><span>손들기, 발표, 토론 횟수</span></div></div>
           <div class="cfd-chip" style="animation-delay:.21s"><div><b>과제 제출</b><span>제출 여부와 채점 결과</span></div></div>
@@ -4293,7 +4305,7 @@
         </div>
 
         <div class="cfd-col cfd-dst cin-rv">
-          <div class="cfd-coltag"><img src="logo.png" alt="크래빗" class="cfd-logo cr"></div>
+          <div class="cfd-coltag"><img src="logo.png" alt="크래빗" class="cfd-logo cr"><span class="cfd-cap p">크래빗에서 자동으로 보상합니다</span></div>
           <div class="cfd-chip" style="animation-delay:.05s"><div><b>장학 포인트 적립</b><span>왜 받았는지 사유와 함께</span></div></div>
           <div class="cfd-chip" style="animation-delay:.13s"><div><b>스탬프와 미션</b><span>모으는 재미가 붙습니다</span></div></div>
           <div class="cfd-chip" style="animation-delay:.21s"><div><b>장학카드로 사용</b><span>모은 만큼 직접 씁니다</span></div></div>
@@ -4301,8 +4313,6 @@
           <div class="cfd-chip" style="animation-delay:.37s"><div><b>학원 소속감</b><span>우리 학원에서만 받는 보상</span></div></div>
         </div>
 
-        <span class="cfd-tag g">클래스인에서 자동으로 수집합니다</span>
-        <span class="cfd-tag p">크래빗에서 자동으로 보상합니다</span>
       </div>
 
     </div>
@@ -4312,7 +4322,7 @@
   <section class="cin-sec sec-flow">
     <div class="cin-sec-inner cin-rv">
       <div class="cin-label">둘이 하나가 되는 과정</div>
-      <h2 class="cin-h2">클래스인으로 수업을 설계하고 운영하고,<br>크래빗으로 지속적인 학습과 참여를 이끌어내는 시스템</h2>
+      <h2 class="cin-h2">클래스인으로 수업을 운영하고,<br>크래빗으로 학습 동기를 잇는 시스템</h2>
       <p class="cin-desc">클래스인도 크래빗도 처음이시라면?<br>아래 순서대로 수업부터 보상까지 한 번에 진행됩니다.</p>
 
       <div class="v2-flow">
@@ -4380,10 +4390,10 @@
   </section>
 
   <!-- 6. 요금제 -->
-  <section class="cin-sec alt">
+  <section class="cin-sec sec-price">
     <div class="cin-sec-inner cin-rv" style="text-align:center;">
-      <div class="cin-label">요금제</div>
-      <h2 class="cin-h2">수업 도구와 보상 자동화를<br>한 번에</h2>
+      <div class="cin-label">요금제 소개</div>
+      <h2 class="cin-h2">스마트한 수업 도구와<br>보상 시스템까지 한 번에.</h2>
       <p class="cin-desc" style="margin:0 auto;">장학카드는 지금처럼 필요하실 때 구매하시면 됩니다. 이 요금제는 클래스인 이용료와 크래빗 보상 자동화를 함께 담았습니다.</p>
 
       <div class="cin-plan" style="text-align:left;">
@@ -4525,7 +4535,7 @@
         <button class="end-b ghost" onclick="openAskModal()">문의하기</button>
         <button class="end-b main" onclick="openClassinPay()">1주일 무료 체험</button>
       </div>
-      <p class="end-fine">체험 기간 안에 해지하시면 한 푼도 청구되지 않습니다.</p>
+      <p class="end-fine">체험 기간 안에 해지하실 시 별도 금액이 청구되지 않습니다.</p>
     </div>
   </section>
 
@@ -4667,10 +4677,10 @@
   </div>
 </div>
 
-<!-- PAGE: 학습 성과 (클래스인 연동) -->
+<!-- PAGE: 크래빗 클래스 (클래스인 연동) -->
 <div id="page-learn-reward" style="display:none;">
   <div class="page-head" style="margin-bottom:16px;">
-    <h1>학습 성과</h1>
+    <h1>크래빗 클래스</h1>
     <p class="page-sub">학습 관리에서 모인 기록이 여기로 넘어옵니다. 정해두신 기준을 넘기면 장학 포인트가 자동으로 나갑니다. (1P = 1원)</p>
   </div>
 
@@ -4680,7 +4690,6 @@
       <button class="stats-tab-pill v2only" onclick="showLrTab('review',this)">시청 관리</button>
       <button class="stats-tab-pill" onclick="showLrTab('rules',this)">지급 규칙</button>
     </div>
-    <button class="ci-openlink" style="margin-left:auto;" data-api="getLoginLinked" onclick="ciOpenClassin()">클래스인에서 열기 ↗</button>
   </div>
 
   <!-- 탭 1: 학습 현황 -->
@@ -4699,7 +4708,7 @@
         </table>
       </div>
     </div>
-    <p class="cm-hint">크래빗은 클래스인 데이터를 읽어오기만 합니다(단방향 read). 수업 진행·채점·출결 집계는 클래스인에서 이루어지고, 크래빗은 그 결과를 보상으로 바꿉니다.</p>
+    <p class="cm-hint">크래빗은 클래스인에 쌓인 데이터를 받아옵니다. 수업 진행·채점·출결 집계는 클래스인에서 이루어지고, 크래빗은 그 결과를 보상으로 바꿉니다.</p>
   </div>
 
   <!-- 탭 3: 지급 규칙 -->
@@ -12588,14 +12597,14 @@
 
   function confirmDowngrade() {
     const warn = isCrabitIn()
-      ? '정말 스타터 플랜으로 전환하시겠어요?\n클래스인 연동이 해지되어 학습 관리·학습 성과 메뉴가 잠겨요. 데이터는 모두 보존돼요.'
+      ? '정말 스타터 플랜으로 전환하시겠어요?\n클래스인 연동이 해지되어 학습 관리와 크래빗 클래스 메뉴가 잠겨요. 데이터는 모두 보존돼요.'
       : '정말 스타터 플랜으로 전환하시겠어요?\n그로우 전용 기능(미션 무제한, 공지·배너, 학생 랭킹·인사이트 등)이 잠겨요. 데이터는 모두 보존돼요.';
     if (!confirm(warn)) return;
     setSubPlan('STARTER');
   }
 
   function confirmCinCancel() {
-    if (!confirm('정말 크래빗 클래스를 해지하시겠어요?\n학습 관리·학습 성과 메뉴가 잠기고 클래스인 연동이 끊겨요. 보상 데이터는 그대로 보존돼요.')) return;
+    if (!confirm('정말 크래빗 클래스를 해지하시겠어요?\n학습 관리와 크래빗 클래스 메뉴가 잠기고 클래스인 연동이 끊겨요. 보상 데이터는 그대로 보존돼요.')) return;
     setSubPlan('GROWTH');
     showToast('크래빗 클래스를 해지했어요. 그로우 플랜으로 전환됐어요.');
   }
@@ -18012,9 +18021,9 @@ let CLASSIN_RULES = [
 ];
 
 const CLASSIN_LOG = [
-  {name:'정하늘', trigger:'강의 완주율 99% · 과제 100% 제출 · 퀴즈 평균 95점', pts:8500, time:'오늘 13:05'},
-  {name:'이서윤', trigger:'강의 완주율 97% · 과제 100% 제출', pts:5500, time:'오늘 11:40'},
-  {name:'김민준', trigger:'퀴즈 평균 92점 · 출석률 96%', pts:5500, time:'어제 18:22'},
+  {name:'정하늘', trigger:'강의 완주율 99%, 과제 100% 제출, 퀴즈 평균 95점', pts:8500, time:'오늘 13:05'},
+  {name:'이서윤', trigger:'강의 완주율 97%, 과제 100% 제출', pts:5500, time:'오늘 11:40'},
+  {name:'김민준', trigger:'퀴즈 평균 92점, 출석률 96%', pts:5500, time:'어제 18:22'},
 ];
 
 const CI_METRICS = [
@@ -18054,8 +18063,8 @@ function ciRenderDashboard(){
     return `<div class="ci-live-row">
       <span class="ci-live-dot ${miss>2?'soon':''}"></span>
       <div style="flex:1;min-width:0;">
-        <div style="font-size:13.5px;font-weight:600;color:#16192A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.title}</div>
-        <div style="font-size:12px;color:rgba(22,25,42,.55);">${r.course} · 시청 ${r.watched}/${r.total}</div>
+        <div style="font-size:15px;font-weight:600;color:#16192A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${r.title}</div>
+        <div style="font-size:13px;color:rgba(22,25,42,.55);">${r.course}, 시청 ${r.watched}/${r.total}</div>
       </div>
       <span class="${miss>0?'ci-chip-soon':'ci-chip-green'}">${miss>0?'미시청 '+miss+'명':'전원 완료'}</span>
     </div>`;
@@ -18070,10 +18079,10 @@ function ciRenderDashboard(){
   log.innerHTML = CLASSIN_LOG.slice(0,3).map(l=>`
     <div class="ci-log-row">
       <div style="flex:1;min-width:0;">
-        <div style="font-size:13px;font-weight:600;">${l.name}</div>
-        <div style="font-size:11.5px;color:rgba(22,25,42,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${l.trigger}</div>
+        <div style="font-size:14.5px;font-weight:600;">${l.name}</div>
+        <div style="font-size:12.5px;color:rgba(22,25,42,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${l.trigger}</div>
       </div>
-      <div style="font-weight:700;color:#FB75BB;font-size:13.5px;white-space:nowrap;">+${ciFmt(l.pts)}P</div>
+      <div style="font-weight:700;color:#FB75BB;font-size:15px;white-space:nowrap;">+${ciFmt(l.pts)}P</div>
     </div>`).join('');
 }
 
