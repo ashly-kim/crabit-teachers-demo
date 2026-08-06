@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>크래빗 티처스 · 클래스인 연동 데모 (Simple Integration)</title>
 <!-- 컨페티 라이브러리 -->
+<script src="vendor/motion.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
@@ -2772,7 +2773,7 @@
 
   /* 카드 뒤집기 */
   .cr-persp{perspective:1400px;}
-  .cr-cardfit{transform:scale(var(--cs,1));}
+  .cr-cardfit{scale:var(--cs,1);}
   .cr-float{position:relative;width:210px;height:310px;animation:crFloat 5s ease-in-out infinite;}
   @keyframes crFloat{
     0%{transform:translateY(0) rotate(0deg);}
@@ -2834,6 +2835,10 @@
     35%{opacity:1;transform:translate(calc(-50% + var(--px) * .5),calc(-50% + var(--py) * .5)) scale(1);}
     100%{transform:translate(calc(-50% + var(--px)),calc(-50% + var(--py))) scale(.7);opacity:0;}
   }
+
+  /* motion 구동 시 CSS 키프레임은 끈다. 라이브러리가 없으면 아래 폴백이 그대로 돈다. */
+  .cr-js .cr-float,.cr-js .cr-flip,.cr-js .cr-shine,.cr-js .cr-reward.on .cr-part{animation:none;}
+  .cr-js .cr-reward,.cr-js .cr-reward.on{transform:none;transition:opacity .28s;}
 
   @media (prefers-reduced-motion: reduce){
     .cr-float,.cr-flip,.cr-shine,.cr-reward.on .cr-part{animation:none;}
@@ -11475,11 +11480,85 @@
     _crTimers = [];
     slots.forEach(sl => sl.classList.remove('on'));
     card.classList.remove('gone');
-    rw.classList.remove('on');
+    crShowReward(false);
     for (let i = 1; i <= CR_COUNT; i++) at(() => slots[i - 1].classList.add('on'), 500 + i * CR_STAMP.step);
     const rewardAt = 500 + CR_COUNT * CR_STAMP.step + 500;
-    at(() => { card.classList.add('gone'); rw.classList.add('on'); }, rewardAt);
+    at(() => { card.classList.add('gone'); crShowReward(true); }, rewardAt);
     at(crCycle, rewardAt + 3000);   // 리워드 카드를 3초 보여주고 다시 처음부터
+  }
+
+  /* --- motion 구동 (홈페이지와 동일한 엔진) ---
+     홈페이지는 framer-motion 12.34.0, 여기는 같은 버전의 바닐라 배포판이다.
+     duration, ease, 스프링 상수는 flow-section.tsx 값을 그대로 옮겼다. */
+  const _M = () => (window.Motion && window.Motion.animate) ? window.Motion : null;
+  let _crCardTimers = [];
+
+  function crCardCycle() {
+    const M = _M();
+    const flip = document.querySelector('.cr-scene-card .cr-flip');
+    const shine = document.querySelector('.cr-scene-card .cr-shine');
+    if (!M || !flip) return;
+    const at = (fn, ms) => _crCardTimers.push(setTimeout(fn, ms));
+    _crCardTimers.forEach(clearTimeout);
+    _crCardTimers = [];
+    // 뒷면은 정보 가치가 없어서 멈추지 않고 한 바퀴 휙 돌아 앞면으로 복귀한다
+    at(() => {
+      flip._spins = (flip._spins || 0) + 1;
+      M.animate(flip, { rotateY: flip._spins * 360 }, { duration: 1, ease: [0.65, 0, 0.35, 1] });
+    }, 1400);
+    at(() => {
+      if (shine) M.animate(shine,
+        { x: ['-140%', '520%'], skewX: [-20, -20], opacity: [0, 1, 0] },
+        { duration: 0.9, ease: 'easeInOut' });
+    }, 2300);
+    at(crCardCycle, 4000);
+  }
+
+  function crMotionInit() {
+    const M = _M();
+    if (!M) return false;
+    document.querySelectorAll('.cr-scene').forEach(sc => sc.classList.add('cr-js'));
+    const fit = document.querySelector('.cr-scene-card .cr-cardfit');
+    const float = document.querySelector('.cr-scene-card .cr-float');
+    if (fit) {
+      // 등장 틸트 (최초 1회)
+      M.animate(fit, { rotateX: [15, 0], y: [40, 0], opacity: [0, 1] },
+        { duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.15 });
+    }
+    if (float) {
+      // 미세 플로팅 (상시 반복)
+      M.animate(float, { y: [0, -8, 0], rotate: [0, -1.2, 0, 1.2, 0] },
+        { duration: 5, repeat: Infinity, ease: 'easeInOut' });
+    }
+    crCardCycle();
+    return true;
+  }
+
+  function crRewardScale() {
+    const rw = document.getElementById('cr-reward');
+    const v = rw && parseFloat(rw.style.getPropertyValue('--rs'));
+    return v || 1;
+  }
+
+  // 리워드 카드 등장: 홈페이지와 같은 스프링(stiffness 260, damping 14)
+  function crShowReward(on) {
+    const M = _M();
+    const rw = document.getElementById('cr-reward');
+    if (!rw) return;
+    rw.classList.toggle('on', on);
+    if (!M) return;
+    const rs = crRewardScale();
+    if (on) {
+      M.animate(rw, { scale: [rs * 0.7, rs], y: [16, 0] }, { type: 'spring', stiffness: 260, damping: 14 });
+      rw.querySelectorAll('.cr-part').forEach(el => {
+        const px = el.style.getPropertyValue('--px'), py = el.style.getPropertyValue('--py');
+        const dl = parseFloat(el.style.animationDelay) || 0;
+        M.animate(el, { x: [0, px], y: [0, py], opacity: [0, 1, 0], scale: [0.4, 1, 0.7] },
+          { delay: dl, duration: 0.55, ease: 'easeOut' });
+      });
+    } else {
+      M.animate(rw, { scale: rs * 0.7, y: 16 }, { duration: 0.3 });
+    }
   }
 
   function crScenesStart() {
@@ -11493,7 +11572,14 @@
       document.querySelectorAll('#cr-stampgrid .cr-slot').forEach(sl => sl.classList.add('on'));
       return;
     }
+    crMotionInit();
     crCycle();
+    // 숨은 탭에서 타이머가 쌓였다가 복귀 즉시 몰아서 실행되는 것을 막는다
+    document.addEventListener('visibilitychange', () => {
+      _crTimers.forEach(clearTimeout); _crTimers = [];
+      _crCardTimers.forEach(clearTimeout); _crCardTimers = [];
+      if (!document.hidden) { crCycle(); crCardCycle(); }
+    });
   }
 
   function cinInitIntro() {
