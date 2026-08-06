@@ -11232,8 +11232,8 @@
 
   /* 캐러셀은 한 칸씩 튀지 않고 일정한 속도로 흘러간다.
      카드를 한 벌 복제해 두고 절반을 지나면 되감아, 이음매가 보이지 않는다. */
-  const V2_SPEED = 0.45;          // 16ms 틱당 px (약 28px/s)
-  let _v2Raf = null, _v2Paused = false, _v2Resume = null;
+  const V2_SPEED = 28;            // 초당 px
+  let _v2Raf = null, _v2Paused = false, _v2Resume = null, _v2Last = 0;
 
   function v2CarInit() {
     const el = document.getElementById('v2-car');
@@ -11258,10 +11258,14 @@
   }
 
   function v2CarTick() {
+    // 흐른 시간만큼 움직여, 틱 간격이 흔들려도 속도가 일정하다
+    const now = Date.now();
+    const dt = _v2Last ? Math.min(now - _v2Last, 100) : 16;
+    _v2Last = now;
     const el = document.getElementById('v2-car');
     if (!el || _v2Paused || !el.offsetParent) return;
     const half = el.scrollWidth / 2;
-    el.scrollLeft += V2_SPEED;
+    el.scrollLeft += V2_SPEED * dt / 1000;
     if (el.scrollLeft >= half) el.scrollLeft -= half;   // 이음매 없이 되감기
   }
 
