@@ -11260,10 +11260,8 @@
   function v2CarTick() {
     _v2Raf = requestAnimationFrame(v2CarTick);
     const el = document.getElementById('v2-car');
-    // 화면에 없거나 탭이 비활성이면 굳이 움직이지 않는다
-    if (!el || _v2Paused || document.hidden || !el.offsetParent) return;
-    const r = el.getBoundingClientRect();
-    if (r.bottom < 0 || r.top > innerHeight) return;
+    // 페이지가 안 보이면 건너뛴다. 탭이 비활성일 때는 rAF 자체가 멈춘다.
+    if (!el || _v2Paused || !el.offsetParent) return;
     const half = el.scrollWidth / 2;
     el.scrollLeft += V2_SPEED;
     if (el.scrollLeft >= half) el.scrollLeft -= half;
