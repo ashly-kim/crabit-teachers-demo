@@ -2690,22 +2690,69 @@
   .emp-q span{flex-shrink:0;font-size:12.5px;font-weight:700;letter-spacing:.06em;color:#c44f8f;
     background:#FDEDF4;border-radius:999px;padding:5px 12px;transform:translateY(-3px);}
   .emp-ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
-  .emp-shot{margin:0;position:relative;}
+  .emp-shot{margin:0;}
   .emp-shot img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;background:#F2F3F6;}
   .emp-shot.b img{filter:saturate(.72) brightness(.97);}
-  .emp-tag{position:absolute;top:14px;left:14px;font-size:12px;font-weight:600;border-radius:999px;
-    padding:6px 13px;backdrop-filter:blur(6px);}
-  .emp-shot.b .emp-tag{background:rgba(255,255,255,.9);color:rgba(22,25,42,.62);}
-  .emp-shot.a .emp-tag{background:rgba(255,255,255,.9);color:#c44f8f;}
-  .emp-shot figcaption{font-size:15px;color:rgba(22,25,42,.62);line-height:1.72;margin-top:14px;}
+  .emp-tag{text-align:center;font-size:12.5px;font-weight:700;letter-spacing:.14em;margin-bottom:12px;}
+  .emp-shot.b .emp-tag{color:rgba(22,25,42,.4);}
+  .emp-shot.a .emp-tag{color:#FB75BB;}
+  .emp-shot figcaption{font-size:15px;color:rgba(22,25,42,.62);line-height:1.72;margin-top:14px;text-align:center;}
   .emp-shot.a figcaption{color:rgba(22,25,42,.75);}
-  .emp-say{font-size:17px;color:rgba(22,25,42,.7);line-height:1.8;margin-top:26px;
-    background:#F7F8F6;border-radius:16px;padding:22px 26px;max-width:none;}
-  .emp-say b{color:#16192A;font-weight:600;}
+  .emp-say{font-size:17px;color:rgba(22,25,42,.72);line-height:1.8;margin-top:26px;
+    background:#FFF0F7;border-radius:16px;padding:22px 26px;max-width:none;}
+  .emp-say b{color:#c44f8f;font-weight:600;}
   @media (max-width:900px){
     .emp-ba{grid-template-columns:minmax(0,1fr);gap:14px;}
     .emp + .emp{margin-top:44px;padding-top:40px;}
     .emp-say{font-size:15.5px;padding:18px 20px;}
+  }
+
+  /* ── 클래스인 섹션 (초록 계열) ── */
+  .sec-ci{background:#F1F8ED;}
+  .lb-ci{color:#22AC38;}
+  .ci-intro{max-width:760px;margin-top:26px;}
+  .ci-intro-q{display:inline-block;font-size:14px;font-weight:600;color:#22AC38;
+    background:#fff;border-radius:999px;padding:7px 16px;margin-bottom:14px;}
+  .ci-intro-p{font-size:17px;color:rgba(22,25,42,.65);line-height:1.8;}
+  .ci-score{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px;}
+  .ci-score > div{background:#fff;border-radius:16px;padding:22px 24px;}
+  .ci-score b{display:block;font-size:clamp(26px,3.4vw,36px);font-weight:700;color:#22AC38;letter-spacing:-.02em;line-height:1.1;}
+  .ci-score span{display:block;font-size:14px;color:rgba(22,25,42,.55);margin-top:8px;}
+  .sec-ci .cin-fine{color:rgba(22,25,42,.42);}
+  .ci-sub{font-size:clamp(23px,3.2vw,34px);font-weight:600;color:#16192A;letter-spacing:-.025em;
+    line-height:1.36;margin:64px 0 0;text-wrap:balance;}
+  .ci-feat{display:flex;flex-direction:column;gap:18px;margin-top:34px;}
+  .ci-featc{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+    background:#fff;border-radius:22px;overflow:hidden;align-items:stretch;}
+  .ci-featc:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);}
+  .ci-featc:nth-child(even) .ci-shotbox{order:2;}
+  .ci-shotbox{background:#EDF3EA;padding:22px;display:flex;align-items:center;min-width:0;}
+  .ci-shotbox img{display:block;width:100%;max-width:100%;height:auto;border-radius:12px;
+    box-shadow:0 6px 22px rgba(22,25,42,.1);}
+  .ci-featb{padding:34px 38px 36px;display:flex;flex-direction:column;justify-content:center;}
+  .ci-tag{font-size:12.5px;font-weight:700;letter-spacing:.08em;color:#22AC38;margin-bottom:10px;}
+  .ci-featb h4{font-size:clamp(21px,2.6vw,26px);font-weight:600;color:#16192A;letter-spacing:-.02em;margin:0 0 10px;}
+  .ci-featb p{font-size:16.5px;color:rgba(22,25,42,.62);line-height:1.75;margin:0 0 18px;}
+  .ci-li{display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0;list-style:none;}
+  .ci-li li{font-size:14px;font-weight:500;color:#2E6B22;background:#F1F8ED;border-radius:8px;padding:7px 12px;}
+
+  /* ── 크래빗 섹션 (핑크·네이비 계열) ── */
+  .sec-cr{background:#FFF7FB;}
+  .lb-cr{color:#FB75BB;}
+  .cr-say{background:#16192A;border-radius:22px;padding:32px 36px;margin-top:30px;display:flex;flex-direction:column;gap:14px;}
+  .cr-say p{font-size:17px;color:rgba(255,255,255,.72);line-height:1.85;max-width:none;}
+  .cr-say b{color:#FB75BB;font-weight:600;}
+  .sec-cr .cin-gain{background:#fff;}
+  .sec-cr .cin-split{margin-top:34px;}
+
+  @media (max-width:900px){
+    .ci-score{grid-template-columns:minmax(0,1fr);}
+    .ci-featc,.ci-featc:nth-child(even){grid-template-columns:minmax(0,1fr);}
+    .ci-featc:nth-child(even) .ci-shotbox{order:0;}
+    .ci-featb{padding:26px 22px 30px;}
+    .ci-sub{margin-top:44px;}
+    .cr-say{padding:24px 22px;}
+    .cr-say p{font-size:15.5px;}
   }
 
   .v2-feat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:34px;}
@@ -2743,19 +2790,20 @@
   .v2-sub span{font-size:14px;color:rgba(22,25,42,.58);line-height:1.65;}
 
   /* 캐러셀 */
-  .v2-car-head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;}
-  .v2-car-nav{display:flex;gap:8px;margin-left:auto;}
-  .v2-arw{width:42px;height:42px;border-radius:50%;border:1px solid #E3E4E8;background:#fff;color:#16192A;
-    display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:inherit;transition:background .15s;}
+  .v2-carwrap{position:relative;margin-top:34px;}
+  .v2-arw{position:absolute;top:96px;z-index:3;width:46px;height:46px;border-radius:50%;border:1px solid #E3E4E8;
+    background:#fff;color:#16192A;display:flex;align-items:center;justify-content:center;cursor:pointer;
+    font-family:inherit;box-shadow:0 4px 16px rgba(22,25,42,.12);transition:background .15s;}
   .v2-arw:hover{background:#F4F4F5;}
-  .v2-car{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:30px;padding-bottom:14px;
-    scrollbar-width:none;}
+  .v2-arw.prev{left:-23px;}
+  .v2-arw.next{right:-23px;}
+  .v2-car{display:flex;gap:16px;overflow-x:auto;padding-bottom:14px;scrollbar-width:none;}
   .v2-car::-webkit-scrollbar{display:none;}
-  .v2-card{flex:0 0 280px;scroll-snap-align:start;background:#fff;border:1px solid #EDEEF1;border-radius:20px;overflow:hidden;}
-  .v2-cardtop{height:150px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-  .v2-cardtop.g{background:linear-gradient(150deg,#EAF4E5,#F7FBF5);}
-  .v2-cardtop.p{background:linear-gradient(150deg,#FDEDF4,#FFF9FC);}
-  .v2-cardtop svg{width:60px;height:60px;}
+  .v2-card{flex:0 0 300px;background:#fff;border:1px solid #EDEEF1;border-radius:20px;overflow:hidden;}
+  .v2-cardtop{height:172px;position:relative;overflow:hidden;}
+  .v2-cardtop.g{background:#EAF4E5;}
+  .v2-cardtop.p{background:#FDEDF4;}
+  .v2-cardtop img{display:block;width:100%;height:100%;object-fit:cover;object-position:left top;}
   .v2-cardbadge{position:absolute;top:12px;left:12px;font-size:11px;font-weight:600;border-radius:999px;padding:4px 10px;}
   .v2-cardbadge.g{background:rgba(255,255,255,.82);color:#2E8B22;}
   .v2-cardbadge.p{background:rgba(255,255,255,.82);color:#c44f8f;}
@@ -2766,8 +2814,8 @@
   @media (max-width:900px){
     .v2-pain,.v2-feat,.v2-sub{grid-template-columns:minmax(0,1fr);}
     .v2-step{grid-template-columns:minmax(0,1fr);gap:16px;padding:24px 22px;}
-    .v2-car-nav{display:none;}
-    .v2-card{flex-basis:240px;}
+    .v2-arw{display:none;}
+    .v2-card{flex-basis:250px;}
   }
 
   /* v2 랜딩 타이틀 스케일 업 */
@@ -2797,6 +2845,31 @@
     #page-classin-intro-v2 .v2-step h4{font-size:21px;}
     #page-classin-intro-v2 .v2-featc > *:not(.v2-shot){margin-left:22px;margin-right:22px;}
   }
+
+  /* 하단 CTA */
+  .end-cta{background:#FFF7FB;}
+  .end-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:34px;}
+  .end-b{flex:0 0 auto;width:auto;font-family:inherit;font-size:16.5px;font-weight:600;border-radius:999px;padding:17px 38px;cursor:pointer;transition:all .15s;}
+  .end-b.ghost{background:#fff;border:1px solid #E8E8E8;color:#16192A;}
+  .end-b.ghost:hover{background:#F8F8FA;}
+  .end-b.main{background:#16192A;border:none;color:#fff;}
+  .end-b.main:hover{background:#333;}
+  .end-fine{font-size:13.5px;color:rgba(22,25,42,.5);margin-top:16px;}
+  .ask-opt{width:100%;display:flex;align-items:center;gap:14px;font-family:inherit;text-align:left;
+    background:#fff;border:1.5px solid #E8E8E8;border-radius:14px;padding:16px 18px;cursor:pointer;
+    margin-bottom:10px;transition:border-color .15s,background .15s;}
+  .ask-opt:hover{background:#FAFAFB;}
+  .ask-opt.ci:hover{border-color:#CDE9C3;}
+  .ask-opt.cr:hover{border-color:#FBD0E4;}
+  .ask-ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .ask-opt.ci .ask-ico{background:#F1F8ED;}
+  .ask-opt.cr .ask-ico{background:#FFF3F9;}
+  .ask-ico img{max-width:30px;max-height:22px;width:auto;height:auto;display:block;}
+  .ask-tx{flex:1;min-width:0;}
+  .ask-tx b{display:block;font-size:15.5px;font-weight:600;color:#16192A;}
+  .ask-tx span{display:block;font-size:13px;color:rgba(22,25,42,.55);margin-top:3px;}
+  .ask-arw{font-size:22px;color:rgba(22,25,42,.3);}
+  @media (max-width:600px){ .end-b{width:100%;} }
 
   .cin-outro{background:#070910;color:#fff;padding:96px 56px;text-align:center;}
   .cin-outro h2{color:#fff;font-size:clamp(24px,3.4vw,36px);font-weight:700;letter-spacing:-.03em;line-height:1.34;margin:0 0 14px;text-wrap:balance;}
@@ -3932,6 +4005,30 @@
   </div>
 </div>
 
+<!-- Modal: 문의 채널 선택 -->
+<div class="modal-backdrop" id="askChannelModal">
+  <div class="modal-box" style="width:460px;padding:30px 30px 26px;">
+    <div style="text-align:center;margin-bottom:22px;">
+      <div style="font-size:20px;font-weight:700;color:#16192A;">어떤 문의이신가요?</div>
+      <div style="font-size:13.5px;color:rgba(22,25,42,.55);margin-top:6px;">담당 채널로 바로 연결해 드릴게요.</div>
+    </div>
+
+    <button class="ask-opt ci" onclick="goAsk('classin')">
+      <span class="ask-ico"><img src="classin-logo.png" alt="ClassIn"></span>
+      <span class="ask-tx"><b>클래스인 관련 문의</b><span>수업 기능, 교실 설정, 클래스인 계정</span></span>
+      <span class="ask-arw">&rsaquo;</span>
+    </button>
+
+    <button class="ask-opt cr" onclick="goAsk('crabit')">
+      <span class="ask-ico"><img src="logo.png" alt="크래빗"></span>
+      <span class="ask-tx"><b>크래빗 관련 문의</b><span>보상 지급, 장학카드, 예치금, 요금제</span></span>
+      <span class="ask-arw">&rsaquo;</span>
+    </button>
+
+    <button class="btn-outline" style="width:100%;margin-top:16px;" onclick="closeAskModal()">닫기</button>
+  </div>
+</div>
+
 <!-- Modal: 크래빗 클래스 결제 -->
 <div class="modal-backdrop" id="classinPayModal">
   <div class="modal-box" style="width:480px;max-height:90vh;overflow-y:auto;">
@@ -3947,7 +4044,8 @@
 
     <div class="cpay-row"><span class="k">요금제</span><span class="v">크래빗 클래스</span></div>
     <div class="cpay-row"><span class="k">체험 기간</span><span class="v" style="color:#2E8B22;">오늘부터 7일간 무료</span></div>
-    <div class="cpay-row"><span class="k">이후 결제</span><span class="v">체험 종료 다음 날부터 매월 99,000원</span></div>
+    <div class="cpay-row"><span class="k">첫 결제 예정일</span><span class="v" id="cpay-first-date">-</span></div>
+    <div class="cpay-row"><span class="k">이후 결제</span><span class="v">매월 99,000원</span></div>
     <div class="cpay-row"><span class="k">학원</span><span class="v">크래빗 영어학원</span></div>
     <div class="cpay-row"><span class="k">클래스인 계정</span><span class="v" style="color:#2E8B22;">연동 기간 무상 제공</span></div>
 
@@ -3992,18 +4090,17 @@
     <div class="cin-sec-inner cin-rv">
       <div class="cin-label">원장님, 혹시</div>
       <h2 class="cin-h2">아직도 이러고 계신가요?</h2>
-      <p class="cin-desc">두 가지만 여쭙겠습니다. 하나라도 해당되신다면 읽어보실 값이 있습니다.</p>
 
       <div class="emp">
         <div class="emp-q"><span>Q1</span>아직도 보강을 시간 잡아 직접 진행하시나요?</div>
         <div class="emp-ba">
           <figure class="emp-shot b">
-            <div class="emp-tag">지금</div>
+            <div class="emp-tag">BEFORE</div>
             <img src="emp-1-before.jpg" alt="주말 아침 보충 수업을 직접 진행하는 학원 원장" loading="lazy">
             <figcaption>주말 아침에도 보강 때문에 나오십니다. 결석한 학생 한둘을 위해 같은 내용을 또 설명하시고, 그 시간은 그대로 사라집니다.</figcaption>
           </figure>
           <figure class="emp-shot a">
-            <div class="emp-tag">크래빗 클래스</div>
+            <div class="emp-tag">AFTER</div>
             <img src="emp-1-after.jpg" alt="온라인 강의를 올려두고 여유를 찾은 원장과 태블릿으로 공부하는 학생들" loading="lazy">
             <figcaption>강의를 한 번 올려두시면 됩니다. 아이들은 각자 태블릿으로 따라오고, 원장님 주말은 원장님 것이 됩니다.</figcaption>
           </figure>
@@ -4015,12 +4112,12 @@
         <div class="emp-q"><span>Q2</span>학생 동기부여가 어려우신가요?</div>
         <div class="emp-ba">
           <figure class="emp-shot b">
-            <div class="emp-tag">지금</div>
+            <div class="emp-tag">BEFORE</div>
             <img src="emp-2-before.jpg" alt="칭찬 스티커판이 있어도 일어나지 못하는 학생과 답답해하는 학부모" loading="lazy">
             <figcaption>스티커판을 붙여두고 칭찬 쿠폰을 만들어 드려도 아이는 일어나지 않습니다. 결국 부모님이 매일 깨워서 보내십니다.</figcaption>
           </figure>
           <figure class="emp-shot a">
-            <div class="emp-tag">크래빗 클래스</div>
+            <div class="emp-tag">AFTER</div>
             <img src="emp-2-after.jpg" alt="장학카드를 들고 제 시간에 학원에 등원하는 학생과 맞이하는 선생님" loading="lazy">
             <figcaption>아이가 시간 맞춰 스스로 옵니다. 손에는 자기가 번 장학카드가 들려 있습니다.</figcaption>
           </figure>
@@ -4030,112 +4127,91 @@
     </div>
   </section>
 
-  <!-- 2. 클래스인은 이런 걸 해결해드립니다 -->
-  <section class="cin-sec alt">
+  <!-- 2. 클래스인 -->
+  <section class="cin-sec sec-ci">
     <div class="cin-sec-inner cin-rv">
-      <div class="cin-label">클래스인이 해결하는 것</div>
-      <h2 class="cin-h2">전 세계 학원이 쓰는<br>수업 플랫폼입니다</h2>
-      <p class="cin-desc">화상 회의 도구가 아니라 처음부터 수업을 위해 만들어진 플랫폼입니다. 오프라인 교실에서도, 전자칠판에서도 그대로 씁니다.</p>
+      <div class="cin-label lb-ci">CLASSIN</div>
+      <h2 class="cin-h2">클래스인으로 우리 학원을<br>더 스마트하게</h2>
 
-      <div class="cin-stats">
-        <div class="cin-stat"><b>160개국+</b><span>서비스 지역</span></div>
-        <div class="cin-stat"><b>2,000만+</b><span>월 이용자</span></div>
-        <div class="cin-stat"><b>6만+</b><span>학교·교육기관</span></div>
+      <div class="ci-intro">
+        <div class="ci-intro-q">클래스인이란?</div>
+        <p class="ci-intro-p">화상 회의 도구가 아니라 처음부터 수업을 위해 만들어진 학습 플랫폼입니다. 온라인 전용이 아니라 오프라인 교실의 전자칠판에서도 그대로 씁니다.</p>
+        <div class="ci-score">
+          <div><b>160개국+</b><span>서비스 지역</span></div>
+          <div><b>2,000만+</b><span>월 이용자</span></div>
+          <div><b>6만+</b><span>학교·교육기관</span></div>
+        </div>
+        <p class="cin-fine">클래스인 발표 기준</p>
       </div>
-      <p class="cin-fine">클래스인 발표 기준</p>
 
-      <div class="v2-feat">
-        <div class="v2-featc">
-          <div class="v2-shot"><img src="ci-shot-tools.jpg" alt="클래스인 수업 도구 패널" loading="lazy"></div>
-          <div class="v2-tag">더 편하게 수업하고</div>
-          <h4>수업을 위해 만들어진 도구</h4>
-          <p>미팅 도구를 수업에 억지로 맞춰 쓰지 않으셔도 됩니다.</p>
-          <ul class="v2-list">
-            <li>실시간 수업 도구 약 20종<em>타이머, 주사위, 응답기, 선택기, 소그룹방, 상장까지</em></li>
-            <li>디지털 판서 50페이지<em>한 회차에 칠판 50장을 씁니다</em></li>
-            <li>인터랙티브 수업 시스템<em>강사와 학생 모두 같은 칠판에 쓰도록 권한을 줍니다</em></li>
-          </ul>
-          <div class="v2-solve"><i>→</i><span>결석생 재설명과 판서 다시 그리기가 사라집니다.</span></div>
+      <h3 class="ci-sub">스마트 클래스룸 운영에 필요한<br>다양한 기능을 제공해요</h3>
+
+      <div class="ci-feat">
+        <div class="ci-featc">
+          <div class="ci-shotbox"><img src="ci-shot-live.jpg" alt="클래스인 실시간 화상 수업 화면" loading="lazy"></div>
+          <div class="ci-featb">
+            <div class="ci-tag">01</div>
+            <h4>온라인 수업</h4>
+            <p>실시간 화상 강의를 열거나, 수업을 녹화해 다시보기로 제공합니다. 별도 장비 없이 자동으로 녹화되고 칠판과 카메라를 함께 담습니다.</p>
+            <ul class="ci-li">
+              <li>실시간 화상 강의</li><li>수업 자동 녹화</li><li>다시보기 제공</li><li>디지털 판서 50페이지</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="v2-featc">
-          <div class="v2-shot"><img src="ci-shot-drive.jpg" alt="클래스인 클라우드 드라이브" loading="lazy"></div>
-          <div class="v2-tag">자료는 저장되고</div>
-          <h4>수업이 끝나면 알아서 남습니다</h4>
-          <p>따로 챙기지 않으셔도 수업 자체가 자산으로 쌓입니다.</p>
-          <ul class="v2-list">
-            <li>개인 드라이브와 공유 드라이브<em>기관 안에서 교안을 함께 쓰고, 권한을 나눠 저작권을 지킵니다</em></li>
-            <li>수업 자동 녹화와 플레이백<em>별도 장비 없이 자동 녹화. 칠판과 카메라를 함께 담습니다</em></li>
-            <li>녹화본은 앱 안에서만 열람<em>밖으로 새지 않습니다</em></li>
-          </ul>
-          <div class="v2-solve"><i>→</i><span>강사가 바뀌어도 학원에 자료가 남습니다.</span></div>
+        <div class="ci-featc">
+          <div class="ci-shotbox"><img src="ci-shot-analysis.jpg" alt="클래스인 시험 채점과 정답률 확인 화면" loading="lazy"></div>
+          <div class="ci-featb">
+            <div class="ci-tag">02</div>
+            <h4>온라인 학습 활동</h4>
+            <p>숙제, 시험, 토론, 출결, 성적표까지 한 곳에서 돌아갑니다. 수업 시간만이 아니라 그 앞뒤가 함께 관리됩니다.</p>
+            <ul class="ci-li">
+              <li>숙제 배포·제출</li><li>시험·퀴즈</li><li>토론</li><li>출결</li><li>성적표</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="v2-featc">
-          <div class="v2-shot"><img src="ci-shot-manage.jpg" alt="클래스인 코스 관리 화면" loading="lazy"></div>
-          <div class="v2-tag">더 철저히 관리하고</div>
-          <h4>수업 전후까지 한 곳에서</h4>
-          <p>수업 시간만이 아니라 그 앞뒤가 관리됩니다.</p>
-          <ul class="v2-list">
-            <li>LMS 통합 학습 관리<em>녹화 수업, 숙제, 시험, 토론을 한 흐름으로</em></li>
-            <li>표준 커리큘럼 제작과 배포<em>학기 단위로 반복되는 수업을 학원 표준으로 만듭니다</em></li>
-            <li>실시간 모니터링<em>수업이 도는 동안 상황을 보실 수 있습니다</em></li>
-          </ul>
-          <div class="v2-solve"><i>→</i><span>강사마다 다르던 수업이 학원의 방식으로 정리됩니다.</span></div>
+        <div class="ci-featc">
+          <div class="ci-shotbox"><img src="ci-shot-data.jpg" alt="클래스인 출결과 참여 데이터 대시보드" loading="lazy"></div>
+          <div class="ci-featb">
+            <div class="ci-tag">03</div>
+            <h4>데이터 기반의 학습 관리</h4>
+            <p>따로 정리하지 않으셔도 학생들의 모든 기록이 하나의 대시보드에 쌓입니다. 상담 전날 급하게 자료를 만들 일이 없어집니다.</p>
+            <ul class="ci-li">
+              <li>출결·참여 타임라인</li><li>성적과 제출 현황</li><li>녹화본·스크린샷</li><li>관리자 대시보드</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="v2-featc">
-          <div class="v2-shot"><img src="ci-shot-data.jpg" alt="클래스인 출결·참여 타임라인" loading="lazy"></div>
-          <div class="v2-tag">데이터는 모이고</div>
-          <h4>상담 자료가 저절로 만들어집니다</h4>
-          <p>따로 정리하지 않아도 근거가 쌓입니다.</p>
-          <ul class="v2-list">
-            <li>출결 · 성적 · 녹화본 · 스크린샷 자동 저장</li>
-            <li>관리자 대시보드<em>쌓인 데이터를 한눈에 보는 전용 페이지</em></li>
-            <li>기관 시스템과 API 연동 지원<em>크래빗이 붙는 자리가 바로 여기입니다</em></li>
-          </ul>
-          <div class="v2-solve"><i>→</i><span>상담 전날 급하게 자료를 만들 일이 없어집니다.</span></div>
-        </div>
-
-        <div class="v2-featc">
-          <div class="v2-shot"><img src="ci-shot-analysis.jpg" alt="클래스인 학습 분석 화면" loading="lazy"></div>
-          <div class="v2-tag">AI의 도움으로</div>
-          <h4>강사 한 명을 더 두신 것처럼</h4>
-          <p>반복되는 확인과 피드백을 AI가 나눠 맡습니다.</p>
-          <ul class="v2-list">
-            <li>기관 맞춤 AI 에이전트<em>학습 데이터를 분석해 실시간 피드백을 줍니다</em></li>
-            <li>AI 튜터<em>수업 중 학생 질의에 실시간으로 응답합니다</em></li>
-            <li>학습 분석과 개인화 피드백<em>과제, 시험, 참여도를 묶어 학생별로</em></li>
-            <li>AI 음성 어시스턴트<em>수업 중 말로 전자칠판 기능을 부릅니다</em></li>
-          </ul>
-          <div class="v2-solve"><i>→</i><span>아이 한 명 한 명을 챙기실 여력이 생깁니다.</span></div>
-        </div>
-
-        <div class="v2-featc">
-          <div class="v2-shot"><img src="ci-shot-device.jpg" alt="PC·태블릿·모바일에서 열린 클래스인 교실" loading="lazy"></div>
-          <div class="v2-tag">언제 어디서나</div>
-          <h4>오프라인 학원도 그대로 씁니다</h4>
-          <p>온라인 수업을 새로 시작하셔야 하는 게 아닙니다.</p>
-          <ul class="v2-list">
-            <li>PC를 넘어 전자칠판까지<em>교실에 있는 전자칠판에서 그대로 돌아갑니다</em></li>
-            <li>BYOD 지원<em>학생이 자기 핸드폰과 태블릿으로 들어옵니다. iOS · Android 모두</em></li>
-            <li>온오프라인 하이브리드<em>대면 수업에 결석생만 원격으로 붙이는 식도 됩니다</em></li>
-          </ul>
-          <div class="v2-solve"><i>→</i><span>지금 교실 그대로 두고 시작하실 수 있습니다.</span></div>
+        <div class="ci-featc">
+          <div class="ci-shotbox"><img src="ci-shot-tools.jpg" alt="클래스인 실시간 수업 도구 패널" loading="lazy"></div>
+          <div class="ci-featb">
+            <div class="ci-tag">04</div>
+            <h4>더 재밌고 스마트한 운영 도구</h4>
+            <p>수업이 지루해지지 않게 돕는 도구가 약 20종 들어 있습니다. 아이들이 반응하고 참여하는 순간이 그대로 기록으로 남습니다.</p>
+            <ul class="ci-li">
+              <li>타이머</li><li>주사위</li><li>응답기</li><li>선택기</li><li>소그룹방</li><li>트로피</li><li>손들기</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. 크래빗은 이런 걸 해결해드립니다 -->
-  <section class="cin-sec">
+  <!-- 3. 크래빗 -->
+  <section class="cin-sec sec-cr">
     <div class="cin-sec-inner cin-rv">
-      <div class="cin-label">크래빗이 해결하는 것</div>
-      <h2 class="cin-h2">아무리 좋은 수업도<br>아이가 움직여야 합니다</h2>
-      <p class="cin-desc">도구를 갖추면 수업의 질은 올라갑니다. 그런데 아이가 그 수업에 나오고, 집에서 영상을 열고, 과제를 내는 건 다른 문제입니다. 크래빗은 그 힘을 만듭니다.</p>
+      <div class="cin-label lb-cr">CRABIT</div>
+      <h2 class="cin-h2">학습 관리와 보상을 한 번에</h2>
+      <p class="cin-desc">요즘 학원들이 선택하는 스마트 클래스룸 운영을 경험해보세요.</p>
+
+      <div class="cr-say">
+        <p>클래스인을 통해 들어오는 학습 데이터를 기반으로, <b>크래빗은 보상과 동기부여를 책임집니다.</b></p>
+        <p>클래스인 수업에서 쌓인 기록이 그대로 보상의 기준이 되니, 원장님이 중간에서 누가 잘 하고 있는지, 누가 개선되었는지 확인하고 수동으로 포인트를 지급하거나 칭찬을 챙기실 필요가 없습니다. <b>학습 관리와 감성 관리까지 함께 운영해보세요.</b></p>
+      </div>
 
       <div class="cin-split">
-        <div><div class="cin-ill"><img src="ill-student.jpg" alt="장학카드를 들고 있는 학생들"></div></div>
+        <div><div class="cin-ill"><img src="ill-student.jpg" alt="장학카드를 들고 있는 학생들" loading="lazy"></div></div>
         <div class="cin-gains">
           <div class="cin-gain">
             <div class="cin-gain-i p">
@@ -4210,7 +4286,6 @@
         <span class="cfd-tag p">크래빗에서 자동으로 보상합니다</span>
       </div>
 
-      <p class="cfd-foot cin-rv">원장님이 해두실 일은 두 가지입니다. <b>기준을 정하는 것</b>, 그리고 <b>예치금을 채워두는 것</b>.</p>
     </div>
   </section>
 
@@ -4314,130 +4389,124 @@
   <!-- 7. 기능 캐러셀 -->
   <section class="cin-sec">
     <div class="cin-sec-inner cin-rv">
-      <div class="v2-car-head">
-        <div>
-          <div class="cin-label">전체 기능</div>
-          <h2 class="cin-h2" style="margin-bottom:0;">스마트 클래스 운영을 위한<br>모든 기능이 담겨 있어요</h2>
-        </div>
-        <div class="v2-car-nav">
-          <button class="v2-arw" onclick="v2CarScroll(-1)" aria-label="이전">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button class="v2-arw" onclick="v2CarScroll(1)" aria-label="다음">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-        </div>
-      </div>
+      <div class="cin-label">전체 기능</div>
+      <h2 class="cin-h2" style="margin-bottom:0;">크래빗 클래스에는<br>스마트 클래스 운영을 위한 모든 기능이 담겨있어요</h2>
 
-      <div class="v2-car" id="v2-car">
+      <div class="v2-carwrap">
+        <button class="v2-arw prev" onclick="v2CarScroll(-1)" aria-label="이전">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="v2-arw next" onclick="v2CarScroll(1)" aria-label="다음">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+
+        <div class="v2-car" id="v2-car">
         <div class="v2-card">
           <div class="v2-cardtop g">
+            <img src="ci-shot-live.jpg" alt="실시간 화상 수업과 판서" loading="lazy">
             <span class="v2-cardbadge g">클래스인</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.8"/></svg>
           </div>
-          <div class="v2-cardbody"><b>실시간 수업 도구 20종</b><span>타이머, 주사위, 응답기, 선택기, 소그룹방까지. 미팅 도구가 아니라 수업을 위해 만들어진 기능들입니다.</span></div>
+          <div class="v2-cardbody"><b>실시간 화상 수업과 판서</b><span>수업을 위해 만들어진 교실입니다. 한 회차에 판서 50장을 쓰고, 강사와 학생이 같은 칠판에 함께 씁니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop g">
+            <img src="ci-shot-tools.jpg" alt="실시간 수업 도구 20종" loading="lazy">
             <span class="v2-cardbadge g">클래스인</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M12 16.5V21"/><path d="M8 21h8"/><path d="M6.5 8.5h7"/><path d="M6.5 12h4"/></svg>
           </div>
-          <div class="v2-cardbody"><b>디지털 판서 50페이지</b><span>수업 한 회차에 판서 50장을 씁니다. 강사와 학생 모두 같은 칠판에 쓰게 권한을 줄 수 있습니다.</span></div>
+          <div class="v2-cardbody"><b>실시간 수업 도구 20종</b><span>타이머, 주사위, 응답기, 선택기, 소그룹방, 트로피까지. 수업이 지루해지지 않게 돕는 도구들입니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop g">
+            <img src="ci-shot-analysis.jpg" alt="과제 · 시험 · 채점" loading="lazy">
             <span class="v2-cardbadge g">클래스인</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="2.5"/><path d="M22 8v8l-6-4z"/><circle cx="9" cy="12" r="3"/></svg>
           </div>
-          <div class="v2-cardbody"><b>수업 자동 녹화와 다시보기</b><span>별도 장비 없이 자동으로 녹화됩니다. 칠판과 카메라를 함께 담고, 녹화본은 앱 안에서만 열립니다.</span></div>
+          <div class="v2-cardbody"><b>과제 · 시험 · 채점</b><span>제출 여부와 문항별 정오답, 정답률까지 한 화면에서 확인하고 채점합니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop g">
+            <img src="ci-shot-data.jpg" alt="출결과 참여 타임라인" loading="lazy">
             <span class="v2-cardbadge g">클래스인</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M8 14h8"/></svg>
           </div>
-          <div class="v2-cardbody"><b>개인 · 공유 드라이브</b><span>교안을 기관 안에서 함께 씁니다. 권한을 세부로 나눠 강사의 자료를 보호할 수 있습니다.</span></div>
+          <div class="v2-cardbody"><b>출결과 참여 타임라인</b><span>누가 언제 들어와 얼마나 머물렀는지 회차별로 자동 기록됩니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop g">
+            <img src="ci-shot-drive.jpg" alt="개인 · 공유 드라이브" loading="lazy">
             <span class="v2-cardbadge g">클래스인</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8.5 8.5l1.6 1.6 3-3"/><path d="M8.5 15l1.6 1.6 3-3"/><path d="M15.5 9.5h1.5"/><path d="M15.5 16h1.5"/></svg>
           </div>
-          <div class="v2-cardbody"><b>과제 · 시험 · 녹화 강의</b><span>수업 전후를 통째로 관리합니다. 학기 단위로 반복되는 커리큘럼을 표준으로 만들어 배포합니다.</span></div>
+          <div class="v2-cardbody"><b>개인 · 공유 드라이브</b><span>교안과 영상을 기관 안에서 함께 씁니다. 권한을 나눠 강사 자료를 보호합니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop g">
+            <img src="ci-shot-manage.jpg" alt="코스와 회차 관리" loading="lazy">
             <span class="v2-cardbadge g">클래스인</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18V7"/><path d="M3 18h18"/><path d="M7 15l4-5 3.5 3L21 6"/></svg>
           </div>
-          <div class="v2-cardbody"><b>실시간 모니터링과 대시보드</b><span>수업이 도는 동안 상황을 보고, 출결·성적·녹화본·스크린샷이 관리자 페이지에 자동으로 쌓입니다.</span></div>
+          <div class="v2-cardbody"><b>코스와 회차 관리</b><span>반과 수업 회차, 녹화와 다시보기 상태를 한 목록에서 봅니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop g">
+            <img src="ci-shot-device.jpg" alt="전자칠판 · 태블릿 · 모바일" loading="lazy">
             <span class="v2-cardbadge g">클래스인</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5v3"/><rect x="4" y="7.5" width="16" height="12" rx="4"/><circle cx="9" cy="13" r="1.2" fill="#2E8B22"/><circle cx="15" cy="13" r="1.2" fill="#2E8B22"/><path d="M9 22h6"/></svg>
           </div>
-          <div class="v2-cardbody"><b>AI 튜터와 음성 어시스턴트</b><span>학습 데이터를 분석해 실시간 피드백을 주고, 수업 중 음성 명령으로 전자칠판 기능을 부릅니다.</span></div>
-        </div>
-        <div class="v2-card">
-          <div class="v2-cardtop g">
-            <span class="v2-cardbadge g">클래스인</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2E8B22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="13" height="10" rx="1.8"/><rect x="16.5" y="8" width="5.5" height="12" rx="1.6"/><path d="M5 18h6"/></svg>
-          </div>
-          <div class="v2-cardbody"><b>전자칠판 · 태블릿 · 하이브리드</b><span>PC를 넘어 전자칠판에서도 돌아갑니다. 학생은 자기 기기로 들어오고, 온오프라인을 섞어 운영합니다.</span></div>
+          <div class="v2-cardbody"><b>전자칠판 · 태블릿 · 모바일</b><span>PC를 넘어 전자칠판에서도 돌아가고, 학생은 자기 기기로 들어옵니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop p">
+            <img src="cr-shot-status.jpg" alt="학습 데이터 자동 수집" loading="lazy">
             <span class="v2-cardbadge p">크래빗</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#c44f8f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
           </div>
-          <div class="v2-cardbody"><b>학습 데이터 자동 수집</b><span>클래스인에서 일어난 출결, 과제, 퀴즈, 녹화 시청이 티처스로 자동으로 넘어옵니다. 옮겨 적을 일이 없습니다.</span></div>
+          <div class="v2-cardbody"><b>학습 데이터 자동 수집</b><span>클래스인에서 일어난 일이 티처스로 자동으로 넘어옵니다. 옮겨 적을 일이 없습니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop p">
+            <img src="cr-shot-rules.jpg" alt="보상 기준 설정" loading="lazy">
             <span class="v2-cardbadge p">크래빗</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#c44f8f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="6" rx="3"/><circle cx="17" cy="8" r="2" fill="#c44f8f"/><rect x="2.5" y="14" width="19" height="6" rx="3"/><circle cx="7" cy="17" r="2" fill="#c44f8f"/></svg>
           </div>
-          <div class="v2-cardbody"><b>보상 기준 설정</b><span>완주율 80% 이상이면 3,000P처럼 조건과 금액을 한 번만 정해두시면 됩니다. 켜고 끄기로 조정합니다.</span></div>
+          <div class="v2-cardbody"><b>보상 기준 설정</b><span>완주율 80% 이상이면 3,000P처럼 조건과 금액을 켜고 끄는 것만으로 정합니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop p">
+            <img src="cr-shot-log.jpg" alt="장학금 자동 지급" loading="lazy">
             <span class="v2-cardbadge p">크래빗</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#c44f8f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/><path d="M6 15h4"/></svg>
           </div>
-          <div class="v2-cardbody"><b>장학카드 자동 지급</b><span>조건을 채운 학생에게 승인 없이 나갑니다. 예치금에서 자동으로 차감되고 사유까지 함께 남습니다.</span></div>
+          <div class="v2-cardbody"><b>장학금 자동 지급</b><span>조건을 채운 학생에게 승인 없이 나갑니다. 예치금에서 차감되고 사유가 남습니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop p">
+            <img src="cr-shot-summary.jpg" alt="학생별 학습 요약" loading="lazy">
             <span class="v2-cardbadge p">크래빗</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#c44f8f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16l-1.2 11a2 2 0 0 1-2 1.8H7.2a2 2 0 0 1-2-1.8z"/><path d="M8.5 8V6a3.5 3.5 0 0 1 7 0v2"/></svg>
           </div>
-          <div class="v2-cardbody"><b>아이가 직접 쓰는 카드</b><span>받은 포인트는 실물 장학카드에 담깁니다. 1P는 1원이고, 아이가 직접 고르고 결제합니다.</span></div>
+          <div class="v2-cardbody"><b>학생별 학습 요약</b><span>한 명을 누르면 지표와 반 평균 비교가 한 장으로 뜹니다. 상담 자리에서 그대로 씁니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop p">
+            <img src="cr-shot-stamp.jpg" alt="스탬프와 미션" loading="lazy">
             <span class="v2-cardbadge p">크래빗</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#c44f8f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 14.6 8.6 20.5 9.3 16 13.4 17.2 19.5 12 16.5 6.8 19.5 8 13.4 3.5 9.3 9.4 8.6"/></svg>
           </div>
-          <div class="v2-cardbody"><b>스탬프와 미션</b><span>포인트만으로 부족할 때 모으는 재미를 더합니다. 학원마다 다른 규칙을 만들 수 있습니다.</span></div>
+          <div class="v2-cardbody"><b>스탬프와 미션</b><span>포인트만으로 부족할 때 모으는 재미를 더합니다. 학원마다 다른 규칙을 만듭니다.</span></div>
         </div>
         <div class="v2-card">
           <div class="v2-cardtop p">
+            <img src="cr-shot-card.jpg" alt="장학카드 발급과 충전" loading="lazy">
             <span class="v2-cardbadge p">크래빗</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="#c44f8f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg>
           </div>
-          <div class="v2-cardbody"><b>학생별 학습 요약</b><span>한 명을 누르면 완주율, 과제, 퀴즈, 받은 보상이 한 장으로 뜹니다. 상담 자리에서 그대로 보여드립니다.</span></div>
+          <div class="v2-cardbody"><b>장학카드 발급과 충전</b><span>학생별 카드와 잔액을 한 곳에서 관리하고 충전합니다. 1P는 1원입니다.</span></div>
+        </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 마무리 -->
-  <section class="cin-outro">
-    <div class="cin-rv">
-      <h2>수업도 보상도 크래빗에게 맡기시고,<br>원장님은 운영에만 집중하세요</h2>
-      <p>클래스인 계약도, 계정 만들기도 저희가 대신합니다.<br>지금 쓰시던 티처스 안에서 그대로 시작하시면 됩니다.</p>
-      <button class="cin-hero-cta" onclick="openClassinPay()">연동 시작하기</button>
+  <section class="cin-sec end-cta">
+    <div class="cin-sec-inner cin-rv" style="text-align:center;">
+      <h2 class="cin-h2">수업도 보상도 크래빗에게 맡기시고,<br>원장님은 운영에만 집중하세요</h2>
+      <p class="cin-desc" style="margin:0 auto;">클래스인 계약도, 계정 만들기도 저희가 대신합니다.<br>지금 쓰시던 티처스 안에서 그대로 시작하시면 됩니다.</p>
+      <div class="end-btns">
+        <button class="end-b ghost" onclick="openAskModal()">문의하기</button>
+        <button class="end-b main" onclick="openClassinPay()">1주일 무료 체험</button>
+      </div>
+      <p class="end-fine">체험 기간 안에 해지하시면 한 푼도 청구되지 않습니다.</p>
     </div>
   </section>
 
@@ -11641,12 +11710,31 @@
     [0, 120, 400, 800].forEach(t => setTimeout(cfdDrawWires, t));
   }
 
-  function v2CarScroll(dir) {
+  let _v2CarTimer = null;
+  function v2CarScroll(dir, smooth) {
     const el = document.getElementById('v2-car');
     if (!el) return;
     const card = el.querySelector('.v2-card');
     const step = card ? card.getBoundingClientRect().width + 16 : 300;
-    el.scrollBy({ left: dir * step * 2, behavior: 'smooth' });
+    el.scrollBy({ left: dir * step * (smooth === 'auto' ? 1 : 2), behavior: 'smooth' });
+    if (smooth !== 'auto') v2CarAuto(true);   // 사용자가 만지면 잠시 멈춘다
+  }
+  /* 카드가 천천히 흘러가다 끝에 닿으면 처음으로 돌아온다 */
+  function v2CarAuto(restart) {
+    const el = document.getElementById('v2-car');
+    if (!el) return;
+    clearInterval(_v2CarTimer);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const tick = () => {
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) {
+        el.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        v2CarScroll(1, 'auto');
+      }
+    };
+    _v2CarTimer = setInterval(tick, restart ? 6000 : 3400);
+    el.onmouseenter = () => clearInterval(_v2CarTimer);
+    el.onmouseleave = () => v2CarAuto();
   }
 
   function cinInitIntro() {
@@ -11686,6 +11774,8 @@
       }, { root: document.getElementById('main-content'), rootMargin: '0px 0px -18% 0px', threshold: 0.12 });
       cfdOb.observe(cfd);
     });
+
+    v2CarAuto();
 
     cinInitMocks();
   }
@@ -11863,6 +11953,30 @@
   function openClassinPay() {
     const m = document.getElementById('classinPayModal');
     if (m) m.classList.add('show');
+    // 오늘부터 7일 뒤가 첫 결제일
+    const d = new Date(); d.setDate(d.getDate() + 7);
+    const el = document.getElementById('cpay-first-date');
+    if (el) el.textContent =
+      `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 · 99,000원`;
+  }
+
+  /* 문의 채널 안내 */
+  const ASK_URL = {
+    // 클래스인 공식 채널 주소를 받으면 여기만 바꾸면 됩니다
+    classin: 'https://www.classin.com/',
+    crabit: 'https://crabit.channel.io/home'
+  };
+  function openAskModal() {
+    const m = document.getElementById('askChannelModal');
+    if (m) m.classList.add('show');
+  }
+  function closeAskModal() {
+    const m = document.getElementById('askChannelModal');
+    if (m) m.classList.remove('show');
+  }
+  function goAsk(which) {
+    closeAskModal();
+    window.open(ASK_URL[which], '_blank', 'noopener');
   }
 
   function submitClassinPay() {

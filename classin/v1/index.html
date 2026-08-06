@@ -2691,22 +2691,69 @@
   .emp-q span{flex-shrink:0;font-size:12.5px;font-weight:700;letter-spacing:.06em;color:#c44f8f;
     background:#FDEDF4;border-radius:999px;padding:5px 12px;transform:translateY(-3px);}
   .emp-ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
-  .emp-shot{margin:0;position:relative;}
+  .emp-shot{margin:0;}
   .emp-shot img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;background:#F2F3F6;}
   .emp-shot.b img{filter:saturate(.72) brightness(.97);}
-  .emp-tag{position:absolute;top:14px;left:14px;font-size:12px;font-weight:600;border-radius:999px;
-    padding:6px 13px;backdrop-filter:blur(6px);}
-  .emp-shot.b .emp-tag{background:rgba(255,255,255,.9);color:rgba(22,25,42,.62);}
-  .emp-shot.a .emp-tag{background:rgba(255,255,255,.9);color:#c44f8f;}
-  .emp-shot figcaption{font-size:15px;color:rgba(22,25,42,.62);line-height:1.72;margin-top:14px;}
+  .emp-tag{text-align:center;font-size:12.5px;font-weight:700;letter-spacing:.14em;margin-bottom:12px;}
+  .emp-shot.b .emp-tag{color:rgba(22,25,42,.4);}
+  .emp-shot.a .emp-tag{color:#FB75BB;}
+  .emp-shot figcaption{font-size:15px;color:rgba(22,25,42,.62);line-height:1.72;margin-top:14px;text-align:center;}
   .emp-shot.a figcaption{color:rgba(22,25,42,.75);}
-  .emp-say{font-size:17px;color:rgba(22,25,42,.7);line-height:1.8;margin-top:26px;
-    background:#F7F8F6;border-radius:16px;padding:22px 26px;max-width:none;}
-  .emp-say b{color:#16192A;font-weight:600;}
+  .emp-say{font-size:17px;color:rgba(22,25,42,.72);line-height:1.8;margin-top:26px;
+    background:#FFF0F7;border-radius:16px;padding:22px 26px;max-width:none;}
+  .emp-say b{color:#c44f8f;font-weight:600;}
   @media (max-width:900px){
     .emp-ba{grid-template-columns:minmax(0,1fr);gap:14px;}
     .emp + .emp{margin-top:44px;padding-top:40px;}
     .emp-say{font-size:15.5px;padding:18px 20px;}
+  }
+
+  /* ── 클래스인 섹션 (초록 계열) ── */
+  .sec-ci{background:#F1F8ED;}
+  .lb-ci{color:#22AC38;}
+  .ci-intro{max-width:760px;margin-top:26px;}
+  .ci-intro-q{display:inline-block;font-size:14px;font-weight:600;color:#22AC38;
+    background:#fff;border-radius:999px;padding:7px 16px;margin-bottom:14px;}
+  .ci-intro-p{font-size:17px;color:rgba(22,25,42,.65);line-height:1.8;}
+  .ci-score{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px;}
+  .ci-score > div{background:#fff;border-radius:16px;padding:22px 24px;}
+  .ci-score b{display:block;font-size:clamp(26px,3.4vw,36px);font-weight:700;color:#22AC38;letter-spacing:-.02em;line-height:1.1;}
+  .ci-score span{display:block;font-size:14px;color:rgba(22,25,42,.55);margin-top:8px;}
+  .sec-ci .cin-fine{color:rgba(22,25,42,.42);}
+  .ci-sub{font-size:clamp(23px,3.2vw,34px);font-weight:600;color:#16192A;letter-spacing:-.025em;
+    line-height:1.36;margin:64px 0 0;text-wrap:balance;}
+  .ci-feat{display:flex;flex-direction:column;gap:18px;margin-top:34px;}
+  .ci-featc{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+    background:#fff;border-radius:22px;overflow:hidden;align-items:stretch;}
+  .ci-featc:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);}
+  .ci-featc:nth-child(even) .ci-shotbox{order:2;}
+  .ci-shotbox{background:#EDF3EA;padding:22px;display:flex;align-items:center;min-width:0;}
+  .ci-shotbox img{display:block;width:100%;max-width:100%;height:auto;border-radius:12px;
+    box-shadow:0 6px 22px rgba(22,25,42,.1);}
+  .ci-featb{padding:34px 38px 36px;display:flex;flex-direction:column;justify-content:center;}
+  .ci-tag{font-size:12.5px;font-weight:700;letter-spacing:.08em;color:#22AC38;margin-bottom:10px;}
+  .ci-featb h4{font-size:clamp(21px,2.6vw,26px);font-weight:600;color:#16192A;letter-spacing:-.02em;margin:0 0 10px;}
+  .ci-featb p{font-size:16.5px;color:rgba(22,25,42,.62);line-height:1.75;margin:0 0 18px;}
+  .ci-li{display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0;list-style:none;}
+  .ci-li li{font-size:14px;font-weight:500;color:#2E6B22;background:#F1F8ED;border-radius:8px;padding:7px 12px;}
+
+  /* ── 크래빗 섹션 (핑크·네이비 계열) ── */
+  .sec-cr{background:#FFF7FB;}
+  .lb-cr{color:#FB75BB;}
+  .cr-say{background:#16192A;border-radius:22px;padding:32px 36px;margin-top:30px;display:flex;flex-direction:column;gap:14px;}
+  .cr-say p{font-size:17px;color:rgba(255,255,255,.72);line-height:1.85;max-width:none;}
+  .cr-say b{color:#FB75BB;font-weight:600;}
+  .sec-cr .cin-gain{background:#fff;}
+  .sec-cr .cin-split{margin-top:34px;}
+
+  @media (max-width:900px){
+    .ci-score{grid-template-columns:minmax(0,1fr);}
+    .ci-featc,.ci-featc:nth-child(even){grid-template-columns:minmax(0,1fr);}
+    .ci-featc:nth-child(even) .ci-shotbox{order:0;}
+    .ci-featb{padding:26px 22px 30px;}
+    .ci-sub{margin-top:44px;}
+    .cr-say{padding:24px 22px;}
+    .cr-say p{font-size:15.5px;}
   }
 
   .v2-feat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:34px;}
@@ -2744,19 +2791,20 @@
   .v2-sub span{font-size:14px;color:rgba(22,25,42,.58);line-height:1.65;}
 
   /* 캐러셀 */
-  .v2-car-head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;}
-  .v2-car-nav{display:flex;gap:8px;margin-left:auto;}
-  .v2-arw{width:42px;height:42px;border-radius:50%;border:1px solid #E3E4E8;background:#fff;color:#16192A;
-    display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:inherit;transition:background .15s;}
+  .v2-carwrap{position:relative;margin-top:34px;}
+  .v2-arw{position:absolute;top:96px;z-index:3;width:46px;height:46px;border-radius:50%;border:1px solid #E3E4E8;
+    background:#fff;color:#16192A;display:flex;align-items:center;justify-content:center;cursor:pointer;
+    font-family:inherit;box-shadow:0 4px 16px rgba(22,25,42,.12);transition:background .15s;}
   .v2-arw:hover{background:#F4F4F5;}
-  .v2-car{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:30px;padding-bottom:14px;
-    scrollbar-width:none;}
+  .v2-arw.prev{left:-23px;}
+  .v2-arw.next{right:-23px;}
+  .v2-car{display:flex;gap:16px;overflow-x:auto;padding-bottom:14px;scrollbar-width:none;}
   .v2-car::-webkit-scrollbar{display:none;}
-  .v2-card{flex:0 0 280px;scroll-snap-align:start;background:#fff;border:1px solid #EDEEF1;border-radius:20px;overflow:hidden;}
-  .v2-cardtop{height:150px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-  .v2-cardtop.g{background:linear-gradient(150deg,#EAF4E5,#F7FBF5);}
-  .v2-cardtop.p{background:linear-gradient(150deg,#FDEDF4,#FFF9FC);}
-  .v2-cardtop svg{width:60px;height:60px;}
+  .v2-card{flex:0 0 300px;background:#fff;border:1px solid #EDEEF1;border-radius:20px;overflow:hidden;}
+  .v2-cardtop{height:172px;position:relative;overflow:hidden;}
+  .v2-cardtop.g{background:#EAF4E5;}
+  .v2-cardtop.p{background:#FDEDF4;}
+  .v2-cardtop img{display:block;width:100%;height:100%;object-fit:cover;object-position:left top;}
   .v2-cardbadge{position:absolute;top:12px;left:12px;font-size:11px;font-weight:600;border-radius:999px;padding:4px 10px;}
   .v2-cardbadge.g{background:rgba(255,255,255,.82);color:#2E8B22;}
   .v2-cardbadge.p{background:rgba(255,255,255,.82);color:#c44f8f;}
@@ -2767,8 +2815,8 @@
   @media (max-width:900px){
     .v2-pain,.v2-feat,.v2-sub{grid-template-columns:minmax(0,1fr);}
     .v2-step{grid-template-columns:minmax(0,1fr);gap:16px;padding:24px 22px;}
-    .v2-car-nav{display:none;}
-    .v2-card{flex-basis:240px;}
+    .v2-arw{display:none;}
+    .v2-card{flex-basis:250px;}
   }
 
   /* v2 랜딩 타이틀 스케일 업 */
@@ -2798,6 +2846,31 @@
     #page-classin-intro-v2 .v2-step h4{font-size:21px;}
     #page-classin-intro-v2 .v2-featc > *:not(.v2-shot){margin-left:22px;margin-right:22px;}
   }
+
+  /* 하단 CTA */
+  .end-cta{background:#FFF7FB;}
+  .end-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:34px;}
+  .end-b{flex:0 0 auto;width:auto;font-family:inherit;font-size:16.5px;font-weight:600;border-radius:999px;padding:17px 38px;cursor:pointer;transition:all .15s;}
+  .end-b.ghost{background:#fff;border:1px solid #E8E8E8;color:#16192A;}
+  .end-b.ghost:hover{background:#F8F8FA;}
+  .end-b.main{background:#16192A;border:none;color:#fff;}
+  .end-b.main:hover{background:#333;}
+  .end-fine{font-size:13.5px;color:rgba(22,25,42,.5);margin-top:16px;}
+  .ask-opt{width:100%;display:flex;align-items:center;gap:14px;font-family:inherit;text-align:left;
+    background:#fff;border:1.5px solid #E8E8E8;border-radius:14px;padding:16px 18px;cursor:pointer;
+    margin-bottom:10px;transition:border-color .15s,background .15s;}
+  .ask-opt:hover{background:#FAFAFB;}
+  .ask-opt.ci:hover{border-color:#CDE9C3;}
+  .ask-opt.cr:hover{border-color:#FBD0E4;}
+  .ask-ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .ask-opt.ci .ask-ico{background:#F1F8ED;}
+  .ask-opt.cr .ask-ico{background:#FFF3F9;}
+  .ask-ico img{max-width:30px;max-height:22px;width:auto;height:auto;display:block;}
+  .ask-tx{flex:1;min-width:0;}
+  .ask-tx b{display:block;font-size:15.5px;font-weight:600;color:#16192A;}
+  .ask-tx span{display:block;font-size:13px;color:rgba(22,25,42,.55);margin-top:3px;}
+  .ask-arw{font-size:22px;color:rgba(22,25,42,.3);}
+  @media (max-width:600px){ .end-b{width:100%;} }
 
   .cin-outro{background:#070910;color:#fff;padding:96px 56px;text-align:center;}
   .cin-outro h2{color:#fff;font-size:clamp(24px,3.4vw,36px);font-weight:700;letter-spacing:-.03em;line-height:1.34;margin:0 0 14px;text-wrap:balance;}
@@ -3929,6 +4002,30 @@
   </div>
 </div>
 
+<!-- Modal: 문의 채널 선택 -->
+<div class="modal-backdrop" id="askChannelModal">
+  <div class="modal-box" style="width:460px;padding:30px 30px 26px;">
+    <div style="text-align:center;margin-bottom:22px;">
+      <div style="font-size:20px;font-weight:700;color:#16192A;">어떤 문의이신가요?</div>
+      <div style="font-size:13.5px;color:rgba(22,25,42,.55);margin-top:6px;">담당 채널로 바로 연결해 드릴게요.</div>
+    </div>
+
+    <button class="ask-opt ci" onclick="goAsk('classin')">
+      <span class="ask-ico"><img src="classin-logo.png" alt="ClassIn"></span>
+      <span class="ask-tx"><b>클래스인 관련 문의</b><span>수업 기능, 교실 설정, 클래스인 계정</span></span>
+      <span class="ask-arw">&rsaquo;</span>
+    </button>
+
+    <button class="ask-opt cr" onclick="goAsk('crabit')">
+      <span class="ask-ico"><img src="logo.png" alt="크래빗"></span>
+      <span class="ask-tx"><b>크래빗 관련 문의</b><span>보상 지급, 장학카드, 예치금, 요금제</span></span>
+      <span class="ask-arw">&rsaquo;</span>
+    </button>
+
+    <button class="btn-outline" style="width:100%;margin-top:16px;" onclick="closeAskModal()">닫기</button>
+  </div>
+</div>
+
 <!-- Modal: 크래빗 클래스 결제 -->
 <div class="modal-backdrop" id="classinPayModal">
   <div class="modal-box" style="width:480px;max-height:90vh;overflow-y:auto;">
@@ -3944,7 +4041,8 @@
 
     <div class="cpay-row"><span class="k">요금제</span><span class="v">크래빗 클래스</span></div>
     <div class="cpay-row"><span class="k">체험 기간</span><span class="v" style="color:#2E8B22;">오늘부터 7일간 무료</span></div>
-    <div class="cpay-row"><span class="k">이후 결제</span><span class="v">체험 종료 다음 날부터 매월 99,000원</span></div>
+    <div class="cpay-row"><span class="k">첫 결제 예정일</span><span class="v" id="cpay-first-date">-</span></div>
+    <div class="cpay-row"><span class="k">이후 결제</span><span class="v">매월 99,000원</span></div>
     <div class="cpay-row"><span class="k">학원</span><span class="v">크래빗 영어학원</span></div>
     <div class="cpay-row"><span class="k">클래스인 계정</span><span class="v" style="color:#2E8B22;">연동 기간 무상 제공</span></div>
 
@@ -11173,12 +11271,31 @@
     [0, 120, 400, 800].forEach(t => setTimeout(cfdDrawWires, t));
   }
 
-  function v2CarScroll(dir) {
+  let _v2CarTimer = null;
+  function v2CarScroll(dir, smooth) {
     const el = document.getElementById('v2-car');
     if (!el) return;
     const card = el.querySelector('.v2-card');
     const step = card ? card.getBoundingClientRect().width + 16 : 300;
-    el.scrollBy({ left: dir * step * 2, behavior: 'smooth' });
+    el.scrollBy({ left: dir * step * (smooth === 'auto' ? 1 : 2), behavior: 'smooth' });
+    if (smooth !== 'auto') v2CarAuto(true);   // 사용자가 만지면 잠시 멈춘다
+  }
+  /* 카드가 천천히 흘러가다 끝에 닿으면 처음으로 돌아온다 */
+  function v2CarAuto(restart) {
+    const el = document.getElementById('v2-car');
+    if (!el) return;
+    clearInterval(_v2CarTimer);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const tick = () => {
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 4) {
+        el.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        v2CarScroll(1, 'auto');
+      }
+    };
+    _v2CarTimer = setInterval(tick, restart ? 6000 : 3400);
+    el.onmouseenter = () => clearInterval(_v2CarTimer);
+    el.onmouseleave = () => v2CarAuto();
   }
 
   function cinInitIntro() {
@@ -11218,6 +11335,8 @@
       }, { root: document.getElementById('main-content'), rootMargin: '0px 0px -18% 0px', threshold: 0.12 });
       cfdOb.observe(cfd);
     });
+
+    v2CarAuto();
 
     cinInitMocks();
   }
@@ -11396,6 +11515,30 @@
   function openClassinPay() {
     const m = document.getElementById('classinPayModal');
     if (m) m.classList.add('show');
+    // 오늘부터 7일 뒤가 첫 결제일
+    const d = new Date(); d.setDate(d.getDate() + 7);
+    const el = document.getElementById('cpay-first-date');
+    if (el) el.textContent =
+      `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 · 99,000원`;
+  }
+
+  /* 문의 채널 안내 */
+  const ASK_URL = {
+    // 클래스인 공식 채널 주소를 받으면 여기만 바꾸면 됩니다
+    classin: 'https://www.classin.com/',
+    crabit: 'https://crabit.channel.io/home'
+  };
+  function openAskModal() {
+    const m = document.getElementById('askChannelModal');
+    if (m) m.classList.add('show');
+  }
+  function closeAskModal() {
+    const m = document.getElementById('askChannelModal');
+    if (m) m.classList.remove('show');
+  }
+  function goAsk(which) {
+    closeAskModal();
+    window.open(ASK_URL[which], '_blank', 'noopener');
   }
 
   function submitClassinPay() {
