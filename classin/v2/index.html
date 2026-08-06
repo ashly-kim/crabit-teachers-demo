@@ -2576,7 +2576,7 @@
 
   /* --- 마무리 --- */
   /* ===== 흐름 다이어그램 (학습 데이터 유입 → 크래빗 → 보상 유출) ===== */
-  .cfd-sec{background:#F7F8F6;padding:104px 56px 108px;}
+  .cfd-sec{background:#fff;padding:104px 56px 108px;}
   .cfd-inner{max-width:1140px;margin:0 auto;}
   .cfd-head{text-align:center;max-width:660px;margin:0 auto 56px;}
   .cfd-h2{font-size:clamp(25px,3.5vw,38px);font-weight:600;color:#16192A;letter-spacing:-.03em;
@@ -2600,8 +2600,10 @@
   .cfd-logo{display:block;width:auto;}
   .cfd-logo.ci{height:23px;}
   .cfd-logo.cr{height:26px;}
-  .cfd-chip{display:flex;align-items:center;background:#fff;border-radius:13px;padding:13px 17px;
-    box-shadow:0 1px 2px rgba(22,25,42,.05);opacity:0;transform:translateX(-14px);}
+  .cfd-chip{display:flex;align-items:center;border-radius:13px;padding:13px 17px;
+    opacity:0;transform:translateX(-14px);}
+  .cfd-src .cfd-chip{background:#EDF7E8;}
+  .cfd-dst .cfd-chip{background:#FFF0F7;}
   .cfd-col.cfd-dst .cfd-chip{transform:translateX(14px);}
   .cfd-sec.play .cfd-chip{animation:cfdIn .55s cubic-bezier(.22,1,.36,1) forwards;}
   @keyframes cfdIn{to{opacity:1;transform:none;}}
@@ -2612,8 +2614,8 @@
   .cfd-tag{position:absolute;z-index:2;top:50%;transform:translate(-50%,-50%);
     font-size:12px;font-weight:600;border-radius:999px;padding:7px 13px;white-space:nowrap;
     box-shadow:0 1px 3px rgba(22,25,42,.06);}
-  .cfd-tag.g{left:31%;color:#2E8B22;background:#EAF4E5;}
-  .cfd-tag.p{left:69%;color:#c44f8f;background:#FDEDF4;}
+  .cfd-tag.g{left:31%;color:#2E8B22;background:#EDF7E8;}
+  .cfd-tag.p{left:69%;color:#c44f8f;background:#FFF0F7;}
 
   /* 중앙 오브 */
   .cfd-hub{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;}
