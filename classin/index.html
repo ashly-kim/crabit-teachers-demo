@@ -2741,11 +2741,9 @@
   /* ── 크래빗 섹션 (핑크·네이비 계열) ── */
   .sec-cr{background:#FFF7FB;}
   .lb-cr{color:#FB75BB;}
-  .cr-say{background:#16192A;border-radius:22px;padding:32px 36px;margin-top:30px;display:flex;flex-direction:column;gap:14px;}
-  .cr-say p{font-size:17px;color:rgba(255,255,255,.72);line-height:1.85;max-width:none;}
-  .cr-say b{color:#FB75BB;font-weight:600;}
-  .sec-cr .cin-gain{background:#fff;}
-  .sec-cr .cin-split{margin-top:34px;}
+  .cr-feat .ci-shotbox{background:#FDECF4;}
+  .cr-feat .ci-tag{color:#FB75BB;}
+  .cr-feat .ci-li li{background:#FFF0F7;color:#a8467a;}
 
   @media (max-width:900px){
     .ci-score{grid-template-columns:minmax(0,1fr);}
@@ -4208,40 +4206,55 @@
   <section class="cin-sec sec-cr">
     <div class="cin-sec-inner cin-rv">
       <div class="cin-label lb-cr">CRABIT</div>
-      <h2 class="cin-h2">학습 관리와 보상을 한 번에</h2>
-      <p class="cin-desc">요즘 학원들이 선택하는 스마트 클래스룸 운영을 경험해보세요.</p>
+      <h2 class="cin-h2">결국은 좋은 컨텐츠와 시스템도<br>학생이 안 하면 그만이니까</h2>
+      <p class="cin-desc">학생들의 지속적인 참여를 위해 크래빗은 보상과 동기부여를 책임집니다.</p>
 
-      <div class="cr-say">
-        <p>클래스인을 통해 들어오는 학습 데이터를 기반으로, <b>크래빗은 보상과 동기부여를 책임집니다.</b></p>
-        <p>클래스인 수업에서 쌓인 기록이 그대로 보상의 기준이 되니, 원장님이 중간에서 누가 잘 하고 있는지, 누가 개선되었는지 확인하고 수동으로 포인트를 지급하거나 칭찬을 챙기실 필요가 없습니다. <b>학습 관리와 감성 관리까지 함께 운영해보세요.</b></p>
-      </div>
+      <div class="ci-feat cr-feat">
+        <div class="ci-featc">
+          <div class="ci-shotbox"><img src="emp-2-after.jpg" alt="장학카드를 들고 제 시간에 등원하는 학생" loading="lazy"></div>
+          <div class="ci-featb">
+            <div class="ci-tag">01</div>
+            <h4>엉덩이를 떼게 만듭니다</h4>
+            <p>학원에 나오는 것도, 집에서 책상 앞에 앉는 것도 이제 시켜서가 아니라 받으려고 합니다. 부모님이 매일 깨워 보내지 않아도 됩니다.</p>
+            <ul class="ci-li">
+              <li>제 시간 등원</li><li>과제 제출</li><li>강의 완주</li>
+            </ul>
+          </div>
+        </div>
 
-      <div class="cin-split">
-        <div><div class="cin-ill"><img src="ill-student.jpg" alt="장학카드를 들고 있는 학생들" loading="lazy"></div></div>
-        <div class="cin-gains">
-          <div class="cin-gain">
-            <div class="cin-gain-i p">
-              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg>
-            </div>
-            <div><b>엉덩이를 떼게 만듭니다</b><span>학원에 나오는 것도, 집에서 책상 앞에 앉는 것도 이제 시켜서가 아니라 받으려고 합니다.</span></div>
+        <div class="ci-featc">
+          <div class="ci-shotbox"><img src="cr-shot-log.jpg" alt="크래빗 장학금 자동지급 내역 화면" loading="lazy"></div>
+          <div class="ci-featb">
+            <div class="ci-tag">02</div>
+            <h4>노력이 보이는 만족감</h4>
+            <p>왜 받았는지 사유가 같이 뜹니다. 열심히 한 게 눈에 보이니 다음 주에도 이어집니다. 원장님도 형평성 문의를 받지 않으십니다.</p>
+            <ul class="ci-li">
+              <li>지급 사유 기록</li><li>승인 없이 자동</li><li>예치금에서 차감</li>
+            </ul>
           </div>
-          <div class="cin-gain">
-            <div class="cin-gain-i">
-              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-7h6v7"/></svg>
-            </div>
-            <div><b>학원에 대한 소속감</b><span>다른 데서는 못 받는 우리 학원 보상입니다. 아이가 학원을 자기 편으로 느끼기 시작합니다.</span></div>
+        </div>
+
+        <div class="ci-featc">
+          <div class="ci-shotbox"><img src="ill-student.jpg" alt="장학카드를 들고 있는 학생들" loading="lazy"></div>
+          <div class="ci-featb">
+            <div class="ci-tag">03</div>
+            <h4>학원에 대한 소속감</h4>
+            <p>다른 데서는 못 받는 우리 학원 보상입니다. 아이가 학원을 자기 편으로 느끼기 시작하고, 그게 재원 기간으로 이어집니다.</p>
+            <ul class="ci-li">
+              <li>학원 전용 보상</li><li>스탬프와 미션</li><li>우리 학원 카드</li>
+            </ul>
           </div>
-          <div class="cin-gain">
-            <div class="cin-gain-i p">
-              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="12" cy="12" r="9"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
-            </div>
-            <div><b>노력이 보이는 만족감</b><span>왜 받았는지 사유가 같이 뜹니다. 열심히 한 게 눈에 보이니 다음 주에도 이어집니다.</span></div>
-          </div>
-          <div class="cin-gain">
-            <div class="cin-gain-i">
-              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="13" rx="2.5"/><path d="M2.5 10.5h19"/><path d="M6.5 15h3"/></svg>
-            </div>
-            <div><b>경제 개념이 자랍니다</b><span>모을지 쓸지 아이가 직접 정합니다. 벌고, 모으고, 쓰는 과정을 학원 안에서 먼저 익힙니다.</span></div>
+        </div>
+
+        <div class="ci-featc">
+          <div class="ci-shotbox"><img src="ill-reward.jpg" alt="장학카드와 포인트" loading="lazy"></div>
+          <div class="ci-featb">
+            <div class="ci-tag">04</div>
+            <h4>경제 개념이 자랍니다</h4>
+            <p>모을지 쓸지 아이가 직접 정합니다. 벌고, 모으고, 쓰는 과정을 학원 안에서 먼저 익힙니다. 1포인트는 1원입니다.</p>
+            <ul class="ci-li">
+              <li>실물 장학카드</li><li>직접 결제</li><li>잔액 확인</li>
+            </ul>
           </div>
         </div>
       </div>
