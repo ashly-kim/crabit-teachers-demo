@@ -2741,7 +2741,7 @@
   .ci-featc:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);}
   .ci-featc:nth-child(even) .ci-shotbox{order:2;}
   .ci-shotbox{background:#EDF3EA;padding:22px;display:flex;align-items:center;min-width:0;}
-  .ci-shotbox img{display:block;width:100%;max-width:100%;height:auto;border-radius:12px;
+  .ci-shotbox > img{display:block;width:100%;max-width:100%;height:auto;border-radius:12px;
     box-shadow:0 6px 22px rgba(22,25,42,.1);}
   .ci-featb{padding:34px 38px 36px;display:flex;flex-direction:column;justify-content:center;}
   .ci-tag{font-size:12.5px;font-weight:700;letter-spacing:.08em;color:#22AC38;margin-bottom:10px;}
@@ -2759,7 +2759,85 @@
   /* 네 카드의 가로·세로를 동일하게: 열 비율을 균등하게 두고 이미지 비율을 고정한다 */
   .cr-feat .ci-featc,
   .cr-feat .ci-featc:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
-  .cr-feat .ci-shotbox img{aspect-ratio:4/3;object-fit:cover;}
+  .cr-feat .ci-shotbox > img{aspect-ratio:4/3;object-fit:cover;}
+
+  /* ── 홈페이지 flow 씬 이식 (카드 뒤집기, 스탬프 적립) ──
+     crabit-website components/home/flow-section.tsx 의 Step1CardBuild와 Step3StampCard를
+     프레임워크 없이 옮겼다. 카드 210x310, 스탬프 64/34/20, 적립 간격 130ms 등 수치는 원본 그대로다. */
+  .cr-scene{position:relative;width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;
+    background-size:cover;background-position:center;box-shadow:0 6px 22px rgba(22,25,42,.1);
+    display:flex;align-items:center;justify-content:center;}
+  .cr-scene-card{background-image:url(hp-flow-step1-bg.png);}
+  .cr-scene-stamp{background-image:url(hp-flow-step3-bg.png);}
+
+  /* 카드 뒤집기 */
+  .cr-persp{perspective:1400px;}
+  .cr-cardfit{transform:scale(var(--cs,1));}
+  .cr-float{position:relative;width:210px;height:310px;animation:crFloat 5s ease-in-out infinite;}
+  @keyframes crFloat{
+    0%{transform:translateY(0) rotate(0deg);}
+    25%{transform:translateY(-6px) rotate(-1.2deg);}
+    50%{transform:translateY(-8px) rotate(0deg);}
+    75%{transform:translateY(-6px) rotate(1.2deg);}
+    100%{transform:translateY(0) rotate(0deg);}
+  }
+  .cr-flip{position:absolute;inset:0;transform-style:preserve-3d;animation:crFlip 4s infinite;}
+  @keyframes crFlip{
+    0%,35%{transform:rotateY(0deg);animation-timing-function:cubic-bezier(.65,0,.35,1);}
+    60%,100%{transform:rotateY(360deg);}
+  }
+  .cr-face-front{position:absolute;top:0;bottom:0;left:8px;right:8px;border-radius:12px;overflow:hidden;
+    backface-visibility:hidden;box-shadow:0 20px 40px rgba(0,0,0,.16);}
+  .cr-face-front img{display:block;width:100%;height:100%;object-fit:cover;}
+  .cr-face-back{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+    backface-visibility:hidden;transform:rotateY(180deg);filter:drop-shadow(0 20px 40px rgba(0,0,0,.16));}
+  .cr-shineclip{position:absolute;top:0;bottom:0;left:8px;right:8px;border-radius:12px;
+    overflow:hidden;pointer-events:none;}
+  .cr-shine{position:absolute;top:0;height:100%;left:18%;width:18%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,.65),transparent);
+    animation:crShine 4s linear infinite;}
+  @keyframes crShine{
+    0%,57%{transform:skewX(-20deg) translateX(-140%);opacity:0;}
+    64%{opacity:1;}
+    80%,100%{transform:skewX(-20deg) translateX(520%);opacity:0;}
+  }
+
+  /* 스탬프 적립 */
+  .cr-stampcard{position:absolute;background:#fff;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.08);
+    width:406px;padding:28px 24px;transform:scale(var(--ss,1));transition:opacity .5s,transform .5s;}
+  .cr-stampcard.gone{opacity:0;transform:scale(calc(var(--ss,1) * .92));}
+  .cr-sc-t{font-size:17px;font-weight:600;color:#403F46;margin-bottom:4px;}
+  .cr-sc-s{font-size:13px;color:#70717A;margin-bottom:20px;}
+  .cr-sc-s b{color:#FB75BB;font-weight:600;}
+  .cr-grid{position:relative;width:358px;height:232px;}
+  .cr-conn{position:absolute;display:block;background:#EDEDED;height:3px;transform-origin:left center;}
+  .cr-slot{position:absolute;width:64px;height:64px;}
+  .cr-slot .n{position:absolute;inset:0;border-radius:50%;background:#EDEDED;display:flex;
+    align-items:center;justify-content:center;font-size:15px;font-weight:600;color:#B5B6BD;transition:opacity .3s;}
+  .cr-slot img{position:absolute;inset:0;width:100%;height:100%;opacity:0;transform:scale(.5);transition:all .3s;}
+  .cr-slot.on .n{opacity:0;}
+  .cr-slot.on img{opacity:1;transform:scale(1);}
+
+  .cr-reward{position:absolute;background:#51525b;border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.25);
+    width:340px;min-height:118px;padding:24px;opacity:0;pointer-events:none;
+    transform:scale(calc(var(--rs,1) * .7)) translateY(16px);transition:opacity .3s,transform .3s;}
+  .cr-reward.on{opacity:1;transform:scale(var(--rs,1)) translateY(0);
+    transition:opacity .25s,transform .55s cubic-bezier(.2,1.5,.35,1);}
+  .cr-rw-bunny{position:absolute;right:14px;top:10px;width:106px;}
+  .cr-rw-tx{position:relative;max-width:230px;}
+  .cr-rw-tx span{display:block;font-size:13px;color:#F4F4F4;margin-bottom:4px;}
+  .cr-rw-tx b{display:block;font-size:24px;font-weight:700;color:#FAFAFA;letter-spacing:-.03em;white-space:nowrap;}
+  .cr-part{position:absolute;left:50%;top:50%;border-radius:50%;background:#fff;opacity:0;}
+  .cr-reward.on .cr-part{animation:crPart .55s ease-out forwards;}
+  @keyframes crPart{
+    0%{transform:translate(-50%,-50%) scale(.4);opacity:0;}
+    35%{opacity:1;transform:translate(calc(-50% + var(--px) * .5),calc(-50% + var(--py) * .5)) scale(1);}
+    100%{transform:translate(calc(-50% + var(--px)),calc(-50% + var(--py))) scale(.7);opacity:0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .cr-float,.cr-flip,.cr-shine,.cr-reward.on .cr-part{animation:none;}
+  }
 
   @media (max-width:900px){
     .ci-score{grid-template-columns:minmax(0,1fr);}
@@ -11345,6 +11423,102 @@
     el.scrollBy({ left: dir * step * 2, behavior: 'smooth' });
   }
 
+
+  /* === 홈페이지 flow 씬 (카드 뒤집기, 스탬프 적립) ===
+     crabit-website components/home/flow-section.tsx 의 Step1CardBuild와 Step3StampCard 이식.
+     카드 뒤집기와 샤인은 CSS 애니메이션, 스탬프 적립 순서만 타이머로 돌린다. */
+  const CR_STAMP = { size: 64, colGap: 34, rowGap: 20, cols: 4, rows: 3, step: 130 };
+  const CR_COUNT = CR_STAMP.cols * CR_STAMP.rows;
+  let _crTimers = [], _crRunning = false;
+
+  function crBuildScenes() {
+    const grid = document.getElementById('cr-stampgrid');
+    if (grid && !grid.dataset.built) {
+      const { size, colGap, rowGap, cols, rows } = CR_STAMP;
+      const pos = [];
+      for (let r = 0; r < rows; r++) {
+        // 뱀 모양 순서: 1→4 왼→오, 5→8 오→왼, 9→12 왼→오
+        const order = r % 2 === 0 ? [0, 1, 2, 3] : [3, 2, 1, 0];
+        order.forEach(c => pos.push({ x: c * (size + colGap), y: r * (size + rowGap) }));
+      }
+      let html = '';
+      for (let i = 0; i < pos.length - 1; i++) {
+        const a = pos[i], b = pos[i + 1];
+        const dx = b.x - a.x, dy = b.y - a.y;
+        const len = Math.hypot(dx, dy);
+        const ang = Math.atan2(dy, dx) * 180 / Math.PI;
+        html += '<i class="cr-conn" style="left:' + (a.x + size / 2) + 'px;top:' + (a.y + size / 2) +
+                'px;width:' + len + 'px;transform:rotate(' + ang + 'deg)"></i>';
+      }
+      pos.forEach((pt, i) => {
+        html += '<div class="cr-slot" style="left:' + pt.x + 'px;top:' + pt.y + 'px">' +
+                '<span class="n">' + (i + 1) + '</span>' +
+                '<img src="hp-stamp-filled.png" alt=""></div>';
+      });
+      grid.innerHTML = html;
+      grid.dataset.built = '1';
+    }
+    const rw = document.getElementById('cr-reward');
+    if (rw && !rw.dataset.built) {
+      let ph = '';
+      for (let i = 0; i < 12; i++) {
+        const ang = i / 12 * Math.PI * 2, dist = 55 + (i % 3) * 14, sz = i % 2 === 0 ? 5 : 3;
+        ph += '<i class="cr-part" style="--px:' + Math.round(Math.cos(ang) * dist) + 'px;--py:' +
+              Math.round(Math.sin(ang) * dist) + 'px;width:' + sz + 'px;height:' + sz +
+              'px;animation-delay:' + (0.3 + (i % 4) * 0.03).toFixed(2) + 's"></i>';
+      }
+      rw.insertAdjacentHTML('afterbegin', ph);
+      rw.dataset.built = '1';
+    }
+  }
+
+  // 씬 박스가 4:3이라 원본(정사각형)보다 세로가 짧다. 가로와 세로 중 빡빡한 쪽에 맞춘다.
+  function crFit() {
+    document.querySelectorAll('.cr-scene').forEach(sc => {
+      const w = sc.clientWidth, h = sc.clientHeight;
+      if (!w || !h) return;
+      const fit = sc.querySelector('.cr-cardfit');
+      if (fit) fit.style.setProperty('--cs', Math.min(w * 0.72 / 210, h * 0.80 / 310).toFixed(3));
+      const card = sc.querySelector('.cr-stampcard');
+      if (card && card.offsetHeight) {
+        card.style.setProperty('--ss', Math.min(w * 0.90 / 406, h * 0.92 / card.offsetHeight).toFixed(3));
+      }
+      const rw = sc.querySelector('.cr-reward');
+      if (rw) rw.style.setProperty('--rs', Math.min(1.3, w * 0.85 / 340).toFixed(3));
+    });
+  }
+
+  function crCycle() {
+    const card = document.getElementById('cr-stampcard');
+    const rw = document.getElementById('cr-reward');
+    if (!card || !rw) return;
+    const at = (fn, ms) => _crTimers.push(setTimeout(fn, ms));
+    const slots = card.querySelectorAll('.cr-slot');
+    _crTimers.forEach(clearTimeout);
+    _crTimers = [];
+    slots.forEach(sl => sl.classList.remove('on'));
+    card.classList.remove('gone');
+    rw.classList.remove('on');
+    for (let i = 1; i <= CR_COUNT; i++) at(() => slots[i - 1].classList.add('on'), 500 + i * CR_STAMP.step);
+    const rewardAt = 500 + CR_COUNT * CR_STAMP.step + 500;
+    at(() => { card.classList.add('gone'); rw.classList.add('on'); }, rewardAt);
+    at(crCycle, rewardAt + 3000);   // 리워드 카드를 3초 보여주고 다시 처음부터
+  }
+
+  function crScenesStart() {
+    crBuildScenes();
+    crFit();
+    setTimeout(crFit, 120);   // 웹폰트가 늦게 붙어 카드 높이가 바뀌는 경우 대비
+    if (_crRunning) return;
+    _crRunning = true;
+    window.addEventListener('resize', crFit);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('#cr-stampgrid .cr-slot').forEach(sl => sl.classList.add('on'));
+      return;
+    }
+    crCycle();
+  }
+
   function cinInitIntro() {
     const page = document.getElementById(
       _cinVersion === 'simple' ? 'page-classin-intro-v2' : 'page-classin-intro');
@@ -11355,6 +11529,7 @@
       items.forEach(el => el.classList.add('in'));
       document.querySelectorAll('.cfd-sec').forEach(c => c.classList.add('play'));
       cfdDrawWiresSoon();
+      crScenesStart();
       cinInitMocks();
       return;
     }
@@ -11384,6 +11559,7 @@
     });
 
     v2CarAuto();
+    crScenesStart();
 
     cinInitMocks();
   }
