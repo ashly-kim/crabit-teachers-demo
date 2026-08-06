@@ -2682,10 +2682,31 @@
   .cin-gain span{font-size:15.5px;color:rgba(22,25,42,.62);line-height:1.72;}
 
   /* ===== v2 Simple Integration 랜딩 ===== */
-  .v2-pain{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:34px;}
-  .v2-painc{background:#F2F3F2;border-radius:18px;padding:26px 28px;}
-  .v2-painc b{display:block;font-size:17.5px;font-weight:600;color:#16192A;margin-bottom:7px;letter-spacing:-.01em;}
-  .v2-painc span{font-size:15.5px;color:rgba(22,25,42,.6);line-height:1.72;}
+  /* 공감대 섹션 */
+  .emp{margin-top:44px;}
+  .emp + .emp{margin-top:64px;padding-top:56px;border-top:1px solid #EDEEF1;}
+  .emp-q{display:flex;align-items:baseline;gap:12px;font-size:clamp(21px,2.8vw,29px);font-weight:600;
+    color:#16192A;letter-spacing:-.02em;line-height:1.4;margin-bottom:26px;text-wrap:balance;}
+  .emp-q span{flex-shrink:0;font-size:12.5px;font-weight:700;letter-spacing:.06em;color:#c44f8f;
+    background:#FDEDF4;border-radius:999px;padding:5px 12px;transform:translateY(-3px);}
+  .emp-ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .emp-shot{margin:0;position:relative;}
+  .emp-shot img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;background:#F2F3F6;}
+  .emp-shot.b img{filter:saturate(.72) brightness(.97);}
+  .emp-tag{position:absolute;top:14px;left:14px;font-size:12px;font-weight:600;border-radius:999px;
+    padding:6px 13px;backdrop-filter:blur(6px);}
+  .emp-shot.b .emp-tag{background:rgba(255,255,255,.9);color:rgba(22,25,42,.62);}
+  .emp-shot.a .emp-tag{background:rgba(255,255,255,.9);color:#c44f8f;}
+  .emp-shot figcaption{font-size:15px;color:rgba(22,25,42,.62);line-height:1.72;margin-top:14px;}
+  .emp-shot.a figcaption{color:rgba(22,25,42,.75);}
+  .emp-say{font-size:17px;color:rgba(22,25,42,.7);line-height:1.8;margin-top:26px;
+    background:#F7F8F6;border-radius:16px;padding:22px 26px;max-width:none;}
+  .emp-say b{color:#16192A;font-weight:600;}
+  @media (max-width:900px){
+    .emp-ba{grid-template-columns:minmax(0,1fr);gap:14px;}
+    .emp + .emp{margin-top:44px;padding-top:40px;}
+    .emp-say{font-size:15.5px;padding:18px 20px;}
+  }
 
   .v2-feat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:34px;}
   .v2-featc{background:#fff;border:1px solid #EDEEF1;border-radius:20px;padding:0 0 30px;overflow:hidden;}
@@ -3966,20 +3987,45 @@
     <p class="cin-hero-note">전 세계 학원이 쓰는 수업 플랫폼 클래스인과<br>보상을 자동으로 돌리는 크래빗을 하나로 묶었습니다.</p>
   </section>
 
-  <!-- 1. 지금 학원 수업은 이렇습니다 -->
+  <!-- 1. 공감대 -->
   <section class="cin-sec" id="cin-steps-sec-v2">
     <div class="cin-sec-inner cin-rv">
-      <div class="cin-label">지금 우리 학원</div>
-      <h2 class="cin-h2">수업은 잘 하고 계신데,<br>남는 게 없습니다</h2>
-      <p class="cin-desc">가르치는 건 자신 있으신데 그게 기록으로 남지 않습니다. 아이가 뭘 했는지도, 얼마나 따라왔는지도 강사 기억에만 있습니다.</p>
+      <div class="cin-label">원장님, 혹시</div>
+      <h2 class="cin-h2">아직도 이러고 계신가요?</h2>
+      <p class="cin-desc">두 가지만 여쭙겠습니다. 하나라도 해당되신다면 읽어보실 값이 있습니다.</p>
 
-      <div class="v2-pain">
-        <div class="v2-painc"><b>결석하면 그 수업은 그냥 사라집니다</b><span>따로 시간을 빼서 다시 설명해 주시거나, 아이가 알아서 따라잡기를 기다리는 수밖에 없습니다.</span></div>
-        <div class="v2-painc"><b>같은 질문에 밤늦게까지 답합니다</b><span>단톡방으로 들어오는 질문에 하나씩 답하시다 보면 하루가 끝납니다.</span></div>
-        <div class="v2-painc"><b>수업 자료가 강사별로 흩어져 있습니다</b><span>강사가 바뀌면 자료도 같이 사라지고, 학원 표준이라는 게 생기지 않습니다.</span></div>
-        <div class="v2-painc"><b>상담 때 보여드릴 게 없습니다</b><span>열심히 했다는 말씀은 드리는데 근거를 못 보여드립니다. 학부모는 숫자를 원하십니다.</span></div>
-        <div class="v2-painc"><b>칭찬은 손으로 챙기십니다</b><span>스티커판을 만들고, 시험 기간마다 이벤트를 새로 짜고, 안내 카드뉴스를 직접 만드십니다.</span></div>
-        <div class="v2-painc"><b>아이가 스스로 움직이지 않습니다</b><span>시켜야 합니다. 집에서 책상 앞에 앉히는 건 결국 부모님 몫으로 넘어갑니다.</span></div>
+      <div class="emp">
+        <div class="emp-q"><span>Q1</span>아직도 보강을 시간 잡아 직접 진행하시나요?</div>
+        <div class="emp-ba">
+          <figure class="emp-shot b">
+            <div class="emp-tag">지금</div>
+            <img src="emp-1-before.jpg" alt="주말 아침 보충 수업을 직접 진행하는 학원 원장" loading="lazy">
+            <figcaption>주말 아침에도 보강 때문에 나오십니다. 결석한 학생 한둘을 위해 같은 내용을 또 설명하시고, 그 시간은 그대로 사라집니다.</figcaption>
+          </figure>
+          <figure class="emp-shot a">
+            <div class="emp-tag">크래빗 클래스</div>
+            <img src="emp-1-after.jpg" alt="온라인 강의를 올려두고 여유를 찾은 원장과 태블릿으로 공부하는 학생들" loading="lazy">
+            <figcaption>강의를 한 번 올려두시면 됩니다. 아이들은 각자 태블릿으로 따라오고, 원장님 주말은 원장님 것이 됩니다.</figcaption>
+          </figure>
+        </div>
+        <p class="emp-say">이제는 클래스인에 <b>온라인 강의를 올려두시고, 테스트와 퀴즈, 과제, 토론까지 후속 활동을 함께 기획</b>하세요. 학생이 학원에 오지 않는 날에도 우리 학원을 통한 교육 경험이 끊기지 않습니다.</p>
+      </div>
+
+      <div class="emp">
+        <div class="emp-q"><span>Q2</span>학생 동기부여가 어려우신가요?</div>
+        <div class="emp-ba">
+          <figure class="emp-shot b">
+            <div class="emp-tag">지금</div>
+            <img src="emp-2-before.jpg" alt="칭찬 스티커판이 있어도 일어나지 못하는 학생과 답답해하는 학부모" loading="lazy">
+            <figcaption>스티커판을 붙여두고 칭찬 쿠폰을 만들어 드려도 아이는 일어나지 않습니다. 결국 부모님이 매일 깨워서 보내십니다.</figcaption>
+          </figure>
+          <figure class="emp-shot a">
+            <div class="emp-tag">크래빗 클래스</div>
+            <img src="emp-2-after.jpg" alt="장학카드를 들고 제 시간에 학원에 등원하는 학생과 맞이하는 선생님" loading="lazy">
+            <figcaption>아이가 시간 맞춰 스스로 옵니다. 손에는 자기가 번 장학카드가 들려 있습니다.</figcaption>
+          </figure>
+        </div>
+        <p class="emp-say">이제는 <b>스티커판을 직접 챙기고 시험 기간마다 보상과 선물을 기획하지 않으셔도 됩니다.</b> 크래빗은 스스로 움직이지 않던 아이가 엉덩이를 떼고 책상 앞에 앉게, 그리고 조금 더 주도적으로 움직이게 만드는 동기부여 무기를 원장님 손에 쥐어드립니다.</p>
       </div>
     </div>
   </section>

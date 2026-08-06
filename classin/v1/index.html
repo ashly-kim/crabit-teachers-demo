@@ -2683,10 +2683,31 @@
   .cin-gain span{font-size:15.5px;color:rgba(22,25,42,.62);line-height:1.72;}
 
   /* ===== v2 Simple Integration 랜딩 ===== */
-  .v2-pain{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:34px;}
-  .v2-painc{background:#F2F3F2;border-radius:18px;padding:26px 28px;}
-  .v2-painc b{display:block;font-size:17.5px;font-weight:600;color:#16192A;margin-bottom:7px;letter-spacing:-.01em;}
-  .v2-painc span{font-size:15.5px;color:rgba(22,25,42,.6);line-height:1.72;}
+  /* 공감대 섹션 */
+  .emp{margin-top:44px;}
+  .emp + .emp{margin-top:64px;padding-top:56px;border-top:1px solid #EDEEF1;}
+  .emp-q{display:flex;align-items:baseline;gap:12px;font-size:clamp(21px,2.8vw,29px);font-weight:600;
+    color:#16192A;letter-spacing:-.02em;line-height:1.4;margin-bottom:26px;text-wrap:balance;}
+  .emp-q span{flex-shrink:0;font-size:12.5px;font-weight:700;letter-spacing:.06em;color:#c44f8f;
+    background:#FDEDF4;border-radius:999px;padding:5px 12px;transform:translateY(-3px);}
+  .emp-ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .emp-shot{margin:0;position:relative;}
+  .emp-shot img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px;background:#F2F3F6;}
+  .emp-shot.b img{filter:saturate(.72) brightness(.97);}
+  .emp-tag{position:absolute;top:14px;left:14px;font-size:12px;font-weight:600;border-radius:999px;
+    padding:6px 13px;backdrop-filter:blur(6px);}
+  .emp-shot.b .emp-tag{background:rgba(255,255,255,.9);color:rgba(22,25,42,.62);}
+  .emp-shot.a .emp-tag{background:rgba(255,255,255,.9);color:#c44f8f;}
+  .emp-shot figcaption{font-size:15px;color:rgba(22,25,42,.62);line-height:1.72;margin-top:14px;}
+  .emp-shot.a figcaption{color:rgba(22,25,42,.75);}
+  .emp-say{font-size:17px;color:rgba(22,25,42,.7);line-height:1.8;margin-top:26px;
+    background:#F7F8F6;border-radius:16px;padding:22px 26px;max-width:none;}
+  .emp-say b{color:#16192A;font-weight:600;}
+  @media (max-width:900px){
+    .emp-ba{grid-template-columns:minmax(0,1fr);gap:14px;}
+    .emp + .emp{margin-top:44px;padding-top:40px;}
+    .emp-say{font-size:15.5px;padding:18px 20px;}
+  }
 
   .v2-feat{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:34px;}
   .v2-featc{background:#fff;border:1px solid #EDEEF1;border-radius:20px;padding:0 0 30px;overflow:hidden;}
