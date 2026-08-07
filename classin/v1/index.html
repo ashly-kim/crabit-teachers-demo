@@ -57,14 +57,16 @@
 
   /* === 사이드바 접기/펼치기 (티처스 실서비스와 동일 동작) === */
   .sb-fold { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px;
-    margin-right: 10px; border: none; background: transparent; border-radius: 9px; color: #6b6b73;
-    cursor: pointer; flex-shrink: 0; transition: background .15s, color .15s; }
+    align-self: flex-end; flex-shrink: 0; margin: 2px 0 4px; position: sticky; top: 0; z-index: 2;
+    border: none; background: #fff; border-radius: 9px; color: #6b6b73; cursor: pointer;
+    transition: background .15s, color .15s, margin-right .26s cubic-bezier(.4,0,.2,1); }
   .sb-fold:hover { background: #F4F4F5; color: #16192A; }
   .sb-fold svg { display: block; }
   .sidebar { transition: width .26s cubic-bezier(.4,0,.2,1), min-width .26s cubic-bezier(.4,0,.2,1), padding .2s ease; }
 
   @media (min-width: 901px) {
     body.sb-collapsed .sidebar { width: 72px; min-width: 72px; padding: 14px 0; overflow-x: hidden; align-items: center; }
+    body.sb-collapsed .sb-fold { margin-right: 19px; }
     body.sb-collapsed .sidebar-header,
     body.sb-collapsed .sb-demo-card,
     body.sb-collapsed .sb-guide-card { display: none; }
@@ -3162,9 +3164,6 @@
     <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
   </button>
   <div class="nav-left">
-    <button class="sb-fold" id="sb-fold" onclick="toggleSidebarFold()" aria-label="메뉴 접기/펼치기" title="메뉴 접기">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
-    </button>
     <div class="nav-logo"><img src="logo.png" alt="Crabit"></div>
   </div>
   <div class="ci-navchip" title="연동 범위 시나리오를 바꿔 봅니다">
@@ -3185,6 +3184,9 @@
 <div class="layout">
   <!-- SIDEBAR -->
   <div class="sidebar" id="app-sidebar">
+    <button class="sb-fold" id="sb-fold" onclick="toggleSidebarFold()" aria-label="메뉴 접기/펼치기" title="메뉴 접기">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+    </button>
     <div class="sidebar-header">
       <div class="academy-name">크래빗 영어학원</div>
       <div class="user-info">김현지 원장님 <span class="badge">대표 관리자</span></div>
@@ -11910,7 +11912,7 @@
   }
   function setSidebarFold(collapsed) {
     document.body.classList.toggle('sb-collapsed', collapsed);
-    try { localStorage.setItem('crabitSbFold', collapsed ? '1' : '0'); } catch (e) {}
+    try { localStorage.setItem('crabitSbFold2', collapsed ? '1' : '0'); } catch (e) {}
     syncFoldTitles(collapsed);
   }
   function toggleSidebarFold() {
@@ -11918,7 +11920,7 @@
   }
   document.addEventListener('DOMContentLoaded', () => {
     let saved = '0';
-    try { saved = localStorage.getItem('crabitSbFold') || '0'; } catch (e) {}
+    try { saved = localStorage.getItem('crabitSbFold2') || '0'; } catch (e) {}   // 기본은 열림
     if (saved === '1') document.body.classList.add('sb-collapsed');
     syncFoldTitles(saved === '1');
   });
@@ -12086,10 +12088,6 @@
       if (el) el.style.display = 'block';
       const mi = document.getElementById('menu-classin-intro');
       if (mi) mi.classList.add('active');
-      // 소개 화면은 랜딩이라 좌측 메뉴를 접어 시야를 넓힌다
-      if (window.innerWidth > 900 && !document.body.classList.contains('sb-collapsed')) {
-        setSidebarFold(true);
-      }
       cinInitIntro();
     } else if (page === 'class-mgmt') {
       document.getElementById('page-class-mgmt').style.display = 'block';
