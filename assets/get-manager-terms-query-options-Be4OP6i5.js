@@ -1,1 +1,0 @@
-import{q as e,A as r,u as n,s as t,a as u,du as m}from"./index-S79wb68G.js";const o=300*1e3,i=600*1e3;function y(){return e({queryKey:r.managerTerms(),queryFn:a,staleTime:o,gcTime:i})}function c(){return e({queryKey:r.terms(),queryFn:a})}async function a(){const s=n(await t(u.GET("/api/v1/managers/terms")));return m.array().parse(s.data?.terms)}export{c as a,y as g};

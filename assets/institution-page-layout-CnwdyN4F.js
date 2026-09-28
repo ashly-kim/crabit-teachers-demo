@@ -1,1 +1,0 @@
-import{j as t,ak as s,K as e}from"./index-S79wb68G.js";const i=({children:a})=>t.jsx(s,{as:"main",fluid:!0,className:"flex w-full items-start justify-center px-4 pt-24 pb-8 md:pt-32",children:t.jsx(e,{gap:24,className:"w-full max-w-4xl",children:a})});export{i as I};
