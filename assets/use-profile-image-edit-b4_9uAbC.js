@@ -1,0 +1,1 @@
+import{G as o,av as r,bT as a,bU as s}from"./index-S79wb68G.js";const m=a({profileImage:s().optional()}),l=(e={})=>({form:o({resolver:r(m),mode:"onTouched",values:{profileImage:e.profileImageUrl||""}})});export{l as u};

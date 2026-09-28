@@ -1,0 +1,1 @@
+import{j as o,K as r,a9 as s,w as n}from"./index-S79wb68G.js";function i({title:e,subtitle:a}){return o.jsxs(r,{gap:4,children:[o.jsx(s,{fontSize:"t2",as:"h1",colorShade:800,children:e}),a&&o.jsx(n,{fontSize:"b3",color:"zinc",colorShade:500,children:a})]})}export{i as P};

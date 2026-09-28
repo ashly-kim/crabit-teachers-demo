@@ -1,0 +1,1 @@
+import{cK as r,aF as e}from"./index-S79wb68G.js";const N={...r,validate(t){return e.PATTERNS.PHONE_NUMBER.test(t)},validateVerificationCode(t){return e.PATTERNS.VERIFICATION_CODE.test(t)}};export{N as P};

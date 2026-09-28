@@ -1,0 +1,1 @@
+import{dd as s,q as u,ae as n,cB as t}from"./index-S79wb68G.js";const d=r=>({id:r.id,name:r.name,color:r.color,cardCount:r.cardCount,isNoGroup:r.id===null}),i=r=>{const o=s();return u({queryKey:t.groupList(r.institutionId),queryFn:async()=>n(await o.getCardGroups(r)),select:a=>a.map(e=>d(e))})};export{i as u};
